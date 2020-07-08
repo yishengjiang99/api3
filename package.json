@@ -3,22 +3,22 @@
   "version": "1.0.1",
   "description": "simple websockets for reading and writing into azure blob service",
   "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc",
-    "test": "mocha -c",
-    "start": "node dist/index.js",
-    "prepublishOnly": "clap -n build docs && clap check",
-    "docs": "clap xarc/docs"
-  },
   "author": "Yisheng Jiang",
   "license": "ISC",
   "dependencies": {
     "@types/mysql": "^2.15.14",
     "azure-storage": "^2.10.3",
+    "forever": "^3.0.0",
     "jest": "^26.1.0",
     "mime": "^2.4.6",
     "mysql": "^2.18.1",
     "ws.js": "^1.0.0"
+  },
+  "scripts": {
+    "start": "node --inspect=5858 -r ts-node/register ./src/index.ts",
+    "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal_broker.ts",
+    "start:watch": "nodemon",
+    "build": "tsc"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
@@ -27,6 +27,7 @@
     "@types/node": "^13.7.6",
     "@types/sinon": "^9.0.0",
     "@types/sinon-chai": "^3.2.4",
+    "@types/ws": "^7.2.6",
     "@typescript-eslint/eslint-plugin": "^2.21.0",
     "@typescript-eslint/parser": "^2.21.0",
     "@xarc/module-dev": "^2.1.2",
@@ -45,7 +46,8 @@
     "ts-node": "^8.6.2",
     "typedoc": "^0.17.4",
     "typescript": "^3.8.3",
-    "webpack": "^4.43.0"
+    "webpack": "^4.43.0",
+    "xaa": "^1.6.0"
   },
   "mocha": {
     "require": [
@@ -54,6 +56,19 @@
       "@xarc/module-dev/config/test/setup.js"
     ],
     "recursive": true
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      ".git",
+      "node_modules"
+    ],
+    "watch": [
+      "src"
+    ],
+    "exec": "npm start",
+    "ext": "ts"
   },
   "files": [
     "dist",

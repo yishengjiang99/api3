@@ -5,9 +5,12 @@ import { stdoutHandler } from "./stdout";
 import { stdinHandler } from "./stdin";
 import * as url from "url";
 import { resolve } from "path";
-import azfs from "./azfs";
+import * as azfs from "./azfs";
 import db from "./db";
 import * as http from "http";
+import * as SignalServer from "./signal_broker";
+
+new SignalServer.Server(4000, {}).start();
 
 const favicon = fs.readFileSync("./favicon.jpg");
 
@@ -16,8 +19,8 @@ const server = http.createServer(
     const urlparts = req.url.split("/");
     res.writeHead(200);
     const parts = req.url.split("/");
-	
-    switch(parts[1]){
+
+    switch (parts[1]) {
       case "checkin":
         checkinUser(req).then((jsonResp) => {
           res.writeHead(200, "one moemnt", { "Content-Type": "application/json" });
@@ -33,27 +36,25 @@ const server = http.createServer(
         checkinUser(req).then((jsonResp) => {
           const bufferResp = Buffer.from(JSON.stringify(jsonResp));
           const respBufferLen = bufferResp.byteLength;
-          res.write(respBufferLen+"");
+          res.write(respBufferLen + "");
           res.write(bufferResp);
           res.write(favicon.slice(18 + 1 + respBufferLen));
           res.end();
         });
         break;
     }
-	
+
   }
 );
 const checkinUser = async (req) => {
- 
+
   const jsonResp = {
     shared: azfs.listFiles("sounds")
   };
   return jsonResp;
 };
 const stdin = new WebSocket.Server({ noServer: true });
-
 const stdout = new WebSocket.Server({ noServer: true });
-
 stdin.on("connection", stdinHandler);
 stdout.on("connection", stdoutHandler);
 

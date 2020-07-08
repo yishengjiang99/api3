@@ -1,8 +1,17 @@
-import { BlobService, createBlobService } from "azure-storage";
-import { PassThrough, Readable } from "stream";
-import { basename, dirname } from "path"; //("path");
+import { BlobService, createBlobService, ErrorOrResult } from "azure-storage";
+import { PassThrough, Readable, Writable } from "stream";
+import { basename, dirname, resolve } from "path"; //("path");
 import { getType } from "mime";
 import { createWriteStream } from "fs";
+import { stdout } from "process";
+import * as Stream from "stream";
+import { makeDefer } from "xaa";
+import { rejects } from "assert";
+import azurestorage = require("azure-storage");
+
+type Data = string | ArrayBuffer | JSON;
+
+
 const ErrorOrResultHandler = (err) => {
   if (err) throw err;
 };
@@ -10,7 +19,7 @@ const blobClient = createBlobService();
 
 function getContainer(container) {
   return new Promise((resolve, reject) => {
-    console.log("create container");
+    console.log("create container ", container);
     blobClient.createContainerIfNotExists(
       container,
       {
@@ -41,7 +50,6 @@ function listFiles(containerName, prefix = null) {
         });
         if (result.continuationToken) {
           resolve(files);
-          //          _page_through(containerName, result.continuationToken);
         } else {
           resolve(files);
           return;
@@ -52,16 +60,72 @@ function listFiles(containerName, prefix = null) {
   });
 }
 
-function listContainers() {
+function listContainers(prefix = "") {
   return new Promise((resolve, reject) => {
-    blobClient.listContainersSegmented(null, (err, result) => {
+    blobClient.listContainersSegmentedWithPrefix(prefix, null, (err, result) => {
       if (err) reject(err);
       else resolve(result);
     });
   });
 }
 
-function fopenr(xpath: string): Readable {
+function fstat(xpath: string) {
+  var defer = makeDefer();
+  const parts = xpath.split("/");
+  const container = parts[0] ? parts[0] : "public_file";
+  const blobname = parts[1] ? parts[1] : "new_file.txt";
+  blobClient.doesBlobExist(container, blobname, (err, result) => {
+    if (err) defer.resolve(false);
+    defer.resolve(result);
+  });
+  return defer.promise;
+}
+function touch(xpath: string) {
+  var defer = makeDefer();
+  const parts = xpath.split("/");
+  const container = parts[0] ? parts[0] : "public_file";
+  const blobname = parts[1] ? parts[1] : "new_file.txt";
+  blobClient.createBlockBlobFromText(container, blobname, "", (err, result, resp) => {
+    if (err) defer.reject(err);
+    else defer.resolve(resp.isSuccessful);
+  })
+  return defer.promise;
+}
+
+async function fopen(xpath: string) {
+  try {
+    const fileExists = await fstat(xpath);
+    if (!fileExists) {
+      await touch(xpath);
+    }
+    const r: Stream.Readable = fopenr(xpath);
+    const w: Stream.Writable = fopenw(xpath);
+  } catch (e) {
+    console.error(e);
+  }
+
+
+  function getContent() {
+    const defer = makeDefer();
+    let str = "";
+    r.on("data", d => str += d.toString());
+    r.on("end", () => defer.resolve(str));
+    return defer.promise;
+  }
+  function append(data): Promise<any> {
+    const def = makeDefer();
+    w.write(data, (err) => {
+      if (err) def.reject(err);
+      else def.resolve(true);
+    });
+    return def.promise;
+  }
+  return {
+    r, w, getContent, append
+  }
+}
+
+function fopenr(xpath: string): Stream.Readable {
   const parts = xpath.split("/");
 
   const container = parts[0] ? parts[0] : "public_file";
@@ -79,9 +143,8 @@ function fopenr(xpath: string): Readable {
   }
 }
 
-function fopenw(xpath: string): any {
+function fopenw(xpath: string): Stream.Writable {
   const parts = xpath.split("/");
-
   const container = parts[0] ? parts[0] : "public_file";
   getContainer(container);
   const blobname = parts[1] ? parts[1] : "new_file.txt";
@@ -96,6 +159,16 @@ function file_stream_contents(containerName, fileName, writestream) {
     });
   });
 }
+var handler = function (stdout, stderr) {
+  return function (err, result, resp) {
+    if (err) stderr(err);
+    else stdout(result)
+  }
+}
+
+function createBlob(container, blob, json, cb) {
+  blobClient.createBlockBlobFromText(container, blob, JSON.stringify(json), cb); // (err, result, res))
+}
 
 function file_get_contents(filepath) {
   return new Promise((resolve, reject) => {
@@ -109,13 +182,17 @@ function file_get_contents(filepath) {
     w.on("error", (e) => reject(e));
   });
 }
-export default {
+export {
   getContainer,
   listFiles,
+  fopen,
   fopenw,
   fopenr,
   file_get_contents,
   blobClient,
   listContainers,
   file_stream_contents,
+  createBlob
 };
+
+
