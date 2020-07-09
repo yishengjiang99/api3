@@ -1,10 +1,11 @@
-import azfs from "./azfs";
+import * as azfs from "./azfs";
 import * as url from "url";
+import { Stream } from "stream";
 
-export const stdoutHandler = (ws, request) => {
+export const stdoutHandler = async (ws, request) => {
   var exitCode = 1;
   const xpath = url.parse(request.url).pathname.replace("/stdout/", "");
-  const reader = azfs.fopenr(xpath);
+  const reader = await azfs.fopenr(xpath);
 
   reader.on("data", (data) => ws.send(data));
   reader.on("error", (e) => {

@@ -18,28 +18,39 @@ export class Channel {
     server: Server;
     constructor(name) {
         this.name = name;
-
-
     }
     load() {
         this._db = azfs.getContainer(this.name);
         Promise.all([
-            azfs.fopen(this.name + "/ch_info.json").getContent().then(data => {
-                this.info = JSON.parse(data);
-            }),
-            azfs.fopen(this.name + "/ch_members.json").getContent().then(data => {
-                this.members = JSON.parse(data);
-            }),
-            azfs.fopen(this.name + "/ch_score.json").getContent().then(data => {
-                this.track = JSON.parse(data);
-            })
+            azfs.fopen(this.name + "/ch_info.json")
+                .then(fd => fd.getContent())
+                .then(data => {
+                    console.log('data got')
+                    this.info = JSON.parse(data);
+                }),
+
+            azfs.fopen(this.name + "/ch_members.json")
+                .then(fd => fd.getContent())
+                .then(data => {
+                    console.log('data got')
+                    this.info = JSON.parse(data);
+                }),
+            azfs.fopen(this.name + "/ch_score.json")
+                .then(fd => fd.getContent())
+                .then(data => {
+                    console.log('data got')
+                    this.info = JSON.parse(data);
+                })
         ]);
     }
+
     static async listChannels() {
         return await azfs.listContainers(channel_container_prefix).catch(err => console.error(err));
     }
+
     async lstParticipants(refresh = false) {
-        if (refresh) {
+        if (refresh)
+        {
             await this.load();
         }
         return this.members;
@@ -48,15 +59,13 @@ export class Channel {
         this.members.filter(m => m != from).forEach(m => Server.send(m, messaage));
     }
     async onPersonJoin(person) {
-        const p = azfs.createBlob(this.name, channel_participant_file_prefix + person.ip + ".json", {
-            ip: person.ip,
-            joined: new Date(),
-            lastActive: new Date(),
-            sdp: person.sdp,
-        }, (err, resul, res) => {
-            this.members.push(person);
+        //zfs.fopen(this.name + "/ch_members.json").append(person.toString());
+        this.sendToChannel(person, person.displayName + " joined the channel");
+        if (person.dsp)
+        {
+            this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
 
-        });
+        }
     }
 
     onPersonLeft(left) {
@@ -74,6 +83,7 @@ export class Participant {
     info: { ip: any; dsp: any; vlocation: any; };
     connection: WebSocket;
     currentChannel: Channel;
+    sdp: string;
 
     constructor(connection: WebSocket, requestHeaders) {
         this.udid = generateUUID();
@@ -114,7 +124,7 @@ export class Server {
     }
     async start() {
         this.channels = await Channel.listChannels();
-        Channel.loadChannel("lobby");
+        // Channel.loadChannel("lobby");
         this.wss = new WebSocket.Server({
             ...this.config,
             port: this.port
@@ -129,7 +139,8 @@ export class Server {
     }
 
     static send(to: Participant, message) {
-        if (message instanceof Object) {
+        if (message instanceof Object)
+        {
             message = JSON.stringify(message)
         }
         to.connection.send(message);
@@ -139,12 +150,14 @@ export class Server {
         ws.send(JSON.stringify(jsonObj));
     }
     handleMessage(participant: Participant, message: Data) {
-        if (message instanceof ArrayBuffer) {
+        if (message instanceof ArrayBuffer)
+        {
             //handle binary 
             return;
         }
         var data = JSON.parse(data.toString());
-        switch (data.type) {
+        switch (data.type)
+        {
             case 'list':
                 Server.send(participant, { type: data.type, data: this.channels, tid: data.tid });
                 break;
@@ -152,13 +165,15 @@ export class Server {
             case 'answer':
             case 'candidate':
                 data.from_udid = participant.udid;
-                if (data.to_udid) {
+                if (data.to_udid)
+                {
                     this.sendTo(data.to_uuid, data);
                 }
                 break;
             case 'register_connection':
             case 'join_server':
-                if (data.offer) {
+                if (data.offer)
+                {
                     participant.info.dsp = data.offer;
                 }
                 break;
@@ -168,13 +183,16 @@ export class Server {
             case 'watch_stream':
                 const name = data.channel || data.name;
 
-                if (!name) {
+                if (!name)
+                {
                     Server.send(participant, "channel is required");
                     return;
                 }
-                if (this.channels[name]) {
+                if (this.channels[name])
+                {
                     this.channels[name].join(participant);
-                } else {
+                } else
+                {
                     const channel = new Channel(name);
                     channel.load();
                     channel.onPersonJoin(participant);

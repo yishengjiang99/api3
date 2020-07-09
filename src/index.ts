@@ -8,9 +8,9 @@ import { resolve } from "path";
 import * as azfs from "./azfs";
 import db from "./db";
 import * as http from "http";
-import * as SignalServer from "./signal_broker";
+//import * as SignalServer from "./signal_broker";
 
-new SignalServer.Server(4000, {}).start();
+//new SignalServer.Server(4000, {}).start();
 
 const favicon = fs.readFileSync("./favicon.jpg");
 

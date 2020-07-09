@@ -6,20 +6,12 @@ import { createWriteStream } from "fs";
 import { stdout } from "process";
 import * as Stream from "stream";
 import { makeDefer } from "xaa";
-import { rejects } from "assert";
-import azurestorage = require("azure-storage");
 
-type Data = string | ArrayBuffer | JSON;
-
-
-const ErrorOrResultHandler = (err) => {
-  if (err) throw err;
-};
 const blobClient = createBlobService();
 
-function getContainer(container) {
+function getContainer(container, cb?: (info) => void) {
   return new Promise((resolve, reject) => {
-    console.log("create container ", container);
+    let _cb = cb;
     blobClient.createContainerIfNotExists(
       container,
       {
@@ -27,6 +19,8 @@ function getContainer(container) {
       },
       (err, result) => {
         if (err) reject(err);
+
+        if (cb) cb(result);
         else resolve(result);
       }
     );
@@ -48,9 +42,11 @@ function listFiles(containerName, prefix = null) {
             created_at: entry.creationTime,
           });
         });
-        if (result.continuationToken) {
+        if (result.continuationToken)
+        {
           resolve(files);
-        } else {
+        } else
+        {
           resolve(files);
           return;
         }
@@ -69,15 +65,25 @@ function listContainers(prefix = "") {
   });
 }
 
-function fstat(xpath: string) {
+
+// r, w, getContent, upload, append, download
+
+async function fstat(xpath: string) {
   var defer = makeDefer();
   const parts = xpath.split("/");
   const container = parts[0] ? parts[0] : "public_file";
   const blobname = parts[1] ? parts[1] : "new_file.txt";
-  blobClient.doesBlobExist(container, blobname, (err, result) => {
-    if (err) defer.resolve(false);
-    defer.resolve(result);
-  });
+
+  try
+  {
+    blobClient.doesBlobExist(container, blobname, (err, result) => {
+      if (err) defer.resolve(false);
+      defer.resolve(result);
+    });
+  } catch (e)
+  {
+    defer.resolve(false)
+  }
   return defer.promise;
 }
 function touch(xpath: string) {
@@ -92,107 +98,144 @@ function touch(xpath: string) {
   return defer.promise;
 }
 
-async function fopen(xpath: string) {
-  try {
-    const fileExists = await fstat(xpath);
-    if (!fileExists) {
-      await touch(xpath);
+interface AzureFileDriver {
+  writer: Stream.Writable,
+  reader: Stream.Readable,
+  getContent(xpath: string, data: string): void;
+  append(xptah: string): Promise<string | any>;
+  download(xpath: string, output: Stream.Writable): void;
+  upload(xpath: string, readable: Stream.Readable): void;
+}
+
+async function fopen(xpath: string): Promise<AzureFileDriver | any> {
+  const parts = xpath.split("/");
+  const container = parts[0] ? parts[0] : "public_file";
+  const blobName = parts[1] ? parts[1] : "new_file.txt";
+
+  let r: Stream.Readable;
+  let w: Stream.Writable;
+
+  try
+  {
+    await fstat(xpath) || await touch(xpath);
+    r = await fopenr(xpath);
+    w = await fopenw(xpath);
+    function getContent() {
+      const defer = makeDefer();
+      let str = "";
+      r.on("data", d => str += d.toString());
+      r.on("end", () => defer.resolve(str));
+      r.on("error", (err) => defer.reject(err));
+      return defer.promise;
     }
-    const r: Stream.Readable = fopenr(xpath);
-    const w: Stream.Writable = fopenw(xpath);
-  } catch (e) {
-    console.error(e);
-  }
-
-
-  function getContent() {
-    const defer = makeDefer();
-    let str = "";
-    r.on("data", d => str += d.toString());
-    r.on("end", () => defer.resolve(str));
-    return defer.promise;
-  }
-  function append(data): Promise<any> {
-    const def = makeDefer();
-    w.write(data, (err) => {
-      if (err) def.reject(err);
-      else def.resolve(true);
-    });
-    return def.promise;
-  }
-  return {
-    r, w, getContent, append
-  }
-}
-
-function fopenr(xpath: string): Stream.Readable {
-  const parts = xpath.split("/");
-
-  const container = parts[0] ? parts[0] : "public_file";
-  const blobname = parts[1] ? parts[1] : "new_file.txt";
-  const start = parts[2] ? parts[2] : null;
-  const end = parts[3] ? parts[3] : null;
-  if (start || end) {
-    const options = {
-      rangeStart: parseInt(start) || null,
-      rangeEnd: parseInt(end) || null,
+    function append(data): Promise<any> {
+      const def = makeDefer();
+      w.write(data, (err) => {
+        if (err) def.reject(err);
+        else def.resolve(true);
+      });
+      return def.promise;
+    }
+    function download(downlink: Writable) {
+      const fh = blobClient.createReadStream(container, blobName, (err, fileInfo) => {
+        if (err) throw err;
+      }).pipe(downlink);
     };
-    return blobClient.createReadStream(container, blobname, options, ErrorOrResultHandler);
-  } else {
-    return blobClient.createReadStream(container, blobname, ErrorOrResultHandler);
+    async function upload(uplink: Readable) {
+      const writer = await fopenw(xpath);
+      uplink.pipe(writer);
+    }
+    return {
+      r, w, getContent, upload, append, download
+    }
+  } catch (e)
+  {
+    console.error('fml, ' + e.message);
   }
 }
 
-function fopenw(xpath: string): Stream.Writable {
+function fopenr(xpath: string): Promise<Stream.Readable | any> {
+  var defer = makeDefer<Stream.Readable>();
   const parts = xpath.split("/");
   const container = parts[0] ? parts[0] : "public_file";
-  getContainer(container);
   const blobname = parts[1] ? parts[1] : "new_file.txt";
-  return blobClient.createWriteStreamToBlockBlob(container, blobname);
+  const start = parts[2] ? parts[2] : "0";
+  const end = parts[3] ? parts[3] : "-1";
+  const options = {
+    rangeStart: parseInt(start),
+  };
+  let fh = blobClient.createReadStream(container, blobname, options, (err, result, resp) => {
+    if (err) throw err;
+    defer.resolve(fh);
+  })
+  return defer.promise;
 }
 
-function file_stream_contents(containerName, fileName, writestream) {
+function fopenw(xpath: string): Promise<Stream.Writable | any> {
+  var defer = makeDefer<Stream.Writable>();
+  const parts = xpath.split("/");
+  const container = parts[0] ? parts[0] : "public_file";
+  const blobname = parts[1] ? parts[1] : "new_file.txt";
+  const writeStream = blobClient.createWriteStreamToBlockBlob(container, blobname, (err, result, resp) => {
+    if (err) defer.reject(err);
+    else defer.resolve(writeStream);
+  });
+  return defer.promise;
+}
+
+const file_get_content = function (containerName, blobName, cb) {
+  let fh;
+  blobClient.createReadStream(containerName, blobName, (err, fileInfo) => {
+    if (err)
+    {
+      cb('');
+      console.error(err)
+    }
+  });
+
+
+  var bufs = [];
+  let response;
+  fh.on('data', data => {
+    bufs.push(data);
+  });
+  fh.on("end", function () {
+    if (!cb)
+    {
+      response = Buffer.concat(bufs).toString("UTF-8");
+    } else
+    {
+      cb(Buffer.concat(bufs).toString("UTF-8"));
+    }
+
+  });
+  return response;
+}
+
+
+
+function file_put_content(containerName, blobName, text) {
   return new Promise((resolve, reject) => {
-    blobClient.getBlobToStream(containerName, fileName, writestream, (err, result) => {
+    blobClient.createBlockBlobFromText(containerName, blobName, text, function (err, result, response) {
       if (err) reject(err);
       else resolve(result);
     });
-  });
-}
-var handler = function (stdout, stderr) {
-  return function (err, result, resp) {
-    if (err) stderr(err);
-    else stdout(result)
-  }
+  })
 }
 
-function createBlob(container, blob, json, cb) {
-  blobClient.createBlockBlobFromText(container, blob, JSON.stringify(json), cb); // (err, result, res))
-}
-
-function file_get_contents(filepath) {
-  return new Promise((resolve, reject) => {
-    var w = new PassThrough();
-    var chunks = [];
-    file_stream_contents(dirname(filepath), basename(filepath), w);
-    w.on("data", (d) => chunks.push(d));
-    w.on("done", () => {
-      resolve(chunks.join());
-    });
-    w.on("error", (e) => reject(e));
-  });
-}
 export {
+  fstat,
   getContainer,
   listFiles,
+  file_get_content,
   fopen,
+  AzureFileDriver,
   fopenw,
   fopenr,
-  file_get_contents,
+  touch,
   blobClient,
   listContainers,
-  file_stream_contents,
-  createBlob
+  file_put_content
 };
 
 
