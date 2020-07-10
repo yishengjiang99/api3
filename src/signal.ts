@@ -1,9 +1,12 @@
 import * as linfs from "./linfs";
 import * as WebSocket from "ws";
-import { IncomingMessage } from "http";
-import { MessageEvent, Data } from "ws";
-const channel_container_prefix = "ch";
-const channel_participant_file_prefix = "ccp";
+import { IncomingHttpHeaders, IncomingMessage } from "http";
+import { Data } from "ws";
+import db from "./db";
+import { fopen } from "./azfs";
+import { PassThrough } from "stream";
+import { WSAEACCES } from "constants";
+
 
 export class Channel {
     static loadChannel = async function (name) {
@@ -11,8 +14,8 @@ export class Channel {
         return await c.load();
     };
     name: string;
-    members: any[];
-    _db: any;
+    members: [];
+    folder: string;
     info: any;
     tracks: any;
     server: Server;
@@ -21,8 +24,9 @@ export class Channel {
         this.name = name;
     }
     load() {
-        this._db = linfs.getContainer(this.name);
-        this.members = linfs.fopen(this.name + "/info").getContent();
+        this.members = [];
+        this.folder = "ch_" + this.name;
+        //this.members = linfs.fopen(this.name + "/info").getContent();
         this.info = linfs.fopen(this.name + "/info").getContent();
         this.tracks = linfs.fopen((this.tracks = "tracks")).getContent();
     }
@@ -57,25 +61,47 @@ export class Channel {
 }
 
 export class Participant {
-    udid: any;
-    info: { ip: any; dsp: any; vlocation: any };
+    udid: string;
+    info: Record<string, any>;
     connection: WebSocket;
     currentChannel: Channel;
     sdp: string;
+    requestHeaders: IncomingHttpHeaders;
+    userName: string | string[];
 
-    constructor(connection: WebSocket, requestHeaders) {
+    constructor(connection: WebSocket, requestHeaders: IncomingHttpHeaders) {
+        console.log(requestHeaders);
         this.udid = generateUUID();
+        this.connection = connection;
+        this.userName = requestHeaders["set-cookie:g-username"] || "user 5";;
+
         this.info = {
-            ip: requestHeaders["remote-address"],
+            userName: requestHeaders["set-cookie"],
             dsp: null,
-            vlocation: null, //type room
-            ...requestHeaders,
+            vlocation: null
         };
+        this.requestHeaders = requestHeaders;
     }
     joinChannel(channel: Channel) {
-        if (this.currentChannel) this.currentChannel.onPersonLeft(this);
-        channel.onPersonJoin(this);
+        //        if (this.currentChannel) this.currentChannel.onPersonLeft(this);
+        //      channel.onPersonJoin(this);
         this.currentChannel = channel;
+    }
+    compose() {
+        const now = new Date();
+        const now_h = `${now.getDate()}_${now.getHours()}_${now.getMinutes()}`;
+
+        const stdin = new PassThrough();
+
+        const fd = linfs.fopen(`${this.currentChannel.folder}/track_${now_h}`); // now.getDate()}_${now.getHours()}_${now.getMinutes()}`);
+        this.connection.onmessage = ({ data }) => data !== 'EOF' && stdin.write(data) || stdin.end();
+        fd.upload(stdin);
+        stdin.on('end', () => {
+            const playback = new PassThrough();
+            playback.on('data', data => this.connection.send(data));
+            playback.on('end', () => this.connection.send("track saved!"));
+            fd.download(playback);
+        });
     }
     say(message: string) { }
     shoud(message: string) { }
@@ -89,7 +115,7 @@ function generateUUID() {
 }
 export class Server {
     channels: any;
-    wss: any;
+    wss: WebSocket.Server;
     participants: any;
     config: any;
     port: any;
@@ -101,46 +127,59 @@ export class Server {
     }
     async start() {
         this.channels = await Channel.listChannels();
-        // Channel.loadChannel("lobby");
+        Channel.loadChannel("lobby");
         this.wss = new WebSocket.Server({
             ...this.config,
             port: this.port,
         });
         this.participants = [];
-        this.wss.on(
-            "connection",
-            (server, connection, request: IncomingMessage) => {
-                const participant = new Participant(connection, request.rawHeaders);
-                //            participant.info.merge
-                this.participants[participant.udid] = participant;
-                connection.onmessage = (message) =>
-                    this.handleMessage(participant, message);
+        this.wss.on("upgrade", (connection) => {
+            console.log('u[g')
+        });
+
+        this.wss.on("connection", (connection, request: IncomingMessage) => {
+            const participant = new Participant(connection, request.headers);
+            this.participants[participant.udid] = participant;
+            participant.joinChannel(this.channels[0]);
+            connection.onmessage = (message) => {
+                try {
+                    this.handleMessage(message, participant);
+                } catch (e) {
+                    //don't crash
+                    console.log(e);
+                    connection.send(e.messgea);
+                }
             }
-        ); //("connection", this.handleConnection);
+        });
     }
 
-    static send(to: Participant, message) {
-        if (message instanceof Object) {
-            message = JSON.stringify(message);
-        }
-        to.connection.send(message);
-    }
-    sendTo(udid, jsonObj) {
-        let ws = this.participants[udid];
-        ws.send(JSON.stringify(jsonObj));
-    }
-    handleMessage(participant: Participant, message: Data) {
-        if (message instanceof ArrayBuffer) {
-            //handle binary
-            return;
-        }
-        var data = JSON.parse(data.toString());
-        switch (data.type) {
+    handleMessage(message, participant) {
+        const fromSocket = message.target;
+        const type = 'mesage';
+        let msg_str: string = message.data;
+
+        console.log(msg_str)
+        if (msg_str === 'ping') fromSocket.send('pong');
+        const data = msg_str.charAt(0) == "{" || msg_str.charAt(0) == "[" ?
+            JSON.parse(msg_str) : {
+                cmd: msg_str.split(" ")[0],
+                arg1: msg_str.split(" ")[1]
+            };
+        switch (data.cmd) {
             case "list":
                 Server.send(participant, {
-                    type: data.type,
-                    data: this.channels,
-                    tid: data.tid,
+                    type: "channelList",
+                    data: Channel.listChannels()
+                });
+                if (participant.currentChannel) {
+                    Server.send(participant, {
+                        type: "filelist",
+                        data: participant.currentChannel.listFiles()
+                    });
+                }
+                Server.send(participant, {
+                    type: "fileList",
+                    data: linfs.listFiles('lobby'),
                 });
                 break;
             case "offer":
@@ -161,8 +200,7 @@ export class Server {
             case "create_channel":
             case "join":
             case "watch_stream":
-                const name = data.channel || data.name;
-
+                const name = data.channel || data.name || data.argv1;
                 if (!name) {
                     Server.send(participant, "channel is required");
                     return;
@@ -177,7 +215,7 @@ export class Server {
                 }
                 break;
             case "compose":
-                participant.currentChannel.componseNote(participant, data);
+                participant.compose();
                 break;
             default:
                 Server.send(participant, {
@@ -186,5 +224,15 @@ export class Server {
                 });
                 break;
         }
+    }
+    static send(to: Participant, message) {
+        if (message instanceof Object) {
+            message = JSON.stringify(message);
+        }
+        to.connection.send(message);
+    }
+    sendTo(udid, jsonObj) {
+        let ws = this.participants[udid];
+        ws.send(JSON.stringify(jsonObj));
     }
 }

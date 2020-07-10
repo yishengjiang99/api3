@@ -3,7 +3,7 @@ import { basename, dirname, resolve, join } from "path"; //("path");
 
 import * as fs from "fs";
 import * as Stream from "stream";
-const rootdir = resolve("../dbfs");
+const rootdir = "/home/AzureUser/api3/dbfs";
 
 function init() {
     console.log(rootdir);
@@ -40,9 +40,22 @@ interface FileDriver {
     download(output: Stream.Writable): void;
     upload(input: Stream.Readable): void;
 }
-
+const resolvedPath = {};
 function fopen(xpath: string): FileDriver {
     process.chdir(rootdir);
+    let container = dirname(xpath);
+    let folders = container.split("/");
+    for (let i = 0; i < folders.length; i++) {
+        const partial = folders.slice(0, i).join("/");
+        if (!resolvedPath[partial]) {
+            getContainer(partial);
+            resolvedPath[partial] = true;
+        }
+    }
+    if (!fs.existsSync(xpath)) {
+        require("child_process").execSync("touch " + resolve(rootdir, xpath)); //, { cwd: rootdir });
+    }
+
     let fd = fs.openSync(xpath, "a+");
 
     return {

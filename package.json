@@ -17,11 +17,11 @@
     "xclap": "^0.2.51"
   },
   "scripts": {
-    "start": "node ./src/index.ts",
+    "start": "node ts-node/register ./src/index.ts",
     "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal_broker.ts",
     "start:watch": "nodemon",
     "build": "tsc",
-    "test": "tsc && jest src/azfs.test.js"
+    "test": "jest src/linfs.test.ts"
   },
   "nodemonConfig": {
     "ignore": [
@@ -39,5 +39,11 @@
   "files": [
     "dist",
     "lib"
-  ]
+  ],
+  "devDependencies": {
+    "@types/jest": "^26.0.4",
+    "@types/node": "^14.0.20",
+    "jest": "^26.1.0",
+    "ts-jest": "^26.1.1"
+  }
 }

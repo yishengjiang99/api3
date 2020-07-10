@@ -8,9 +8,9 @@ import { resolve } from "path";
 import * as azfs from "./azfs";
 import db from "./db";
 import * as http from "http";
-//import * as SignalServer from "./signal_broker";
+import * as SignalServer from "./signal";
 
-//new SignalServer.Server(4000, {}).start();
+new SignalServer.Server(4000, {}).start();
 
 const favicon = fs.readFileSync("./favicon.jpg");
 
@@ -41,6 +41,9 @@ const server = http.createServer(
           res.write(favicon.slice(18 + 1 + respBufferLen));
           res.end();
         });
+        break;
+      default:
+        res.end("welcome");
         break;
     }
 
