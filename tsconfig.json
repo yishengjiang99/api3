@@ -11,8 +11,7 @@
     "sourceMap": true,
     "declaration": true,
     "types": [
-      "node",
-      "jest"
+      "node"
     ],
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,

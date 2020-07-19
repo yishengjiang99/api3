@@ -5,7 +5,6 @@ import { Data } from "ws";
 import db from "./db";
 import { fopen } from "./azfs";
 import { PassThrough } from "stream";
-import { WSAEACCES } from "constants";
 
 
 export class Channel {
@@ -171,12 +170,12 @@ export class Server {
                     type: "channelList",
                     data: Channel.listChannels()
                 });
-                if (participant.currentChannel) {
-                    Server.send(participant, {
-                        type: "filelist",
-                        data: participant.currentChannel.listFiles()
-                    });
-                }
+                // if (participant.currentChannel) {
+                //     Server.send(participant, {
+                //         type: "filelist",
+                //         data: participant.currentChannel.listFiles()
+                //     });
+                // }
                 Server.send(participant, {
                     type: "fileList",
                     data: linfs.listFiles('lobby'),

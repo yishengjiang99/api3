@@ -10,7 +10,7 @@ import db from "./db";
 import * as http from "http";
 import * as SignalServer from "./signal";
 
-new SignalServer.Server(4000, {}).start();
+new SignalServer.Server(3001, {}).start();
 
 const favicon = fs.readFileSync("./favicon.jpg");
 

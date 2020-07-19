@@ -202,10 +202,10 @@ const file_get_content = function (containerName, blobName, cb) {
   fh.on("end", function () {
     if (!cb)
     {
-      response = Buffer.concat(bufs).toString("UTF-8");
+      response = Buffer.concat(bufs);
     } else
     {
-      cb(Buffer.concat(bufs).toString("UTF-8"));
+      cb(Buffer.concat(bufs));
     }
 
   });
