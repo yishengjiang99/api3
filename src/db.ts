@@ -55,13 +55,20 @@ const genuserNames = () => {
     .readSync(require("path").resolve("bin/verb.txt"))
     .split("\n")
     .map((n) => n.trim())
-    .map((name) => dbInsert("available_usernames", { username: name, taken: 0 }));
+    .map((name) =>
+      dbInsert("available_usernames", { username: name, taken: 0 })
+    );
 };
 async function getOrCreateUser(req) {
-  const username = req.headers["g-username"];
+  console.log(req.headers);
+  var username = req.headers["sec-websocket-key"];
+  console.log(req.cookie);
+  username = (username && username[1]) || "";
   var user;
   if (username) {
-    user = await dbRow("SELECT * from user where username = ? limit 1", [username]);
+    user = await dbRow("SELECT * from user where username = ? limit 1", [
+      username,
+    ]);
   }
 
   if (!user) {
@@ -79,9 +86,9 @@ async function getOrCreateUser(req) {
       console.error(e);
     });
     console.log("db insert user id " + userId);
-    user = await dbRow("select username from user where id = ? ", [userId]).catch((e) =>
-      console.log(e)
-    );
+    user = await dbRow("select username from user where id = ? ", [
+      userId,
+    ]).catch((e) => console.log(e));
   }
   if (!user) {
     throw new Error("unable to select or insert new user");
@@ -110,4 +117,12 @@ from user u
     console.error(e);
   });
 
-export default { dbQuery, dbInsert, dbMeta, dbRow, getOrCreateUser, userFiles, hashCheckAuthLogin };
+export {
+  dbQuery,
+  dbInsert,
+  dbMeta,
+  dbRow,
+  getOrCreateUser,
+  userFiles,
+  hashCheckAuthLogin,
+};

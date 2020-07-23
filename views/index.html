@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+        color: antiquewhite;
+      }
+    </style>
+  </head>
+  <script src="/rtc.config.js"></script>
+  <body>
+    <input type='text' id='channel' size=20></input>
+    <button>btnOpenRoom</button>
+    <audio id="myaudio" controls autoplay="false"></audio>
+    <audio id="theirO" controls autoplay="false"></audio>
+
+    <div id="console"></div>
+  </body>
+  <div id="pc"></div>
+  <script type="module">
+    const btnOpenRoom = document.getElementsByTagName("button")[0];
+    const console = document.getElementById("console");
+    const log = (txt) => (console.innerHTML += "<br>" + txt);
+    const logError = (txt) => log("<font color=red>" + txt + "</font>");
+    const myAudio = document.getElementsByTagName("audio")[0];
+    const tAudio = document.getElementsByTagName("theiro")[0];
+
+    let ctx, stream, source, analyser, playbackgain;
+    const pc = new RTCPeerConnection();
+    const signal = new WebSocket("wss:/localhost:8080/signal");
+    const pc2 = new RTCPeerConnection();
+    btnOpenRoom.onclick = function () {
+      ctx = new AudioContext();
+      analyser = ctx.createAnalyser();
+      playbackgain = new GainNode(ctx, { gain: 0 });
+
+      navigator.getUserMedia(
+        { video: false, audio: true },
+        async (stream) => {
+          source = ctx.createMediaStreamSource(stream);
+          source
+            .connect(analyser)
+            .connect(playbackgain)
+            .connect(ctx.destination);
+
+          stream.getAudioTracks().forEach((t) => pc.addTrack(t, stream));
+          try {
+            const offer = await pc.createOffer();
+            pc.setLocalDescription(offer);
+            signal.send(
+              JSON.stringify({
+                identify: pc.peerIdentity,
+                cmd: "offer",
+                sdp: pc.localDescription,
+              })
+            );
+              pc2.onicecandidate=({candidate})=>{
+               pc.addIceCandidate(candidate);
+              }
+              pc.onicecandidate=({candidate})=>{
+             //  pc2.addIceCandidate(candidate);
+              }
+            await  pc2.setRemoteDescription(offer.sdp);
+            let anwser = await pc2.createAnswer();
+           await  pc2.setLocalDescription(anwser.sdp)
+            console.log(anwser);
+            await pc.setRemoteDescription(pc2.currentLocalDescription);
+            const pc2receive = new MediaStream();
+            pc2.ontrack=( {track} )=>{
+              pc2receive.addTrack(track);
+            }
+          
+          } catch (e) {
+            logError(e);
+          }
+        },
+        (err) => logError(err.message)
+      );
+    };
+  </script>
+</html>
