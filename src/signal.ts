@@ -9,118 +9,6 @@ import { eventNames } from "process";
 import { EventEmitter } from "events";
 const url = require("url");
 
-export class Channel {
-  static loadChannel = async function (name) {
-    const c = new Channel(name);
-    return await c.load();
-  };
-  name: string;
-  members: [];
-  folder: string;
-  info: any;
-  tracks: any;
-  server: Server;
-  fds: linfs.FileDriver[];
-  constructor(name) {
-    this.name = name;
-  }
-  load() {
-    this.members = [];
-    this.folder = "ch_" + this.name;
-    //this.members = linfs.fopen(this.name + "/info").getContent();
-    // this.info = linfs.fopen(this.name + "/info").getContent();
-    // this.tracks = linfs.fopen((this.tracks = "tracks")).getContent();
-  }
-  static listChannels() {
-    return linfs.listContainers();
-  }
-
-  async lstParticipants(refresh = false) {
-    if (refresh) {
-      await this.load();
-    }
-    return this.members;
-  }
-  async sendToChannel(from: Participant, messaage: Data) {
-    this.members
-      .filter((m) => m != from)
-      .forEach((m) => Server.send(m, messaage));
-  }
-
-  onPersonJoin(person) {
-    //zfs.fopen(this.name + "/ch_members.json").append(person.toString());
-    db.dbInsert("room_participants", {
-      name: this.name,
-      participant_id: person.username, //.username,
-    });
-    this.sendToChannel(person, person.displayName + " joined the channel");
-    if (person.dsp) {
-      this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
-    }
-  }
-
-  onPersonLeft(left) {}
-  componseNote(from, message: JSON) {
-    this.sendToChannel(from, message.toString());
-    //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
-  }
-}
-
-export class Participant {
-  udid: string;
-  info: Record<string, any>;
-  connection: WebSocket;
-  currentChannel: Channel;
-  sdp: string;
-  requestHeaders: IncomingHttpHeaders;
-  userName: string | string[];
-
-  constructor(connection: WebSocket, requestHeaders: IncomingHttpHeaders) {
-    console.log(requestHeaders);
-    this.udid = generateUUID();
-    this.connection = connection;
-    this.userName = requestHeaders["set-cookie:g-username"] || "user 5";
-
-    this.info = {
-      userName: requestHeaders["set-cookie"],
-      dsp: null,
-      vlocation: null,
-    };
-    this.requestHeaders = requestHeaders;
-  }
-  joinChannel(channel: Channel) {
-    //        if (this.currentChannel) this.currentChannel.onPersonLeft(this);
-    // channel.onPersonJoin(this);
-    this.currentChannel = channel;
-  }
-  compose() {
-    const now = new Date();
-    const now_h = `${now.getDate()}_${now.getHours()}_${now.getMinutes()}`;
-
-    const stdin = new PassThrough();
-
-    const fd = linfs.fopen(`${this.currentChannel.folder}/track_${now_h}`); // now.getDate()}_${now.getHours()}_${now.getMinutes()}`);
-    this.connection.onmessage = ({ data }) =>
-      (data !== "EOF" && stdin.write(data)) || stdin.end();
-    fd.upload(stdin);
-    stdin.on("end", () => {
-      const playback = new PassThrough();
-      playback.on("data", (data) => this.connection.send(data));
-      playback.on("end", () => this.connection.send("track saved!"));
-      fd.download(playback);
-    });
-  }
-  say(message: string) {}
-  shoud(message: string) {}
-}
-function generateUUID() {
-  // Public Domain/MIT
-  return (
-    Math.random().toString(36).substring(2, 15) +
-    Math.random().toString(36).substring(2, 15)
-  );
-}
-
 export class Server extends EventEmitter {
   channels: any;
   wss: WebSocket.Server;
@@ -150,8 +38,15 @@ export class Server extends EventEmitter {
 
   handleConnection = (connection, request) => {
     const participant = new Participant(connection, request.headers);
+    db.dbInsert("user", { username: participant.udid });
     this.participants[participant.udid] = participant;
     participant.joinChannel(this.channels[0]);
+    connection.send(
+      JSON.stringify({
+        udid: participant.udid,
+        channel: participant.currentChannel,
+      })
+    );
     connection.onmessage = (message) => {
       try {
         this.handleMessage(message, participant);
@@ -190,12 +85,6 @@ export class Server extends EventEmitter {
           type: "channelList",
           data: Channel.listChannels(),
         });
-        // if (participant.currentChannel) {
-        //     Server.send(participant, {
-        //         type: "filelist",
-        //         data: participant.currentChannel.listFiles()
-        //     });
-        // }
         Server.send(participant, {
           type: "fileList",
           data: linfs.listFiles("lobby"),
@@ -210,7 +99,6 @@ export class Server extends EventEmitter {
             created_at: new Date(),
           });
         }
-
         break;
       case "answer":
       case "candidate":
@@ -219,30 +107,19 @@ export class Server extends EventEmitter {
           this.sendTo(data.to_uuid, data);
         }
         break;
-      case "register_connection":
-      case "join_server":
-        if (data.offer) {
-          participant.info.dsp = data.offer;
-        }
+      case "add_stream":
         break;
-      case "register_stream":
-      case "create_channel":
-      case "join":
-      case "watch_stream":
+      case "join_channel":
         const name = data.channel || data.name || data.argv1;
         if (!name) {
           Server.send(participant, "channel is required");
           return;
         }
-        if (this.channels[name]) {
-          this.channels[name].join(participant);
-        } else {
-          const channel = new Channel(name);
-          channel.load();
-          channel.onPersonJoin(participant);
-          this.channels[name] = channel;
-        }
-        this.emit("channelJoined", participant.connection, name);
+        this.channels[name] = this.channels[name] || new Channel(name);
+        this.channels[name].load().then((info) => {
+          participant.joinChannel(this.channels[name]);
+          participant.connection.write(JSON.stringify(info));
+        });
         break;
       case "compose":
         participant.compose();
@@ -275,3 +152,120 @@ export class Server extends EventEmitter {
     },
   });
 });
+
+export class Channel {
+  static loadChannel = async function (name) {
+    const c = new Channel(name);
+    return await c.load();
+  };
+  name: string;
+  members: [];
+  folder: string;
+  info: any;
+  tracks: any;
+  server: Server;
+  dbrow: any;
+  fds: linfs.FileDriver[];
+  constructor(name) {
+    this.name = name;
+  }
+  async load() {
+    this.members = [];
+    this.folder = "ch_" + this.name;
+    this.dbrow =
+      (await db.dbRow("select * from room where name = ?", [this.name])) ||
+      (await db.dbInsert("room", {
+        name: this.name,
+      }));
+
+    const members = await db.dbQuery(
+      "select * from room_participants where roomname = ?",
+      [this.name]
+    );
+    return members;
+
+    //this.members = linfs.fopen(this.name + "/info").getContent();
+    // this.info = linfs.fopen(this.name + "/info").getContent();
+    // this.tracks = linfs.fopen((this.tracks = "tracks")).getContent();
+  }
+  static listChannels() {
+    return linfs.listContainers();
+  }
+
+  async lstParticipants(refresh = false) {
+    if (refresh) {
+      await this.load();
+    }
+    return this.members;
+  }
+  async sendToChannel(from: Participant, messaage: Data) {
+    this.members
+      .filter((m) => m != from)
+      .forEach((m) => Server.send(m, { cmd: "joined", udid: from.udid }));
+  }
+
+  onPersonJoin(person) {
+    //zfs.fopen(this.name + "/ch_members.json").append(person.toString());
+    db.dbInsert("room_participants", {
+      roomname: this.name,
+      participant_id: person.udid, //.username,
+    });
+    this.sendToChannel(person, person.displayName + " joined the channel");
+    if (person.dsp) {
+      this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
+    }
+  }
+
+  onPersonLeft(left) {}
+  componseNote(from, message: JSON) {
+    this.sendToChannel(from, message.toString());
+    //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
+  }
+}
+
+export class Participant {
+  udid: string;
+  info: Record<string, any>;
+  connection: WebSocket;
+  currentChannel: Channel;
+  sdp: string;
+  requestHeaders: IncomingHttpHeaders;
+  userName: string | string[];
+
+  constructor(connection: WebSocket, requestHeaders: IncomingHttpHeaders) {
+    this.udid = requestHeaders["sec-websocket-key"].toString();
+    this.connection = connection;
+    this.userName = this.udid;
+    this.requestHeaders = requestHeaders;
+  }
+  joinChannel(channel: Channel) {
+    this.currentChannel = channel;
+    channel.onPersonJoin(this);
+  }
+  compose() {
+    const now = new Date();
+    const now_h = `${now.getDate()}_${now.getHours()}_${now.getMinutes()}`;
+
+    const stdin = new PassThrough();
+
+    const fd = linfs.fopen(`${this.currentChannel.folder}/track_${now_h}`); // now.getDate()}_${now.getHours()}_${now.getMinutes()}`);
+    this.connection.onmessage = ({ data }) =>
+      (data !== "EOF" && stdin.write(data)) || stdin.end();
+    fd.upload(stdin);
+    stdin.on("end", () => {
+      const playback = new PassThrough();
+      playback.on("data", (data) => this.connection.send(data));
+      playback.on("end", () => this.connection.send("track saved!"));
+      fd.download(playback);
+    });
+  }
+  say(message: string) {}
+  shoud(message: string) {}
+}
+function generateUUID() {
+  // Public Domain/MIT
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
+}

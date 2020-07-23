@@ -11,71 +11,54 @@
   <body>
     <input type='text' id='channel' size=20></input>
     <button>btnOpenRoom</button>
-    <audio id="myaudio" controls autoplay="false"></audio>
+    <div id=myaudio></div>
     <audio id="theirO" controls autoplay="false"></audio>
 
     <div id="console"></div>
-  </body>
   <div id="pc"></div>
   <script type="module">
+    import { Peer } from './peer.js';
+    import { getMicrophone,random_noise } from './audio_source.js'
     const btnOpenRoom = document.getElementsByTagName("button")[0];
     const console = document.getElementById("console");
     const log = (txt) => (console.innerHTML += "<br>" + txt);
     const logError = (txt) => log("<font color=red>" + txt + "</font>");
     const myAudio = document.getElementsByTagName("audio")[0];
     const tAudio = document.getElementsByTagName("theiro")[0];
-
-    let ctx, stream, source, analyser, playbackgain;
-    const pc = new RTCPeerConnection();
-    const signal = new WebSocket("wss:/localhost:8080/signal");
-    const pc2 = new RTCPeerConnection();
-    btnOpenRoom.onclick = function () {
+    const signal = new WebSocket("wss://localhost:443/signal");
+    const channelInput = document.getElementById("channel");
+    let peer, mystream,ctx;
+    signal.onmessage=({data})=> log(data) && (peer = new Peer(data.udid, signal,log));
+    btnOpenRoom.onclick = () =>{
       ctx = new AudioContext();
-      analyser = ctx.createAnalyser();
-      playbackgain = new GainNode(ctx, { gain: 0 });
+      mystream = random_noise(ctx);
+      myAudio.srcObj = mystream;
+      myAudio.oncanplay = ()=>myAudio.play();
+      peer.addStream(mystream);
+      if(channelInput.value){
+            peer.joinChannel(channelInput.value);
+        }
+    }
+    
 
-      navigator.getUserMedia(
-        { video: false, audio: true },
-        async (stream) => {
-          source = ctx.createMediaStreamSource(stream);
-          source
-            .connect(analyser)
-            .connect(playbackgain)
-            .connect(ctx.destination);
+    const toSignal = (json)=> signal.send(JSON.stringify(json));
+   
 
-          stream.getAudioTracks().forEach((t) => pc.addTrack(t, stream));
-          try {
-            const offer = await pc.createOffer();
-            pc.setLocalDescription(offer);
-            signal.send(
-              JSON.stringify({
-                identify: pc.peerIdentity,
-                cmd: "offer",
-                sdp: pc.localDescription,
-              })
-            );
-              pc2.onicecandidate=({candidate})=>{
-               pc.addIceCandidate(candidate);
-              }
-              pc.onicecandidate=({candidate})=>{
-             //  pc2.addIceCandidate(candidate);
-              }
-            await  pc2.setRemoteDescription(offer.sdp);
-            let anwser = await pc2.createAnswer();
-           await  pc2.setLocalDescription(anwser.sdp)
-            console.log(anwser);
-            await pc.setRemoteDescription(pc2.currentLocalDescription);
-            const pc2receive = new MediaStream();
-            pc2.ontrack=( {track} )=>{
-              pc2receive.addTrack(track);
-            }
-          
-          } catch (e) {
-            logError(e);
-          }
-        },
-        (err) => logError(err.message)
-      );
-    };
+    function showVolume(analyser){
+      const arr1=new Uint8Array(10);
+      const vol1 = document.getElementById("v1");
+      function _v(){
+        analyser.getByteTimeDomainData(arr1);
+        var sum = arr1.reduce((sum,v)=>sum+=v, 0);
+        vol1.innerHTML=sum+"";
+        requestAnimationFrame(_v);
+
+      }
+
+      requestAnimationFrame(_v);
+    }
   </script>
+
+</body>
+
 </html>

@@ -11,8 +11,10 @@
     "azure-storage": "^2.10.3",
     "bufferutil": "^4.0.1",
     "chalk": "^4.1.0",
+    "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
     "express-react-views": "^0.11.0",
+    "html-typings": "^1.4.4",
     "mime": "^2.4.6",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
@@ -29,7 +31,7 @@
     "xclap": "^0.2.51"
   },
   "scripts": {
-    "start": "node ts-node/register ./src/index.ts",
+    "start": "ssh -L 3306:127.0.0.1:3306 AzureUser@grepawk.com && npx nodemon ts-node https.js",
     "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal_broker.ts",
     "start:watch": "nodemon",
     "build": "tsc",

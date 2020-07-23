@@ -59,42 +59,17 @@ const genuserNames = () => {
       dbInsert("available_usernames", { username: name, taken: 0 })
     );
 };
-async function getOrCreateUser(req) {
-  console.log(req.headers);
-  var username = req.headers["sec-websocket-key"];
-  console.log(req.cookie);
-  username = (username && username[1]) || "";
-  var user;
-  if (username) {
-    user = await dbRow("SELECT * from user where username = ? limit 1", [
+async function getOrCreateUser(username) {
+  return (
+    (await dbRow("SELECT * from user where username = ? limit 1", [
       username,
-    ]);
-  }
-
-  if (!user) {
-    const randUsername = await dbRow(
-      "select username from available_usernames where taken=0 order by rand() limit 1"
-    );
-    dbQuery("update available_usernames set taken=1 where username = ?", [
-      randUsername.username,
-    ]).catch((e) => console.error(e));
-
-    const userId = await dbInsert("user", {
-      username: randUsername.username,
-      loggedin_cnt: 1,
-    }).catch((e) => {
-      console.error(e);
-    });
-    console.log("db insert user id " + userId);
-    user = await dbRow("select username from user where id = ? ", [
-      userId,
-    ]).catch((e) => console.log(e));
-  }
-  if (!user) {
-    throw new Error("unable to select or insert new user");
-  }
-  return user;
+    ])) ||
+    (await dbInsert("user", {
+      username: username,
+    }))
+  );
 }
+
 const hashCheckAuthLogin = async (username) => {
   return require("exec").exec(
     `md5 -s '${username}${process.env.secret_md5_salt || "welcome"}'`,
