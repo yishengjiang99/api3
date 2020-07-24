@@ -19,11 +19,9 @@ export class Server extends EventEmitter {
 
   constructor(config: WebSocket.ServerOptions) {
     super();
+    this.participants = {};
+    this.channels = [new Channel("lobby")];
     this.config = config;
-    this.channels = Channel.listChannels();
-    Channel.loadChannel("lobby");
-    this.participants = [];
-
     this.wss = new WebSocket.Server({ noServer: true });
     this.wss.on("connection", this.handleConnection);
   }
@@ -36,15 +34,21 @@ export class Server extends EventEmitter {
     this.wss.on("connection", this.handleConnection).bind(this);
   }
 
-  handleConnection = (connection, request) => {
-    const participant = new Participant(connection, request.headers);
-    db.dbInsert("user", { username: participant.udid });
+  handleConnection = async (connection, request) => {
+    const uri = require("url").parse(request.url).query;
+    const queries = require("querystring").parse(uri);
+    const { udid, channel } = queries;
+    const username = udid || generateUUID();
+    const dbuser = await db.getOrCreateUser(username); //"user", { username: udid });
+    const participant = new Participant(connection, dbuser);
     this.participants[participant.udid] = participant;
     participant.joinChannel(this.channels[0]);
     connection.send(
       JSON.stringify({
         udid: participant.udid,
         channel: participant.currentChannel,
+        participants: Object.keys(this.participants),
+        channels: this.channels,
       })
     );
     connection.onmessage = (message) => {
@@ -52,8 +56,8 @@ export class Server extends EventEmitter {
         this.handleMessage(message, participant);
       } catch (e) {
         //don't crash
-        console.log(e);
-        connection.send(e.messgea);
+        console.error(e);
+        connection.send(e.message);
       }
     };
   };
@@ -115,10 +119,34 @@ export class Server extends EventEmitter {
           Server.send(participant, "channel is required");
           return;
         }
+        const tracks = data.tracks;
+        db.dbInsert("room_participants", {
+          roomname: name,
+          participant_id: participant.udid,
+          tracks: JSON.stringify(data.tracks),
+        })
+          .then((result) => {
+            fromSocket.send("joined " + name);
+          })
+          .catch((err) => {
+            fromSocket.send(err.message);
+          });
+
         this.channels[name] = this.channels[name] || new Channel(name);
+        console.log(this.channels);
         this.channels[name].load().then((info) => {
-          participant.joinChannel(this.channels[name]);
-          participant.connection.write(JSON.stringify(info));
+          participant.joinChannel(this.channels[name], tracks);
+          Server.send(
+            participant,
+            JSON.stringify({
+              room: name,
+              participants: db.dbQuery(
+                "select * from room_participants where roomname=?",
+                [name]
+              ),
+            })
+          );
+          participant.connection.send(JSON.stringify(info));
         });
         break;
       case "compose":
@@ -168,6 +196,9 @@ export class Channel {
   fds: linfs.FileDriver[];
   constructor(name) {
     this.name = name;
+    this.members = [];
+    this.folder = name;
+    this.tracks = [];
   }
   async load() {
     this.members = [];
@@ -232,11 +263,10 @@ export class Participant {
   requestHeaders: IncomingHttpHeaders;
   userName: string | string[];
 
-  constructor(connection: WebSocket, requestHeaders: IncomingHttpHeaders) {
-    this.udid = requestHeaders["sec-websocket-key"].toString();
+  constructor(connection: WebSocket, dbuser) {
+    console.log(dbuser);
+    this.udid = dbuser.username;
     this.connection = connection;
-    this.userName = this.udid;
-    this.requestHeaders = requestHeaders;
   }
   joinChannel(channel: Channel) {
     this.currentChannel = channel;

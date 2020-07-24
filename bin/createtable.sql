@@ -48,4 +48,13 @@ create table available_usernames (
    taken  BOOL not null default false
 );
 
-load
+CREATE TABLE `room` (
+  `name` varchar(355) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 
+ CREATE TABLE `room_participants` (
+  `roomname` varchar(355) DEFAULT NULL,
+  `participant_id` varchar(255) DEFAULT NULL,
+  `tracks` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ alter table room_participants add constraint ucc unique(roomname, participant_id)

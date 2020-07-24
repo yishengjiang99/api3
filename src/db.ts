@@ -25,6 +25,20 @@ async function dbQuery(sql, args = []) {
     });
   });
 }
+async function dbUpsert(table, obj, uniqueKey) {
+  return conn().query(
+    `insert into ${table} (${Object.keys(obj).join(",")})
+    values (${Object.values(obj)
+      .map((v) => `'${v}'`)
+      .join(",")}) 
+    on duplicate key set ${Object.keys(obj)
+      .filter((k) => k != uniqueKey)
+      .map((k) => {
+        ` ${k}='${obj[k]}' `;
+      })
+      .join(",")}`
+  );
+}
 async function dbInsert(table, obj) {
   return new Promise((resolve, reject) => {
     const connection: Connection = conn();
@@ -32,7 +46,6 @@ async function dbInsert(table, obj) {
     connection.query(sql, obj, function (error, results, fields) {
       if (error) reject(error);
       else resolve(results.insertId);
-      console.log(results);
       connection.end();
     });
   });
@@ -45,7 +58,8 @@ async function dbInsert(table, obj) {
 //     });
 //   });
 // };
-const dbMeta = async () => {
+const dbMeta = async (name = "") => {
+  if (name !== "") return await dbQuery("select * from user limit 1"); //.catch(console.error);
   var tables = await dbQuery("show tables", []);
   return tables;
 };
@@ -100,4 +114,5 @@ export {
   getOrCreateUser,
   userFiles,
   hashCheckAuthLogin,
+  dbUpsert,
 };

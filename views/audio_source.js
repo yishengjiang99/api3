@@ -12,6 +12,28 @@ export async function getMicrophone(audioTag) {
     throw e;
   }
 }
+export async function getCam(videoTag, withVideo, withAudio) {
+  if (!navigator.mediaDevices) {
+    throw new Error("web rtc not available");
+  }
+  try {
+    var stream = await navigator.mediaDevices.getUserMedia({
+      video: withVideo,
+      audio: withAudio,
+    });
+    videoTag.srcObject = stream;
+    videoTag.oncanplay = (e) => {
+      debugger;
+      videoTag.controls = true;
+      videoTag.autoplay = true;
+
+      videoTag.play();
+    };
+    return stream;
+  } catch (e) {
+    throw e;
+  }
+}
 
 export function random_noise(audioCtx) {
   // Create an empty three-second stereo buffer at the sample rate of the AudioContext

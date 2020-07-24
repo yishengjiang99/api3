@@ -39,7 +39,7 @@ export class Peer {
     };
   }
   addStream(stream) {
-    this.tracks.concat(stream.getTracks());
+    stream.getTracks().forEach((t) => this.tracks.push(t));
     // this.signald.send(
     //   JSON.stringify({
     //     udid: this.udid,
@@ -71,7 +71,7 @@ export class Peer {
       JSON.stringify({
         cmd: "join_channel",
         channel: name,
-        tracks: this.tracks,
+        tracks: this.tracks.map((t) => t.id),
       })
     );
   }
