@@ -6,22 +6,35 @@
   "author": "Yisheng Jiang",
   "license": "ISC",
   "dependencies": {
+    "@types/jest": "^26.0.7",
+    "axios": "^0.19.2",
     "azure-storage": "^2.10.3",
+    "bufferutil": "^4.0.1",
+    "chalk": "^4.1.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-react-views": "^0.11.0",
+    "html-typings": "^1.4.4",
+    "jest": "^26.1.0",
     "mime": "^2.4.6",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "ts-jest": "^26.1.3",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.6",
-    "ws.js": "^1.0.0",
+    "ws": "^7.3.1",
     "xaa": "^1.6.0",
     "xclap": "^0.2.51"
   },
   "scripts": {
-    "start": "node ts-node/register ./src/index.ts",
-    "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal_broker.ts",
+    "start": "ssh -L 3306:127.0.0.1:3306 AzureUser@grepawk.com && npx nodemon",
+    "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal.ts",
     "start:watch": "nodemon",
     "build": "tsc",
-    "test": "jest src/linfs.test.ts"
+    "test": "jest",
+    "test:db": "jest src/db.test.ts"
   },
   "nodemonConfig": {
     "ignore": [

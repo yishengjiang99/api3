@@ -1,232 +1,136 @@
-import * as linfs from "./linfs";
-import * as WebSocket from "ws";
-import { IncomingHttpHeaders, IncomingMessage } from "http";
-import { Data } from "ws";
-import db from "./db";
-import { fopen } from "./azfs";
-import { PassThrough } from "stream";
+var WebSocketServer = require("ws").Server;
 
-export class Channel {
-  static loadChannel = async function (name) {
-    const c = new Channel(name);
-    return await c.load();
-  };
-  name: string;
-  members: [];
-  folder: string;
-  info: any;
-  tracks: any;
-  server: Server;
-  fds: linfs.FileDriver[];
-  constructor(name) {
-    this.name = name;
-    this.folder = "ch_" + this.name;
-  }
-  load() {
-    this.members = [];
-    this.folder = "ch_" + this.name;
-    linfs.getContainer(this.folder);
-    //this.members = linfs.fopen(this.name + "/info").getContent();
-    this.info = linfs.fopen(this.name + "/info").getContent();
-    this.tracks = linfs.fopen((this.tracks = "tracks")).getContent();
-    return this;
-  }
-  static listChannels() {
-    return linfs.listContainers();
-  }
+var wss = new WebSocketServer({
+  port: 9091,
+});
 
-  async lstParticipants(refresh = false) {
-    if (refresh) {
-      await this.load();
-    }
-    return this.members;
+function sendTo(connection, message) {
+  if (!connection) {
+    console.log("message for " + connection + " but not found");
+    console.log(connections);
+    return;
   }
-  async sendToChannel(from: Participant, messaage: Data) {
-    this.members.filter((m) => m != from).forEach((m) => Server.send(m, messaage));
-  }
-  async onPersonJoin(person) {
-    //zfs.fopen(this.name + "/ch_members.json").append(person.toString());
-    this.sendToChannel(person, person.displayName + " joined the channel");
-    if (person.dsp) {
-      this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
-    }
-  }
-
-  onPersonLeft(left) {}
-  componseNote(from, message: JSON) {
-    this.sendToChannel(from, message.toString());
-    //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
-  }
+  connection.send(JSON.stringify(message));
 }
 
-export class Participant {
-  udid: string;
-  info: Record<string, any>;
-  connection: WebSocket;
-  currentChannel: Channel;
-  sdp: string;
-  requestHeaders: IncomingHttpHeaders;
-  userName: string | string[];
-
-  constructor(connection: WebSocket, requestHeaders: IncomingHttpHeaders) {
-    console.log(requestHeaders);
-    this.udid = generateUUID();
-    this.connection = connection;
-    this.userName = requestHeaders["set-cookie:g-username"] || "user 5";
-
-    this.info = {
-      userName: requestHeaders["set-cookie"],
-      dsp: null,
-      vlocation: null,
-    };
-    this.requestHeaders = requestHeaders;
-  }
-  joinChannel(channel: Channel) {
-    //        if (this.currentChannel) this.currentChannel.onPersonLeft(this);
-    //      channel.onPersonJoin(this);
-    this.currentChannel = channel;
-  }
-  compose() {
-    const now = new Date();
-    const now_h = `${now.getDate()}_${now.getHours()}_${now.getMinutes()}`;
-
-    const stdin = new PassThrough();
-
-    const fd = linfs.fopen(`tacks/track_${now_h}`); // now.getDate()}_${now.getHours()}_${now.getMinutes()}`);
-    this.connection.onmessage = ({ data }) => (data !== "EOF" && stdin.write(data)) || stdin.end();
-    fd.upload(stdin);
-    stdin.on("end", () => {
-      const playback = new PassThrough();
-      playback.on("data", (data) => this.connection.send(data));
-      playback.on("end", () => this.connection.send("track saved!"));
-      fd.download(playback);
-    });
-  }
-  say(message: string) {}
-  shoud(message: string) {}
+function sendError(connection, msg) {
+  console.log("send error ", msg);
+  connection.send(
+    JSON.stringify({
+      type: "error",
+      message: msg,
+    })
+  );
 }
+
+var broadcasts = {};
+var connections = {};
+var nodes = [];
+var node_edge_stats = {}; //hashmap of arrays with node idx being key
+
 function generateUUID() {
   // Public Domain/MIT
-  return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+  return (
+    Math.random().toString(36).substring(2, 15) +
+    Math.random().toString(36).substring(2, 15)
+  );
 }
-export class Server {
-  channels: any;
-  wss: WebSocket.Server;
-  participants: any;
-  config: any;
-  port: any;
-  lobby: Channel;
-  static k;
 
-  constructor(port, config: WebSocket.ServerOptions) {
-    this.config = config;
-    this.port = port;
-  }
-  async start() {
-    this.channels = await Channel.listChannels();
-    this.lobby = await Channel.loadChannel("lobby");
-    this.wss = new WebSocket.Server({
-      ...this.config,
-      port: this.port,
-    });
-    this.participants = [];
-    this.wss.on("upgrade", (connection) => {
-      console.log("u[g");
-    });
-
-    this.wss.on("connection", (connection, request: IncomingMessage) => {
-      const participant = new Participant(connection, request.headers);
-      //   db.getOrCreateUser(request);
-      this.participants[participant.udid] = participant;
-      participant.joinChannel(this.lobby);
-      connection.onmessage = (message) => {
-        try {
-          this.handleMessage(message, participant);
-        } catch (e) {
-          //don't crash
-          console.log(e);
-          connection.send(e.messgea);
-        }
-      };
-    });
-  }
-
-  handleMessage(message, participant) {
-    const fromSocket = message.target;
-    const type = "mesage";
-    let msg_str: string = message.data;
-
-    console.log(msg_str);
-    if (msg_str === "ping") fromSocket.send("pong");
-    const data =
-      msg_str.charAt(0) == "{" || msg_str.charAt(0) == "["
-        ? JSON.parse(msg_str)
-        : {
-            cmd: msg_str.split(" ")[0],
-            arg1: msg_str.split(" ")[1],
-          };
-    switch (data.cmd) {
+wss.on("connection", function (connection) {
+  connection.uuid = generateUUID();
+  connections[connection.uuid] = connection;
+  connection.on("message", function (message) {
+    const data = JSON.parse(message);
+    const to_connection = data.to_uuid ? connections[data.to_uuid] : null;
+    console.log(data.type);
+    switch (data.type) {
       case "list":
-        Server.send(participant, {
-          type: "channelist",
-          data: Channel.listChannels(),
-        });
-        Server.send(participant, {
-          type: "filelist",
-          data: linfs.listFiles("tacks"),
+        sendTo(connection, {
+          type: data.type,
+          data: broadcasts,
+          tid: data.tid,
         });
         break;
       case "offer":
       case "answer":
       case "candidate":
-        data.from_udid = participant.udid;
-        if (data.to_udid) {
-          this.sendTo(data.to_uuid, data);
+        data.client_uuid = data.client_uuid || connection.uuid;
+        console.log("to uuid", data.to_uuid);
+        if (to_connection) {
+          sendTo(to_connection, data);
         }
         break;
       case "register_connection":
-      case "join_server":
         if (data.offer) {
-          participant.info.dsp = data.offer;
+          var node = { id: nodes.length, sdp: offer };
+          nodes.push(node);
         }
         break;
       case "register_stream":
-      case "create_channel":
-      case "join":
-      case "watch_stream":
-        const name = data.channel || data.name || data.argv1;
-        if (!name) {
-          Server.send(participant, "channel is required");
+        if (!data.channel) {
+          sendError(connection, "channel is required");
           return;
         }
-        if (this.channels[name]) {
-          this.channels[name].join(participant);
-        } else {
-          const channel = new Channel(name);
-          channel.load();
-          channel.onPersonJoin(participant);
-          this.channels[name] = channel;
+        const channelName = data.channel;
+        broadcasts[channelName] = {
+          name: channelName,
+          host_uuid: connection.uuid,
+          peer_connections: [],
+        };
+        sendTo(connection, {
+          type: "registered",
+          host_uuid: connection.uuid,
+        });
+        if (nodes.length) {
+          sendTo(connection, {
+            type: "available_nodes",
+            nodes: nodes,
+          });
         }
+        console.log(broadcasts);
         break;
-      case "compose":
-        participant.compose();
+
+      case "watch_stream":
+        if (!data.channel) {
+          sendError(connection, "channel name not attached");
+          return;
+        }
+        if (!broadcasts[data.channel]) {
+          sendError(connection, "channel not streaming");
+          return;
+        }
+        var host_uuid = broadcasts[data.channel].host_uuid;
+        var hostConnection = connections[host_uuid];
+
+        sendTo(hostConnection, {
+          type: "user_joined",
+          client_uuid: connection.uuid,
+          args: data.args,
+        });
+        broadcasts[data.channel].peer_connections.push(connection.uuid);
         break;
       default:
-        Server.send(participant, {
+        sendTo(connection, {
           type: "error",
           message: "Command not found: " + data.type,
         });
+
         break;
     }
-  }
-  static send(to: Participant, message) {
-    if (message instanceof Object) {
-      message = JSON.stringify(message);
-    }
-    to.connection.send(message);
-  }
-  sendTo(udid, jsonObj) {
-    let ws = this.participants[udid];
-    ws.send(JSON.stringify(jsonObj));
-  }
-}
+    connection.on("close", function () {
+      if (connection.uuid) {
+        delete connections[connection.uuid];
+        if (connection.otheruuid) {
+          console.log("Disconnecting from ", connection.otheruuid);
+          var conn = users[connection.otheruuid];
+          conn.otheruuid = null;
+        }
+        delete broadcasts[connection.channel];
+      }
+    });
+    console.log("Got message from a user:", message);
+  });
+  sendTo(connection, { type: "connected" });
+});
+
+console.log("stream signal running on 9091");
