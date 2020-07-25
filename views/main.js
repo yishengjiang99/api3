@@ -12,8 +12,8 @@ const myAudio = document.getElementsByTagName("audio")[0];
 const myVideo = document.getElementsByTagName("video")[0];
 const theirAudio = document.getElementsByTagName("audio")[0];
 const theirVideo = document.getElementsByTagName("video")[0];
-const usernameInput = document.getElementById("usernameInput")[0];
-const channelInput = document.getElementById("channelInput")[0];
+const usernameInput = document.getElementById("usernameInput");
+const channelInput = document.getElementById("channelInput");
 
 const udid = localStorage.getItem("udid") || "Yisheng";
 const signal = new WebSocket("wss://localhost:443/signal?udid=" + udid);
