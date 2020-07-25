@@ -4,23 +4,49 @@
       body {
         background-color: black;
         color: antiquewhite;
+        display: grid;
+        grid-template-rows: auto 1fc auto;
+        place-items:center;
       }
+      video{
+        max-width: 300px;
+      }
+      main{
+        display: grid;
+        place-items:center;
+        background-color:gray;
+      }
+
     </style>
   </head>
-  <script src="/rtc.config.js"></script>
   <body>
-    <input type='text' value='room1' id='channel' size={20}></input>
-    <input type='checkbox' checked id='shareVideo'>Share Video</input>
-    <input type='checkbox' checked id='shareAudio'>Share Audio</input>
-    <div><video width=200></video><video width=200></video><audio></audio><audio></audio></div>
-    <button> Join Roomt</button>
-    <button>btnOpenRoom</button>
+    <header>
+      <input type='text' id='username' size=22></input>
 
-    <div id=myaudio></div>
-    <audio id="theirO" controls autoplay="false"></audio>
+      <input type='text' value='room1' id='channel' size=22></input>
+      <input type='checkbox' checked id='shareVideo'>Share Video</input>
+      <input type='checkbox' checked id='shareAudio'>Share Audio</input>
+    </header>
+    <main> 
+      <div>
+        <video muted controls autoplay max-width=200></video>        
+        <video muted controls autoplay  max-width=200></video>
+<br>
+        <video controls></video>
+      </div>
 
-    <div id="console"></div>
-  <div id="pc"></div>
+
+      <div id='peerView'>as</div>
+        <div><button> Join Roomt</button></div>
+    </main>
+    <footer>
+      <audio></audio>
+
+      <audio></audio>
+      <div id="console"></div>
+
+    </footer>
+    
   <script type="module">
     import { Peer } from './peer.js';
     import { getMicrophone,getCam, random_noise } from './audio_source.js'
@@ -32,54 +58,57 @@
     const logError = (txt) => log("<font color=red>" + txt + "</font>");
     const myAudio = document.getElementsByTagName("audio")[0];
     const myVideo = document.getElementsByTagName("video")[0];
-    const theirAudio = document.getElementsByTagName("audio")[0];
-    const theirVideo = document.getElementsByTagName("video")[0];
+    const myVideo2 = document.getElementsByTagName("video")[1];
+    const theirVideo = document.getElementsByTagName("video")[2];
 
-   const udid = localStorage.getItem("udid") || "Yisheng"
-    const signal = new WebSocket("wss://localhost:443/signal?udid="+udid);
-    
-
+    const peerView = document.getElementById('peerView');
     const channelInput = document.getElementById("channel");
-    let peer, mystream,ctx;
-    signal.onmessage=({data})=> {
-      try{
-        data = JSON.parse(data);
-      }catch(e){
-        data = data;
-      }
-      if(data.udid) {
-        localStorage.setItem("udid", data.udid);
-      }
-      log(data) && (peer = new Peer(data.udid, signal,log));
+    const userNameInput = document.getElementById("username");
+    userNameInput.value = localStorage.getItem("udid");
+    let peer, mystream,ctx,mirror;
+
+    const joinServer = function(udid, previewVideo){
+      return new Promise((resolve,reject)=>{
+        log("joining as "+udid);
+        const signal = new WebSocket("wss://localhost:443/signal?udid="+udid);
+        signal.onmessage=({data})=> {
+          try{
+            data = JSON.parse(data);
+          }catch(e){
+            data = data;
+          }
+          if(data.udid) {
+            localStorage.setItem("udid", data.udid);
+          }
+          log(data);
+          peer = new Peer(data.udid, signal,log,previewVideo,theirVideo);
+          peer.joinChannel(channelInput.value);
+          resolve();
+        }
+      })
     }
+  
     btnOpenRoom.onclick = async () =>{
-      ctx = new AudioContext();
-      if(shareVideo.checked || shareAudio.checked){
-        const stream = await getCam(myVideo, shareVideo, shareAudio);
-        peer.addStream(stream);
-      }
-      if(channelInput.value){
-            peer.joinChannel(channelInput.value);
+        try{
+          await joinServer(userNameInput.value, myVideo);
+          await joinServer(userNameInput.value+"mirror",myVideo2);
+
+         
+
+        
+        }catch(e){
+          logError(e.message);
         }
     }
-    
+    setInterval(()=>{
+      if(peer){
+        peer.renderPeerView(peerView);
+      }
+    },1000)
 
     const toSignal = (json)=> signal.send(JSON.stringify(json));
    
 
-    function showVolume(analyser){
-      const arr1=new Uint8Array(10);
-      const vol1 = document.getElementById("v1");
-      function _v(){
-        analyser.getByteTimeDomainData(arr1);
-        var sum = arr1.reduce((sum,v)=>sum+=v, 0);
-        vol1.innerHTML=sum+"";
-        requestAnimationFrame(_v);
-
-      }
-
-      requestAnimationFrame(_v);
-    }
   </script>
 
 </body>

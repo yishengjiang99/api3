@@ -23,10 +23,9 @@ export async function getCam(videoTag, withVideo, withAudio) {
     });
     videoTag.srcObject = stream;
     videoTag.oncanplay = (e) => {
-      debugger;
       videoTag.controls = true;
       videoTag.autoplay = true;
-
+      videoTag.muted = true;
       videoTag.play();
     };
     return stream;

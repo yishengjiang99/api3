@@ -5,12 +5,12 @@ var https = require("https");
 const linfs = require("./dist/linfs");
 const db = require("./dist/db");
 const favicon = fs.readFileSync("./favicon.jpg");
-
+const { signalServer } = require("./lib/stream_signal");
 const cookieParser = require("cookie-parser");
 
 const channels = linfs.listContainers();
 
-const SignalServer = require("./src/signal").Server;
+const SignalServer = require("./dist/signal").Server;
 var options = {
   key: fs.readFileSync(process.env.PRIV_KEYFILE),
   cert: fs.readFileSync(process.env.CERT_FILE),
@@ -18,6 +18,15 @@ var options = {
 
 var app = express();
 app.use(cookieParser());
+app.get("/ws_status", async (req, res) => {
+  res.json({ broadcasts, connections });
+});
+app.get("/db", async (req, res) => {
+  res.json(await db.dbMeta());
+});
+app.get("/db/:table", async (req, res) => {
+  res.json(await db.dbQuery(`select * from ${req.params.table}`)); // , [req.params.table]));
+});
 app.get("/ls", (req, res) => {
   res.json(linfs.listContainers());
 });
@@ -35,7 +44,6 @@ app.get("/favicon.ico", function (req, res) {
   res.write(favicon.slice(0, 18));
   db.getOrCreateUser().then((user) => {
     const bufferResp = Buffer.from(JSON.stringify(user));
-    console.log(user);
     const respBufferLen = bufferResp.byteLength;
     res.write(respBufferLen + "");
     res.write(bufferResp);
@@ -49,13 +57,14 @@ app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-views").createEngine());
 app.use(express.static("views"));
 const httpsServer = https.createServer(options, app);
+var { broadcasts, connections } = signalServer(httpsServer);
 
-const signalServer = new SignalServer();
-httpsServer.on("upgrade", function upgrade(request, socket, head) {
-  signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
-    signalServer.wss.emit("connection", ws, request);
-  });
-});
+// const signalServer = new SignalServer();
+// httpsServer.on("upgrade", function upgrade(request, socket, head) {
+//   signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
+//     signalServer.wss.emit("connection", ws, request);
+//   });
+// });
 httpsServer.listen(process.env.httpsPort || 443);
 console.log("listening on " + (process.env.httpsPort || 443));
 const files = [];
