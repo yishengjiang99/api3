@@ -13,7 +13,7 @@
     "chalk": "^4.1.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "express-react-views": "^0.11.0",
+    "express-react-views": "file:./express-react-forked",
     "html-typings": "^1.4.4",
     "jest": "^26.1.0",
     "mime": "^2.4.6",
@@ -29,7 +29,9 @@
     "xclap": "^0.2.51"
   },
   "scripts": {
-    "start": "ssh -L 3306:127.0.0.1:3306 AzureUser@grepawk.com && npx nodemon",
+    "start": "sh -c 'ssh -L 3306:127.0.0.1:3306 AzureUser@grepawk.com > tunnel.log 2> tunnel_err.log < /dev/null &' & npx nodemon",
+    "staging": "rsync -vpazh --exclude 'node_modules' . AzureUser@grepawk.com:/home/AzureUser/api3-staging",
+    "test:staging": "ssh AzureUser@grepawk.com \"cd /home/AzureUser/api3-staging ; npm update ; npm test\"",
     "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal.ts",
     "start:watch": "nodemon",
     "build": "tsc",
