@@ -1,6 +1,6 @@
 {
-  "name": "express-react-views",
-  "version": "0.11.0",
+  "name": "express-react-forked",
+  "version": "1.0.3",
   "description": "This is an Express view engine which renders React components on server. It renders static markup and *does not* support mounting those views on the client.",
   "keywords": [
     "express",
@@ -14,10 +14,10 @@
     "test": "node test",
     "test-on-travis": "yarn run test && yarn run lint"
   },
-  "author": "Paul O’Shannessy <paul@oshannessy.com>",
+  "author": "Paul O’Shannessy <paul@oshannessy.com>, modifications from Yisheng Jiang",
   "repository": {
     "type": "git",
-    "url": "https://github.com/reactjs/express-react-views.git"
+    "url": "git@github.com:yishengjiang99/api3.git"
   },
   "license": "BSD-3-Clause",
   "peerDependencies": {

@@ -16,11 +16,6 @@ function init() {
 
 function getContainer(container: string) {
   const xpath = resolve(rootdir, container);
-<<<<<<< HEAD
-  console.log("esolve folder xpath " + xpath);
-
-=======
->>>>>>> 8334db5a52715cbb3eee07b37bae8d75bafed52d
   if (!fs.existsSync(xpath)) {
     fs.mkdirSync(xpath);
   }
@@ -57,17 +52,12 @@ function fopen(xpath: string): FileDriver {
       resolvedPath[partial] = true;
     }
   }
-<<<<<<< HEAD
-  let fd = fs.openSync(xpath, "a+");
-
-=======
   if (!fs.existsSync(xpath)) {
     require("child_process").execSync("touch " + resolve(rootdir, xpath)); //, { cwd: rootdir });
   }
 
   let fd = fs.openSync(xpath, "a+");
 
->>>>>>> 8334db5a52715cbb3eee07b37bae8d75bafed52d
   return {
     getContent: () => {
       return fs.readFileSync(fd).toString();

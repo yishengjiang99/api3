@@ -1,3 +1,34 @@
+# express-react-forked
+
+This is the deluxe version of 'express-react-views'. It adds additional 2 additional features.
+
+1. ability to specify template in static html and javascript, that embeds the react component.
+```js
+app.set("views", __dirname + "/views");
+app.set("view engine", "jsx");
+app.engine("jsx", require("express-react-forked").createEngine());
+app.get("/", (req, res) => {
+  res.render("index", { layout: "layout.html", mainJS: "main.js" });
+});
+```
+
+2. Embed remote javascript files to embed in the layout.html:
+```html
+  <body>
+    <header></header>
+    <main>
+      <div>
+        __MAIN__
+      </div>
+    </main>
+    <footer id="console"></footer>
+    __PRELOAD__ https://raw.githubusercontent.com/1j01/simple-console/master/simple-console.js __PRELOAD__
+    </body>
+  </html>
+```
+
+This file is reloaded on the server so users get first-rate type-to-react (heheh) experience.
+
 # express-react-views
 
 This is an [Express][express] view engine which renders [React][react] components on server. It renders static markup and *does not* support mounting those views on the client.
@@ -8,7 +39,7 @@ This is intended to be used as a replacement for existing server-side view solut
 ## Usage
 
 ```sh
-npm install express-react-views react react-dom
+npm install express-react-forked react react-dom
 ```
 
 **Note:** You must explicitly install `react` as a dependency. Starting in v0.5, `react` is a peer dependency here. This is to avoid issues that may come when using incompatible versions.

@@ -28,16 +28,7 @@
       <input type='checkbox' checked id='shareAudio'>Share Audio</input>
     </header>
     <main> 
-      <div>
-        <video muted controls autoplay max-width=200></video>        
-        <video muted controls autoplay  max-width=200></video>
-<br>
-        <video controls></video>
-      </div>
-
-
-      <div id='peerView'>as</div>
-        <div><button> Join Roomt</button></div>
+    __MAIN__
     </main>
     <footer>
       <audio></audio>
@@ -50,12 +41,15 @@
   <script type="module">
     import { Peer } from './peer.js';
     import { getMicrophone,getCam, random_noise } from './audio_source.js'
-    const btnOpenRoom = document.getElementsByTagName("button")[0];
+    const log = (txt) => typeof txt ==='object' && log(JSON.stringify(txt)) || (console.innerHTML += "<br>" + txt);
+    const logError = (txt) => log("<font color=red>" + txt + "</font>");
+
+
+const btnOpenRoom = document.getElementsByTagName("button")[0];
     const console = document.getElementById("console");
     const shareVideo = document.getElementById("shareVideo");
     const shareAudio = document.getElementById("shareAudio");
-    const log = (txt) => typeof txt ==='object' && log(JSON.stringify(txt)) || (console.innerHTML += "<br>" + txt);
-    const logError = (txt) => log("<font color=red>" + txt + "</font>");
+
     const myAudio = document.getElementsByTagName("audio")[0];
     const myVideo = document.getElementsByTagName("video")[0];
     const myVideo2 = document.getElementsByTagName("video")[1];
