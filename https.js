@@ -1,16 +1,14 @@
 "use strict";
 const fs = require("fs");
-var express = require("express");
-var https = require("https");
+const express = require("express");
+const https = require("https");
 const linfs = require("./dist/linfs");
 const db = require("./dist/db");
 const favicon = fs.readFileSync("./favicon.jpg");
-const {signalServer} = require("./lib/stream_signal");
 const cookieParser = require("cookie-parser");
+const WebSocketServer = require('ws').Server;
 
-const channels = linfs.listContainers();
 
-const SignalServer = require("./dist/signal").Server;
 var options = {
   key: fs.readFileSync(process.env.PRIV_KEYFILE),
   cert: fs.readFileSync(process.env.CERT_FILE),
@@ -62,10 +60,33 @@ app.get("/", (req, res) => {
 
 app.use(express.static("views"));
 const httpsServer = https.createServer(options, app);
-var {broadcasts, connections} = signalServer(httpsServer);
+
+
+const SignalServer = require("./src/signal").Server;
+const signalServer = new SignalServer();
+
+const rtcServer = new WebSocketServer({noServer: true});
+const {rtcHandler} = require("./lib/rtcsignal");
+rtcServer.on('connection', rtcHandler);
+
+httpsServer.on("upgrade", function upgrade(request, socket, head) {
+  const pathname = require('url').parse(request.url).pathname;
+  if (pathname.match(/signal/)) {
+    signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
+      signalServer.wss.emit("connection", ws, request);
+    });
+  } else if (pathname.match(/rtc/)) {
+    rtcServer.handleUpgrade(request, socket, head, function done(ws) {
+      rtcServer.emit("connection", ws, request);
+    });
+  }
+});
+
 
 httpsServer.listen(process.env.httpsPort || 443);
 console.log("listening on " + (process.env.httpsPort || 443));
+
+
 const files = [];
 function uuidv4() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {

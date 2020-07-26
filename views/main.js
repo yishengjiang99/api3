@@ -1,5 +1,5 @@
-import { Peer } from "./peer.js";
-import { getMicrophone, getCam, random_noise } from "./audio_source.js";
+import {Peer} from "./peer.js";
+import {getMicrophone, getCam, random_noise} from "./audio_source.js";
 const btnOpenRoom = document.getElementsByTagName("button")[0];
 const console = document.getElementById("console");
 const shareVideo = document.getElementById("shareVideo");
@@ -8,22 +8,20 @@ const log = (txt) =>
   (typeof txt === "object" && log(JSON.stringify(txt))) ||
   (console.innerHTML += "<br>" + txt);
 const logError = (txt) => log("<font color=red>" + txt + "</font>");
-const myAudio = document.getElementsByTagName("audio")[0];
 const myVideo = document.getElementsByTagName("video")[0];
-const theirAudio = document.getElementsByTagName("audio")[0];
-const theirVideo = document.getElementsByTagName("video")[0];
-const usernameInput = document.getElementById("usernameInput");
-const channelInput = document.getElementById("channelInput");
+const myVideo2 = document.getElementsByTagName("video")[1];
+const theirVideo = document.getElementsByTagName("video")[2];
+const userNameInput = document.getElementById("username");
+const channelInput = document.getElementById("channel");
 
 const udid = localStorage.getItem("udid") || "Yisheng";
-const signal = new WebSocket("wss://localhost:443/signal?udid=" + udid);
 
 let peer;
 const joinServer = function (udid, previewVideo) {
   return new Promise((resolve, reject) => {
     log("joining as " + udid);
-    const signal = new WebSocket("wss://localhost:443/signal?udid=" + udid);
-    signal.onmessage = ({ data }) => {
+    const signal = new WebSocket("wss://localhost:443/rtc?udid=" + udid);
+    signal.onmessage = ({data}) => {
       try {
         data = JSON.parse(data);
       } catch (e) {

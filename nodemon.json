@@ -1,5 +1,10 @@
 {
-  "watch": ["lib","src","https.js", "views"],
+  "watch": [
+    "lib",
+    "src",
+    "https.js",
+    "views"
+  ],
   "ext": "js",
   "exec": "ts-node ./https.js"
 }

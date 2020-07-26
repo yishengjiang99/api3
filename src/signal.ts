@@ -19,11 +19,9 @@ export class Server extends EventEmitter {
 
   constructor(config: WebSocket.ServerOptions) {
     super();
+    this.participants = {};
+    this.channels = [new Channel("lobby")];
     this.config = config;
-    this.channels = Channel.listChannels();
-    Channel.loadChannel("lobby");
-    this.participants = [];
-
     this.wss = new WebSocket.Server({ noServer: true });
     this.wss.on("connection", this.handleConnection);
   }
@@ -37,23 +35,30 @@ export class Server extends EventEmitter {
   }
 
   handleConnection = (connection, request) => {
-    const participant = new Participant(connection, request.headers);
-    db.dbInsert("user", { username: participant.udid });
+    const uri = require("url").parse(request.url).query;
+    const queries = require("querystring").parse(uri);
+    const { udid, channel } = queries;
+    const username = udid || generateUUID();
+    const participant = new Participant(connection, { udid: udid || generateUUID() });
     this.participants[participant.udid] = participant;
     participant.joinChannel(this.channels[0]);
     connection.send(
       JSON.stringify({
         udid: participant.udid,
         channel: participant.currentChannel,
+        participants: Object.keys(this.participants),
+        channels: this.channels,
       })
     );
     connection.onmessage = (message) => {
-      try {
+      try
+      {
         this.handleMessage(message, participant);
-      } catch (e) {
+      } catch (e)
+      {
         //don't crash
-        console.log(e);
-        connection.send(e.messgea);
+        console.error(e);
+        connection.send(e.message);
       }
     };
   };
@@ -66,20 +71,23 @@ export class Server extends EventEmitter {
     console.log(msg_str);
     if (msg_str === "ping") fromSocket.send("pong");
     let data;
-    try {
+    try
+    {
       data =
         msg_str.charAt(0) == "{" || msg_str.charAt(0) == "["
           ? JSON.parse(msg_str)
           : {
-              cmd: msg_str.split(" ")[0],
-              arg1: msg_str.split(" ")[1],
-            };
-    } catch (e) {
+            cmd: msg_str.split(" ")[0],
+            arg1: msg_str.split(" ")[1],
+          };
+    } catch (e)
+    {
       fromSocket.send("could not parse msg");
       return;
     }
 
-    switch (data.cmd) {
+    switch (data.cmd)
+    {
       case "list":
         Server.send(participant, {
           type: "channelList",
@@ -91,7 +99,8 @@ export class Server extends EventEmitter {
         });
         break;
       case "offer":
-        if (data.offer && data.offer.dsp) {
+        if (data.offer && data.offer.dsp)
+        {
           this.emit("dsp", participant, data.offer.dsp);
           db.dbInsert("sdp", {
             socketId: participant.username,
@@ -103,7 +112,8 @@ export class Server extends EventEmitter {
       case "answer":
       case "candidate":
         data.from_udid = participant.udid;
-        if (data.to_udid) {
+        if (data.to_udid)
+        {
           this.sendTo(data.to_uuid, data);
         }
         break;
@@ -111,14 +121,39 @@ export class Server extends EventEmitter {
         break;
       case "join_channel":
         const name = data.channel || data.name || data.argv1;
-        if (!name) {
+        if (!name)
+        {
           Server.send(participant, "channel is required");
           return;
         }
+        const tracks = data.tracks;
+        db.dbInsert("room_participants", {
+          roomname: name,
+          participant_id: participant.udid,
+          tracks: JSON.stringify(data.tracks),
+        })
+          .then((result) => {
+            fromSocket.send("joined " + name);
+          })
+          .catch((err) => {
+            fromSocket.send(err.message);
+          });
+
         this.channels[name] = this.channels[name] || new Channel(name);
+        console.log(this.channels);
         this.channels[name].load().then((info) => {
-          participant.joinChannel(this.channels[name]);
-          participant.connection.write(JSON.stringify(info));
+          participant.joinChannel(this.channels[name], tracks);
+          Server.send(
+            participant,
+            JSON.stringify({
+              room: name,
+              participants: db.dbQuery(
+                "select * from room_participants where roomname=?",
+                [name]
+              ),
+            })
+          );
+          participant.connection.send(JSON.stringify(info));
         });
         break;
       case "compose":
@@ -133,7 +168,8 @@ export class Server extends EventEmitter {
     }
   }
   static send(to: Participant, message) {
-    if (message instanceof Object) {
+    if (message instanceof Object)
+    {
       message = JSON.stringify(message);
     }
     to.connection.send(message);
@@ -146,7 +182,7 @@ export class Server extends EventEmitter {
 
 ["sdp", "answser", "ice"].forEach((method) => {
   Object.defineProperty(Server.prototype, `on${method}`, {
-    get() {},
+    get() { },
     set(listener) {
       this.addEventListener(method, listener);
     },
@@ -168,6 +204,9 @@ export class Channel {
   fds: linfs.FileDriver[];
   constructor(name) {
     this.name = name;
+    this.members = [];
+    this.folder = name;
+    this.tracks = [];
   }
   async load() {
     this.members = [];
@@ -193,7 +232,8 @@ export class Channel {
   }
 
   async lstParticipants(refresh = false) {
-    if (refresh) {
+    if (refresh)
+    {
       await this.load();
     }
     return this.members;
@@ -211,12 +251,13 @@ export class Channel {
       participant_id: person.udid, //.username,
     });
     this.sendToChannel(person, person.displayName + " joined the channel");
-    if (person.dsp) {
+    if (person.dsp)
+    {
       this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
     }
   }
 
-  onPersonLeft(left) {}
+  onPersonLeft(left) { }
   componseNote(from, message: JSON) {
     this.sendToChannel(from, message.toString());
     //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
@@ -232,11 +273,10 @@ export class Participant {
   requestHeaders: IncomingHttpHeaders;
   userName: string | string[];
 
-  constructor(connection: WebSocket, requestHeaders: IncomingHttpHeaders) {
-    this.udid = requestHeaders["sec-websocket-key"].toString();
+  constructor(connection: WebSocket, dbuser) {
+    console.log(dbuser);
+    this.udid = dbuser.username;
     this.connection = connection;
-    this.userName = this.udid;
-    this.requestHeaders = requestHeaders;
   }
   joinChannel(channel: Channel) {
     this.currentChannel = channel;
@@ -259,8 +299,8 @@ export class Participant {
       fd.download(playback);
     });
   }
-  say(message: string) {}
-  shoud(message: string) {}
+  say(message: string) { }
+  shoud(message: string) { }
 }
 function generateUUID() {
   // Public Domain/MIT
