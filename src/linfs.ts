@@ -6,12 +6,10 @@ import * as Stream from "stream";
 const rootdir = resolve(__dirname, "../dbfs");
 
 function init() {
-  console.log(rootdir);
   if (fs.existsSync(rootdir) == false) {
     fs.mkdir(rootdir, (err) => console.error(err));
   }
-  console.log(rootdir);
-  process.chdir(rootdir);
+  // process.chdir(rootdir);
 }
 
 function getContainer(container: string) {
@@ -42,31 +40,17 @@ interface FileDriver {
 }
 const resolvedPath = {};
 function fopen(xpath: string): FileDriver {
-  process.chdir(rootdir);
-  let container = dirname(xpath);
-  let folders = container.split("/");
-  for (let i = 0; i < folders.length; i++) {
-    const partial = folders.slice(0, i).join("/");
-    if (!resolvedPath[partial]) {
-      getContainer(partial);
-      resolvedPath[partial] = true;
-    }
-  }
-  if (!fs.existsSync(xpath)) {
-    require("child_process").execSync("touch " + resolve(rootdir, xpath)); //, { cwd: rootdir });
-  }
-
-  let fd = fs.openSync(xpath, "a+");
+  let fullpath = resolve(rootdir, dirname(xpath));
 
   return {
     getContent: () => {
-      return fs.readFileSync(fd).toString();
+      return fs.readFileSync(fullpath).toString();
     },
     append: (data: string | NodeJS.ArrayBufferView) => {
-      fs.writeFileSync(fd, data, { encoding: "utf8", flag: "a" });
+      fs.writeFileSync(fullpath, data, { encoding: "utf8", flag: "a" });
     },
     putContent: (data: string | NodeJS.ArrayBufferView) =>
-      fs.writeFileSync(fd, data, { encoding: "utf8" }),
+      fs.writeFileSync(fullpath, data, { encoding: "utf8" }),
 
     download: (output: Stream.Writable) => {
       const r = fs.createReadStream(xpath);
