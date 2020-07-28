@@ -1,16 +1,39 @@
-/**
- * This is an example of a basic node.js script that performs
- * the Authorization Code oAuth2 flow to authenticate against
- * the Spotify Accounts.
- *
- * For more information, read
- * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
- */
-
 var express = require("express"); // Express web server framework
 var request = require("request"); // "Request" library
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
+const ReactDom = require('react-dom');
+
+const axios = require("axios");
+const API_DIR = "https://api.spotify.com/v1";
+const _sdk = (access_token, _refresh = "") => {
+  let authToken = access_token,
+    refresh = _refresh;
+  const fetchAPI = (uri, method = "GET") => {
+    console.log(uri);
+    return axios.get(API_DIR + uri, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + authToken,
+      },
+    }).then(response => response.data);
+    //console.log(response.data));// && return response.data)
+  }
+
+  const fetchAPIPut = (uri, body) =>
+    axios(API_DIR + uri, {
+      method: "PUT",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${authToken}`,
+      },
+    }).catch((err) => console.error(err));
+  return {
+    fetchAPIPut,
+    fetchAPI,
+  };
+};
 
 const app = express();
 var router = express.Router();
@@ -43,11 +66,14 @@ router.get("/login", function (req, res) {
   res.cookie("jshost", req.query.jshost || "");
 
   const scopes = [
+    "user-read-email",
     "user-read-playback-state",
     "user-modify-playback-state",
     "user-read-currently-playing",
     "streaming",
     "app-remote-control",
+    "user-library-read",
+    "playlist-modify-private",
   ];
   // your routerlication requests authorization
   var scope = req.query.scope || scopes.join(",");
@@ -67,10 +93,77 @@ router.get("/login", function (req, res) {
 router.get("/", function (req, res) {
   // your application requests refresh and access tokens
   // after checking the state parameter
+  if (req.query.access_token) {
+    SSRUI(req, res);
+    return;
+  } else if (req.query.code) {
+    authAudRedirect(req, res);
+    return;
+  } else {
+    res.render("welcome",
+      { layout: "layout.html" },
+      (err, html) => {
+        console.error(err);
+        res.write(html); //"html")
+      });
 
+  }
+});
+
+const SSRUI = async function (req, res) {
+  try {
+    const sdk = _sdk(req.query.access_token);
+    res.render("welcome",
+      { layout: "layout.html", access_token: req.query.access_token },
+      (err, html) => {
+        err && console.error(err);
+        res.write(html); //"html")
+        onClick: console.log
+      });
+
+    const playlists = await sdk.fetchAPI("/me/playlists");
+    if (!playlists.items || !playlists.items[0]) {
+      return res.end("no play list found");
+    }
+    res.render("listview", {
+      list: playlists.items,
+      onClick: console.log
+    }, (err, html) => {
+      err && console.error(err);
+      console.log(html)
+      res.write(html || ""); //"html")
+      sdk.fetchAPI("/playlists/" + playlists.items[0].id + "/tracks")
+        .then(tracks => {
+          console.log(tracks);
+          res.render("tracklist", {
+            tracks: tracks.items,
+            onClick: console.log
+          }, (err, html) => {
+            err && console.error(err);
+            res.write(html); //"html")
+            res.end(`  </main>
+            <footer>          
+          footer
+            </footer></body></html>
+          `)
+
+          });
+        });
+
+    })
+
+
+    // res.end(JSON.stringify(playlists.items))
+  } catch (e) {
+    console.log(e);
+    res.end(e.message);
+  }
+  return;
+};
+
+const authAudRedirect = (req, res) => {
   var code = req.query.code || null;
   var jshost = req.query.state || null;
-
 
   if (false) {
     res.redirect(
@@ -105,7 +198,7 @@ router.get("/", function (req, res) {
         });
 
         if (jshost) {
-          res.setHeader('content-type', 'text/html');
+          res.setHeader("content-type", "text/html");
           res.end(
             `<html>
             <head>
@@ -114,7 +207,7 @@ router.get("/", function (req, res) {
             </script></head></html>`
           );
         } else {
-          res.redirect("/spotify/ui#" + uri);
+          res.redirect("/spotify?" + uri);
         }
         // we can also pass the token to the browser to make requests from there
       } else {
@@ -127,7 +220,7 @@ router.get("/", function (req, res) {
       }
     });
   }
-});
+};
 
 router.get("/refresh_token", function (req, res) {
   // requesting access token from refresh token
