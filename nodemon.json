@@ -1,4 +1,10 @@
 {
-  "watch": ["lib", "src", "https.ts", "views", "routes"],
+  "watch": [
+    "lib",
+    "src",
+    "https.ts",
+    "views",
+    "routes"
+  ],
   "exec": "ts-node https.ts"
 }

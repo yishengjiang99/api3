@@ -29,7 +29,7 @@ export async function dbQuery(sql, args = []) {
   const [results, fields] = await c
     .query(sql, args)
     .catch((e) => {
-      console.error(e);
+      console.error(sql, args, e);
     })
     .finally(() => c.close());
   //  c.close();
@@ -45,23 +45,28 @@ export async function dbRow(sql, args = []) {
 export async function dbUpsert(table, obj, uniqueKeys) {
   const sql = `insert into ${table} (${Object.keys(obj).join(",")})
   values (${Object.values(obj)
-    .map((v) => `'${v}'`)
-    .join(",")}) 
+      .map((v) => `'${v}'`)
+      .join(",")}) 
   on duplicate key update ${Object.keys(obj)
-    .filter((k) => uniqueKeys.indexOf(k) < 0)
-    .map((k) => {
-      return ` ${k}='${obj[k]}' `;
-    })
-    .join(",")}`;
-  const { insertId } = await dbQuery(sql);
-  return insertId;
+      .filter((k) => uniqueKeys.indexOf(k) < 0)
+      .map((k) => {
+        return ` ${k}='${obj[k]}' `;
+      })
+      .join(",")}`;
+  try {
+    const { insertId } = await dbQuery(sql);
+    return insertId;
+
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 export async function dbInsert(table, obj) {
   const sql = `insert into ${table} (${Object.keys(obj).join(",")})
   values (${Object.values(obj)
-    .map((v) => `'${v}'`)
-    .join(",")})`;
+      .map((v) => `'${v}'`)
+      .join(",")})`;
   const result = await dbQuery(sql).catch((err) => console.error(err));
   console.log(result);
   return result;

@@ -1,8 +1,10 @@
 import * as linfs from "./linfs";
 import * as WebSocket from "ws";
 import { IncomingHttpHeaders, IncomingMessage } from "http";
+import { createReadStream, fstat, readFile } from 'fs';
 import { Data } from "ws";
 import * as db from "./db";
+import { resolve } from 'path'
 import { fopen } from "./azfs";
 import { PassThrough } from "stream";
 import { eventNames } from "process";
@@ -51,11 +53,9 @@ export class Server extends EventEmitter {
       })
     );
     connection.onmessage = (message) => {
-      try
-      {
+      try {
         this.handleMessage(message, participant);
-      } catch (e)
-      {
+      } catch (e) {
         //don't crash
         console.error(e);
         connection.send(e.message);
@@ -67,109 +67,44 @@ export class Server extends EventEmitter {
     const fromSocket = message.target;
     const type = "mesage";
     let msg_str: string = message.data;
-
+    console.log(typeof msg_str)
     console.log(msg_str);
     if (msg_str === "ping") fromSocket.send("pong");
     let data;
-    try
-    {
-      data =
-        msg_str.charAt(0) == "{" || msg_str.charAt(0) == "["
-          ? JSON.parse(msg_str)
-          : {
-            cmd: msg_str.split(" ")[0],
-            arg1: msg_str.split(" ")[1],
-          };
-    } catch (e)
-    {
-      fromSocket.send("could not parse msg");
-      return;
+    try {
+      data = JSON.parse(msg_str);
+
+    } catch (e) {
+      data = {
+        cmd: msg_str.split(" ")[0],
+        arg1: msg_str.split(" ")[1],
+      }
+      // fromSocket.send("could not parse msg");
+      // return;
     }
 
-    switch (data.cmd)
-    {
-      case "list":
-        Server.send(participant, {
-          type: "channelList",
-          data: Channel.listChannels(),
-        });
-        Server.send(participant, {
-          type: "fileList",
-          data: linfs.listFiles("lobby"),
-        });
-        break;
-      case "offer":
-        if (data.offer && data.offer.dsp)
-        {
-          this.emit("dsp", participant, data.offer.dsp);
-          db.dbInsert("sdp", {
-            socketId: participant.username,
-            sdp: data.offer.sdp,
-            created_at: new Date(),
-          });
-        }
-        break;
-      case "answer":
-      case "candidate":
-        data.from_udid = participant.udid;
-        if (data.to_udid)
-        {
-          this.sendTo(data.to_uuid, data);
-        }
-        break;
-      case "add_stream":
-        break;
-      case "join_channel":
-        const name = data.channel || data.name || data.argv1;
-        if (!name)
-        {
-          Server.send(participant, "channel is required");
-          return;
-        }
-        const tracks = data.tracks;
-        db.dbInsert("room_participants", {
-          roomname: name,
-          participant_id: participant.udid,
-          tracks: JSON.stringify(data.tracks),
-        })
-          .then((result) => {
-            fromSocket.send("joined " + name);
-          })
-          .catch((err) => {
-            fromSocket.send(err.message);
-          });
+    const cmd = data.cmd;
+    if (cmd === 'read') {
+      linfs.fopen(resolve("lobby", cmd.arg1)).download(fromSocket)
+    } else if (cmd === 'list') {
+      Server.send(participant, {
+        type: "channelList",
+        data: Channel.listChannels(),
+      });
+      Server.send(participant, {
+        type: "fileList",
+        data: linfs.listFiles("lobby"),
+      });
 
-        this.channels[name] = this.channels[name] || new Channel(name);
-        console.log(this.channels);
-        this.channels[name].load().then((info) => {
-          participant.joinChannel(this.channels[name], tracks);
-          Server.send(
-            participant,
-            JSON.stringify({
-              room: name,
-              participants: db.dbQuery(
-                "select * from room_participants where roomname=?",
-                [name]
-              ),
-            })
-          );
-          participant.connection.send(JSON.stringify(info));
-        });
-        break;
-      case "compose":
-        participant.compose();
-        break;
-      default:
-        Server.send(participant, {
-          type: "error",
-          message: "Command not found: " + data.type,
-        });
-        break;
+    } else if (cmd === 'compose') {
+      participant.compose();
+
+    } else {
+      fromSocket.send("unknown cmd")
     }
   }
   static send(to: Participant, message) {
-    if (message instanceof Object)
-    {
+    if (message instanceof Object) {
       message = JSON.stringify(message);
     }
     to.connection.send(message);
@@ -232,8 +167,7 @@ export class Channel {
   }
 
   async lstParticipants(refresh = false) {
-    if (refresh)
-    {
+    if (refresh) {
       await this.load();
     }
     return this.members;
@@ -246,13 +180,13 @@ export class Channel {
 
   onPersonJoin(person) {
     //zfs.fopen(this.name + "/ch_members.json").append(person.toString());
-    db.dbInsert("room_participants", {
+    db.dbUpsert("room_participants", {
       roomname: this.name,
-      participant_id: person.udid, //.username,
-    });
+      participant_id: person.udid //.username,
+
+    }, ['roomname', 'participant_id']);
     this.sendToChannel(person, person.displayName + " joined the channel");
-    if (person.dsp)
-    {
+    if (person.dsp) {
       this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
     }
   }
@@ -280,7 +214,7 @@ export class Participant {
   }
   joinChannel(channel: Channel) {
     this.currentChannel = channel;
-    channel.onPersonJoin(this);
+    ///  channel.onPersonJoin(this);
   }
   compose() {
     const now = new Date();
