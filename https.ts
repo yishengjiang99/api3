@@ -3,6 +3,7 @@ const express = require("express");
 const https = require("https");
 const db = require("./dist/db");
 import { resolve } from 'path'
+import { execSync } from 'child_process';
 import { readFile, createReadStream } from "fs";
 const cookieParser = require("cookie-parser");
 const WebSocketServer = require("ws").Server;
@@ -30,7 +31,9 @@ app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
 app.get("/dbfs/:filename", (req, res) => createReadStream(resolve('dbfs/lobby', req.params.filename)).pipe(res));
 
-app.use("/dbfs", serveIndex('dbfs/lobby', { 'icons': true, 'view': 'details', 'sort': 'recent' })); //express.static("./dbfs/lobby"));
+app.use("/dbfs", (req, res) => {
+  res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>")
+});
 app.engine("jsx", require("./src/express-react-forked").createEngine({
   preloadJS: ['https://sdk.scdn.co/spotify-player.js'],
   templates: ['./views/layout.html']
@@ -78,7 +81,7 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
   }
 });
 
-httpsServer.listen(process.argv[2] || 443);
+httpsServer.listen(process.argv[2] || 333);
 console.log("listening on " + (process.argv[2] || 443));
 
 const files = [];

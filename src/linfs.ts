@@ -3,7 +3,7 @@ import { basename, dirname, resolve, join } from "path"; //("path");
 
 import * as fs from "fs";
 import * as Stream from "stream";
-const rootdir = resolve(__dirname, "../dbfs");
+export const rootdir = resolve(__dirname, "../dbfs");
 
 function init() {
   if (fs.existsSync(rootdir) == false) {
@@ -40,14 +40,16 @@ interface FileDriver {
 }
 const resolvedPath = {};
 function fopen(xpath: string): FileDriver {
-  let fullpath = resolve(rootdir, dirname(xpath));
+  let fullpath = resolve(rootdir, xpath);
 
   return {
     getContent: () => {
       return fs.readFileSync(fullpath).toString();
     },
     append: (data: string | NodeJS.ArrayBufferView) => {
-      fs.writeFileSync(fullpath, data, { encoding: "utf8", flag: "a" });
+      fs.open(fullpath, "a+", (err, fd) => {
+        fs.writeFileSync(fd, data, { encoding: "utf8", flag: "a" });
+      })
     },
     putContent: (data: string | NodeJS.ArrayBufferView) =>
       fs.writeFileSync(fullpath, data, { encoding: "utf8" }),
@@ -61,9 +63,11 @@ function fopen(xpath: string): FileDriver {
       });
     },
     upload: (input: Stream.Readable) => {
-      const w = fs.createWriteStream(xpath);
-      input.pipe(w);
-      input.on("error", (err: any) => console.log(err));
+      fs.open(fullpath, "a+", (err, fd) => {
+        const w = fs.createWriteStream(fullpath, { fd: fd });
+        input.pipe(w);
+        input.on("error", (err: any) => console.log(err));
+      })
     },
   };
 }

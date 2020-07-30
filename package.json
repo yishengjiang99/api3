@@ -41,7 +41,8 @@
     "upload": "rsync -vpazh --exclude 'node_modules' . AzureUser@grepawk.com:/home/AzureUser/api3",
     "yolo": "npm run upload && npm run server",
     "test": "jest",
-    "test:db": "jest src/db.test.ts"
+    "test:db": "jest src/db.test.ts",
+    "test:ws": "jest src/signaling/*"
   },
   "devDependencies": {
     "@types/jest": "^26.0.4",

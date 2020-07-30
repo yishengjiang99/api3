@@ -1,7 +1,8 @@
 import * as linfs from "./linfs";
 import * as WebSocket from "ws";
+import * as fs from 'fs';
 import { IncomingHttpHeaders, IncomingMessage } from "http";
-import { createReadStream, fstat, readFile } from 'fs';
+import { createReadStream, fstat } from 'fs';
 import { Data } from "ws";
 import * as db from "./db";
 import { resolve } from 'path'
@@ -9,6 +10,7 @@ import { fopen } from "./azfs";
 import { PassThrough } from "stream";
 import { eventNames } from "process";
 import { EventEmitter } from "events";
+import { readFile } from './signaling/readFile';
 const url = require("url");
 
 export class Server extends EventEmitter {
@@ -41,7 +43,7 @@ export class Server extends EventEmitter {
     const queries = require("querystring").parse(uri);
     const { udid, channel } = queries;
     const username = udid || generateUUID();
-    const participant = new Participant(connection, { udid: udid || generateUUID() });
+    const participant = new Participant(connection, request.headers['sec-websocket-key']);
     this.participants[participant.udid] = participant;
     participant.joinChannel(this.channels[0]);
     connection.send(
@@ -73,19 +75,17 @@ export class Server extends EventEmitter {
     let data;
     try {
       data = JSON.parse(msg_str);
-
     } catch (e) {
       data = {
         cmd: msg_str.split(" ")[0],
         arg1: msg_str.split(" ")[1],
       }
-      // fromSocket.send("could not parse msg");
-      // return;
     }
 
     const cmd = data.cmd;
+
     if (cmd === 'read') {
-      linfs.fopen(resolve("lobby", cmd.arg1)).download(fromSocket)
+      readFile(data.arg1, fromSocket);
     } else if (cmd === 'list') {
       Server.send(participant, {
         type: "channelList",
@@ -96,9 +96,25 @@ export class Server extends EventEmitter {
         data: linfs.listFiles("lobby"),
       });
 
-    } else if (cmd === 'compose') {
-      participant.compose();
+    } else if (cmd === 'compose' || cmd === 'keyboard') {
+      console.log('before comp');
+      const now = new Date();
+      const filename = resolve("dbfs", participant.currentChannel.folder,
+        `${now.getMonth()}/${now.getDate()}_${now.getHours()}.csv`);
+      fromSocket.send(filename);
+      fs.open(filename, "a+", (err, fd) => {
+        console.log("FD", fd);
+        if (err) fromSocket.send('error');
+        else fs.writeFile(fd, data.csv, (err) => {
+          if (err) fromSocket.send('error');
+          else fs.fdatasync(fd, (err) => console.error);
+        })
+      });
 
+
+      for (const ws of this.wss.clients) {
+        ws.send("remote " + data.csv);
+      }
     } else {
       fromSocket.send("unknown cmd")
     }
@@ -114,15 +130,6 @@ export class Server extends EventEmitter {
     ws.send(JSON.stringify(jsonObj));
   }
 }
-
-["sdp", "answser", "ice"].forEach((method) => {
-  Object.defineProperty(Server.prototype, `on${method}`, {
-    get() { },
-    set(listener) {
-      this.addEventListener(method, listener);
-    },
-  });
-});
 
 export class Channel {
   static loadChannel = async function (name) {
@@ -179,12 +186,6 @@ export class Channel {
   }
 
   onPersonJoin(person) {
-    //zfs.fopen(this.name + "/ch_members.json").append(person.toString());
-    db.dbUpsert("room_participants", {
-      roomname: this.name,
-      participant_id: person.udid //.username,
-
-    }, ['roomname', 'participant_id']);
     this.sendToChannel(person, person.displayName + " joined the channel");
     if (person.dsp) {
       this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
@@ -206,7 +207,7 @@ export class Participant {
   sdp: string;
   requestHeaders: IncomingHttpHeaders;
   userName: string | string[];
-
+  openFd: Number;
   constructor(connection: WebSocket, dbuser) {
     console.log(dbuser);
     this.udid = dbuser.username;
@@ -216,23 +217,7 @@ export class Participant {
     this.currentChannel = channel;
     ///  channel.onPersonJoin(this);
   }
-  compose() {
-    const now = new Date();
-    const now_h = `${now.getDate()}_${now.getHours()}_${now.getMinutes()}`;
 
-    const stdin = new PassThrough();
-
-    const fd = linfs.fopen(`${this.currentChannel.folder}/track_${now_h}`); // now.getDate()}_${now.getHours()}_${now.getMinutes()}`);
-    this.connection.onmessage = ({ data }) =>
-      (data !== "EOF" && stdin.write(data)) || stdin.end();
-    fd.upload(stdin);
-    stdin.on("end", () => {
-      const playback = new PassThrough();
-      playback.on("data", (data) => this.connection.send(data));
-      playback.on("end", () => this.connection.send("track saved!"));
-      fd.download(playback);
-    });
-  }
   say(message: string) { }
   shoud(message: string) { }
 }
