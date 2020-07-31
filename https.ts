@@ -2,20 +2,20 @@ const fs = require("fs");
 const express = require("express");
 const https = require("https");
 const db = require("./dist/db");
-import { resolve } from 'path'
+import { resolve } from "path";
 import { readFile, createReadStream } from "fs";
 const cookieParser = require("cookie-parser");
 const WebSocketServer = require("ws").Server;
-import * as serveIndex from "serve-index";
 
 import * as spotify from "./routes/spotify";
 import { IncomingMessage } from "http";
+import { VPN } from "./vpn";
 
 var options = {
   key: fs.readFileSync(process.env.PRIV_KEYFILE),
   cert: fs.readFileSync(process.env.CERT_FILE),
 };
-const ssjs = fs.readFileSync("./simple-console.js");//path.resolve(__dirname, "simple-console.js"));
+const ssjs = fs.readFileSync("./simple-console.js"); //path.resolve(__dirname, "simple-console.js"));
 var app = express();
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -28,17 +28,29 @@ app.get("/(:vid).mp3", require("./routes/yt").ytmp3);
 app.use("/spotify", require("./routes/spotify"));
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
-app.get("/dbfs/:filename", (req, res) => createReadStream(resolve('dbfs/lobby', req.params.filename)).pipe(res));
+app.get("/dbfs/:filename", (req, res) =>
+  createReadStream(resolve("dbfs/lobby", req.params.filename)).pipe(res)
+);
 
-app.use("/dbfs", serveIndex('dbfs/lobby', { 'icons': true, 'view': 'details', 'sort': 'recent' })); //express.static("./dbfs/lobby"));
-app.engine("jsx", require("./src/express-react-forked").createEngine({
-  preloadJS: ['https://sdk.scdn.co/spotify-player.js'],
-  templates: ['./views/layout.html']
-}));
+app.use(
+  "/dbfs",
+  require("serve-index")("dbfs/lobby", {
+    icons: true,
+    view: "details",
+    sort: "recent",
+  })
+); //express.static("./dbfs/lobby"));
+app.engine(
+  "jsx",
+  require("express-react-forked").createEngine({
+    preloadJS: ["https://sdk.scdn.co/spotify-player.js"],
+    templates: ["./views/layout.html"],
+  })
+);
 
 app.use(cookieParser());
 app.get("/", (req, res) => {
-  res.render("welcome", { host: req.headers.host, t: 's' });
+  res.render("welcome", { host: req.headers.host, t: "s" });
 });
 app.get("/simple-console.js", (req: IncomingMessage, res) => {
   //res.writeHead("Content-Type: text/javascript");
@@ -76,6 +88,14 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
       rtcServer.emit("connection", ws, request);
     });
   }
+});
+
+const vpn = new VPN({
+  httpsServer: httpsServer,
+  map: (pathname) => {
+    if (pathname === "/") return 3000;
+    else return -1;
+  },
 });
 
 httpsServer.listen(process.argv[2] || 443);
