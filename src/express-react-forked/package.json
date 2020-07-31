@@ -1,6 +1,6 @@
 {
   "name": "express-react-forked",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "(now with more bug fixed) This is an Express view engine which renders React components on server. It renders static markup and *does not* support mounting those views on the client.",
   "keywords": [
     "express",
@@ -35,13 +35,6 @@
     "object-assign": "^4.1.1"
   },
   "devDependencies": {
-    "async": "^2.6.0",
-    "babel-eslint": "^10.0.1",
-    "create-react-class": "^15.6.3",
-    "eslint": "^5.6.1",
-    "eslint-plugin-prettier": "^3.0.0",
-    "prettier": "^1.10.2",
-    "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

@@ -37,7 +37,7 @@
     "start:sig": "node --inspect=5858 -r ts-node/register ./src/signal.ts",
     "start:watch": "nodemon",
     "build": "tsc",
-    "server": "ssh AzureUser@grepawk.com \"cd /home/AzureUser/api3 && forever start -o out.log -e err.log https.ts\"",
+    "server": "ssh AzureUser@grepawk.com \"cd /home/AzureUser/api3 && npx nodemon >> server.log\" 1&2 > /dev/null &",
     "upload": "rsync -vpazh --exclude 'node_modules' . AzureUser@grepawk.com:/home/AzureUser/api3",
     "yolo": "npm run upload && npm run server",
     "test": "jest",

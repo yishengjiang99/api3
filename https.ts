@@ -1,3 +1,4 @@
+#!/usr/bin/ts-node
 const fs = require("fs");
 const express = require("express");
 const https = require("https");
@@ -18,29 +19,35 @@ var options = {
 };
 const ssjs = fs.readFileSync("./simple-console.js");//path.resolve(__dirname, "simple-console.js"));
 var app = express();
+
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT");
   res.header("Transfer-Encoding", "chunked");
   next();
 });
-
-app.get("/(:vid).mp3", require("./routes/yt").ytmp3);
-app.use("/spotify", require("./routes/spotify"));
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
-app.get("/dbfs/:filename", (req, res) => createReadStream(resolve('dbfs/lobby', req.params.filename)).pipe(res));
-
-app.use("/dbfs", (req, res) => {
-  res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>")
-});
 app.engine("jsx", require("./src/express-react-forked").createEngine({
   preloadJS: ['https://sdk.scdn.co/spotify-player.js'],
   templates: ['./views/layout.html']
 }));
 
 app.use(cookieParser());
-app.get("/", (req, res) => {
+
+app.get("/spotify", require("./routes/spotify"));
+app.get("/(:vid).mp3", require("./routes/yt").ytmp3);
+
+app.engine("jsx", require("./src/express-react-forked").createEngine({
+  preloadJS: ['https://sdk.scdn.co/spotify-player.js'],
+  templates: ['./views/layout.html']
+}));
+
+app.use("/dbfs", (req, res) => {
+  res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>")
+});
+
+app.get("/api", (req, res) => {
   res.render("welcome", { host: req.headers.host, t: 's' });
 });
 app.get("/simple-console.js", (req: IncomingMessage, res) => {
@@ -59,6 +66,7 @@ app.get("/db/:table/(:start?)(/:limit?)", async (req, res) => {
   );
 });
 app.get("/favicon.ico", require("./routes/favicon").favicon);
+app.use("/", express.static(__dirname + '/public'));
 
 const httpsServer = https.createServer(options, app);
 
@@ -81,11 +89,11 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
   }
 });
 
-httpsServer.listen(process.argv[2] || 333);
+
+httpsServer.listen(process.argv[2] || 443);
 console.log("listening on " + (process.argv[2] || 443));
-
-const files = [];
-
-// app.get("/ws_status", async (req, res) => {
-//   res.json({ broadcasts, connections });
+// res.writeHead(200, "one moemnt", {
+//   "Content-Type": "image/jpeg",
+//   "set-cookie": "username=" + username,
 // });
+// r
