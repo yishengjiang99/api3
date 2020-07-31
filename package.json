@@ -1,21 +1,24 @@
 {
   "name": "grepawk",
   "version": "1.0.1",
-  "description": "simple websockets for reading and writing into azure blob service",
+  "description": "filesystems and filesystem accessories",
   "main": "dist/index.js",
   "author": "Yisheng Jiang",
   "license": "ISC",
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.0.20",
+    "@types/express": "^4.17.7",
     "@types/react": "^16.9.43",
     "axios": "^0.19.2",
     "azure-storage": "^2.10.3",
     "chalk": "^4.1.0",
     "cookie-parser": "^1.4.5",
     "express": "^4.17.1",
-    "express-react-forked": "^0.1.0",
+    "express-react-forked": "^1.0.5",
     "fluent-ffmpeg": "^2.1.2",
     "html-typings": "^1.4.4",
+    "input-event": "^1.2.6",
+    "memfs": "^3.2.0",
     "mime": "^2.4.6",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
@@ -23,7 +26,8 @@
     "react-dom": "^16.13.1",
     "serve-index": "^1.9.1",
     "ts-node": "^8.10.2",
-    "typescript": "^3.9.6",
+    "typescript": "^3.9.7",
+    "unionfs": "^4.4.0",
     "ws": "^7.3.1",
     "xaa": "^1.6.0",
     "xclap": "^0.2.52",
@@ -45,8 +49,6 @@
   },
   "devDependencies": {
     "@types/jest": "^26.0.4",
-    "@types/node": "^14.0.26",
-    "jest": "^26.1.0",
-    "ts-jest": "^26.1.1"
+    "@types/node": "^14.0.26"
   }
 }
