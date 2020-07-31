@@ -6,4 +6,6 @@ node_modules
 # should use latest dep, as an app that consumes a module would have its
 # own lockfile, but remove this if you want to commit the package lock file.
 *-lock*
-dbfs
+dbfs/**/*
+30_6_52
+30_6_58

@@ -41,7 +41,7 @@ export class VPN {
   ) {
     const { path, hostname, pathname } = parse(req.url);
     const port = this.map(pathname);
-
+console.log(path,hostname,pathname);
     if (!port) {
       clientSocket.end("HTTP/1.1 404 not found \r\n");
       return;
