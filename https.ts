@@ -5,13 +5,12 @@ const https = require("https");
 const db = require("./dist/db");
 import { resolve } from "path";
 import { execSync } from "child_process";
-import { readFile, createReadStream } from "fs";
+import { readFile, createReadStream, exists } from "fs";
 const cookieParser = require("cookie-parser");
 const WebSocketServer = require("ws").Server;
 
 import * as spotify from "./routes/spotify";
 import { IncomingMessage } from "http";
-import { VPN } from "./vpn";
 
 export const ssl = {
   key: fs.readFileSync(process.env.PRIV_KEYFILE),
@@ -65,16 +64,14 @@ app.use(cookieParser());
 app.get("/spotify", require("./routes/spotify"));
 app.get("/(:vid).mp3", require("./routes/yt").ytmp3);
 
-app.engine(
-  "jsx",
-  require("./src/express-react-forked").createEngine({
-    preloadJS: ["https://sdk.scdn.co/spotify-player.js"],
-    templates: ["./views/layout.html"],
-  })
-);
+
 
 app.use("/dbfs", (req, res) => {
-  res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>");
+  exists("./dbfs/lobby", _exists => {
+    _exists && res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>") ||
+      res.status(404); //setStatu
+  } //res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>");
+  )
 });
 
 app.get("/api", (req, res) => {
@@ -108,23 +105,17 @@ rtcServer.on("connection", rtcHandler);
 
 httpsServer.on("upgrade", function upgrade(request, socket, head) {
   const pathname = require("url").parse(request.url).pathname;
-  if (pathname.match(/signal/)) {
+  if (pathname.match(/signal/))
+  {
     signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
       signalServer.wss.emit("connection", ws, request);
     });
-  } else if (pathname.match(/rtc/)) {
+  } else if (pathname.match(/rtc/))
+  {
     rtcServer.handleUpgrade(request, socket, head, function done(ws) {
       rtcServer.emit("connection", ws, request);
     });
   }
-});
-
-const vpn = new VPN({
-  httpsServer: httpsServer,
-  map: (pathname) => {
-    if (pathname === "/") return 3000;
-    else return -1;
-  },
 });
 
 httpsServer.listen(process.argv[2] || 443);
