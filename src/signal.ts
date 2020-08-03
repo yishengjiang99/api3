@@ -101,8 +101,7 @@ export class Server extends EventEmitter {
     if (cmd === "read")
     {
       readFile(data.arg1, fromSocket);
-    } else if (cmd === "list")
-    {
+    } else if (cmd === "list") {
       Server.send(participant, {
         type: "fileList",
         data: linfs.listFiles("drafts"),
