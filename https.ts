@@ -22,9 +22,8 @@ app.use(cookieParser());
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-forked").createEngine());
-app.get("/", (req, res) => {
-  res.render("welcome", { layout: "layout.html" });
-});
+
+app.use(express.static("../piano/build"));
 
 app.get("/", (req, res) => res.render("welcome", { layout: "layout.html" }));
 app.use("/spotify", require("./routes/spotify"));
