@@ -54,9 +54,11 @@ export class Server extends EventEmitter {
       })
     );
     connection.onmessage = (message) => {
-      try {
+      try
+      {
         this.handleMessage(message, participant);
-      } catch (e) {
+      } catch (e)
+      {
         //don't crash
         console.error(e);
         connection.send(e.message);
@@ -72,19 +74,23 @@ export class Server extends EventEmitter {
     console.log(msg_str);
     if (msg_str === "ping") fromSocket.send("pong");
     let data;
-    if (msg_str.startsWith("csv:")) {
+    if (msg_str.startsWith("csv:"))
+    {
       msg_str = msg_str.substr(4);
       const cmd = msg_str.substr(0, msg_str.indexOf(","));
       data = { cmd, data: msg_str.substr(cmd.length + 1) };
-      console.log(data);
-    } else if (msg_str[0] === "[" || msg_str[0] === "{") {
-      try {
+    } else if (msg_str[0] === "[" || msg_str[0] === "{")
+    {
+      try
+      {
         data = JSON.parse(msg_str);
-      } catch (e) {
+      } catch (e)
+      {
         console.error(e);
         return;
       }
-    } else {
+    } else
+    {
       data = {
         cmd: msg_str.split(" ")[0],
         arg1: msg_str.split(" ")[1] || "",
@@ -92,43 +98,37 @@ export class Server extends EventEmitter {
     }
     const cmd = data.cmd;
 
-    if (cmd === "read") {
+    if (cmd === "read")
+    {
       readFile(data.arg1, fromSocket);
     } else if (cmd === "list") {
       Server.send(participant, {
         type: "fileList",
         data: linfs.listFiles("drafts"),
       });
-    } else if (cmd === "compose" || cmd === "keyboard") {
+    } else if (cmd === "compose" || cmd === "keyboard")
+    {
       console.log("before comp");
       const now = new Date();
-      getContainer(`drafts/${participant.udid}`);
       const filename = `drafts/${formatDate(now)}.csv`;
       fromSocket.send(filename);
       linfs.fopen(filename).append(data.data + "\n");
 
-      fs.open(filename, "a+", (err, fd) => {
-        if (err) {
-          fromSocket.send("error " + err.message);
-          return;
-        }
-        fs.appendFile(fd, data.data + "\n", (err) => {
-          if (err) fromSocket.send("error");
-          else fs.fdatasync(fd, console.error);
-        });
-      });
-
-      for (const ws of this.wss.clients) {
-        if (ws.id !== fromSocket.id) {
+      for (const ws of this.wss.clients)
+      {
+        if (ws.id !== fromSocket.id)
+        {
           ws.send("remote " + data.csv);
         }
       }
-    } else {
+    } else
+    {
       fromSocket.send("unknown cmd");
     }
   }
   static send(to: Participant, message) {
-    if (message instanceof Object) {
+    if (message instanceof Object)
+    {
       message = JSON.stringify(message);
     }
     to.connection.send(message);
@@ -182,7 +182,8 @@ export class Channel {
   }
 
   async lstParticipants(refresh = false) {
-    if (refresh) {
+    if (refresh)
+    {
       await this.load();
     }
     return this.members;
@@ -195,12 +196,13 @@ export class Channel {
 
   onPersonJoin(person) {
     this.sendToChannel(person, person.displayName + " joined the channel");
-    if (person.dsp) {
+    if (person.dsp)
+    {
       this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
     }
   }
 
-  onPersonLeft(left) {}
+  onPersonLeft(left) { }
   componseNote(from, message: JSON) {
     this.sendToChannel(from, message.toString());
     //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
@@ -225,8 +227,8 @@ export class Participant {
     ///  channel.onPersonJoin(this);
   }
 
-  say(message: string) {}
-  shoud(message: string) {}
+  say(message: string) { }
+  shoud(message: string) { }
 }
 function generateUUID() {
   // Public Domain/MIT
