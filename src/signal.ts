@@ -96,12 +96,8 @@ export class Server extends EventEmitter {
       readFile(data.arg1, fromSocket);
     } else if (cmd === "list") {
       Server.send(participant, {
-        type: "channelList",
-        data: Channel.listChannels(),
-      });
-      Server.send(participant, {
         type: "fileList",
-        data: linfs.listFiles("lobby"),
+        data: linfs.listFiles("drafts"),
       });
     } else if (cmd === "compose" || cmd === "keyboard") {
       console.log("before comp");
