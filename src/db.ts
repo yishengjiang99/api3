@@ -45,18 +45,17 @@ export async function dbRow(sql, args = []) {
 export async function dbUpsert(table, obj, uniqueKeys) {
   const sql = `insert into ${table} (${Object.keys(obj).join(",")})
   values (${Object.values(obj)
-      .map((v) => `'${v}'`)
-      .join(",")}) 
+    .map((v) => `'${v}'`)
+    .join(",")}) 
   on duplicate key update ${Object.keys(obj)
-      .filter((k) => uniqueKeys.indexOf(k) < 0)
-      .map((k) => {
-        return ` ${k}='${obj[k]}' `;
-      })
-      .join(",")}`;
+    .filter((k) => uniqueKeys.indexOf(k) < 0)
+    .map((k) => {
+      return ` ${k}='${obj[k]}' `;
+    })
+    .join(",")}`;
   try {
     const { insertId } = await dbQuery(sql);
     return insertId;
-
   } catch (e) {
     console.error(e);
   }
@@ -65,8 +64,8 @@ export async function dbUpsert(table, obj, uniqueKeys) {
 export async function dbInsert(table, obj) {
   const sql = `insert into ${table} (${Object.keys(obj).join(",")})
   values (${Object.values(obj)
-      .map((v) => `'${v}'`)
-      .join(",")})`;
+    .map((v) => `'${v}'`)
+    .join(",")})`;
   const result = await dbQuery(sql).catch((err) => console.error(err));
   console.log(result);
   return result;
@@ -76,13 +75,17 @@ export async function dbMeta(name = "") {
   return dbQuery("show tables", []);
 }
 
-export const genuserNames = () => {
-  const verbs = require("fs")
-    .readSync(require("path").resolve("bin/verb.txt"))
+export const genUserName = () => {
+  require("fs")
+    .readSync("usernames.txt")
+    .toString()
     .split("\n")
     .map((n) => n.trim())
     .map((name) =>
-      dbInsert("available_usernames", { username: name, taken: 0 })
+      require("./src/db").dbInsert("available_usernames", {
+        username: name,
+        taken: 0,
+      })
     );
 };
 
@@ -91,8 +94,14 @@ export async function getOrCreateUser(username) {
     username,
   ]);
   if (!user) {
-    user = dbInsert("user", {
-      username: username,
+    const newuser = await dbRow(
+      "select username from available_usernames where taken=0 limit 1"
+    );
+    await dbQuery("update available_usernames set taken=1 where username=?", [
+      newuser.username,
+    ]);
+    user = await dbInsert("user", {
+      username: newuser.username,
     });
   }
   return user;

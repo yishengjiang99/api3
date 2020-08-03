@@ -1,58 +1,56 @@
 <html>
+  <head>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        place-items: center;
+      }
 
-<head>
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      place-items: center;
-    }
+      main {
+        /* grid-row: 2/5; */
+      }
 
-    main {
-      /* grid-row: 2/5; */
-    }
+      header {
+        background-color: light-gray;
+        color: white;
+      }
 
-    header {
-      background-color: light-gray;
-      color: white;
-    }
+      footer {
+        place-items: center;
+        /* grid-row: 6; */
+        background-color: black;
+        overflow-y: scroll;
+      }
+    </style>
+    <preload tag="style" src="/static/tty.css" />
+    <preload tag="script" src="/static/tty.js" />
+  </head>
 
-    footer {
-      place-items: center;
-      /* grid-row: 6; */
-      background-color: black;
-      overflow-y: scroll;
-    }
-  </style>
-  <preload tag=style src='https://raw.githubusercontent.com/1j01/simple-console/master/simple-console.css' />
-  <preload tag='script' src='https://raw.githubusercontent.com/1j01/simple-console/master/simple-console.css' />
+  <body>
+    <header></header>
+    <main>
+      __MAIN__
 
-</head>
-
-<body>
-  <header>
-
-  </header>
-  <main>
-    __MAIN__
-
-
-    <script type='module'>
-      var con = new SimpleConsole({
-        placeholder: "Enter JavaScript",
-        handleCommand: function (command) {
-          try {
-            con.log(eval(command));
-          } catch (error) {
-            con.error(error);
-          }
-        },
-        autofocus: true, // if the console is to be the primary interface of the page
-        storageID: "app-console", // or e.g. "simple-console-#1" or "workspace-1:javascript-console"
-      });
-      document.getElementById("console").appendChild(con.element);
-      window.log = con.log;
-      window.logError = con.error;
-    </script>
+      <script type="module">
+        var con = new SimpleConsole({
+          placeholder: "Enter JavaScript",
+          handleCommand: function (command) {
+            try {
+              con.log(eval(command));
+            } catch (error) {
+              con.error(error);
+            }
+          },
+          autofocus: true, // if the console is to be the primary interface of the page
+          storageID: "app-console", // or e.g. "simple-console-#1" or "workspace-1:javascript-console"
+        });
+        document.getElementById("console").appendChild(con.element);
+        window.log = con.log;
+        window.logError = con.error;
+      </script>
+    </main>
+  </body>
+</html>

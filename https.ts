@@ -1,99 +1,43 @@
 #!/usr/bin/ts-node
-const fs = require("fs");
-const express = require("express");
-const https = require("https");
-const db = require("./dist/db");
+
 import { resolve } from "path";
 import { execSync } from "child_process";
 import { readFile, createReadStream, exists } from "fs";
-const cookieParser = require("cookie-parser");
+import * as db from "./src/db";
+import * as https from "https";
+import * as express from "express";
+import * as fs from "fs";
+import { sign } from "crypto";
+
 const WebSocketServer = require("ws").Server;
-
-import * as spotify from "./routes/spotify";
-import { IncomingMessage } from "http";
-
 export const ssl = {
   key: fs.readFileSync(process.env.PRIV_KEYFILE),
   cert: fs.readFileSync(process.env.CERT_FILE),
 };
 var options = ssl;
 
-const ssjs = fs.readFileSync("./simple-console.js"); //path.resolve(__dirname, "simple-console.js"));
 var app = express();
-
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT");
-  res.header("Transfer-Encoding", "chunked");
-  next();
-});
+const cookieParser = require("cookie-parser");
+app.use(cookieParser());
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
-app.get("/dbfs/:filename", (req, res) =>
-  createReadStream(resolve("dbfs/lobby", req.params.filename)).pipe(res)
-);
-
-app.use(
-  "/dbfs",
-  require("serve-index")("dbfs/lobby", {
-    icons: true,
-    view: "details",
-    sort: "recent",
-  })
-); //express.static("./dbfs/lobby"));
-app.engine(
-  "jsx",
-  require("express-react-forked").createEngine({
-    preloadJS: ["https://sdk.scdn.co/spotify-player.js"],
-    templates: ["./views/layout.html"],
-  })
-);
-
-app.use(cookieParser());
-
-app.engine(
-  "jsx",
-  require("./src/express-react-forked").createEngine({
-    preloadJS: ["https://sdk.scdn.co/spotify-player.js"],
-    templates: ["./views/layout.html"],
-  })
-);
-
-app.use(cookieParser());
-
-app.get("/spotify", require("./routes/spotify"));
-app.get("/(:vid).mp3", require("./routes/yt").ytmp3);
-
-
-
-app.use("/dbfs", (req, res) => {
-  exists("./dbfs/lobby", _exists => {
-    _exists && res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>") ||
-      res.status(404); //setStatu
-  } //res.end("<pre>" + execSync("ls -lt", { cwd: "./dbfs/lobby" }) + "</pre>");
-  )
+app.engine("jsx", require("express-react-forked").createEngine());
+app.get("/", (req, res) => {
+  res.render("welcome", { layout: "layout.html" });
 });
+
+app.get("/", (req, res) => res.render("welcome", { layout: "layout.html" }));
+app.use("/spotify", require("./routes/spotify"));
+app.use("/(:vid).mp3", require("./routes/yt").ytmp3);
+
+app.use("/fs", require("./routes/fs"));
 
 app.get("/api", (req, res) => {
   res.render("welcome", { host: req.headers.host, t: "s" });
 });
-app.get("/simple-console.js", (req: IncomingMessage, res) => {
-  //res.writeHead("Content-Type: text/javascript");
-  res.end(ssjs.toString());
-});
-app.get("/db", async (req, res) => {
-  res.json(await db.dbMeta());
-});
 
-app.get("/db/:table/(:start?)(/:limit?)", async (req, res) => {
-  res.json(
-    await db.dbQuery(
-      `select * from ${req.params.table} limit ${req.params.start} ${req.params.limit}`
-    )
-  );
-});
 app.get("/favicon.ico", require("./routes/favicon").favicon);
-//app.use("/", express.static(__dirname + '/public'));
+app.use("/app", express.static(__dirname + "/static"));
 
 const httpsServer = https.createServer(options, app);
 
@@ -105,21 +49,23 @@ rtcServer.on("connection", rtcHandler);
 
 httpsServer.on("upgrade", function upgrade(request, socket, head) {
   const pathname = require("url").parse(request.url).pathname;
-  if (pathname.match(/signal/))
-  {
+  if (pathname.match(/signal/)) {
     signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
+      const dbuser = db.getOrCreateUser(request.headers["set-cookie"]);
+      signalServer.requestContext[
+        request.headers["sec-websocket-key"]
+      ] = dbuser;
       signalServer.wss.emit("connection", ws, request);
     });
-  } else if (pathname.match(/rtc/))
-  {
+  } else if (pathname.match(/rtc/)) {
     rtcServer.handleUpgrade(request, socket, head, function done(ws) {
       rtcServer.emit("connection", ws, request);
     });
   }
 });
 
-httpsServer.listen(process.argv[2] || 443);
-console.log("listening on " + (process.argv[2] || 443));
+httpsServer.listen(443); //process.argv[2] || 443);
+console.log("listening on 443"); // + (process.argv[2] || 443));
 // res.writeHead(200, "one moemnt", {
 //   "Content-Type": "image/jpeg",
 //   "set-cookie": "username=" + username,

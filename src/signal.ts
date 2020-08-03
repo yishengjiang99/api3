@@ -1,17 +1,16 @@
 import * as linfs from "./linfs";
 import * as WebSocket from "ws";
-import * as fs from 'fs';
+import * as fs from "fs";
 import { IncomingHttpHeaders, IncomingMessage } from "http";
-import { createReadStream, fstat } from 'fs';
 import { Data } from "ws";
 import * as db from "./db";
-import { resolve } from 'path'
-import { fopen } from "./azfs";
-import { PassThrough } from "stream";
-import { eventNames } from "process";
+import { getContainer, fopen } from "./linfs";
+
 import { EventEmitter } from "events";
-import { readFile } from './signaling/readFile';
+import { readFile } from "./signaling/readFile";
 const url = require("url");
+const formatDate = (now: Date) =>
+  `${now.getMonth()}_${now.getDate()}_${now.getHours()}`;
 
 export class Server extends EventEmitter {
   channels: any;
@@ -19,10 +18,12 @@ export class Server extends EventEmitter {
   participants: any;
   config: any;
   port: any;
+  requestContext: {};
   static k;
 
   constructor(config: WebSocket.ServerOptions) {
     super();
+    this.requestContext = {};
     this.participants = {};
     this.channels = [new Channel("lobby")];
     this.config = config;
@@ -39,11 +40,9 @@ export class Server extends EventEmitter {
   }
 
   handleConnection = (connection, request) => {
-    const uri = require("url").parse(request.url).query;
-    const queries = require("querystring").parse(uri);
-    const { udid, channel } = queries;
-    const username = udid || generateUUID();
-    const participant = new Participant(connection, request.headers['sec-websocket-key']);
+    const socketId = request.headers["sec-websocket-key"];
+    const participant = new Participant(connection, socketId);
+    participant.udid = socketId;
     this.participants[participant.udid] = participant;
     participant.joinChannel(this.channels[0]);
     connection.send(
@@ -55,11 +54,9 @@ export class Server extends EventEmitter {
       })
     );
     connection.onmessage = (message) => {
-      try
-      {
+      try {
         this.handleMessage(message, participant);
-      } catch (e)
-      {
+      } catch (e) {
         //don't crash
         console.error(e);
         connection.send(e.message);
@@ -71,40 +68,33 @@ export class Server extends EventEmitter {
     const fromSocket = message.target;
     const type = "mesage";
     let msg_str: string = message.data;
-    console.log(typeof msg_str)
+    console.log(typeof msg_str);
     console.log(msg_str);
     if (msg_str === "ping") fromSocket.send("pong");
     let data;
-    if (msg_str.startsWith("csv:"))
-    {
+    if (msg_str.startsWith("csv:")) {
       msg_str = msg_str.substr(4);
       const cmd = msg_str.substr(0, msg_str.indexOf(","));
-      data = { cmd, data: msg_str.substr(cmd.length + 1) }
+      data = { cmd, data: msg_str.substr(cmd.length + 1) };
       console.log(data);
-    } else if (msg_str[0] === "[" || msg_str[0] === "{")
-    {
-      try
-      {
+    } else if (msg_str[0] === "[" || msg_str[0] === "{") {
+      try {
         data = JSON.parse(msg_str);
-      } catch (e)
-      {
+      } catch (e) {
         console.error(e);
         return;
       }
-    } else
-    {
+    } else {
       data = {
-        cmd: data.split(" ")[0],
-        arg1: data.split(" ")[1] || ""
-      }
+        cmd: msg_str.split(" ")[0],
+        arg1: msg_str.split(" ")[1] || "",
+      };
     }
     const cmd = data.cmd;
 
-    if (cmd === 'read')
-    {
+    if (cmd === "read") {
       readFile(data.arg1, fromSocket);
-    } else if (cmd === 'list')
-    {
+    } else if (cmd === "list") {
       Server.send(participant, {
         type: "channelList",
         data: Channel.listChannels(),
@@ -113,36 +103,36 @@ export class Server extends EventEmitter {
         type: "fileList",
         data: linfs.listFiles("lobby"),
       });
-
-    } else if (cmd === 'compose' || cmd === 'keyboard')
-    {
-      console.log('before comp');
+    } else if (cmd === "compose" || cmd === "keyboard") {
+      console.log("before comp");
       const now = new Date();
-      const filename = resolve("dbfs", participant.currentChannel.folder,
-        `${now.getMonth()}/${now.getDate()}_${now.getHours()}.csv`);
+      getContainer(`drafts/${participant.udid}`);
+      const filename = `drafts/${formatDate(now)}.csv`;
       fromSocket.send(filename);
+      linfs.fopen(filename).append(data.data + "\n");
+
       fs.open(filename, "a+", (err, fd) => {
-        console.log("FD", fd);
-        if (err) fromSocket.send('error');
-        else fs.writeFile(fd, data.csv, (err) => {
-          if (err) fromSocket.send('error');
-          else fs.fdatasync(fd, (err) => console.error);
-        })
+        if (err) {
+          fromSocket.send("error " + err.message);
+          return;
+        }
+        fs.appendFile(fd, data.data + "\n", (err) => {
+          if (err) fromSocket.send("error");
+          else fs.fdatasync(fd, console.error);
+        });
       });
 
-
-      for (const ws of this.wss.clients)
-      {
-        ws.send("remote " + data.csv);
+      for (const ws of this.wss.clients) {
+        if (ws.id !== fromSocket.id) {
+          ws.send("remote " + data.csv);
+        }
       }
-    } else
-    {
-      fromSocket.send("unknown cmd")
+    } else {
+      fromSocket.send("unknown cmd");
     }
   }
   static send(to: Participant, message) {
-    if (message instanceof Object)
-    {
+    if (message instanceof Object) {
       message = JSON.stringify(message);
     }
     to.connection.send(message);
@@ -196,8 +186,7 @@ export class Channel {
   }
 
   async lstParticipants(refresh = false) {
-    if (refresh)
-    {
+    if (refresh) {
       await this.load();
     }
     return this.members;
@@ -210,13 +199,12 @@ export class Channel {
 
   onPersonJoin(person) {
     this.sendToChannel(person, person.displayName + " joined the channel");
-    if (person.dsp)
-    {
+    if (person.dsp) {
       this.sendToChannel(person, JSON.stringify({ sdp: person.sdp }));
     }
   }
 
-  onPersonLeft(left) { }
+  onPersonLeft(left) {}
   componseNote(from, message: JSON) {
     this.sendToChannel(from, message.toString());
     //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
@@ -232,9 +220,8 @@ export class Participant {
   requestHeaders: IncomingHttpHeaders;
   userName: string | string[];
   openFd: Number;
-  constructor(connection: WebSocket, dbuser) {
-    console.log(dbuser);
-    this.udid = dbuser.username;
+  constructor(connection: WebSocket, udid) {
+    this.udid = udid;
     this.connection = connection;
   }
   joinChannel(channel: Channel) {
@@ -242,8 +229,8 @@ export class Participant {
     ///  channel.onPersonJoin(this);
   }
 
-  say(message: string) { }
-  shoud(message: string) { }
+  say(message: string) {}
+  shoud(message: string) {}
 }
 function generateUUID() {
   // Public Domain/MIT

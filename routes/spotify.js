@@ -2,7 +2,7 @@ var express = require("express"); // Express web server framework
 var request = require("request"); // "Request" library
 var querystring = require("querystring");
 var cookieParser = require("cookie-parser");
-const ReactDom = require('react-dom');
+const ReactDom = require("react-dom");
 
 const axios = require("axios");
 const API_DIR = "https://api.spotify.com/v1";
@@ -11,14 +11,16 @@ const _sdk = (access_token, _refresh = "") => {
     refresh = _refresh;
   const fetchAPI = (uri, method = "GET") => {
     console.log(uri);
-    return axios.get(API_DIR + uri, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + authToken,
-      },
-    }).then(response => response.data);
+    return axios
+      .get(API_DIR + uri, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + authToken,
+        },
+      })
+      .then((response) => response.data);
     //console.log(response.data));// && return response.data)
-  }
+  };
 
   const fetchAPIPut = (uri, body) =>
     axios(API_DIR + uri, {
@@ -42,22 +44,6 @@ var client_id = process.env.spotify_client_id;
 var client_secret = process.env.spotify_secret;
 var redirect_uri = "https://www.grepawk.com/spotify";
 
-/**
- * Generates a random string containing numbers and letters
- * @param  {number} length The length of the string
- * @return {string} The generated string
- */
-var generateRandomString = function (length) {
-  var text = "";
-  var possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-  for (var i = 0; i < length; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
-};
-
 var stateKey = "spotify_auth_state";
 
 router.get("/login", function (req, res) {
@@ -80,17 +66,18 @@ router.get("/login", function (req, res) {
 
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
-    querystring.stringify({
-      response_type: "code",
-      client_id: client_id,
-      scope: scope,
-      redirect_uri: redirect_uri,
-      state: req.query.jshost,
-    })
+      querystring.stringify({
+        response_type: "code",
+        client_id: client_id,
+        scope: scope,
+        redirect_uri: redirect_uri,
+        state: req.query.jshost,
+      })
   );
 });
 
 router.get("/", function (req, res) {
+  res.end("spotify");
   // your application requests refresh and access tokens
   // after checking the state parameter
   if (req.query.access_token) {
@@ -100,58 +87,63 @@ router.get("/", function (req, res) {
     authAudRedirect(req, res);
     return;
   } else {
-    res.render("welcome",
-      { layout: "layout.html" },
-      (err, html) => {
-        console.error(err);
-        res.write(html); //"html")
-      });
-
+    res.render("welcome", { layout: "layout.html" }, (err, html) => {
+      console.error(err);
+      res.write(html); //"html")
+    });
   }
 });
 
 const SSRUI = async function (req, res) {
   try {
     const sdk = _sdk(req.query.access_token);
-    res.render("welcome",
+    res.render(
+      "welcome",
       { layout: "layout.html", access_token: req.query.access_token },
       (err, html) => {
         err && console.error(err);
         res.write(html); //"html")
-        onClick: console.log
-      });
+        onClick: console.log;
+      }
+    );
 
     const playlists = await sdk.fetchAPI("/me/playlists");
     if (!playlists.items || !playlists.items[0]) {
       return res.end("no play list found");
     }
-    res.render("listview", {
-      list: playlists.items,
-      onClick: console.log
-    }, (err, html) => {
-      err && console.error(err);
-      console.log(html)
-      res.write(html || ""); //"html")
-      sdk.fetchAPI("/playlists/" + playlists.items[0].id + "/tracks")
-        .then(tracks => {
-          console.log(tracks);
-          res.render("tracklist", {
-            tracks: tracks.items,
-            onClick: console.log
-          }, (err, html) => {
-            err && console.error(err);
-            res.write(html); //"html")
-            res.end(`  </main>
+    res.render(
+      "listview",
+      {
+        list: playlists.items,
+        onClick: console.log,
+      },
+      (err, html) => {
+        err && console.error(err);
+        console.log(html);
+        res.write(html || ""); //"html")
+        sdk
+          .fetchAPI("/playlists/" + playlists.items[0].id + "/tracks")
+          .then((tracks) => {
+            console.log(tracks);
+            res.render(
+              "tracklist",
+              {
+                tracks: tracks.items,
+                onClick: console.log,
+              },
+              (err, html) => {
+                err && console.error(err);
+                res.write(html); //"html")
+                res.end(`  </main>
             <footer>          
           footer
             </footer></body></html>
-          `)
-
+          `);
+              }
+            );
           });
-        });
-
-    })
-
+      }
+    );
 
     // res.end(JSON.stringify(playlists.items))
   } catch (e) {
@@ -168,9 +160,9 @@ const authAudRedirect = (req, res) => {
   if (false) {
     res.redirect(
       "/#" +
-      querystring.stringify({
-        error: "state_mismatch",
-      })
+        querystring.stringify({
+          error: "state_mismatch",
+        })
     );
   } else {
     var authOptions = {
@@ -213,9 +205,9 @@ const authAudRedirect = (req, res) => {
       } else {
         res.redirect(
           "/#" +
-          querystring.stringify({
-            error: "invalid_token",
-          })
+            querystring.stringify({
+              error: "invalid_token",
+            })
         );
       }
     });

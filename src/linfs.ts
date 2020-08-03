@@ -13,22 +13,27 @@ function init() {
 }
 
 function getContainer(container: string) {
-  const xpath = resolve(rootdir, container);
-  if (!fs.existsSync(xpath)) {
-    fs.mkdirSync(xpath);
+  init();
+  const parts = container.split("/");
+  let xpath = rootdir;
+  for (let i = 0; i < parts.length; i++) {
+    xpath += "/" + parts[i];
+    if (!fs.existsSync(xpath)) {
+      console.log(xpath);
+      const mkdirRet = fs.mkdirSync(xpath);
+      console.log(mkdirRet);
+    }
   }
-  return fs.readdirSync(xpath);
 }
 function listFiles(container: string) {
   const xpath = resolve(rootdir, container);
-
-  if (!fs.existsSync(xpath)) {
-    fs.mkdirSync(xpath);
-  }
+  getContainer(xpath);
   return fs.readdirSync(xpath);
 }
 
-function listContainers() {
+function listContainers(container = "") {
+  const xpath = resolve(rootdir, container);
+
   return fs.readdirSync(rootdir);
 }
 interface FileDriver {
@@ -41,15 +46,15 @@ interface FileDriver {
 const resolvedPath = {};
 function fopen(xpath: string): FileDriver {
   let fullpath = resolve(rootdir, xpath);
-
+  getContainer(dirname(xpath));
   return {
     getContent: () => {
       return fs.readFileSync(fullpath).toString();
     },
     append: (data: string | NodeJS.ArrayBufferView) => {
       fs.open(fullpath, "a+", (err, fd) => {
-        fs.writeFileSync(fd, data, { encoding: "utf8", flag: "a" });
-      })
+        fs.writeFileSync(fd, data);
+      });
     },
     putContent: (data: string | NodeJS.ArrayBufferView) =>
       fs.writeFileSync(fullpath, data, { encoding: "utf8" }),
@@ -64,10 +69,11 @@ function fopen(xpath: string): FileDriver {
     },
     upload: (input: Stream.Readable) => {
       fs.open(fullpath, "a+", (err, fd) => {
+        if (err) console.error(err);
         const w = fs.createWriteStream(fullpath, { fd: fd });
         input.pipe(w);
         input.on("error", (err: any) => console.log(err));
-      })
+      });
     },
   };
 }

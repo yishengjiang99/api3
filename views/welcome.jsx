@@ -6,9 +6,9 @@ export default function ({ host, access_token }) {
       <h1>welcome</h1>
       {!access_token ? (
         <button>
-          <a href={"/spotify/login"}>
-            Login with Spotify Premium
-          </a></button>) : null}
+          <a href={"/spotify/login"}>Login with Spotify Premium</a>
+        </button>
+      ) : null}
     </>
   );
 }

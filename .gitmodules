@@ -1,0 +1,3 @@
+[submodule "generate_app/piano"]
+	path = generate_app/piano
+	url = git@github.com:yishengjiang99/piano.git
