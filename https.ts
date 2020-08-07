@@ -25,7 +25,6 @@ app.set("view engine", "jsx");
 app.engine("jsx", require("express-react-forked").createEngine());
 
 
-app.get("/", (req, res) => res.render("welcome", { layout: "layout.html" }));
 app.use("/spotify", require("./routes/spotify"));
 app.use("/yt", yt);
 
@@ -67,8 +66,8 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
   }
 });
 
-httpsServer.listen(443); //process.argv[2] || 443);
-console.log("listening on 443"); // + (process.argv[2] || 443));
+httpsServer.listen(443); //process.argv[2] || 3000);
+console.log("listening on 443"); //
 // res.writeHead(200, "one moemnt", {
 //   "Content-Type": "image/jpeg",
 //   "set-cookie": "username=" + username,
