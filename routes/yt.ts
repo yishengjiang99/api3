@@ -1,4 +1,4 @@
-import { render } from "react-dom";
+import { render} from "react-dom";
 import Axios, { AxiosResponse } from "axios";
 import * as express from 'express';
 
@@ -18,10 +18,16 @@ const PassThrough = require("stream").PassThrough;
 //https://www.youtube.com/watch?v=QFcv5Ma8u8k
 
 router.get("/", (req,res)=>{
-  return res.render("video.jsx",{yid:'QFcv5Ma8u8k', 
-  src:'https://www.youtube.com/watch?v=QFcv5Ma8u8k', 
-  layout:"layout.html"});
+  res.render("video.jsx",{
+    vid:'QFcv5Ma8u8k', 
+  layout:"layout.html"},
+  (err,html)=>{
+    if(err){
+      res.end(err.message);
+    }
+  })
 
+  
 })
 
 router.get("/(:vid).mp3", (req,res)=>{
@@ -43,13 +49,18 @@ router.get("/(:vid).mp3", (req,res)=>{
     console.log(e);
   }
 })
+
 router.get("/search/:query", (req,res)=>{
+  if(process.env.hostname!=='www.grepawk.com'){
+    return 
+  }
   const query = req.params.query;
   const youtube_api_key = process.env.google_key
   const url = `https://www.googleapis.com/youtube/v3/search?type=video\
   &part=snippet&maxResults=10&q=${query}&key=${youtube_api_key}`;
   Axios.get(url).then(function(resp:AxiosResponse){
     console.log(resp);
+    res.json(resp);
   }).catch(console.error);
 });
 

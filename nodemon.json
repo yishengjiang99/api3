@@ -4,6 +4,6 @@
     "https.ts",
     "views",
     "routes"
-  ],
+  ],"includs":["*.ts", "*.js", "*html"],
   "exec": "ts-node https.ts"
 }

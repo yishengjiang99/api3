@@ -47,7 +47,7 @@ var redirect_uri = "https://www.grepawk.com/spotify";
 var stateKey = "spotify_auth_state";
 
 router.get("/login", function (req, res) {
-  var state = generateRandomString(16);
+  var state = "23232132";
   res.cookie(stateKey, state);
   res.cookie("jshost", req.query.jshost || "");
 

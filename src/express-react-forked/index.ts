@@ -9,6 +9,8 @@
 
 import * as React from "react";
 import * as ReactDOMServer from "react-dom/server";
+import * as ReactDOM from "react-dom";
+
 import { execSync } from 'child_process';
 var beautifyHTML = require("js-beautify").html;
 var assign = require("object-assign");
@@ -47,7 +49,7 @@ function createEngine(engineOptions) {
 
     const fscache = {};
     const templateCache = {};
-    const preloadTag = /<preload type='(.*?)' src='(.*?)' \/\>/;
+    const preloadTag = /<!--preload type=\'(.*?)\' src=\'(.*?)\'-->/;
 
     function httpsGetSync(url) {
         const content = execSync(`curl '${url}'`);
@@ -66,7 +68,7 @@ function createEngine(engineOptions) {
             let content = file_get_contents(templateFile)
             let m = null;
             while (m = content.match(preloadTag)) {
-                const src = m[1].trim(), type = m[2];
+                const src = m[2].trim(), type = m[1];
                 content = content.replace(preloadTag, `<${type}> ${file_get_contents(src)} </${type}>`);
             }
             templateCache[templateFile] = content;
@@ -107,7 +109,7 @@ function createEngine(engineOptions) {
             var component = require(filename);
             // Transpiled ES6 may export components as { default: Component }
             component = component.default || component;
-            markup += ReactDOMServer.renderToStaticMarkup(
+            markup += ReactDOMServer.renderToString(
                 React.createElement(component, options, [])
             );
         } catch (e) {
@@ -130,7 +132,9 @@ function createEngine(engineOptions) {
         }
 
         if (options.layout) {
-            markup = prepareTemplate(options.layout);
+            var template = prepareTemplate(options.layout);
+            
+            markup = template.replace("__MAIN__",markup);
         }
 
         if (options.mainJS) {

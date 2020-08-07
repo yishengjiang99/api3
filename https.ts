@@ -22,7 +22,7 @@ const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
-app.engine("jsx", require("express-react-forked").createEngine());
+app.engine("jsx", require("./src/express-react-forked").createEngine());
 
 
 app.get("/", (req, res) => res.render("welcome", { layout: "layout.html" }));
@@ -34,7 +34,13 @@ app.use("/yt", yt);
 
 app.use("/fs", require("./routes/fs"));
 app.use("/", express.static("../piano/build"));
-
+app.use("/views", express.static("./views"));
+app.use(function(req,res,next){
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  next();
+})
 app.get("/api", (req, res) => {
   res.render("welcome", { host: req.headers.host, t: "s" });
 });
