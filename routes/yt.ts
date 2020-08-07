@@ -44,12 +44,14 @@ router.get("/(:vid).mp3", (req,res)=>{
   }
 })
 router.get("/search/:query", (req,res)=>{
+console.log(process.env.hostname);
+ 
   const query = req.params.query;
   const youtube_api_key = process.env.google_key
-  const url = `https://www.googleapis.com/youtube/v3/search?type=video\
-  &part=snippet&maxResults=10&q=${query}&key=${youtube_api_key}`;
+  const url = `https://www.googleapis.com/youtube/v3/search?type=video`
+  +`&part=snippet&maxResults=10&q=${query}&key=AIzaSyBCXMcymaqef8RmYskmdVOJcQA5e06Zvyg`;
   Axios.get(url).then(function(resp:AxiosResponse){
-    console.log(resp);
+	res.json(resp.data);
   }).catch(console.error);
 });
 

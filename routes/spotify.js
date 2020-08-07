@@ -47,7 +47,7 @@ var redirect_uri = "https://www.grepawk.com/spotify";
 var stateKey = "spotify_auth_state";
 
 router.get("/login", function (req, res) {
-  var state = generateRandomString(16);
+  var state ='13'
   res.cookie(stateKey, state);
   res.cookie("jshost", req.query.jshost || "");
 
@@ -77,7 +77,6 @@ router.get("/login", function (req, res) {
 });
 
 router.get("/", function (req, res) {
-  res.end("spotify");
   // your application requests refresh and access tokens
   // after checking the state parameter
   if (req.query.access_token) {
@@ -96,14 +95,18 @@ router.get("/", function (req, res) {
 
 const SSRUI = async function (req, res) {
   try {
+    res.render("spotify_header")
     const sdk = _sdk(req.query.access_token);
     res.render(
       "welcome",
-      { layout: "layout.html", access_token: req.query.access_token },
+      {
+        layout: "spotifylayout.html", 
+        headerJs: "spotofy_window.js",
+      access_token: req.query.access_token 
+    },
       (err, html) => {
         err && console.error(err);
-        res.write(html); //"html")
-        onClick: console.log;
+        res.write(html)
       }
     );
 

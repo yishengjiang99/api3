@@ -25,8 +25,8 @@
         overflow-y: scroll;
       }
     </style>
-    <preload tag="style" src="/static/tty.css" />
-    <preload tag="script" src="/static/tty.js" />
+    <script tag="style" src="/static/tty.css"></script>
+    <style tag="script" src="/static/simple-console.js" />
   </head>
 
   <body>
@@ -34,23 +34,25 @@
     <main>
       __MAIN__
 
-      <script type="module">
-        var con = new SimpleConsole({
-          placeholder: "Enter JavaScript",
-          handleCommand: function (command) {
-            try {
-              con.log(eval(command));
-            } catch (error) {
-              con.error(error);
-            }
-          },
-          autofocus: true, // if the console is to be the primary interface of the page
-          storageID: "app-console", // or e.g. "simple-console-#1" or "workspace-1:javascript-console"
-        });
-        document.getElementById("console").appendChild(con.element);
-        window.log = con.log;
-        window.logError = con.error;
-      </script>
+
     </main>
+    <div id="console"></div>
+    <script type="module">
+      var con = new SimpleConsole({
+        placeholder: "Enter JavaScript",
+        handleCommand: function (command) {
+          try {
+            con.log(eval(command));
+          } catch (error) {
+            con.error(error);
+          }
+        },
+        autofocus: true, // if the console is to be the primary interface of the page
+        storageID: "app-console", // or e.g. "simple-console-#1" or "workspace-1:javascript-console"
+      });
+      document.getElementById("console").appendChild(con.element);
+      window.log = con.log;
+      window.logError = con.error;
+    </script>
   </body>
 </html>

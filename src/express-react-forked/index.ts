@@ -1,25 +1,15 @@
-/*
- *  Copyright (c) 2014, Facebook, Inc.
- *  All rights reserved.
- *
- *  This source code is licensed under the BSD-style license found in the
- *  LICENSE file in the root directory of this source tree. An additional grant
- *  of patent rights can be found in the PATENTS file in the same directory.
- */
 
 import * as React from "react";
 import * as ReactDOMServer from "react-dom/server";
 import { execSync } from 'child_process';
+
 var beautifyHTML = require("js-beautify").html;
 var assign = require("object-assign");
 var _escaperegexp = require("lodash.escaperegexp");
 import { readFileSync } from 'fs';
 
 const { resolve } = require("path");
-
-
-
-var DEFAULT_OPTIONS = {
+const DEFAULT_OPTIONS = {
     doctype: "<!DOCTYPE html>",
     beautify: false,
     transformViews: true,
@@ -41,7 +31,7 @@ var DEFAULT_OPTIONS = {
     templateFiles: []
 };
 
-function createEngine(engineOptions) {
+export const createEngine = () =>{
     var registered = false;
     var moduleDetectRegEx;
 
@@ -74,7 +64,7 @@ function createEngine(engineOptions) {
         return templateCache[templateFile];
     }
 
-    engineOptions = assign({}, DEFAULT_OPTIONS, engineOptions || {});
+    engineOptions = {...DEFAULT_OPTIONS, engineOptions}; // assign({}, DEFAULT_OPTIONS, engineOptions || {});
 
     for (const filename of engineOptions.preloadJS) file_get_contents(filename);
     for (const filename of engineOptions.templateFiles) prepareTemplate(filename);
@@ -110,6 +100,7 @@ function createEngine(engineOptions) {
             markup += ReactDOMServer.renderToStaticMarkup(
                 React.createElement(component, options, [])
             );
+            
         } catch (e) {
             return cb(e);
         } finally {
@@ -142,5 +133,3 @@ function createEngine(engineOptions) {
 
     return renderFile;
 }
-
-exports.createEngine = createEngine;
