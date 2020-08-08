@@ -1,0 +1,15 @@
+[Unit]
+Description=My httpd Service
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/home/AzureUser/api3/env_d
+User=AzureUser
+WorkingDirectory=/home/AzureUser/api3
+ExecStart=/usr/bin/ts-node /home/AzureUser/api3/https.ts
+Restart=always
+RestartSec=16
+
+[Install]
+WantedBy=multi-user.target

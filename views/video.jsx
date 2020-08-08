@@ -21,6 +21,7 @@ const useAnimationFrame = callback => {
   }, []); // Make sure the effect runs only once
 }
 
+
 const Video = (props) => {
   const hudRef = useRef();
   const [t, setT] = useState(0);

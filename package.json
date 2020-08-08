@@ -39,10 +39,11 @@
     "start:watch": "nodemon",
     "makeup:usernames": "ls node_modules > names.txt && echo 'green\nblue\nred\nblack\nwhite' > colors.txt && join -j 2 colors.txt names.txt > usernames.txt",
     "build": "tsc",
+    "systemd": "sudo systemctl daemon-reload && sudo systemctl restart httpd && sudo systemctl status httpd && journalctl -u httpd -f >> static/service.log",
     "stop": "ps aux |grep nodem |awk '{print $2}' |xargs kill -9",
-    "server": "ssh AzureUser@grepawk.com \"cd /home/AzureUser/api3 && npx nodemon >> server.log\" 1&2 > /dev/null &",
+    "server": "ssh AzureUser@grepawk.com", 
     "upload": "rsync -vpazh --exclude 'node_modules' . AzureUser@grepawk.com:/home/AzureUser/api3",
-    "yolo": "npm run upload && npm run server",
+    "yolo": "npm run upload && npm run server && npm run systemd",
     "test": "jest",
     "test:db": "jest src/db.test.ts",
     "test:ws": "jest src/signaling/*"
