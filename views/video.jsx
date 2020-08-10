@@ -1,13 +1,15 @@
-import React from "react";
+import React from 'react';
+import SearchBar from './searchBar';
+const videopage = ({ videos }) =>
+  <div>
+    <searchBar></searchBar>
+    {videos.map(v =>
+      <span>
+        <h3>{v.title}</h3>
+        <img src={`https://i.ytimg.com/vi/${v.vid}/default.jpg`}></img>
+        <audio controls src={`https://www.grepawk.com/yt/${v.vid}.mp3`}></audio>
+        <div>{v.description}</div>
+      </span>)}
+  </div>
 
-
-const Video = (props) => {
-  return (
-    <>
-      <h1>{props.vid}</h1>
-      <video src={props.videoSource}></video>
-    </>
-  );
-};
-
-export default Video;
+export default videopage;

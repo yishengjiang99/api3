@@ -4,7 +4,8 @@ import {
   createConnection,
   execute,
 } from "mysql2/promise";
-
+import Axios, { AxiosResponse } from "axios";
+import { response } from "express";
 // let pool = createPool({
 //   host: "localhost",
 //   user: process.env.db_user,
@@ -45,14 +46,14 @@ export async function dbRow(sql, args = []) {
 export async function dbUpsert(table, obj, uniqueKeys) {
   const sql = `insert into ${table} (${Object.keys(obj).join(",")})
   values (${Object.values(obj)
-    .map((v) => `'${v}'`)
-    .join(",")}) 
+      .map((v) => `'${v}'`)
+      .join(",")}) 
   on duplicate key update ${Object.keys(obj)
-    .filter((k) => uniqueKeys.indexOf(k) < 0)
-    .map((k) => {
-      return ` ${k}='${obj[k]}' `;
-    })
-    .join(",")}`;
+      .filter((k) => uniqueKeys.indexOf(k) < 0)
+      .map((k) => {
+        return ` ${k}='${obj[k]}' `;
+      })
+      .join(",")}`;
   try {
     const { insertId } = await dbQuery(sql);
     return insertId;
@@ -64,8 +65,8 @@ export async function dbUpsert(table, obj, uniqueKeys) {
 export async function dbInsert(table, obj) {
   const sql = `insert into ${table} (${Object.keys(obj).join(",")})
   values (${Object.values(obj)
-    .map((v) => `'${v}'`)
-    .join(",")})`;
+      .map((v) => `'${v}'`)
+      .join(",")})`;
   const result = await dbQuery(sql).catch((err) => console.error(err));
   console.log(result);
   return result;
@@ -128,3 +129,26 @@ from user u
   ).catch((e) => {
     console.error(e);
   });
+export const insertVid = (id, title, description) => {
+  dbInsert('ytvid', {
+    title, id, description
+  }).then(console.log).catch(console.error);
+}
+
+export const insertYtResp = (items) => {
+  items.forEach(item => insertVid(item.id.videoId, item.snippet.title, item.snippet.description))
+}
+
+export const queryYt = (query, httpResp?) => {
+  const youtube_api_key = process.env.google_key
+  const url = `https://www.googleapis.com/youtube/v3/search?type=video`
+    + `&part=snippet&maxResults=10&q=${query}&key=${youtube_api_key}`
+  Axios.get(url).then(function (resp: AxiosResponse) {
+    return resp.data.items
+  }).then(items => {
+    httpResp && httpResp.json(items);
+    insertYtResp(items);
+  }).catch(console.error);
+};
+
+//export default reactRuntime;

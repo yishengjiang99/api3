@@ -31,7 +31,7 @@ const DEFAULT_OPTIONS = {
     templateFiles: []
 };
 
-export const createEngine = () =>{
+export const createEngine = () => {
     var registered = false;
     var moduleDetectRegEx;
 
@@ -64,7 +64,7 @@ export const createEngine = () =>{
         return templateCache[templateFile];
     }
 
-    engineOptions = {...DEFAULT_OPTIONS, engineOptions}; // assign({}, DEFAULT_OPTIONS, engineOptions || {});
+    var engineOptions = { ...DEFAULT_OPTIONS, engineOptions }; // assign({}, DEFAULT_OPTIONS, engineOptions || {});
 
     for (const filename of engineOptions.preloadJS) file_get_contents(filename);
     for (const filename of engineOptions.templateFiles) prepareTemplate(filename);
@@ -100,7 +100,7 @@ export const createEngine = () =>{
             markup += ReactDOMServer.renderToStaticMarkup(
                 React.createElement(component, options, [])
             );
-            
+
         } catch (e) {
             return cb(e);
         } finally {
@@ -132,4 +132,8 @@ export const createEngine = () =>{
     }
 
     return renderFile;
+}
+
+export const renderInline = function (markup: string, output: WritableStream) {
+
 }
