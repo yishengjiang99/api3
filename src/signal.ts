@@ -65,7 +65,7 @@ export class Server extends EventEmitter {
   };
 
   handleMessage(message, participant) {
-    const fromSocket = message.target;
+    const fromSocket: WebSocket = message.target;
     const type = "mesage";
     let msg_str: string = message.data;
     console.log(typeof msg_str);
@@ -92,7 +92,8 @@ export class Server extends EventEmitter {
     const cmd = data.cmd;
 
     if (cmd === "read") {
-      linfs.fopen("drafts/" + data.arg1).download(fromSocket);
+      const content = linfs.fopen("drafts/" + data.arg1).getContent();
+      fromSocket.send(content);
     } else if (cmd === "list") {
       Server.send(participant, {
         type: "fileList",
@@ -187,7 +188,7 @@ export class Channel {
     }
   }
 
-  onPersonLeft(left) { }
+  onPersonLeft(left) {}
   componseNote(from, message: JSON) {
     this.sendToChannel(from, message.toString());
     //azfs.fopen(this.name + "_ch_sore.json").append(Buffer.from(JSON.stringify(message)));
@@ -212,8 +213,8 @@ export class Participant {
     ///  channel.onPersonJoin(this);
   }
 
-  say(message: string) { }
-  shoud(message: string) { }
+  say(message: string) {}
+  shoud(message: string) {}
 }
 function generateUUID() {
   // Public Domain/MIT
