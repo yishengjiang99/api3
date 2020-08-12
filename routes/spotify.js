@@ -47,7 +47,7 @@ var redirect_uri = "https://www.grepawk.com/spotify";
 var stateKey = "spotify_auth_state";
 
 router.get("/login", function (req, res) {
-  var state = '13'
+  var state ='13'
   res.cookie(stateKey, state);
   res.cookie("jshost", req.query.jshost || "");
 
@@ -66,13 +66,13 @@ router.get("/login", function (req, res) {
 
   res.redirect(
     "https://accounts.spotify.com/authorize?" +
-    querystring.stringify({
-      response_type: "code",
-      client_id: client_id,
-      scope: scope,
-      redirect_uri: redirect_uri,
-      state: req.query.jshost,
-    })
+      querystring.stringify({
+        response_type: "code",
+        client_id: client_id,
+        scope: scope,
+        redirect_uri: redirect_uri,
+        state: req.query.jshost,
+      })
   );
 });
 
@@ -100,10 +100,10 @@ const SSRUI = async function (req, res) {
     res.render(
       "welcome",
       {
-        layout: "spotifylayout.html",
+        layout: "spotifylayout.html", 
         headerJs: "spotofy_window.js",
-        access_token: req.query.access_token
-      },
+      access_token: req.query.access_token 
+    },
       (err, html) => {
         err && console.error(err);
         res.write(html)
@@ -163,9 +163,9 @@ const authAudRedirect = (req, res) => {
   if (false) {
     res.redirect(
       "/#" +
-      querystring.stringify({
-        error: "state_mismatch",
-      })
+        querystring.stringify({
+          error: "state_mismatch",
+        })
     );
   } else {
     var authOptions = {
@@ -208,9 +208,9 @@ const authAudRedirect = (req, res) => {
       } else {
         res.redirect(
           "/#" +
-          querystring.stringify({
-            error: "invalid_token",
-          })
+            querystring.stringify({
+              error: "invalid_token",
+            })
         );
       }
     });

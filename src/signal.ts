@@ -93,7 +93,8 @@ export class Server extends EventEmitter {
 
     if (cmd === "read") {
       const content = linfs.fopen("drafts/" + data.arg1).getContent();
-      fromSocket.send(content);
+
+      fromSocket.send("filecontent\n"+content);
     } else if (cmd === "list") {
       Server.send(participant, {
         type: "fileList",

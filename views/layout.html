@@ -1,20 +1,16 @@
 <html>
   <head>
-    <!--preload type='style' src='simple-console.css'-->
-    <!--preload type='script' src='simple-console.js'-->
     <style>
-
       body {
         background-color: black;
         color: white;
         display: grid;
-        grid-template-rows: 1fr 5fr 1fr;
+        grid-template-rows: auto 1fr auto;
         place-items: center;
       }
 
       main {
-        grid-row: 2/5;
-        color:azure;
+        /* grid-row: 2/5; */
       }
 
       header {
@@ -27,25 +23,16 @@
         /* grid-row: 6; */
         background-color: black;
         overflow-y: scroll;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
-      footer > input{
-        width:80em;
-        margin:auto 2em;
-        
       }
     </style>
     <script tag="style" src="/static/tty.css"></script>
+    <style tag="script" src="/static/simple-console.js" />
   </head>
 
   <body>
-    <navbar style='background-color:lightblue;height:3em; width:100%;'>Welcome</navbar>
+    <header></header>
     <main>
       __MAIN__
-    </main>
-    <footer id='console' >
 
 
     </main>
