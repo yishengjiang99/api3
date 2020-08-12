@@ -31,47 +31,51 @@ test("db insert ", async () => {
   expect(insertedId).toBeTruthy();
 });
 
-test("upsert", async function () {
-  const data = {
-    udid: "12345",
-    tracks: "123",
-  };
-  const rname = "room3";
-  const ret = await db.dbUpsert(
-    "room_participants",
-    {
-      roomname: rname,
-      participant_id: data.udid,
-      tracks: JSON.stringify(data.tracks),
-    },
-    ["roomname", "participant_id"]
-  );
+// test("upsert", async function () {
+//   const data = {
+//     udid: "12345",
+//     tracks: "123",
+//   };
+//   const rname = "room3";
+//   const ret = await db.dbUpsert(
+//     "room_participants",
+//     {
+//       roomname: rname,
+//       participant_id: data.udid,
+//       tracks: JSON.stringify(data.tracks),
+//     },
+//     ["roomname", "participant_id"]
+//   );
 
-  const user2 = {
-    udid: "user2",
-    tracks: [],
-  };
-  const ret2 = await db
-    .dbUpsert(
-      "room_participants",
-      {
-        roomname: rname,
-        participant_id: user2.udid,
-        tracks: JSON.stringify(user2.tracks),
-      },
-      ["roomname", "participant_id"]
-    )
-    .then((insertId) => {
-      console.log(insertId);
-      return db.dbQuery(
-        `select * from room_participants where roomname= ? and participant_id != ? 
-    order by last_active desc limit 5`,
-        [name, user2.udid]
-      );
-    })
-    .then((others) => {
-      expect(others.length).toBeGreaterThan(0);
-    });
+//   const user2 = {
+//     udid: "user2",
+//     tracks: [],
+//   };
+//   const ret2 = await db
+//     .dbUpsert(
+//       "room_participants",
+//       {
+//         roomname: rname,
+//         participant_id: user2.udid,
+//         tracks: JSON.stringify(user2.tracks),
+//       },
+//       ["roomname", "participant_id"]
+//     )
+//     .then((insertId) => {
+//       console.log(insertId);
+//       return db.dbQuery(
+//         `select * from room_participants where roomname= ? and participant_id != ? 
+//     order by last_active desc limit 5`,
+//         [name, user2.udid]
+//       );
+//     })
+//     .then((others) => {
+//       expect(others.length).toBeGreaterThan(0);
+//     });
 
-  console.log(ret);
-});
+//   console.log(ret);
+// });
+test("ytinsert", function () {
+  db.queryYt("billie ellish", null);
+
+})

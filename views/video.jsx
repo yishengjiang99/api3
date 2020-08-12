@@ -1,42 +1,15 @@
-import React from "react";
-import {useState,useEffect,useRef} from 'react';
+import React from 'react';
+import SearchBar from './searchBar';
+const videopage = ({ videos }) =>
+  <div>
+    <searchBar></searchBar>
+    {videos.map(v =>
+      <span>
+        <h3>{v.title}</h3>
+        <img src={`https://i.ytimg.com/vi/${v.vid}/default.jpg`}></img>
+        <audio controls src={`https://www.grepawk.com/yt/${v.vid}.mp3`}></audio>
+        <div>{v.description}</div>
+      </span>)}
+  </div>
 
-const useAnimationFrame = callback => {
-  // Use useRef for mutable variables that we want to persist
-  // without triggering a re-render on their change
-  const requestRef = React.useRef();
-  const previousTimeRef = React.useRef();
-  const animate = time => {
-    if (previousTimeRef.current != undefined) {
-      const deltaTime = time - previousTimeRef.current;
-      callback(deltaTime)
-    }
-    previousTimeRef.current = time;
-    requestRef.current = requestAnimationFrame(animate);
-  }
-  
-  React.useEffect(() => {
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current);
-  }, []); // Make sure the effect runs only once
-}
-
-
-const Video = (props) => {
-  const hudRef = useRef();
-  const [t, setT] = useState(0);
-  useAnimationFrame(deltaTime => {
-    // Pass on a function to the setter of the state
-    // to make sure we always have the latest state
-    setT(prevCount => (prevCount + deltaTime * 0.01) % 100);
-  });
-  return (
-    <>
-      <h1>{t}</h1>
-      <canvas width={100} height={20} ref={hudRef}></canvas>
-      <video src={props.videoSource}></video>
-    </>
-  );
-};
-
-export default Video;
+export default videopage;

@@ -62,9 +62,9 @@ function fopen(xpath: string): FileDriver {
     download: (output: Stream.Writable) => {
       const r = fs.createReadStream(xpath);
       r.on("data", () => r.pipe(output));
-      r.on("error", (err) => output.end(err.message));
-      r.on("close", () => {
-        output.end("EOF");
+      r.on("error", (err) => output.write(err.message));
+      r.on("end", () => {
+        output.write("EOF");
       });
     },
     upload: (input: Stream.Readable) => {
