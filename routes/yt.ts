@@ -1,8 +1,8 @@
 import { render } from "react-dom";
 import Axios, { AxiosResponse } from "axios";
-import * as express from 'express';
-import * as db from '../src/db';
-import { createEngine } from '../src/express-react-forked';
+import * as express from "express";
+import * as db from "../src/db";
+import { createEngine } from "../src/express-react-forked";
 //const db = require("../src/db");
 const app = express();
 const router: express.Router = express.Router();
@@ -16,18 +16,23 @@ const PassThrough = require("stream").PassThrough;
 //https://www.youtube.com/watch?v=QFcv5Ma8u8k
 
 router.get("/", (req, res) => {
-  res.writeHead(200, "one moemnt", {
-    "Content-Type": "text/html"
-  });
+  // res.writeHead(200, "one moemnt", {
+  //   "Content-Type": "text/html"
+  // });
 
-  db.dbRow(`select id as vid, title,description from ytvid limit 1`).then(rows => {
-    res.json(rows);
-  }).catch(err => {
-    res.end(err.message);
-  })
-
-
-})
+  db.dbQuery(`select id as vid, title,description from ytvid limit 11`)
+    .then((rows) => {
+      res.render("video.jsx", { videos: rows }, (err, html) => {
+        if (err) res.end(err.message);
+        res.write(html);
+        res.end();
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.end(err.message);
+    });
+});
 
 router.get("/(:vid).mp3", (req, res) => {
   try {
@@ -37,8 +42,7 @@ router.get("/(:vid).mp3", (req, res) => {
 
     const ffm = ffmpeg(stream);
     let start;
-    if (req.query.t)
-      ffm.addOption(`-ss ${~~(start + 0 / 60)}:${start % 60}`);
+    if (req.query.t) ffm.addOption(`-ss ${~~(start + 0 / 60)}:${start % 60}`);
 
     res.writeHead(200, {
       "Content-Type": "audio/mp3",
@@ -47,14 +51,13 @@ router.get("/(:vid).mp3", (req, res) => {
   } catch (e) {
     console.log(e);
   }
-})
+});
 router.get("/search/:query", (req, res) => {
   console.log(process.env.hostname);
 
   const query = req.params.query;
   db.queryYt(query, res);
 });
-
 
 // const test = function (query: string) {
 //   const youtube_api_key = process.env.google_key
