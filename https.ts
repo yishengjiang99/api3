@@ -9,15 +9,31 @@ import * as express from "express";
 import * as fs from "fs";
 import spotify from "./routes/spotify";
 import yt from "./routes/yt";
+var vhost = require("vhost");
 
 const WebSocketServer = require("ws").Server;
-export const ssl = {
+export const options = {
   key: fs.readFileSync(process.env.PRIV_KEYFILE),
   cert: fs.readFileSync(process.env.CERT_FILE),
+  SNICallback: function (domain, cb) {
+    if (fs.existsSync(`/etc/letsencrypt/live/${domain}`)) {
+      cb(
+        null,
+        require("tls").createSecureContext({
+          key: fs.readFileSync(`/etc/letsencrypt/live/${domain}/privkey.pem`),
+          cert: fs.readFileSync(`/etc/letsencrypt/live/${domain}/privkey.pem`),
+        })
+      );
+    } else {
+      cb();
+    }
+  },
 };
-var options = ssl;
 
 var app = express();
+app.use(vhost("piano.grepawk.com"), express.static("../piano/build"));
+app.use(vhost("dsp.grepawk.com"), express.static("../grepaudio"));
+
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 app.set("views", __dirname + "/views");

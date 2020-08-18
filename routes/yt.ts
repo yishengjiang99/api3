@@ -33,8 +33,31 @@ router.get("/", (req, res) => {
       res.end(err.message);
     });
 });
+router.get("/(:search)", (req, res) => {
+  try {
+    const youtube_api_key = process.env.google_key;
+    const url =
+      `https://www.googleapis.com/youtube/v3/search?type=video` +
+      `&part=snippet&maxResults=${10}&q=${
+        req.params.search
+      }&key=${youtube_api_key}`;
+    res.end(url + "\n\n");
+    const format = req.params.format || ".mp3";
+    db.queryYt(req.params.search, 1, function (items) {
+      if (items[0]) {
+        res.redirect(`/yt/vid/${items[0].id.videoId}.mp3`);
+      } else {
+        res.status(404);
+      }
+    });
+  } catch (e) {
+    res.statusMessage = e.message;
+    res.statusCode = 500;
+    res.end();
+  }
+});
 
-router.get("/(:vid).mp3", (req, res) => {
+router.get("/vid/(:vid).mp3", (req, res) => {
   try {
     const stream = ytdl(`https://www.youtube.com/watch?v=${req.params.vid}`, {
       filter: "audio",
