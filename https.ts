@@ -21,7 +21,7 @@ export const options = {
         null,
         require("tls").createSecureContext({
           key: fs.readFileSync(`/etc/letsencrypt/live/${domain}/privkey.pem`),
-          cert: fs.readFileSync(`/etc/letsencrypt/live/${domain}/privkey.pem`),
+          cert: fs.readFileSync(`/etc/letsencrypt/live/${domain}/fullchain.pem`),
         })
       );
     } else {
@@ -31,8 +31,10 @@ export const options = {
 };
 
 var app = express();
-app.use(vhost("piano.grepawk.com"), express.static("../piano/build"));
-app.use(vhost("dsp.grepawk.com"), express.static("../grepaudio"));
+app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
+
+app.use(vhost("dsp.grepawk.com", express.static("../grepaudio")));
+//app.use(vhost("dsp.grepawk.com"), express.static("../grepaudio"));
 
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
@@ -44,15 +46,9 @@ app.use("/spotify", require("./routes/spotify"));
 app.use("/yt", yt);
 
 app.use("/fs", require("./routes/fs"));
-app.use("/", express.static("../piano/build"));
 app.use("/views", express.static("./views"));
-// app.use(function (req, res, next) {
-//   res.header("Cache-Control", "private, no-cache, no-store, must-revalidate");
-//   res.header("Expires", "-1");
-//   res.header("Pragma", "no-cache");
-//   next();
-// });
-app.get("/api", (req, res) => {
+
+app.use("/", (req, res) => {
   res.render("welcome", { host: req.headers.host, t: "s" });
 });
 
@@ -84,7 +80,7 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
   }
 });
 
-httpsServer.listen(443); //process.argv[2] || 3000);
+httpsServer.listen(3333); //process.argv[2] || 3000);
 console.log("listening on 443"); //
 // res.writeHead(200, "one moemnt", {
 //   "Content-Type": "image/jpeg",
