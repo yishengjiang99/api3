@@ -78,8 +78,9 @@ router.get("/", async function (req, res) {
     -H 'Authorization: Basic ${Buffer.from(client_id + ":" + client_secret).toString("base64")}'\
     -H 'Content-Type: application/json'
     -d 'code=${req.query.code}&grant_type=authorization_code'`;
-    const output = execSync(curll);
-    console.log(output, curll);
+    res.end(curll);
+
+
   }
 
   if (req.query.login) {
