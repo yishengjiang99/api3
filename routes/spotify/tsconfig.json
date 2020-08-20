@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "lib": ["es2018", "DOM"],
+    "module": "CommonJS",
+    "esModuleInterop": false,
+    "jsx": "preserve",
+    "target": "ES2018",
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "declaration": true,
+    "types": ["node"],
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": false,
+    "alwaysStrict": true,
+    "strictFunctionTypes": false
+  },
+  "include": ["src", "routes"]
+}

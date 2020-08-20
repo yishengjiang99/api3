@@ -1,6 +1,6 @@
 import Axios, { AxiosResponse, AxiosError } from "axios";
-import { string } from "prop-types";
 import { Writable } from "stream";
+import { stringify } from "querystring";
 
 const API_DIR = "https://api.spotify.com/v1";
 const redirect_uri = "https://www.grepawk.com/spotify";
@@ -16,7 +16,7 @@ declare interface ISdkProp {
 }
 
 export const loginUrl = (jwt) =>
-  `https://accounts.spotify.com/authorize?${queryString.stringify({
+  `https://accounts.spotify.com/authorize?${stringify({
     response_type: "code",
     client_id: client_id,
     scope: [
@@ -34,30 +34,7 @@ export const loginUrl = (jwt) =>
   })}`;
 
 export const SDK = (props?: ISdkProp) => {
-  const { code, accessToken, refreshToken, expiry, stdout, stderr } =
-    props || {};
-
-  const authTokenFromCode = (code: string) => {
-    Axios.post(
-      "https://accounts.spotify.com/api/token",
-      {
-        code: code,
-        grant_type: "authorization_code",
-      },
-      {
-        headers: {
-          Accept: "applicatoin/json",
-          "Content-Type": "form/multipart",
-          Authorization: `Basic ${Buffer.from(
-            client_id + ":" + client_secret
-          ).toString("base64")}`,
-        },
-      }
-    ).then((resp) => {
-      resp.data();
-    });
-  };
-
+  const { code, accessToken, stdout, stderr } = props || {};
   const fetchAPI = (uri) => {
     console.log(uri);
     return Axios.get(API_DIR + uri, {
@@ -87,8 +64,28 @@ export const SDK = (props?: ISdkProp) => {
     ).catch((err) => console.error(err));
   return {
     accessToken,
-    authTokenFromCode,
     fetchAPIPut,
     fetchAPI,
   };
+};
+
+export const authTokenFromCode = (code: string) => {
+  Axios.post(
+    "https://accounts.spotify.com/api/token",
+    {
+      code: code,
+      grant_type: "authorization_code",
+    },
+    {
+      headers: {
+        Accept: "applicatoin/json",
+        "Content-Type": "form/multipart",
+        Authorization: `Basic ${Buffer.from(
+          client_id + ":" + client_secret
+        ).toString("base64")}`,
+      },
+    }
+  ).then((resp) => {
+    return resp?.data?.accessToken;
+  });
 };

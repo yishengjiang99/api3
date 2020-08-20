@@ -15,8 +15,7 @@
   "author": "Electrode <https://github.com/electrode-io/electrode>",
   "license": "Apache-2.0",
   "dependencies": {
-    "@xarc/render-context": "^1.0.0",
-    "@xarc/tag-renderer": "./tag-renderer"
+    "@xarc/render-context": "^1.0.0"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
@@ -84,8 +83,7 @@
   },
   "fyn": {
     "dependencies": {
-      "@xarc/render-context": "../xarc-render-context",
-      "@xarc/tag-renderer": "./tag-renderer"
+      "@xarc/render-context": "../xarc-render-context"
     },
     "devDependencies": {}
   },
