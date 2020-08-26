@@ -1,0 +1,4 @@
+tagRenderer has
+- tagTemplate
+- render() function
+   -- renderContext()

@@ -10,6 +10,7 @@ import * as fs from "fs";
 import * as spotify from "./routes/spotify";
 import * as auth from './routes/auth'
 import yt from "./routes/yt";
+var vhost = require("vhost");
 
 const connect = require('connect')
 const app = express();
@@ -34,7 +35,6 @@ app.use("/spotify", require("./routes/spotify"));
 app.use("/yt", yt);
 app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
-app.use("/", express.static("../piano/build"));
 app.use("/views", express.static("./views"));
 
 export const httpsTLS = {
