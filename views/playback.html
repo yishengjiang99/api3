@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <title>Spotify Premium Player</title>
+<link href="//cdn.muicss.com/mui-0.10.2/css/mui.min.css" rel="stylesheet" type="text/css" />
+<script src="//cdn.muicss.com/mui-0.10.2/js/mui.min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" crossorigin/>
+    </head>
+    <body>
+<style> 
+body{
+    width:100vw;
+    height:100vh;
+    overflow: hidden;
+    background-color:black;
+    color: white;
+}
+#container{
+    display: grid;
+    width: 100vw;
+    height:100vh;
+    grid-gap: 10px;
+    color: white;
+}
+
+
+.header {
+    grid-row: 1/2;
+    grid-column: 2 / 5;
+    background-color: #222222;
+}
+.sidenav {
+    grid-column: 1;
+    grid-row: 1 / 4;
+    background-color: #333333;
+    
+}
+
+.main{
+    grid-column: 2 / 4;
+    grid-row: 2 / 8;
+    background-color:#555555;
+}
+.nowplaying{
+    grid-column: 4 / 5;
+    grid-row: 2 / 8;
+    background-color:#555555;  
+}
+.localchannel{
+    grid-column: 1;
+    grid-row: 4; 
+    background-color: #333333;
+    
+}
+.band_freq_out{
+    grid-column: 1;
+    grid-row: 5/6;
+    background-color: #333333;
+}
+
+
+.footer{
+    padding:20px;
+    grid-row: 8/10;
+    grid-column: 1 / 5;
+    background-color: #333333;
+}
+
+.song-controls button{
+    cursor:pointer;
+}
+</style>
+<div class="mui-appbar">
+            <span id='welcome'></span>
+
+</div>
+<div id=container>
+    <div class=header id='header'>
+    
+    
+    </div>
+    <div class=sidenav id='playlist'>
+
+    </div>
+    <div class='band_freq_out'>
+        <canvas id='band_freq_out'></canvas>
+    </div>
+    <div class='localchannel'>
+        <audio controls autoplay id=localstream></audio>
+    </div>
+    <div class=main id='tracklist'>
+
+    </div>
+    <div class='nowplaying' class="d-flex justify-content-center">
+        <div class='card'>
+          <img class='song-thumbnail' width=300 height=300 >
+            <div class="container">
+                <h4 class='song-name'></h4>
+                <div class="mui-divider"></div>
+
+                <p class='artist-name'></p>
+            </div>
+        </div>
+        <button id=shareAudio>Share Audio</button>
+        <div id='debug'></div>
+    </div>
+   
+    <div class=footer>  
+         <div id=player class="container song-player-container" 
+            style='position:relative; width:100%; height:100%'>
+                                
+            <div class="sliderr">
+                 <span class='position'></span> 
+                 <span><input type=range style='width:80%' id='progress' min=0 max="100"></input></span>
+                   <span class='duration'></span>
+            </div>
+   
+            <div class="song-controls" style='display:grid; height:50px; width: 300px; grid-gap:10px'>
+                <button id=rewind class="rewind" style="grid-column:1/2">
+                    <i class="fa fa-backward"> </i>
+                </button>
+                <button id="play" class="play-btn" style="grid-column:2/3">
+                    <i class="fa fa-play"> </i>
+                </button>
+
+                <button id=stop class="pause-btn"  style="grid-column:2/3; display:none">
+                    <i class="fa fa-stop" aria-hidden="true"> </i>
+                </button>
+
+
+                <button id=forward class="next-song"  style="grid-column:3/4">
+                    <i class="fa fa-step-forward forward" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id='nexttracks'  style='position:absolute; right:3em; width:200px; height:100%; overflow-y:scroll'>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script> -->
+    <script type="module">
+    
+        import {checkAuth, getPlayList} from "./radio/spotifyClient.jsx";
+        import BroadcasterClient from './twitch/BroadcastClient.js'
+        import AnalyzerView from "./AnalyzerView.js"
+        const token = checkAuth({containerId: "welcome"});
+        const localChannel = document.getElementById("localstream");
+        let ctx;
+        if (token) {
+            getPlayList(token, "playlist");
+
+        }
+        document.querySelector("#shareAudio").onclick=async ()=>{
+            var userId = window.location.search.replace("?", "")
+            || prompt("enter display name", (localStorage.getItem("displayName") || ""))
+            || ("user_" + Math.floor(Math.random() * 10));
+            var stream
+            try{
+                ctx = ctx || new AudioContext();
+                debugger;
+                stream =  await navigator.mediaDevices.getDisplayMedia({audio:true, video:true});  
+            }catch(e){
+                debugger;
+                console.log(e);
+            }
+        debugger;
+        localChannel.srcObject= stream;
+            try{
+               localChannel.muted = true;
+
+                const source = ctx.createMediaStreamSource(stream);
+                var av =  AnalyzerView(source, { fft: 256});
+                av.histogram("band_freq_out"); //"{ fft: 256 }));
+
+                var passthrough =  ctx.createScriptProcessor(16384, 2, 2);
+                passthrough.onaudioprocess = (e) => {
+
+                    // The input buffer is the song we loaded earlier
+                    var inputBuffer = e.inputBuffer;
+
+                    // The output buffer contains the samples that will be modified and played
+                    var outputBuffer = e.outputBuffer;
+                    var buffer = [];
+                    for (var channel = 0; channel < outputBuffer.numberOfChannels; channel++) {
+                        var inputData = inputBuffer.getChannelData(channel);
+                        var outputData = outputBuffer.getChannelData(channel);
+                    // Loop through the 4096 samples
+                        for (var sample = 0; sample < inputBuffer.length; sample++) {
+                            // make output equal to the same as the input
+                            outputData[sample] = inputData[sample];
+                        }
+                    }
+                };
+                const postGain = ctx.createGain(1);
+                av.analyzer.connect(passthrough);
+                passthrough.connect(postGain).connect(ctx.destination);
+                const peer = ctx.createMediaStreamDestination();
+                postGain.gain.setValueAtTime(0,ctx.currentTime);
+      
+                BroadcasterClient().broadcastAudio(userId, source.stream);
+            }catch(e){
+                console.log(e);
+            }
+
+
+
+        }
+    </script>
+    </body>
+</html>
+
