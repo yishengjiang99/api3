@@ -131,4 +131,4 @@ export const createEngine = () => {
 export const renderInline = function (
   markup: string,
   output: WritableStream
-) {};
+) { };

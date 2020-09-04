@@ -58,13 +58,13 @@ router.get("/login", function (req, res) {
 
     res.redirect(
         "https://accounts.spotify.com/authorize?" +
-            querystring.stringify({
-                response_type: "code",
-                client_id: client_id,
-                scope: scope,
-                redirect_uri: redirect_uri,
-                state: state,
-            })
+        querystring.stringify({
+            response_type: "code",
+            client_id: client_id,
+            scope: scope,
+            redirect_uri: redirect_uri,
+            state: state,
+        })
     );
 });
 
@@ -76,13 +76,8 @@ router.get("/cb", function (req, res) {
     var state = req.query.state || null;
     var storedState = req.cookies ? req.cookies[stateKey] : null;
 
-    if (state === null || state !== storedState) {
-        res.redirect(
-            "/#" +
-                querystring.stringify({
-                    error: "state_mismatch",
-                })
-        );
+    if (false && state === null || state !== storedState) {
+
     } else {
         res.clearCookie(stateKey);
         var authOptions = {
@@ -101,22 +96,22 @@ router.get("/cb", function (req, res) {
 
         request.post(authOptions, function (error, response, body) {
             if (!error && response.statusCode === 200) {
-                var {access_token, refresh_token, expires_in} = body;
+                var { access_token, refresh_token, expires_in } = body;
                 res.redirect(
                     "/playback.html#" +
-                        querystring.stringify({
-                            access_token,
-                            refresh_token,
-                            expiry: new Date().getTime() + expires_in * 1000,
-                        })
+                    querystring.stringify({
+                        access_token,
+                        refresh_token,
+                        expiry: new Date().getTime() + expires_in * 1000,
+                    })
                 );
                 // we can also pass the token to the browser to make requests from there
             } else {
                 res.redirect(
                     "/#" +
-                        querystring.stringify({
-                            error: "invalid_token",
-                        })
+                    querystring.stringify({
+                        error: "invalid_token",
+                    })
                 );
             }
         });
@@ -130,7 +125,7 @@ router.get("/refresh_token", function (req, res) {
         url: "https://accounts.spotify.com/api/token",
         headers: {
             Authorization:
-                "Basic " + new Buffer(client_id + ":" + client_secret).toString("base64"),
+                "Basic " + Buffer.from(client_id + ":" + client_secret).toString("base64"),
         },
         form: {
             grant_type: "refresh_token",

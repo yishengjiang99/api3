@@ -1,0 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>rttt</title>
+    <script type="module" src="./components/src/index.js"></script>
+        <script src='tonejs-ui.js'></script>
+
+    <script
+      async
+      custom-element="amp-ad"
+      src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"
+    ></script>
+  </head>
+  <body>
+    <tone-content>
+      <input type=range value="0.2" min="0.0001" max='.5' step='0.001' id='attack'></input>
+    </tone-content>
+          <piano-keyboard> </piano-keyboard>
+
+
+    <script>
+    var asdr={
+      attack: 0.01,
+      decay: 0.1,
+      sustain: 0.8,
+      release: 0.01, //0.01
+    }
+    const piano = document.querySelector("piano-keyboard");
+   document.querySelector("tone-slider#attack").shadowRoot.querySelector("input[type=range]").oninput=function(e){
+     debugger;
+     piano.attack =parseFloat(e.target.value)
+   }
+    // document.querySelector("piano-keyboard");
+    </script>
+  </body>
+</html>
