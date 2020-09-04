@@ -1,8 +1,0 @@
-{
-  "presets": [
-    ["@babel/preset-env", { "targets": "es6" }],
-
-    ["@babel/preset-react", { "jsx": "reserve" }]
-  ],
-  "plugins": ["@babel/plugin-proposal-class-properties"]
-}
