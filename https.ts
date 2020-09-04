@@ -46,6 +46,7 @@ export const httpsTLS = {
   SNICallback: function (domain, cb) {
     if (!existsSync(`/etc/letsencrypt/live/${domain}`)) {
       cb();
+     return;
     }
     cb(null, require('tls').createSecureContext({
       key: readFileSync(`/etc/letsencrypt/live/${domain}/privkey.pem`),
