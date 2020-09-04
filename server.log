@@ -1,0 +1,351 @@
+[33m[nodemon] 2.0.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): lib/**/* src/**/* https.ts views/**/* routes/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `ts-node https.ts 1`[39m
+listening on 443
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 77,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 78,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 79,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 80,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+string
+csv:compose,11565.67499996163,130.81,0,,11565.67499996163,
+before comp
+string
+csv:compose,11565.67499996163,130.81,0,,11565.67499996163,
+before comp
+string
+csv:compose,13020.68999997573,146.83,2,,13020.68999997573,
+before comp
+string
+csv:compose,13020.68999997573,146.83,2,,13020.68999997573,
+before comp
+string
+csv:compose,14250.684999977238,164.81,4,,14250.684999977238,
+before comp
+string
+csv:compose,14250.684999977238,164.81,4,,14250.684999977238,
+before comp
+string
+csv:compose,14565.829999977723,146.83,2,,14565.829999977723,
+before comp
+string
+csv:compose,14565.829999977723,146.83,2,,14565.829999977723,
+before comp
+string
+csv:compose,15015.674999973271,164.81,4,,15015.674999973271,
+before comp
+string
+csv:compose,15015.674999973271,164.81,4,,15015.674999973271,
+before comp
+string
+csv:compose,15600.269999995362,130.81,0,,15600.269999995362,
+before comp
+string
+csv:compose,15600.269999995362,130.81,0,,15600.269999995362,
+before comp
+string
+csv:compose,16845.64999997383,164.81,4,,16845.64999997383,
+before comp
+string
+csv:compose,16845.64999997383,164.81,4,,16845.64999997383,
+before comp
+string
+csv:compose,36343.08500000043,246.94,11,,36343.08500000043,
+before comp
+string
+csv:compose,36343.08500000043,246.94,11,,36343.08500000043,
+before comp
+string
+csv:compose,36639.20499995584,246.94,11,,36639.20499995584,
+before comp
+string
+csv:compose,36639.20499995584,246.94,11,,36639.20499995584,
+before comp
+string
+csv:compose,37871.19499995606,174.61,5,,37871.19499995606,
+before comp
+string
+csv:compose,37871.19499995606,174.61,5,,37871.19499995606,
+before comp
+string
+csv:compose,39495.54499995429,130.81,0,,39495.54499995429,
+before comp
+string
+csv:compose,39495.54499995429,130.81,0,,39495.54499995429,
+before comp
+string
+csv:compose,39930.36499997834,146.83,2,,39930.36499997834,
+before comp
+string
+csv:compose,39930.36499997834,146.83,2,,39930.36499997834,
+before comp
+string
+csv:compose,40230.46999995131,164.81,4,,40230.46999995131,
+before comp
+string
+csv:compose,40230.46999995131,164.81,4,,40230.46999995131,
+before comp
+string
+csv:compose,40470.13999999035,164.81,4,,40470.13999999035,
+before comp
+string
+csv:compose,40470.13999999035,164.81,4,,40470.13999999035,
+before comp
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 81,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+[33m[nodemon] 2.0.4[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching path(s): lib/**/* src/**/* https.ts views/**/* routes/**/*[39m
+[33m[nodemon] watching extensions: js,mjs,json[39m
+[32m[nodemon] starting `ts-node https.ts`[39m
+listening on 443
+[31m[nodemon] app crashed - waiting for file changes before starting...[39m
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 82,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 83,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+string
+csv:compose,5123.989999992773,130.81,0,,5123.989999992773,
+before comp
+string
+csv:compose,5123.989999992773,130.81,0,,5123.989999992773,
+before comp
+string
+csv:compose,6234.254999959376,146.83,2,,6234.254999959376,
+before comp
+string
+csv:compose,6234.254999959376,146.83,2,,6234.254999959376,
+before comp
+string
+csv:compose,6789.214999997057,164.81,4,,6789.214999997057,
+before comp
+string
+csv:compose,6789.214999997057,164.81,4,,6789.214999997057,
+before comp
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 84,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 85,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 86,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 87,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 88,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 89,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 90,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+string
+list
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 91,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 92,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 93,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 94,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 95,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 96,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 97,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 98,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 99,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 100,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 101,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}
+ResultSetHeader {
+  fieldCount: 0,
+  affectedRows: 1,
+  insertId: 102,
+  info: '',
+  serverStatus: 2,
+  warningStatus: 0
+}

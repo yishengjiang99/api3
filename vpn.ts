@@ -18,54 +18,33 @@ const keys = {
   cert: fs.readFileSync(process.env.CERT_FILE),
 };
 
-export class VPN {
-  server: Server;
-  map: (string) => number | null;
+interface DestinationProp {
+  host?: string,
+  port?: number,
+  path?: string
+}
 
-  constructor(options) {
-    this.server = options.httpsServer;
+export const proxy_pass = (clientSocket, destination: DestinationProp) => {
+  const { host, port, path } = destination;
 
-    this.map =
-      options.map ||
-      function (pathname) {
-        return 3000;
-      };
-
-    this.server.on("connect", this._handleConnect);
-  }
-
-  _handleConnect(
-    req: http.IncomingMessage,
-    clientSocket: Socket,
-    head: Buffer
-  ) {
-    const { path, hostname, pathname } = parse(req.url);
-    const port = this.map(pathname);
-console.log(path,hostname,pathname);
-    if (!port) {
-      clientSocket.end("HTTP/1.1 404 not found \r\n");
-      return;
+  const proxyPass = connect({
+    ...{
+      host: "127.0.0.1",
+      port: 300,
+      path: "/"
+    },
+    ...{
+      host, port, path
     }
-    if (port == -1) {
-      return; //passthrough
-      //      this.server.handleConnect(req, clientSocket, head);
-    }
-
-    const proxyPass = connect({
-      host: hostname,
-      port: port,
-      path: path,
-    });
-
-    proxyPass.on("error", (evt) => clientSocket.end(`HTTP/1.1 500 rekt`));
-    proxyPass.on("end", () => clientSocket.end());
-    clientSocket.on("end", () => proxyPass.end());
-    clientSocket.on("connect", () => {
-      clientSocket.write(
-        `HTTP/1.1 200 YOU GOT MAIL!! \r\n` +
-          "Proxy-agent: Yisheng Jiang" +
-          "\r\n\r\n"
-      );
-    });
-  }
+  });
+  proxyPass.on("error", (evt) => clientSocket.end(`HTTP/1.1 500 rekt`));
+  proxyPass.on("end", () => clientSocket.end("e"));
+  clientSocket.on("end", () => proxyPass.end("2"));
+  clientSocket.on("connect", () => {
+    clientSocket.write(
+      `HTTP/1.1 200 YOU GOT MAIL!! \r\n` +
+      "Proxy-agent: Yisheng Jiang" +
+      "\r\n\r\n"
+    );
+  });
 }

@@ -6,7 +6,7 @@ export default function ({ tracks, onClick }) {
         <ul>
             {tracks.map((track, idx) =>
                 <li key={idx}>
-                    {trackRow(track)}
+                    <span>{track.name}</span>
                 </li>
             )}
         </ul>

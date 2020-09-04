@@ -1,0 +1,99 @@
+{
+  "name": "fsdb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/mocha": "^8.0.1",
+    "@types/shelljs": "^0.8.8",
+    "chalk": "^4.1.0",
+    "find-root": "^1.1.0",
+    "shelljs": "^0.8.4",
+    "ts-mocha": "^7.0.0",
+    "ts-node": "^8.10.2",
+    "xclap": "^0.2.53"
+  },
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.7.6",
+    "@types/sinon": "^9.0.0",
+    "@types/sinon-chai": "^3.2.4",
+    "@typescript-eslint/eslint-plugin": "^2.21.0",
+    "@typescript-eslint/parser": "^2.21.0",
+    "@xarc/module-dev": "^2.2.4",
+    "babel-eslint": "^10.1.0",
+    "chai": "^4.2.0",
+    "eslint": "^6.8.0",
+    "eslint-config-walmart": "^2.2.1",
+    "eslint-plugin-filenames": "^1.1.0",
+    "eslint-plugin-jsdoc": "^21.0.0",
+    "mocha": "^7.1.0",
+    "nyc": "^15.0.0",
+    "sinon": "^7.2.6",
+    "sinon-chai": "^3.3.0",
+    "source-map-support": "^0.5.16",
+    "ts-node": "^8.6.2",
+    "typedoc": "^0.17.4",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "xrun xarc/test-only",
+    "prepublishOnly": "xrun [[build, docs], xarc/check]",
+    "docs": "xrun xarc/docs",
+    "coverage": "xrun xarc/test-cov"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "files": [
+    "dist"
+  ],
+  "mocha": {
+    "require": [
+      "ts-node/register",
+      "source-map-support/register",
+      "@xarc/module-dev/config/test/setup.js"
+    ],
+    "recursive": true
+  },
+  "nyc": {
+    "extends": [
+      "@istanbuljs/nyc-config-typescript"
+    ],
+    "all": true,
+    "reporter": [
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "exclude": [
+      "*clap.js",
+      "*clap.ts",
+      "coverage",
+      "dist",
+      "docs",
+      "gulpfile.js",
+      "test",
+      "xrun*.js",
+      "xrun*.ts"
+    ],
+    "check-coverage": true,
+    "statements": 100,
+    "branches": 100,
+    "functions": 100,
+    "lines": 100,
+    "cache": false
+  },
+  "@xarc/module-dev": {
+    "features": [
+      "eslint",
+      "eslintTS",
+      "mocha",
+      "typedoc",
+      "typescript"
+    ]
+  }
+}
