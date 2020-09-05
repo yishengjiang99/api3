@@ -22,7 +22,7 @@ async function conn(): Connection {
 		user: process.env.db_user,
 		password: process.env.db_password,
 		database: "grepawk",
-		port: 3307,
+		port: 3306,
 	});
 }
 
