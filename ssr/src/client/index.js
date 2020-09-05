@@ -18,7 +18,6 @@ export const PlayListMenu = ({ playlists }) => (
 
 export const TrackRow = ({ item }) => {
     const _item = item.track || item;
-    console.log("======", _item)
     const artist = _item.artists.map(a => a.name).join(", ");
 
     const track = {
@@ -27,49 +26,53 @@ export const TrackRow = ({ item }) => {
         artist: artist,
         trackID: _item.id
     };
-    console.log('trackrowwwww', track)
     return (<li>
-        <div class="mui--text-light mui--text-title">{track.name}</div>
+        <div className="mui--text-light mui--text-title">{track.name}</div>
 
-        <button class="mui-btn mui-btn--primary mui-btn--fab">+</button>
+        <button className="mui-btn">+</button>
     </li>);
 }
-
+export const ListView = ({ children }) => <ul>{children}</ul>
 
 export function NowPlaying({ item }) {
-    console.log(item);
     const _item = item.track || item;
-
-    const track = {
-        imgURL: _item.album.images[0].url,
-        name: _item.name,
-        artist: _item.artists.map(a => a.name).toString(),
-        trackID: _item.id
-    };
-    return (
-        <div className="nowplaying d-flex justify-content-center">
-            <div className='card'>
-                <img className='song-thumbnail' width={300} height={300} src={track.imgURL} />
-                <div className="container">
-                    <h4 className='song-name'>{track.name}</h4>
-                    <div className="mui-divider"></div>
-                    <p className='artist-name'>{track.artistName}</p>
+    try {
+        const track = {
+            imgURL: _item.album.images[0].url,
+            name: _item.name,
+            artist: _item.artists.map(a => a.name).toString(),
+            trackID: _item.id
+        };
+        return (
+            <div className="nowplaying d-flex justify-content-center">
+                <div className='card'>
+                    <img className='song-thumbnail' width={300} height={300} src={track.imgURL} />
+                    <div className="container">
+                        <h4 className='song-name'>{track.name}</h4>
+                        <div className="mui-divider"></div>
+                        <p className='artist-name'>{track.artist}</p>
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    } catch (e) {
+        console.error(e);
+        return null;
+    }
+
 }
-export const AppBar = ({ onSearch, leftButton, rightButton, searchResultItems }) => {
+const Button = (props) => <button className='mui-btn' onClick={props.onClick}>{props.text}</button>
+
+export const AppBar = ({ loginUrl, onSearch, leftButton, rightButton, searchResultItems = [] }) =>
     <React.Fragment>
-        <div class="mui-appbar">
-            <SearchBar onInput={[]} />
-            <span id="welcome">{rightButton}</span>
+        <div className="mui-appbar">
+            {loginUrl && (<a target='_blank' href={loginUrl}><Button text="Login"></Button></a>)}
         </div>
-        <div class='search-result'>
-            <ListView list={searchResultItem} />
+        <div className='search-result'>
+            <ListView list={searchResultItems} />
         </div>
     </React.Fragment>
-}
+
 export const SpotifyFooter = () => (
     <div className="footer">
         <div id="player" className="container song-player-container">

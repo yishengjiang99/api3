@@ -1,7 +1,7 @@
 const { readFileSync, createReadStream } = require('fs');
 const { resolve } = require("path")
 const staticMocks = {
-    '/me/tracks': 'me-tracks.json',
+    '/me/top/tracks': 'top-tracks.json',
     '/me/playlists': 'me-playlists.json',
     '/me/player/recently-played': "recently-played.json",
     "/search": "search-track.json"

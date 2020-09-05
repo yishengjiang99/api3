@@ -17,8 +17,7 @@ export const sdk = (props) => {
 					Authorization: "Bearer " + access_token,
 				},
 			})
-			.then((response) => response.data)
-			.catch((e) => console.error(e));
+			.then((response) => response.data);
 		//console.log(response.data));// && return response.data)
 	};
 
@@ -41,7 +40,7 @@ const client_id = process.env.spotify_client_id;
 const client_secret = process.env.spotify_secret;
 const redirect_uri = "https://www.grepawk.com/spotify";
 const scopes = [
-	"top-list-read",
+	"user-top-read",
 	"user-read-email",
 	"user-read-playback-state",
 	"user-modify-playback-state",
@@ -73,6 +72,8 @@ export function checkAuth(
 		};
 		req.session.sdk = sdk(req.session.auth);
 		next();
+	} else if (req.query.code) {
+		authAudRedirect(req, res);
 	} else if (req.session && req.session.auth) {
 		if (
 			req.session.auth.access_token &&
@@ -81,14 +82,11 @@ export function checkAuth(
 			req.session.sdk = sdk(req.session.auth);
 			next();
 		} else {
-			req.session.auth = null;
-			next();
-			//			res.redirect(loginURL);
+			res.redirect(loginURL);
 		}
-	} else if (req.query.code) {
-		authAudRedirect(req, res);
 	} else {
-		next();
+		res.redirect(loginURL);
+
 		// res.redirect("/login")
 		//	res.redirect(loginURL);
 	}

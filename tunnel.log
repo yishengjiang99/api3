@@ -24,3 +24,56 @@ Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 5.3.0-1034-azure x86_64)
 6 updates are security updates.
 
 
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 5.3.0-1035-azure x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sat Sep  5 20:49:20 UTC 2020
+
+  System load:  0.0                Processes:           145
+  Usage of /:   66.8% of 28.90GB   Users logged in:     0
+  Memory usage: 21%                IP address for eth0: 10.0.1.4
+  Swap usage:   0%
+
+ * Kubernetes 1.19 is out! Get it in one command with:
+
+     sudo snap install microk8s --channel=1.19 --classic
+
+   https://microk8s.io/ has docs and details.
+
+ * Canonical Livepatch is available for installation.
+   - Reduce system reboots and improve kernel security. Activate at:
+     https://ubuntu.com/livepatch
+
+50 packages can be updated.
+0 updates are security updates.
+
+
+*** System restart required ***
+Last login: Sat Sep  5 20:48:00 2020 from 24.5.51.83
+-bash: /home/AzureUser/emsdk: Is a directory
+]0;AzureUser@greepp: ~[01;32mAzureUser@greepp[00m:[01;34m~[00m$ 
+]0;AzureUser@greepp: ~[01;32mAzureUser@greepp[00m:[01;34m~[00m$ ^C
+]0;AzureUser@greepp: ~[01;32mAzureUser@greepp[00m:[01;34m~[00m$ q
+
+Command 'q' not found, but can be installed with:
+
+sudo snap install q                       # version 1.6.3-1, or
+sudo apt  install python-q-text-as-data 
+sudo apt  install python3-q-text-as-data
+
+See 'snap info q' for additional versions.
+
+]0;AzureUser@greepp: ~[01;32mAzureUser@greepp[00m:[01;34m~[00m$ q
+
+Command 'q' not found, but can be installed with:
+
+sudo snap install q                       # version 1.6.3-1, or
+sudo apt  install python-q-text-as-data 
+sudo apt  install python3-q-text-as-data
+
+See 'snap info q' for additional versions.
+
+]0;AzureUser@greepp: ~[01;32mAzureUser@greepp[00m:[01;34m~[00m$ logout
