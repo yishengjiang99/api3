@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-const SideNav = ({ children }) => {
+export const SideNav = ({ children }) => {
     <div className='sidenav'>
         {children}
     </div>
@@ -116,18 +116,18 @@ export const TrackList = ({ trackList }) =>
         </ul>
     </div>
 
-export const App = ({ playlists }) => {
-    <div id='container'>
-        <AppBar></AppBar>
+export const App = ({ nowPlaying, playlists, trackList, loginUrl }) => {
+    <React.Fragment>
+        <AppBar loginUrl={loginUrl}></AppBar>
         <SideNav>
             <PlayListMenu playlists={playlists}>
             </PlayListMenu>
-            <NowPlaying>
+            <NowPlaying item={nowPlaying}>
 
             </NowPlaying>
-            <TrackList>
+            <TrackList trackList={trackList}>
 
             </TrackList>
         </SideNav>
-    </div>
+    </React.Fragment>
 }

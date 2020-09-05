@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-
 <html>
 	<head>
 		<title>Spotify Premium Plasyer</title>
-
 		<link rel="stylesheet" href="/spotify/bundle.css" />
-
-		<!---->
+		<script src="/spotify/bundle.js"></script>
 		<style>
 			body {
 				width: 100vw;
@@ -94,17 +91,16 @@
 	</head>
 
 	<body>
-		<!--(AppBar)-->
-		<div class="mui-container">
-			<div class="nowplaying">
-				<!--BREAK-->
-			</div>
-			<div class="main tracklist">
-				<!--BREAK-->
-			</div>
-			<div class="sidenav">
-				<!--BREAK-->
-			</div>
+		<div id="root" class="mui-container">
+			<!--BREAK-->
 		</div>
+		<script type="module">
+			document.onload = () => {
+				ReactDOM.render(
+					React.createElement("App", window.initState),
+					document.getElementById("root")
+				);
+			};
+		</script>
 	</body>
 </html>
