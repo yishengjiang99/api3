@@ -1,0 +1,681 @@
+{
+  "tracks" : {
+    "href" : "https://api.spotify.com/v1/search?query=britney+spears&type=track&market=US&offset=5&limit=10",
+    "items" : [ {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/2tve5DGwub1TtbX1khPX5j"
+        },
+        "href" : "https://api.spotify.com/v1/albums/2tve5DGwub1TtbX1khPX5j",
+        "id" : "2tve5DGwub1TtbX1khPX5j",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b27354c6edd554935d73e159e199",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e0254c6edd554935d73e159e199",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d0000485154c6edd554935d73e159e199",
+          "width" : 64
+        } ],
+        "name" : "Circus (Deluxe Version)",
+        "release_date" : "2008-12-02",
+        "release_date_precision" : "day",
+        "total_tracks" : 15,
+        "type" : "album",
+        "uri" : "spotify:album:2tve5DGwub1TtbX1khPX5j"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 192360,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI10801081"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/7jk7gqyEonmVVYahZN5zhW"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/7jk7gqyEonmVVYahZN5zhW",
+      "id" : "7jk7gqyEonmVVYahZN5zhW",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Circus",
+      "popularity" : 71,
+      "preview_url" : "https://p.scdn.co/mp3-preview/8085b6ee836e9cbb7032576fcf8f1b51d9a53c0d?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:7jk7gqyEonmVVYahZN5zhW"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/1ePkYcH5ZQCb1b4tQeiEDj"
+        },
+        "href" : "https://api.spotify.com/v1/albums/1ePkYcH5ZQCb1b4tQeiEDj",
+        "id" : "1ePkYcH5ZQCb1b4tQeiEDj",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b273ca10fae7d292c52f7e8b11ca",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e02ca10fae7d292c52f7e8b11ca",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d00004851ca10fae7d292c52f7e8b11ca",
+          "width" : 64
+        } ],
+        "name" : "Blackout",
+        "release_date" : "2007-10-25",
+        "release_date_precision" : "day",
+        "total_tracks" : 15,
+        "type" : "album",
+        "uri" : "spotify:album:1ePkYcH5ZQCb1b4tQeiEDj"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 251240,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI10700609"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6ic8OlLUNEATToEFU3xmaH"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6ic8OlLUNEATToEFU3xmaH",
+      "id" : "6ic8OlLUNEATToEFU3xmaH",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Gimme More",
+      "popularity" : 74,
+      "preview_url" : "https://p.scdn.co/mp3-preview/933d11a18d0ec4884f4a9620f4d628a7295e8faf?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:6ic8OlLUNEATToEFU3xmaH"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/5rlB2HPoNHg2m1wmmh0TRv"
+        },
+        "href" : "https://api.spotify.com/v1/albums/5rlB2HPoNHg2m1wmmh0TRv",
+        "id" : "5rlB2HPoNHg2m1wmmh0TRv",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b2733c9f7b8faf039c7607d12255",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e023c9f7b8faf039c7607d12255",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d000048513c9f7b8faf039c7607d12255",
+          "width" : 64
+        } ],
+        "name" : "Britney Jean (Deluxe Version)",
+        "release_date" : "2013-11-30",
+        "release_date_precision" : "day",
+        "total_tracks" : 14,
+        "type" : "album",
+        "uri" : "spotify:album:5rlB2HPoNHg2m1wmmh0TRv"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 247960,
+      "explicit" : true,
+      "external_ids" : {
+        "isrc" : "USRC11301398"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/3KliPMvk1EvFZu9cvkj8p1"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/3KliPMvk1EvFZu9cvkj8p1",
+      "id" : "3KliPMvk1EvFZu9cvkj8p1",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Work Bitch",
+      "popularity" : 72,
+      "preview_url" : "https://p.scdn.co/mp3-preview/099a16ea80fddbd592595592c4587da4d0a923d2?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:3KliPMvk1EvFZu9cvkj8p1"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/2tve5DGwub1TtbX1khPX5j"
+        },
+        "href" : "https://api.spotify.com/v1/albums/2tve5DGwub1TtbX1khPX5j",
+        "id" : "2tve5DGwub1TtbX1khPX5j",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b27354c6edd554935d73e159e199",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e0254c6edd554935d73e159e199",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d0000485154c6edd554935d73e159e199",
+          "width" : 64
+        } ],
+        "name" : "Circus (Deluxe Version)",
+        "release_date" : "2008-12-02",
+        "release_date_precision" : "day",
+        "total_tracks" : 15,
+        "type" : "album",
+        "uri" : "spotify:album:2tve5DGwub1TtbX1khPX5j"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 216520,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI10801329"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2hdy9Wt9qp7M7d0U3ossu2"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2hdy9Wt9qp7M7d0U3ossu2",
+      "id" : "2hdy9Wt9qp7M7d0U3ossu2",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "If U Seek Amy",
+      "popularity" : 68,
+      "preview_url" : "https://p.scdn.co/mp3-preview/98b1fdbb36e1f403d4d1a06d84347fd7527179fe?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 6,
+      "type" : "track",
+      "uri" : "spotify:track:2hdy9Wt9qp7M7d0U3ossu2"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/5ax3GTsfX5uCUaNgnJsSG5"
+        },
+        "href" : "https://api.spotify.com/v1/albums/5ax3GTsfX5uCUaNgnJsSG5",
+        "id" : "5ax3GTsfX5uCUaNgnJsSG5",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b273e1a4e01cb7a1ecff468bbead",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e02e1a4e01cb7a1ecff468bbead",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d00004851e1a4e01cb7a1ecff468bbead",
+          "width" : 64
+        } ],
+        "name" : "Britney (Digital Deluxe Version)",
+        "release_date" : "2001-10-31",
+        "release_date_precision" : "day",
+        "total_tracks" : 15,
+        "type" : "album",
+        "uri" : "spotify:album:5ax3GTsfX5uCUaNgnJsSG5"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 203600,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI10100421"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6ldwfK0yWgTAlmIfuQkTYN"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6ldwfK0yWgTAlmIfuQkTYN",
+      "id" : "6ldwfK0yWgTAlmIfuQkTYN",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "I'm a Slave 4 U",
+      "popularity" : 68,
+      "preview_url" : "https://p.scdn.co/mp3-preview/b6cfd276763da64a89c73196257a091eb0a331a5?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:6ldwfK0yWgTAlmIfuQkTYN"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/5PmgtkodFl2Om3hMXONDll"
+        },
+        "href" : "https://api.spotify.com/v1/albums/5PmgtkodFl2Om3hMXONDll",
+        "id" : "5PmgtkodFl2Om3hMXONDll",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b2732aa20611c7fb964a74ab01a6",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e022aa20611c7fb964a74ab01a6",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d000048512aa20611c7fb964a74ab01a6",
+          "width" : 64
+        } ],
+        "name" : "Oops!... I Did It Again",
+        "release_date" : "2000-05-16",
+        "release_date_precision" : "day",
+        "total_tracks" : 12,
+        "type" : "album",
+        "uri" : "spotify:album:5PmgtkodFl2Om3hMXONDll"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 203000,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI10000143"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/5QhBKPqsnX1uY9fZNaAtZg"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/5QhBKPqsnX1uY9fZNaAtZg",
+      "id" : "5QhBKPqsnX1uY9fZNaAtZg",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Stronger",
+      "popularity" : 67,
+      "preview_url" : "https://p.scdn.co/mp3-preview/bddad0e1f839092d94acb3ec55a788e8a81894a4?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 2,
+      "type" : "track",
+      "uri" : "spotify:track:5QhBKPqsnX1uY9fZNaAtZg"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/5PmgtkodFl2Om3hMXONDll"
+        },
+        "href" : "https://api.spotify.com/v1/albums/5PmgtkodFl2Om3hMXONDll",
+        "id" : "5PmgtkodFl2Om3hMXONDll",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b2732aa20611c7fb964a74ab01a6",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e022aa20611c7fb964a74ab01a6",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d000048512aa20611c7fb964a74ab01a6",
+          "width" : 64
+        } ],
+        "name" : "Oops!... I Did It Again",
+        "release_date" : "2000-05-16",
+        "release_date_precision" : "day",
+        "total_tracks" : 12,
+        "type" : "album",
+        "uri" : "spotify:album:5PmgtkodFl2Om3hMXONDll"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 206226,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI10000148"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/2TTYIwTM2iLC1YOyHuhRMt"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/2TTYIwTM2iLC1YOyHuhRMt",
+      "id" : "2TTYIwTM2iLC1YOyHuhRMt",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Lucky",
+      "popularity" : 67,
+      "preview_url" : "https://p.scdn.co/mp3-preview/42e6622093de37173129f05ad2e17353fa288432?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 7,
+      "type" : "track",
+      "uri" : "spotify:track:2TTYIwTM2iLC1YOyHuhRMt"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/0oFBaXLFsUVa2gEmJf4FcJ"
+        },
+        "href" : "https://api.spotify.com/v1/albums/0oFBaXLFsUVa2gEmJf4FcJ",
+        "id" : "0oFBaXLFsUVa2gEmJf4FcJ",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b273fda0f2adec40250bea55101b",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e02fda0f2adec40250bea55101b",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d00004851fda0f2adec40250bea55101b",
+          "width" : 64
+        } ],
+        "name" : "Femme Fatale (Deluxe Version)",
+        "release_date" : "2011-03-28",
+        "release_date_precision" : "day",
+        "total_tracks" : 16,
+        "type" : "album",
+        "uri" : "spotify:album:0oFBaXLFsUVa2gEmJf4FcJ"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 237946,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI11100074"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/38iU2jg98IZZEIJPrP7aWD"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/38iU2jg98IZZEIJPrP7aWD",
+      "id" : "38iU2jg98IZZEIJPrP7aWD",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Till the World Ends",
+      "popularity" : 66,
+      "preview_url" : "https://p.scdn.co/mp3-preview/fd017ae5c0a60cff3d5f5b4d37c4e8617c93b11f?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 1,
+      "type" : "track",
+      "uri" : "spotify:track:38iU2jg98IZZEIJPrP7aWD"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/0oFBaXLFsUVa2gEmJf4FcJ"
+        },
+        "href" : "https://api.spotify.com/v1/albums/0oFBaXLFsUVa2gEmJf4FcJ",
+        "id" : "0oFBaXLFsUVa2gEmJf4FcJ",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b273fda0f2adec40250bea55101b",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e02fda0f2adec40250bea55101b",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d00004851fda0f2adec40250bea55101b",
+          "width" : 64
+        } ],
+        "name" : "Femme Fatale (Deluxe Version)",
+        "release_date" : "2011-03-28",
+        "release_date_precision" : "day",
+        "total_tracks" : 16,
+        "type" : "album",
+        "uri" : "spotify:album:0oFBaXLFsUVa2gEmJf4FcJ"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 225080,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI11100103"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/6T689Jvh5KrSXyaPtUWZtQ"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/6T689Jvh5KrSXyaPtUWZtQ",
+      "id" : "6T689Jvh5KrSXyaPtUWZtQ",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Criminal",
+      "popularity" : 71,
+      "preview_url" : "https://p.scdn.co/mp3-preview/44a5dbc6508bfe3e70957e506e644538ed50bb2d?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 12,
+      "type" : "track",
+      "uri" : "spotify:track:6T689Jvh5KrSXyaPtUWZtQ"
+    }, {
+      "album" : {
+        "album_type" : "album",
+        "artists" : [ {
+          "external_urls" : {
+            "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+          },
+          "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+          "id" : "26dSoYclwsYLMAKD3tpOr4",
+          "name" : "Britney Spears",
+          "type" : "artist",
+          "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+        } ],
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/album/3WNxdumkSMGMJRhEgK80qx"
+        },
+        "href" : "https://api.spotify.com/v1/albums/3WNxdumkSMGMJRhEgK80qx",
+        "id" : "3WNxdumkSMGMJRhEgK80qx",
+        "images" : [ {
+          "height" : 640,
+          "url" : "https://i.scdn.co/image/ab67616d0000b2738e49866860c25afffe2f1a02",
+          "width" : 640
+        }, {
+          "height" : 300,
+          "url" : "https://i.scdn.co/image/ab67616d00001e028e49866860c25afffe2f1a02",
+          "width" : 300
+        }, {
+          "height" : 64,
+          "url" : "https://i.scdn.co/image/ab67616d000048518e49866860c25afffe2f1a02",
+          "width" : 64
+        } ],
+        "name" : "...Baby One More Time (Digital Deluxe Version)",
+        "release_date" : "1999-01-12",
+        "release_date_precision" : "day",
+        "total_tracks" : 16,
+        "type" : "album",
+        "uri" : "spotify:album:3WNxdumkSMGMJRhEgK80qx"
+      },
+      "artists" : [ {
+        "external_urls" : {
+          "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+        },
+        "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+        "id" : "26dSoYclwsYLMAKD3tpOr4",
+        "name" : "Britney Spears",
+        "type" : "artist",
+        "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+      } ],
+      "disc_number" : 1,
+      "duration_ms" : 245066,
+      "explicit" : false,
+      "external_ids" : {
+        "isrc" : "USJI19910452"
+      },
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/track/1UI0l2L66HJ9AtoEOlHzv4"
+      },
+      "href" : "https://api.spotify.com/v1/tracks/1UI0l2L66HJ9AtoEOlHzv4",
+      "id" : "1UI0l2L66HJ9AtoEOlHzv4",
+      "is_local" : false,
+      "is_playable" : true,
+      "name" : "Sometimes",
+      "popularity" : 69,
+      "preview_url" : "https://p.scdn.co/mp3-preview/66534231ccdd99619485b6ea4fa90987322dd812?cid=774b29d4f13844c495f206cafdad9c86",
+      "track_number" : 3,
+      "type" : "track",
+      "uri" : "spotify:track:1UI0l2L66HJ9AtoEOlHzv4"
+    } ],
+    "limit" : 10,
+    "next" : "https://api.spotify.com/v1/search?query=britney+spears&type=track&market=US&offset=15&limit=10",
+    "offset" : 5,
+    "previous" : "https://api.spotify.com/v1/search?query=britney+spears&type=track&market=US&offset=0&limit=10",
+    "total" : 5849
+  }
+}

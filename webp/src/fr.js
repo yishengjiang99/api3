@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 
 const names = "ABCD".split("");
 const $ = React.createElement;
-function Slider({freq, _db}) {
+function Slider({ freq, _db }) {
     const [db, setDb] = React.useState(_db);
     const wrapStyle = {
         display: "inline-block",
@@ -61,10 +61,10 @@ ReactDOM.render(
         "div",
         {
             className: "App",
-            style: {display: "grid", gridTemplateColumns: "1fr 1fr"},
+            style: { display: "grid", gridTemplateColumns: "1fr 1fr" },
         },
         [0, 1, 2, 3].map((idx) => {
-            return $("div", {className: "panel"}, [
+            return $("div", { className: "panel" }, [
                 $("h3", {}, "Preset " + names[idx]),
                 sliderGroup
             ]);

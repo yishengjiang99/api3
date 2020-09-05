@@ -1,15 +1,13 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
 
-module.exports = {
-    entry: "./src/index.js",
-    output: {
-        filename: "bundle.[hash].js",
-        path: path.resolve(__dirname, "dist"),
+const webpack = require("webpack");
+const webpackDevMiddleware = require("webpack-dev-middleware");
+const compiler = webpack({
+    mode: "development",
+    entry: {
+        main: "./views/spotifyAppBunddle.js",
     },
-    resolve: {
-        modules: [__dirname, "src", "node_modules"],
-        extensions: ["*", ".js", ".jsx", ".tsx", ".ts"],
+    devServer: {
+        host: "0.0.0.0",
     },
     module: {
         rules: [
@@ -28,4 +26,10 @@ module.exports = {
             },
         ],
     },
-};
+});
+app.use(
+    "/spotify/bundle",
+    webpackDevMiddleware(compiler, {
+        publicPath: "/spotify/bundle",
+    })
+);

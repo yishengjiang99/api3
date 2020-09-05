@@ -1,0 +1,634 @@
+{
+  "href" : "https://api.spotify.com/v1/users/124164328/playlists?offset=0&limit=20",
+  "items" : [ {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/15em0L55PQT0LHETYnPlNy"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/15em0L55PQT0LHETYnPlNy",
+    "id" : "15em0L55PQT0LHETYnPlNy",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b27352667a927da106f60947413aab67616d0000b273872465692c162eb8bfff3141ab67616d0000b273ada4a1b5e704df71e9eed0d2ab67616d0000b273ba485fe88afb6e051e2d3b5d",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b27352667a927da106f60947413aab67616d0000b273872465692c162eb8bfff3141ab67616d0000b273ada4a1b5e704df71e9eed0d2ab67616d0000b273ba485fe88afb6e051e2d3b5d",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b27352667a927da106f60947413aab67616d0000b273872465692c162eb8bfff3141ab67616d0000b273ada4a1b5e704df71e9eed0d2ab67616d0000b273ba485fe88afb6e051e2d3b5d",
+      "width" : 60
+    } ],
+    "name" : "Black music",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "NiwyYzc0MDQ1Y2VhNjQyYmEwMTlkZGRlMzUxM2I2YmZjM2Q5YjUzMDU1",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/15em0L55PQT0LHETYnPlNy/tracks",
+      "total" : 5
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:15em0L55PQT0LHETYnPlNy"
+  }, {
+    "collaborative" : false,
+    "description" : "Relax and fall asleep to ASMR trigger sounds (no talking).",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWUAeTOoyNaqm"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWUAeTOoyNaqm",
+    "id" : "37i9dQZF1DWUAeTOoyNaqm",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706f000000032205e6fa7436a4dc044974d3",
+      "width" : null
+    } ],
+    "name" : "ASMR Sleep",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MTU5ODAyMzU0MywwMDAwMDAyODAwMDAwMTc0MTFhMDJjNjkwMDAwMDE3MjMyMmNlMzE2",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWUAeTOoyNaqm/tracks",
+      "total" : 51
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DWUAeTOoyNaqm"
+  }, {
+    "collaborative" : false,
+    "description" : "Calm piano music for enhanced concentration.",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DWSluGMsH1R9r"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWSluGMsH1R9r",
+    "id" : "37i9dQZF1DWSluGMsH1R9r",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706f00000003c7d29bb0dc3cb0360dc6e6b8",
+      "width" : null
+    } ],
+    "name" : "Perfect Concentration",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MTU5ODk2NTA3MiwwMDAwMDA2ODAwMDAwMTc0NDliZWMyZjgwMDAwMDE2ZmFlNTYxYjUw",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DWSluGMsH1R9r/tracks",
+      "total" : 181
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DWSluGMsH1R9r"
+  }, {
+    "collaborative" : false,
+    "description" : "New music from Big Sean, Lil Durk and A Boogie Wit da Hoodie.",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX0XUsuxWHRQd"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd",
+    "id" : "37i9dQZF1DX0XUsuxWHRQd",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706f00000003225110d1a51fd632b3f760b8",
+      "width" : null
+    } ],
+    "name" : "RapCaviar",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MTU5OTE5MjAyNCwwMDAwMDRjZDAwMDAwMTc0NTc0NWM0NzIwMDAwMDE3NDU1MDEzOThh",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX0XUsuxWHRQd/tracks",
+      "total" : 50
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DX0XUsuxWHRQd"
+  }, {
+    "collaborative" : false,
+    "description" : "Relax and indulge with beautiful piano pieces",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX4sWSpwq3LiO"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4sWSpwq3LiO",
+    "id" : "37i9dQZF1DX4sWSpwq3LiO",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706f00000003ca5a7517156021292e5663a6",
+      "width" : null
+    } ],
+    "name" : "Peaceful Piano",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MTU5ODg4MTE5MiwwMDAwMDBjZTAwMDAwMTc0NDRiZWQ4ZWMwMDAwMDE2ZDE1NTk1OTFk",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4sWSpwq3LiO/tracks",
+      "total" : 306
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DX4sWSpwq3LiO"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/6Thx8vWBR8qAQYS9n0iBkq"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/6Thx8vWBR8qAQYS9n0iBkq",
+    "id" : "6Thx8vWBR8qAQYS9n0iBkq",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b27307e5b8059d61449a42108af9ab67616d0000b2731624590458126fc8b8c64c2fab67616d0000b27350a3147b4edd7701a876c6ceab67616d0000b273cb76604d9c5963544cf5be64",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b27307e5b8059d61449a42108af9ab67616d0000b2731624590458126fc8b8c64c2fab67616d0000b27350a3147b4edd7701a876c6ceab67616d0000b273cb76604d9c5963544cf5be64",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b27307e5b8059d61449a42108af9ab67616d0000b2731624590458126fc8b8c64c2fab67616d0000b27350a3147b4edd7701a876c6ceab67616d0000b273cb76604d9c5963544cf5be64",
+      "width" : 60
+    } ],
+    "name" : "National Anthem",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "NyxkZmVkNTdhMmE2NGVhOTIxNjI0NGQ4NDQ1MTA2NDQxMzE0MWM0MDlj",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/6Thx8vWBR8qAQYS9n0iBkq/tracks",
+      "total" : 5
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:6Thx8vWBR8qAQYS9n0iBkq"
+  }, {
+    "collaborative" : false,
+    "description" : "Minimalism, electronica and modern classical to concentrate to.",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX3PFzdbtx1Us"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX3PFzdbtx1Us",
+    "id" : "37i9dQZF1DX3PFzdbtx1Us",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706f000000033466e2ac76e504f4131af598",
+      "width" : null
+    } ],
+    "name" : "Music For Concentration",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MTU4NjM0MzA5MiwwMDAwMDA0MjAwMDAwMTcxNTk2YWExYTYwMDAwMDE3MTU5NmE4NDRj",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX3PFzdbtx1Us/tracks",
+      "total" : 90
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DX3PFzdbtx1Us"
+  }, {
+    "collaborative" : false,
+    "description" : "Your weekly mixtape of fresh music. Enjoy new music and deep cuts picked for you. Updates every Monday.",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZEVXcCA4p0bgAqEP"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZEVXcCA4p0bgAqEP",
+    "id" : "37i9dQZEVXcCA4p0bgAqEP",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://newjams-images.scdn.co/v2/discover-weekly/Y4D-X7Bql82KQ0-JVTy9b5uoocaRNacmO8awvKPBLo_lPx9iGc13c6lQUogO_p2eP_XjhRkSlJzpPu8Up-AxUZAcPOVLpfMNZm5J2XFmLqtmEn1gGDKvOrS0s_yuQbhIvfFF7Iy88PAVd6uhVQ60l7OfcvvX5k564DUpsMRIrc1LwYABYP4x55SGJia5JRC1A3-UXjwMzyeTezURSnQtVwv1jzuxt2o0LSrHqaXnHfFvePCnh1xghuOpMspQWEtDqTTDApvs1NKfJ1lrFQKogXhSj-TIjXEj6JBH9ZrlrVb9VtCuJLnA1W-cZu1AODwSc87NQpinMtaFg2WTeSSmEQ==/MjM6NzE6NTBUNzEtOTAtMA==/default",
+      "width" : null
+    } ],
+    "name" : "Discover Weekly",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MjY2NDcyMDAsMDAwMDAwMDAzOTkyOWJjNjUyYzljNzIzYzc4YmE3MWQ0YWNlYWY3ZQ==",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZEVXcCA4p0bgAqEP/tracks",
+      "total" : 30
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZEVXcCA4p0bgAqEP"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/41sHrdW8GzDRTcz7f4WH09"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/41sHrdW8GzDRTcz7f4WH09",
+    "id" : "41sHrdW8GzDRTcz7f4WH09",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b273346a5742374ab4cf9ed32deeab67616d0000b2735c9890c0456a3719eeecd8aaab67616d0000b273b9ff0a5f40d3406aed5e5e3bab67616d0000b273fe6a98e875958c7d7080584e",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b273346a5742374ab4cf9ed32deeab67616d0000b2735c9890c0456a3719eeecd8aaab67616d0000b273b9ff0a5f40d3406aed5e5e3bab67616d0000b273fe6a98e875958c7d7080584e",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b273346a5742374ab4cf9ed32deeab67616d0000b2735c9890c0456a3719eeecd8aaab67616d0000b273b9ff0a5f40d3406aed5e5e3bab67616d0000b273fe6a98e875958c7d7080584e",
+      "width" : 60
+    } ],
+    "name" : "Cry Me a River – Justin Timberlake",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "MTQsMGU4NzlhYzExOTFiYzQzZjVhZjU1MjNlMWNlMjE5ZWMyYWFkYTk0Zg==",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/41sHrdW8GzDRTcz7f4WH09/tracks",
+      "total" : 12
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:41sHrdW8GzDRTcz7f4WH09"
+  }, {
+    "collaborative" : false,
+    "description" : "Essential tracks from the decade that catapulted electronic music, hip hop and indie rock into the mainstream.",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/37i9dQZF1DX4o1oenSJRJd"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4o1oenSJRJd",
+    "id" : "37i9dQZF1DX4o1oenSJRJd",
+    "images" : [ {
+      "height" : null,
+      "url" : "https://i.scdn.co/image/ab67706f000000039a4cd28b2e4eb9ccf153898d",
+      "width" : null
+    } ],
+    "name" : "All Out 00s",
+    "owner" : {
+      "display_name" : "Spotify",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/spotify"
+      },
+      "href" : "https://api.spotify.com/v1/users/spotify",
+      "id" : "spotify",
+      "type" : "user",
+      "uri" : "spotify:user:spotify"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "MTU5OTI1NzY0MywwMDAwMDAwMGQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0Mjdl",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/37i9dQZF1DX4o1oenSJRJd/tracks",
+      "total" : 100
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:37i9dQZF1DX4o1oenSJRJd"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/0By5xD0RNG4paJVDVHdje1"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/0By5xD0RNG4paJVDVHdje1",
+    "id" : "0By5xD0RNG4paJVDVHdje1",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b27319d85a472f328a6ed9b704cfab67616d0000b273b254ca0983d65ede8e3d2f7aab67616d0000b273bf20604ae28256705ee864c2ab67616d0000b273c2dbca86dcf3a85003ac9502",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b27319d85a472f328a6ed9b704cfab67616d0000b273b254ca0983d65ede8e3d2f7aab67616d0000b273bf20604ae28256705ee864c2ab67616d0000b273c2dbca86dcf3a85003ac9502",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b27319d85a472f328a6ed9b704cfab67616d0000b273b254ca0983d65ede8e3d2f7aab67616d0000b273bf20604ae28256705ee864c2ab67616d0000b273c2dbca86dcf3a85003ac9502",
+      "width" : 60
+    } ],
+    "name" : "Feel Good ",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "NjQsYzBkNDJlMGJjMGJkNTRmYzI4YTVhZjc2ZDZmOGJlMDM2ZmUxNGYxNQ==",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/0By5xD0RNG4paJVDVHdje1/tracks",
+      "total" : 81
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:0By5xD0RNG4paJVDVHdje1"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/6c1iif9QfqlJhw49skwmCr"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/6c1iif9QfqlJhw49skwmCr",
+    "id" : "6c1iif9QfqlJhw49skwmCr",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b27352667a927da106f60947413aab67616d0000b273577da96e70c12ecbebea9614ab67616d0000b273609ec673227f3fb04da35f40ab67616d0000b273df5c337a697ce3134290eac9",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b27352667a927da106f60947413aab67616d0000b273577da96e70c12ecbebea9614ab67616d0000b273609ec673227f3fb04da35f40ab67616d0000b273df5c337a697ce3134290eac9",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b27352667a927da106f60947413aab67616d0000b273577da96e70c12ecbebea9614ab67616d0000b273609ec673227f3fb04da35f40ab67616d0000b273df5c337a697ce3134290eac9",
+      "width" : 60
+    } ],
+    "name" : "Starred",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "MyxjNGQ0YjQ3N2M5MjBhYzA1OGQxN2JjOTIwN2I0MjY2Y2Y1NDk3Y2Yy",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/6c1iif9QfqlJhw49skwmCr/tracks",
+      "total" : 22
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:6c1iif9QfqlJhw49skwmCr"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/1ZSGautkUpYJTOo6TfHoXi"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/1ZSGautkUpYJTOo6TfHoXi",
+    "id" : "1ZSGautkUpYJTOo6TfHoXi",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b2731e9a057052d59004caf47e22ab67616d0000b2739b19c107109de740bad72df5ab67616d0000b273c08d5fa5c0f1a834acef5100ab67616d0000b273eab40fc794b88b9d1e012578",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b2731e9a057052d59004caf47e22ab67616d0000b2739b19c107109de740bad72df5ab67616d0000b273c08d5fa5c0f1a834acef5100ab67616d0000b273eab40fc794b88b9d1e012578",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b2731e9a057052d59004caf47e22ab67616d0000b2739b19c107109de740bad72df5ab67616d0000b273c08d5fa5c0f1a834acef5100ab67616d0000b273eab40fc794b88b9d1e012578",
+      "width" : 60
+    } ],
+    "name" : "rapmusic",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "MTUxLDc0ZWFjYmI2ZTI0NjE4ZmViMjY0MDNkMGY3ZjA5MjY5MGFjYzZjMTg=",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/1ZSGautkUpYJTOo6TfHoXi/tracks",
+      "total" : 73
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:1ZSGautkUpYJTOo6TfHoXi"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/1lJxFioCN9gBTynSZUVW6e"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/1lJxFioCN9gBTynSZUVW6e",
+    "id" : "1lJxFioCN9gBTynSZUVW6e",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273d3a54bd30367d97d61899bab",
+      "width" : 640
+    } ],
+    "name" : "Liked from Radio",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "NSw2MzczMDJkNGUwOTkxODg3NTk5YjZlZGE0OTRmZmVlNDU0YjBjMzli",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/1lJxFioCN9gBTynSZUVW6e/tracks",
+      "total" : 3
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:1lJxFioCN9gBTynSZUVW6e"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/13dioxoNsAF6Xu9lIIG2vQ"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/13dioxoNsAF6Xu9lIIG2vQ",
+    "id" : "13dioxoNsAF6Xu9lIIG2vQ",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/ab67616d0000b273df5c337a697ce3134290eac9",
+      "width" : 640
+    } ],
+    "name" : "iTunes",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "NSwwOWU1ZmRiN2Y2ZDkyZjdhZWVmZTQxMTA1ZGQwZWZlMzYwNDI5Mzhh",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/13dioxoNsAF6Xu9lIIG2vQ/tracks",
+      "total" : 3
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:13dioxoNsAF6Xu9lIIG2vQ"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/1yswym8y7aAPRhut4ejKx1"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/1yswym8y7aAPRhut4ejKx1",
+    "id" : "1yswym8y7aAPRhut4ejKx1",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b273577da96e70c12ecbebea9614ab67616d0000b2736cab39b08da7c20656127154ab67616d0000b273d441b2e9b63f0b9f9d90be19ab67616d0000b273da4d3ea6408c5efb0c727603",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b273577da96e70c12ecbebea9614ab67616d0000b2736cab39b08da7c20656127154ab67616d0000b273d441b2e9b63f0b9f9d90be19ab67616d0000b273da4d3ea6408c5efb0c727603",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b273577da96e70c12ecbebea9614ab67616d0000b2736cab39b08da7c20656127154ab67616d0000b273d441b2e9b63f0b9f9d90be19ab67616d0000b273da4d3ea6408c5efb0c727603",
+      "width" : 60
+    } ],
+    "name" : "Jian Dan Ai (Simple Love)",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : false,
+    "snapshot_id" : "OTQsOGViOWMwNTdmZDBlOTE5ZWZiZDQ5OGUxZmU5N2I4NTViYzc4ZTUyZg==",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/1yswym8y7aAPRhut4ejKx1/tracks",
+      "total" : 85
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:1yswym8y7aAPRhut4ejKx1"
+  }, {
+    "collaborative" : false,
+    "description" : "",
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/playlist/6TPv54ieqjkQyHQcvb392W"
+    },
+    "href" : "https://api.spotify.com/v1/playlists/6TPv54ieqjkQyHQcvb392W",
+    "id" : "6TPv54ieqjkQyHQcvb392W",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://mosaic.scdn.co/640/ab67616d0000b27352667a927da106f60947413aab67616d0000b2739bef45ee387f274ea3198c55ab67616d0000b273df5c337a697ce3134290eac9ab67616d0000b273eab40fc794b88b9d1e012578",
+      "width" : 640
+    }, {
+      "height" : 300,
+      "url" : "https://mosaic.scdn.co/300/ab67616d0000b27352667a927da106f60947413aab67616d0000b2739bef45ee387f274ea3198c55ab67616d0000b273df5c337a697ce3134290eac9ab67616d0000b273eab40fc794b88b9d1e012578",
+      "width" : 300
+    }, {
+      "height" : 60,
+      "url" : "https://mosaic.scdn.co/60/ab67616d0000b27352667a927da106f60947413aab67616d0000b2739bef45ee387f274ea3198c55ab67616d0000b273df5c337a697ce3134290eac9ab67616d0000b273eab40fc794b88b9d1e012578",
+      "width" : 60
+    } ],
+    "name" : "Lang Man Sh",
+    "owner" : {
+      "display_name" : "Yisheng Jiang",
+      "external_urls" : {
+        "spotify" : "https://open.spotify.com/user/124164328"
+      },
+      "href" : "https://api.spotify.com/v1/users/124164328",
+      "id" : "124164328",
+      "type" : "user",
+      "uri" : "spotify:user:124164328"
+    },
+    "primary_color" : null,
+    "public" : true,
+    "snapshot_id" : "OSxiM2I1YTdjZTYwMGUxMjQ2ZDM1YTQ0YTMyMmY5YWE2ZjBkN2ZkN2U3",
+    "tracks" : {
+      "href" : "https://api.spotify.com/v1/playlists/6TPv54ieqjkQyHQcvb392W/tracks",
+      "total" : 18
+    },
+    "type" : "playlist",
+    "uri" : "spotify:playlist:6TPv54ieqjkQyHQcvb392W"
+  } ],
+  "limit" : 20,
+  "next" : null,
+  "offset" : 0,
+  "previous" : null,
+  "total" : 17
+}

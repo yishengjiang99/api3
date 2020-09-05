@@ -1,0 +1,5 @@
+{
+	"watch": ["src", "views", "routes"],
+	"includs": ["*.ts", "*.js", "*html"],
+	"exec": "ts-node src/server.ts"
+}

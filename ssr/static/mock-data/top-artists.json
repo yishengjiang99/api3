@@ -1,0 +1,289 @@
+{
+  "items" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/5tnWjneuwJKuPIRQk7UZ8I"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 3287
+    },
+    "genres" : [ ],
+    "href" : "https://api.spotify.com/v1/artists/5tnWjneuwJKuPIRQk7UZ8I",
+    "id" : "5tnWjneuwJKuPIRQk7UZ8I",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/5019d5f599604e0da0a89812f98bf1b109aae94d",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/29e2e510e25a9f594f050e20b61d264b090b5f24",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/bac4797e22a8fd61511cb753c53b734595efa501",
+      "width" : 160
+    } ],
+    "name" : "CatDany",
+    "popularity" : 29,
+    "type" : "artist",
+    "uri" : "spotify:artist:5tnWjneuwJKuPIRQk7UZ8I"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/26dSoYclwsYLMAKD3tpOr4"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 7723729
+    },
+    "genres" : [ "dance pop", "pop", "pop rap", "post-teen pop" ],
+    "href" : "https://api.spotify.com/v1/artists/26dSoYclwsYLMAKD3tpOr4",
+    "id" : "26dSoYclwsYLMAKD3tpOr4",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/3e47967513ccda2182b17a1b29c00810b8965bd9",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/7daf8bcaebf7d084602274862aa3aa9d16a8bba8",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/7f30820ca3cbee06e35197fb8376bb7b8ce747be",
+      "width" : 160
+    } ],
+    "name" : "Britney Spears",
+    "popularity" : 81,
+    "type" : "artist",
+    "uri" : "spotify:artist:26dSoYclwsYLMAKD3tpOr4"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/1l7ZsJRRS8wlW3WfJfPfNS"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 5396082
+    },
+    "genres" : [ "dance pop", "pop", "pop rap", "post-teen pop" ],
+    "href" : "https://api.spotify.com/v1/artists/1l7ZsJRRS8wlW3WfJfPfNS",
+    "id" : "1l7ZsJRRS8wlW3WfJfPfNS",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/e3ea6d2340bba0d93450a813a0843fd9cf998e39",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/e452b8ffb52395516723d21f721cc7c4cdbd04ce",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/122618dc921de18a54320e50061395ceb5d76695",
+      "width" : 160
+    } ],
+    "name" : "Christina Aguilera",
+    "popularity" : 81,
+    "type" : "artist",
+    "uri" : "spotify:artist:1l7ZsJRRS8wlW3WfJfPfNS"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3nFkdlSjzX9mRTtwJOzDYB"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 5560513
+    },
+    "genres" : [ "east coast hip hop", "hip hop", "pop rap", "rap" ],
+    "href" : "https://api.spotify.com/v1/artists/3nFkdlSjzX9mRTtwJOzDYB",
+    "id" : "3nFkdlSjzX9mRTtwJOzDYB",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/4912d27d6b01dd790313d8ef76586be6b100550f",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/027c5605d895158497ff377d92d69fe89dba1730",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/1420226e471d0e56ae4de7cb28ba2eb4de0a29ce",
+      "width" : 160
+    } ],
+    "name" : "JAY-Z",
+    "popularity" : 86,
+    "type" : "artist",
+    "uri" : "spotify:artist:3nFkdlSjzX9mRTtwJOzDYB"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/20sxb77xiYeusSH8cVdatc"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 4382748
+    },
+    "genres" : [ "hip hop", "philly rap", "pop rap", "rap", "southern hip hop", "trap" ],
+    "href" : "https://api.spotify.com/v1/artists/20sxb77xiYeusSH8cVdatc",
+    "id" : "20sxb77xiYeusSH8cVdatc",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/2c9ec5abeb91b41b6fac18ec974c7a2b85319c5d",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/60ff678d1d0d5362c20c54160faa4622a22a1455",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/4b9aa6c872d507f298a2eea6bb9e3dde7226c514",
+      "width" : 160
+    } ],
+    "name" : "Meek Mill",
+    "popularity" : 82,
+    "type" : "artist",
+    "uri" : "spotify:artist:20sxb77xiYeusSH8cVdatc"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/7dGJo4pcD2V6oG8kP0tJRR"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 37584403
+    },
+    "genres" : [ "detroit hip hop", "hip hop", "rap" ],
+    "href" : "https://api.spotify.com/v1/artists/7dGJo4pcD2V6oG8kP0tJRR",
+    "id" : "7dGJo4pcD2V6oG8kP0tJRR",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/56f4762485066b4ef867b96e16775f2b5b4db277",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/ad64a7fbc24b31cd84455a1aef34758b94246352",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/6432e1be8495593f136ad98de6135bb0640ff936",
+      "width" : 160
+    } ],
+    "name" : "Eminem",
+    "popularity" : 93,
+    "type" : "artist",
+    "uri" : "spotify:artist:7dGJo4pcD2V6oG8kP0tJRR"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/23zg3TcAtWQy7J6upgbUnj"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 7965474
+    },
+    "genres" : [ "atl hip hop", "dance pop", "pop", "r&b", "south carolina hip hop", "urban contemporary" ],
+    "href" : "https://api.spotify.com/v1/artists/23zg3TcAtWQy7J6upgbUnj",
+    "id" : "23zg3TcAtWQy7J6upgbUnj",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/59790a2ffc64b4e3823a3758c622af25bc794d23",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/5841721a2a2fafcaaca76528acbdd7333b5d4459",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/625919cb61bded142c25a656052b60d624efa11c",
+      "width" : 160
+    } ],
+    "name" : "Usher",
+    "popularity" : 83,
+    "type" : "artist",
+    "uri" : "spotify:artist:23zg3TcAtWQy7J6upgbUnj"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/31HjiqargV4NAw4GZqUale"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 1250160
+    },
+    "genres" : [ "dirty south rap", "gangster rap", "hip hop", "miami hip hop", "pop rap", "rap", "southern hip hop", "trap" ],
+    "href" : "https://api.spotify.com/v1/artists/31HjiqargV4NAw4GZqUale",
+    "id" : "31HjiqargV4NAw4GZqUale",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/60fdda23080bc7a93413168ddca785e52fde508d",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/7b2119daae991f54f842d932e8035b01d922c44d",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/64ec0ebed56e689bdb6ca5dfc8721b07226c3553",
+      "width" : 160
+    } ],
+    "name" : "Ace Hood",
+    "popularity" : 64,
+    "type" : "artist",
+    "uri" : "spotify:artist:31HjiqargV4NAw4GZqUale"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/55Aa2cqylxrFIXC767Z865"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 9467584
+    },
+    "genres" : [ "hip hop", "new orleans rap", "pop rap", "rap", "trap" ],
+    "href" : "https://api.spotify.com/v1/artists/55Aa2cqylxrFIXC767Z865",
+    "id" : "55Aa2cqylxrFIXC767Z865",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/df959d3993ded32689c465c1e6d0e96b612c1404",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/985a8ab29851929c28a488d35b7ed32f3a54f76e",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/02cc192124a036a8520d3aafb4269aeb273acd94",
+      "width" : 160
+    } ],
+    "name" : "Lil Wayne",
+    "popularity" : 91,
+    "type" : "artist",
+    "uri" : "spotify:artist:55Aa2cqylxrFIXC767Z865"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/0NbfKEOTQCcwd6o7wSDOHI"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 2734961
+    },
+    "genres" : [ "gangster rap", "hip hop", "pop rap", "rap", "southern hip hop", "trap" ],
+    "href" : "https://api.spotify.com/v1/artists/0NbfKEOTQCcwd6o7wSDOHI",
+    "id" : "0NbfKEOTQCcwd6o7wSDOHI",
+    "images" : [ {
+      "height" : 640,
+      "url" : "https://i.scdn.co/image/78b601bc99711d752b6e28eda5a4857315488166",
+      "width" : 640
+    }, {
+      "height" : 320,
+      "url" : "https://i.scdn.co/image/4a1a5df2b342712465a5941b6edb6038aedcec39",
+      "width" : 320
+    }, {
+      "height" : 160,
+      "url" : "https://i.scdn.co/image/0d12f74c9667e0fb789353805020e54e0a57936c",
+      "width" : 160
+    } ],
+    "name" : "The Game",
+    "popularity" : 75,
+    "type" : "artist",
+    "uri" : "spotify:artist:0NbfKEOTQCcwd6o7wSDOHI"
+  } ],
+  "total" : 24,
+  "limit" : 10,
+  "offset" : 5,
+  "href" : "https://api.spotify.com/v1/me/top/artists?limit=10&offset=5",
+  "previous" : null,
+  "next" : "https://api.spotify.com/v1/me/top/artists?limit=10&offset=15"
+}

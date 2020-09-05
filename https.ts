@@ -41,7 +41,6 @@ app.use(
 	})
 );
 app.use(cookieParser());
-app.use("/spotify", require("./routes/spotify"));
 app.use("/yt", yt);
 app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
@@ -67,6 +66,9 @@ export const httpsTLS = {
 
 app.get("/favicon.ico", require("./routes/favicon").favicon);
 app.use("/app", express.static(__dirname + "/static"));
+
+app.use("/spotify", require("./ssr/src/server"));
+
 const WebSocketServer = require("ws").Server;
 
 const httpsServer = https.createServer(httpsTLS, app);
