@@ -17,7 +17,7 @@ export const sdk = (props) => {
 					Authorization: "Bearer " + access_token,
 				},
 			})
-			.then((response) => response.data);
+			.then((response) => response.data && console.log(response.statusText));
 		//console.log(response.data));// && return response.data)
 	};
 
@@ -73,6 +73,7 @@ export function checkAuth(
 		req.session.sdk = sdk(req.session.auth);
 		next();
 	} else if (req.query.code) {
+		console.log(req.query.code);
 		authAudRedirect(req, res);
 	} else if (req.session && req.session.auth) {
 		if (
@@ -83,10 +84,11 @@ export function checkAuth(
 			next();
 		} else {
 			res.redirect(loginURL);
+			next();
 		}
 	} else {
-		res.redirect(loginURL);
-
+		//res.redirect(loginURL);
+		next();
 		// res.redirect("/login")
 		//	res.redirect(loginURL);
 	}
@@ -125,6 +127,7 @@ export function refreshToken(req, res) {
 }
 
 const authAudRedirect = (req, res) => {
+	console.log("req auth")
 	var code = req.query.code || null;
 	var authOptions = {
 		url: "https://accounts.spotify.com/api/token",
@@ -136,7 +139,7 @@ const authAudRedirect = (req, res) => {
 		headers: {
 			Authorization:
 				"Basic " +
-				new Buffer(client_id + ":" + client_secret).toString("base64"),
+				Buffer.from(client_id + ":" + client_secret).toString("base64"),
 		},
 		json: true,
 	};

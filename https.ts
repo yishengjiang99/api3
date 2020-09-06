@@ -28,11 +28,6 @@ dspServer.use("/", express.static("../grepaudio"));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
 app.use(vhost("api.grepawk.com", apiServer));
-
-apiServer.use("/", (req, res) => {
-	proxy_pass(res.socket, { host: "127.0.0.1", port: 3000 });
-});
-
 const cookieParser = require("cookie-parser");
 app.use(
 	session({
@@ -96,7 +91,7 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 	}
 });
 
-httpsServer.on("connection", function connection(request, socket, head) {});
+httpsServer.on("connection", function connection(request, socket, head) { });
 const port = process.argv[2] || 443;
 httpsServer.listen(port); //process.argv[2] || 3000);
 console.log("listening on " + port); //

@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { readFileSync } from "fs";
+import { readFileSync, write } from "fs";
 import * as express from "express";
 const { checkAuth, refreshToken, loginURL } = require("./checkauth");
 const React = require("react");
@@ -35,7 +35,6 @@ const {
 } = require("./client/"); //.jsack");
 
 const { Readable } = require("stream");
-const { fs } = require("memfs");
 
 var router = express.Router();
 const h = React.createElement;
@@ -44,7 +43,6 @@ const mockStdk = require("./staticMocks");
 
 const writeStreamSync = (stream, content) =>
 	new Promise((resolve) => {
-		console.log("writing ", content);
 		stream.write(content, () => resolve(true));
 	});
 
@@ -54,52 +52,96 @@ const renderElement = (response, element) =>
 		stream.pipe(response);
 		stream.on("end", resolve);
 		stream.on("error", (e) => {
-			console.log(e);
+			console.log("======", e);
 			reject(e);
 		});
 	});
 
-router.get("/bundle.css", (req, res) => Readable.from(critcss).pipe(res));
-router.get("/bundle.css", (req, res) => {
-	res.writeHead(200, { "Content-Type": "text/css" });
-	Readable.from(critcss).pipe(res);
-	//	res.end("console.log('ss')");
-});
+
 router.get("/bundle.js", (req, res) => {
-	res.writeHead(200, { "Content-Type": "application/json" });
+	res.headersSent || res.writeHead(200, { "Content-Type": "application/json" });
 	Readable.from(critjs).pipe(res);
+
 	//	res.end("console.log('ss')");
 });
-router.use("/", [checkAuth]);
+// router.use("/", [checkAuth]);
 
 router.get("(/list/)?(:listId)?", async function (req, res) {
 	try {
+		res.write(JSON.stringify(req.session.auth));
 		Error.stackTraceLimit = 10000;
 		const { fetchAPI, fetchAPIPut } = req.session.sdk
 			? req.session.sdk
 			: mockStdk;
 		res.writeHead(200, "welcome", { "Content-Type": "text/html" });
+		console.log("-----------")
+
 		const part1Wrote = writeStreamSync(res, page[0]); //
 		let listId = req.params.listId || "1ZSGautkUpYJTOo6TfHoXi";
-		const trackListGot = fetchAPI("/playlist/" + listId + "/tracks");
+		console.log("-----------")
+
+		const trackListGot = fetchAPI("/playlists/" + listId + "/tracks");
+		console.log("-----------")
 		const playListGot = fetchAPI("/me/playlists");
+		console.log("-----------")
+
 		await part1Wrote;
+		console.log("-----------")
+
 		await renderElement(res, AppBar({ loginUrl: loginURL }));
 		const trackList = await trackListGot;
+		console.log("-----------")
 
-		const tracks = trackList.tracks || trackList.items;
-		await renderElement(res, NowPlaying({ item: tracks[0] }));
-		await writeStreamSync(res, page[1]);
-		await renderElement(res, TrackList({ trackList: tracks || [] }));
-		await writeStreamSync(res, page[2]);
+		const sanitizedTrackList = (trackList.tracks || trackList.items || []).map(item => {
+			const _item = item.track || item;
+			return {
+				imgURL: _item.album.images[0].url,
+				name: _item.name,
+				artist: _item.artists.map(a => a.name).join(", "),
+				trackID: _item.id,
+				preview_url: _item.preview_url
+			}
+		});
+
+
+		console.log("-----------", sanitizedTrackList[0])
+
+		await renderElement(res, NowPlaying({ item: sanitizedTrackList[0] }));
+		console.log("-----------")
+
+		// await writeStreamSync(res, page[1]);
+		await renderElement(res, TrackList({ trackList: sanitizedTrackList || [] }));
+		console.log("-----------")
+
 		const playlists = await playListGot;
+		const playlistsSanitied = playlists.items.map(p => {
+			return {
+				id: p.id,
+				name: p.name
+			}
+		})
+
 		await writeStreamSync(
 			res,
-			rts(PlayListMenu({ playlists: playlists.items }))
+			rts(PlayListMenu({ playlists: playlistsSanitied }))
 		);
 		await renderElement(res, SpotifyFooter());
-		await writeStreamSync(res, page[3]);
-		// res.end();
+		await writeStreamSync(res,
+			`<script>
+		window.initState =${JSON.stringify({
+				playlists: playlistsSanitied,
+				trackList: sanitizedTrackList,
+				loginUrl: loginURL,
+				nowPlaying: sanitizedTrackList[0]
+			})};
+
+	document.onload = function(){
+		ReactDOM.hydrate(React.createElement(App,window.initState), document.querySelector("#root"));
+	}
+		</script>`);
+
+		await writeStreamSync(res, page[1]);
+		res.end();
 	} catch (e) {
 		console.error("..................", e);
 		//	res.write(e.message);

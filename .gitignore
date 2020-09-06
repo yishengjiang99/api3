@@ -21,3 +21,15 @@ az/disc/test.js
 AzureUser@grepawk.com/filter.cc
 AzureUser@grepawk.com/wasm-audio-helper.js
 AzureUser@grepawk.com/worklet-processor.ts
+google_key=AIzaSyCGFYjmJx6ByowbaIFrR-5ZHuELdI_uTbM
+spotify_client_id=3993d63f6507434d9ec90cc704b435d9
+spotify_secret=4d832562053d4dcaba67bba9fb3b754e
+HOST=www.grepawk.com
+APP_SERVER_PORT=3100
+CERT_FILE=/etc/letsencrypt/live/www.grepawk.com/fullchain.pem
+PRIV_KEYFILE=/etc/letsencrypt/live/www.grepawk.com/privkey.pem
+AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=httpsAccountName=grepaudioAccountKey=FBlsD/jj3kJT8TnpJfknf4MibbS+W1ri7r7UCSoUtcTAjrnBnLOAD8HxPawTN6tMSfgyKY601rIwlRL/gx0AOA==EndpointSuffix=core.windows.net"
+AZURE_STORAGE_ACCOUNT=grepaudio
+AZURE_STORAGE_ACCESS_KEY=FBlsD/jj3kJT8TnpJfknf4MibbS+W1ri7r7UCSoUtcTAjrnBnLOAD8HxPawTN6tMSfgyKY601rIwlRL/gx0AOA==
+db_user='dbuser'
+db_password='password'

@@ -7,7 +7,7 @@ export const SideNav = ({ children }) => {
     </div>
 }
 export const PlayListMenu = ({ playlists }) => (
-    <div>
+    <div className='sidenav'>
         <ul>
             {
                 playlists.map(playlist => <li><a href={`/spotify/list/${playlist.id}`}>{playlist.name}</a></li>)
@@ -16,16 +16,8 @@ export const PlayListMenu = ({ playlists }) => (
     </div>
 )
 
-export const TrackRow = ({ item }) => {
-    const _item = item.track || item;
-    const artist = _item.artists.map(a => a.name).join(", ");
+export const TrackRow = ({ track }) => {
 
-    const track = {
-        imgURL: _item.album.images[0].url,
-        name: _item.name,
-        artist: artist,
-        trackID: _item.id
-    };
     return (<li>
         <div className="mui--text-light mui--text-title">{track.name}</div>
 
@@ -35,22 +27,16 @@ export const TrackRow = ({ item }) => {
 export const ListView = ({ children }) => <ul>{children}</ul>
 
 export function NowPlaying({ item }) {
-    const _item = item.track || item;
     try {
-        const track = {
-            imgURL: _item.album.images[0].url,
-            name: _item.name,
-            artist: _item.artists.map(a => a.name).toString(),
-            trackID: _item.id
-        };
+
         return (
             <div className="nowplaying d-flex justify-content-center">
                 <div className='card'>
-                    <img className='song-thumbnail' width={300} height={300} src={track.imgURL} />
+                    <img className='song-thumbnail' width={300} height={300} src={item.imgURL} />
                     <div className="container">
-                        <h4 className='song-name'>{track.name}</h4>
+                        <h4 className='song-name'>{item.name}</h4>
                         <div className="mui-divider"></div>
-                        <p className='artist-name'>{track.artist}</p>
+                        <p className='artist-name'>{item.artist}</p>
                     </div>
                 </div>
             </div>
@@ -61,12 +47,12 @@ export function NowPlaying({ item }) {
     }
 
 }
-const Button = (props) => <button className='mui-btn' onClick={props.onClick}>{props.text}</button>
+const Button = (props) => <button className='mui-btn'>{props.text}</button>
 
-export const AppBar = ({ loginUrl, onSearch, leftButton, rightButton, searchResultItems = [] }) =>
+export const AppBar = ({ loginUrl = "", onSearch, leftButton, rightButton, searchResultItems = [] }) =>
     <React.Fragment>
         <div className="mui-appbar">
-            {loginUrl && (<a target='_blank' href={loginUrl}><Button text="Login"></Button></a>)}
+            <a target='_blank' href={loginUrl}><Button text="Login"></Button></a>
         </div>
         <div className='search-result'>
             <ListView list={searchResultItems} />
@@ -107,11 +93,10 @@ export const SpotifyFooter = () => (
 
 
 export const TrackList = ({ trackList }) =>
-    <div className='trackList'>
+    <div className='main'>
         <ul>
-            {trackList.map(trackItem => <TrackRow item={trackItem} />)}
-            <TrackRow item={trackList[0]} />
-            <TrackRow item={trackList[1]} />
+            {trackList.map(trackItem => <TrackRow track={trackItem} />)}
+
 
         </ul>
     </div>
@@ -120,14 +105,16 @@ export const App = ({ nowPlaying, playlists, trackList, loginUrl }) => {
     <React.Fragment>
         <AppBar loginUrl={loginUrl}></AppBar>
         <SideNav>
-            <PlayListMenu playlists={playlists}>
-            </PlayListMenu>
             <NowPlaying item={nowPlaying}>
 
             </NowPlaying>
+
             <TrackList trackList={trackList}>
 
             </TrackList>
+            <PlayListMenu playlists={playlists}>
+            </PlayListMenu>
+
         </SideNav>
     </React.Fragment>
 }
