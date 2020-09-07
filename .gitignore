@@ -33,3 +33,4 @@ AZURE_STORAGE_ACCOUNT=grepaudio
 AZURE_STORAGE_ACCESS_KEY=FBlsD/jj3kJT8TnpJfknf4MibbS+W1ri7r7UCSoUtcTAjrnBnLOAD8HxPawTN6tMSfgyKY601rIwlRL/gx0AOA==
 db_user='dbuser'
 db_password='password'
+env_d

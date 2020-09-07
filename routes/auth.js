@@ -108,7 +108,7 @@ router.get("/cb", function (req, res) {
         },
         headers: {
             Authorization:
-                "Basic " + new Buffer(client_id + ":" + client_secret).toString("base64"),
+                "Basic " + Buffer.from(client_id + ":" + client_secret).toString("base64"),
         },
         json: true,
     };
@@ -116,12 +116,14 @@ router.get("/cb", function (req, res) {
     request.post(authOptions, function (error, response, body) {
         if (!error && response.statusCode === 200) {
             var {access_token, refresh_token, expires_in} = body;
+            const expiry = new Date().getTime() + expires_in * 1000;
+
             if (jshost) {
-                res.redirect(jshost + "?" + querystring.stringify({
+                res.redirect(jshost) + "?" + querystring.stringify({
                     access_token,
                     refresh_token,
                     expiry: new Date().getTime() + expires_in * 1000,
-                }))
+                });
             } else {
                 res.redirect(
                     "/playback.html#" +

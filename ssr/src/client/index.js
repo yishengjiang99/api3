@@ -58,9 +58,6 @@ export const AppBar = ({loginUrl = "", onSearch, leftButton, rightButton, search
         <div className="mui-appbar">
             <a target='_blank' href={loginUrl}><Button text="Login"></Button></a>
         </div>
-        <div className='search-result'>
-            <ListView list={searchResultItems} />
-        </div>
     </React.Fragment>
 
 export const SpotifyFooter = () => (
@@ -103,8 +100,8 @@ export const TrackList = ({trackList}) =>
                 <div className="mui--text-light mui--text-title">{trackItem.name}</div>
 
                 <button onClick={() => {
-                    alert(trackItem.id);
-                }} className="mui-btn">+</button>
+                    window.playTrack(trackItem.id);
+                }} className="mui-btn"> <i className="fa fa-play"> </i> </button>
             </li>)}
 
 
