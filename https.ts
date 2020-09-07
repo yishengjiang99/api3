@@ -24,28 +24,35 @@ const apiServer = connect();
 var vhost = require("vhost");
 dspServer.use("/api/spotify", auth);
 dspServer.use("/", express.static("../grepaudio"));
-
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
 app.use(vhost("api.grepawk.com", apiServer));
-const cookieParser = require("cookie-parser");
+var cookieParser = require("cookie-parser");
 app.use(
 	session({
 		genid: () => Math.random() * 42 + "",
 		secret: "keyboard cat",
 	})
 );
+
 app.use(cookieParser());
 app.use("/yt", yt);
 app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
 app.use("/views", express.static("./views"));
+app.use("/download/:filename", (req, res) => {
+	if (resolve("shared", req.params.filename))
+	{
+		res.download(resolve("shared", req.params.filename));
+	}
+});
 
 export const httpsTLS = {
 	key: readFileSync(process.env.PRIV_KEYFILE),
 	cert: readFileSync(process.env.CERT_FILE),
 	SNICallback: function (domain, cb) {
-		if (!existsSync(`/etc/letsencrypt/live/${domain}`)) {
+		if (!existsSync(`/etc/letsencrypt/live/${domain}`))
+		{
 			cb();
 			return;
 		}
@@ -76,7 +83,8 @@ rtcServer.on("connection", rtcHandler);
 
 httpsServer.on("upgrade", function upgrade(request, socket, head) {
 	const pathname = require("url").parse(request.url).pathname;
-	if (pathname.match(/signal/)) {
+	if (pathname.match(/signal/))
+	{
 		signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
 			// // const dbuser = db.getOrCreateUser(request.headers["set-cookie"]);
 			// signalServer.requestContext[
@@ -84,7 +92,8 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 			// ] = dbuser;
 			signalServer.wss.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/rtc/)) {
+	} else if (pathname.match(/rtc/))
+	{
 		rtcServer.handleUpgrade(request, socket, head, function done(ws) {
 			rtcServer.emit("connection", ws, request);
 		});

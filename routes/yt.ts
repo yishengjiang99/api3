@@ -33,6 +33,25 @@ router.get("/", (req, res) => {
       res.end(err.message);
     });
 });
+router.get("/vid/(:vid).mp3", (req, res) => {
+  try {
+    const stream = ytdl(`https://www.youtube.com/watch?v=${req.params.vid}`, {
+      filter: "audio",
+    }).on("error", console.error);
+
+    const ffm = ffmpeg(stream);
+    let start;
+    if (req.query.t) ffm.addOption(`-ss ${~~(start + 0 / 60)}:${start % 60}`);
+
+    res.writeHead(200, {
+      "Content-Type": "audio/mp3",
+    });
+    ffm.format("mp3").pipe(new PassThrough()).pipe(res);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 router.get("/(:search)", (req, res) => {
   try {
     const youtube_api_key = process.env.google_key;
@@ -57,24 +76,6 @@ router.get("/(:search)", (req, res) => {
   }
 });
 
-router.get("/vid/(:vid).mp3", (req, res) => {
-  try {
-    const stream = ytdl(`https://www.youtube.com/watch?v=${req.params.vid}`, {
-      filter: "audio",
-    }).on("error", console.error);
-
-    const ffm = ffmpeg(stream);
-    let start;
-    if (req.query.t) ffm.addOption(`-ss ${~~(start + 0 / 60)}:${start % 60}`);
-
-    res.writeHead(200, {
-      "Content-Type": "audio/mp3",
-    });
-    ffm.format("mp3").pipe(new PassThrough()).pipe(res);
-  } catch (e) {
-    console.log(e);
-  }
-});
 router.get("/search/:query", (req, res) => {
   console.log(process.env.hostname);
 

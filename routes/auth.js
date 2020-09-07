@@ -29,7 +29,7 @@ var generateRandomString = function (length) {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < length; i++) {
+    for (var i = 0;i < length;i++) {
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
@@ -41,6 +41,30 @@ router
     .use(express.static(__dirname + "/public"))
     .use(cors())
     .use(cookieParser());
+
+router.get("/", (req, res) => {
+    var state = req.query.jshost || "https://www.grepawk.com/spotify";
+
+    const scopes = [
+        "user-top-read",
+        "user-read-email",
+        "user-read-playback-state",
+        "user-modify-playback-state",
+        "user-read-currently-playing",
+        "streaming",
+        "app-remote-control",
+        "user-library-read",
+        "playlist-modify-private",
+    ];
+    res.redirect("https://accounts.spotify.com/authorize?" +
+        querystring.stringify({
+            response_type: "code",
+            client_id: client_id,
+            scope: scopes.join(","),
+            redirect_uri: redirect_uri,
+            state: state,
+        }));
+})
 
 router.get("/login", function (req, res) {
     var state = generateRandomString(16);
@@ -62,8 +86,7 @@ router.get("/login", function (req, res) {
             response_type: "code",
             client_id: client_id,
             scope: scope,
-            redirect_uri: redirect_uri,
-            state: state,
+            redirect_uri: redirect_uri
         })
     );
 });
@@ -72,31 +95,34 @@ router.get("/cb", function (req, res) {
     // your application requests refresh and access tokens
     // after checking the state parameter
 
-    var code = req.query.code || null;
-    var state = req.query.state || null;
-    var storedState = req.cookies ? req.cookies[stateKey] : null;
+    var code = req.query.code;
 
-    if (false && state === null || state !== storedState) {
+    var jshost = req.query.state || ""
 
-    } else {
-        res.clearCookie(stateKey);
-        var authOptions = {
-            url: "https://accounts.spotify.com/api/token",
-            form: {
-                code: code,
-                redirect_uri: redirect_uri,
-                grant_type: "authorization_code",
-            },
-            headers: {
-                Authorization:
-                    "Basic " + new Buffer(client_id + ":" + client_secret).toString("base64"),
-            },
-            json: true,
-        };
+    var authOptions = {
+        url: "https://accounts.spotify.com/api/token",
+        form: {
+            code: code,
+            redirect_uri: redirect_uri,
+            grant_type: "authorization_code",
+        },
+        headers: {
+            Authorization:
+                "Basic " + new Buffer(client_id + ":" + client_secret).toString("base64"),
+        },
+        json: true,
+    };
 
-        request.post(authOptions, function (error, response, body) {
-            if (!error && response.statusCode === 200) {
-                var { access_token, refresh_token, expires_in } = body;
+    request.post(authOptions, function (error, response, body) {
+        if (!error && response.statusCode === 200) {
+            var {access_token, refresh_token, expires_in} = body;
+            if (jshost) {
+                res.redirect(jshost + "?" + querystring.stringify({
+                    access_token,
+                    refresh_token,
+                    expiry: new Date().getTime() + expires_in * 1000,
+                }))
+            } else {
                 res.redirect(
                     "/playback.html#" +
                     querystring.stringify({
@@ -105,17 +131,19 @@ router.get("/cb", function (req, res) {
                         expiry: new Date().getTime() + expires_in * 1000,
                     })
                 );
-                // we can also pass the token to the browser to make requests from there
-            } else {
-                res.redirect(
-                    "/#" +
-                    querystring.stringify({
-                        error: "invalid_token",
-                    })
-                );
             }
-        });
-    }
+
+            // we can also pass the token to the browser to make requests from there
+        } else {
+            res.redirect(
+                "/#" +
+                querystring.stringify({
+                    error: "invalid_token",
+                })
+            );
+        }
+    });
+
 });
 
 router.get("/refresh_token", function (req, res) {

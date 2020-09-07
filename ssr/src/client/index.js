@@ -1,32 +1,36 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+export {createComponent as h} from 'react';
+export {hydrate as rHydrate} from 'react-dom';
 
-export const SideNav = ({ children }) => {
+export const SideNav = ({children}) => {
     <div className='sidenav'>
         {children}
     </div>
 }
-export const PlayListMenu = ({ playlists }) => (
+export const PlayListMenu = ({playlists}) => (
     <div className='sidenav'>
         <ul>
             {
-                playlists.map(playlist => <li><a href={`/spotify/list/${playlist.id}`}>{playlist.name}</a></li>)
+                playlists.map(playlist => <li key={playlist.id}><a href={`/spotify/list/${playlist.id}`}>{playlist.name}</a></li>)
             }
         </ul>
     </div>
 )
 
-export const TrackRow = ({ track }) => {
+export const TrackRow = ({track}) => {
 
-    return (<li>
+    return (<li key={track.id}>
         <div className="mui--text-light mui--text-title">{track.name}</div>
 
-        <button className="mui-btn">+</button>
+        <button onClick={() => {
+            alert(track.id);
+        }} className="mui-btn">+</button>
     </li>);
 }
-export const ListView = ({ children }) => <ul>{children}</ul>
+export const ListView = ({children}) => <ul>{children}</ul>
 
-export function NowPlaying({ item }) {
+export function NowPlaying({item}) {
     try {
 
         return (
@@ -49,7 +53,7 @@ export function NowPlaying({ item }) {
 }
 const Button = (props) => <button className='mui-btn'>{props.text}</button>
 
-export const AppBar = ({ loginUrl = "", onSearch, leftButton, rightButton, searchResultItems = [] }) =>
+export const AppBar = ({loginUrl = "", onSearch, leftButton, rightButton, searchResultItems = []}) =>
     <React.Fragment>
         <div className="mui-appbar">
             <a target='_blank' href={loginUrl}><Button text="Login"></Button></a>
@@ -92,16 +96,22 @@ export const SpotifyFooter = () => (
     </div>);
 
 
-export const TrackList = ({ trackList }) =>
-    <div className='main'>
+export const TrackList = ({trackList}) =>
+    <div id='trackList' className='main'>
         <ul>
-            {trackList.map(trackItem => <TrackRow track={trackItem} />)}
+            {trackList.map(trackItem => <li key={trackItem.id}>
+                <div className="mui--text-light mui--text-title">{trackItem.name}</div>
+
+                <button onClick={() => {
+                    alert(trackItem.id);
+                }} className="mui-btn">+</button>
+            </li>)}
 
 
         </ul>
     </div>
 
-export const App = ({ nowPlaying, playlists, trackList, loginUrl }) => {
+export const App = ({nowPlaying, playlists, trackList, loginUrl}) => {
     <React.Fragment>
         <AppBar loginUrl={loginUrl}></AppBar>
         <SideNav>
@@ -117,4 +127,12 @@ export const App = ({ nowPlaying, playlists, trackList, loginUrl }) => {
 
         </SideNav>
     </React.Fragment>
+}
+
+
+if (global.Window && typeof window !== 'undefined') {
+    window.reactHydrate = function () {
+        const trackList = JSON.parse(document.querySelector("#datarepo").innerHTML);
+        ReactDOM.hydrate(<TrackList trackList={trackList} />, document.querySelector("#trackList"));
+    }
 }
