@@ -119,11 +119,11 @@ router.get("/cb", function (req, res) {
             const expiry = new Date().getTime() + expires_in * 1000;
 
             if (jshost) {
-                res.redirect(jshost) + "?" + querystring.stringify({
+                res.redirect(jshost + "?" + querystring.stringify({
                     access_token,
                     refresh_token,
                     expiry: new Date().getTime() + expires_in * 1000,
-                });
+                }));
             } else {
                 res.redirect(
                     "/playback.html#" +

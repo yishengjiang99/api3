@@ -51,10 +51,8 @@ function loadSpotifyPremium(token) {
             );
 
             window.webplayer.addListener("ready", (e) => {
-                debugger;
-
                 window.spotifyDeviceId = e.device_id;
-                log("device ready");
+                log("device ready " + window.spotifyDeviceId);
                 document.getElementById("play").style.display = "block";
                 window.webplayer.connect();
                 controls.play.onclick = () => window.webplayer.resume();
@@ -80,7 +78,7 @@ if (window.access_token) {
     loadSpotifyPremium(window.access_token);
 }
 
-function queueTracks(tracks) {
+window.queueTracks = async function (tracks) {
     fetchAPIPut("/me/player/play?device_id=" + window.spotifyDeviceId, {
         uris: tracks.map(item => "spotify:track:" + item.track.id),
     })
@@ -92,8 +90,8 @@ function queueTracks(tracks) {
         });
 }
 
-const playTrack = async function (trackId) {
-    await loadSpotifyPremium(authToken);
+window.playTrack = async function (trackId) {
+    // await loadSpotifyPremium(authToken);
     fetchAPIPut("/me/player/play?device_id=" + window.spotifyDeviceId, {
         uris: ["spotify:track:" + trackId],
     })
@@ -104,13 +102,31 @@ const playTrack = async function (trackId) {
             log(e);
         });
 };
-const queueTrack = async function (trackId) {
-    await loadSpotifyPremium(authToken);
+window.queueTrack = async function (trackId) {
     fetchAPI("/me/player/queue?uri=spotify:track:" + trackId, "POST");
 };
-
 function onPlayStateEvent(e) {
-    console.log(e);
+    const renderNowPlaying = (imgSrc, trackIds, title, artists) => {
+        $(".song-name").innerHTML = title;
+
+        $(".song-thumbnail").src = imgSrc;
+        $(".artist-name").innerHTML = artists;
+
+    }
+    Number.prototype.lpad = function (n, str) {
+        return (
+            (this < 0 ? "-" : "") +
+            Array(n - String(Math.abs(this)).length + 1).join(str || "0") +
+            Math.abs(this)
+        );
+    };
+    function ms_to_mm_ss(ms) {
+        const secondst = ms / 1000;
+        const minutes = ~~(secondst / 60);
+        const seconds = Math.floor(secondst - minutes * 60);
+
+        return `${minutes < 10 ? "0" + minutes : minutes} : ${seconds < 10 ? "0" + seconds : seconds}`;
+    }
     if (e.track_window.current_track) {
         currentTrackId = e.track_window.current_track.id;
         renderNowPlaying(e.track_window.current_track.album.images[0].url,
@@ -159,3 +175,4 @@ function onPlayStateEvent(e) {
         controls.stop.style.display = "none";
     }
 }
+
