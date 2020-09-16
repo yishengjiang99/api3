@@ -16,6 +16,7 @@ import * as auth from "./routes/auth";
 import yt from "./routes/yt";
 import { proxy_pass } from "./vpn";
 import * as session from "express-session";
+import { stdinHandler } from "./src/stdin";
 //const session = require("express-session");
 const connect = require("connect");
 const app = express();
@@ -26,7 +27,6 @@ dspServer.use("/api/spotify", auth);
 dspServer.use("/", express.static("../grepaudio"));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
-app.use(vhost("api.grepawk.com", apiServer));
 var cookieParser = require("cookie-parser");
 app.use(
 	session({
@@ -35,14 +35,21 @@ app.use(
 	})
 );
 
+[1, 2, 3, 4, 5, 12, 33, 25, 55].forEach(idx => {
+	if (!existsSync(`./shared/${idx}`)) execSync(`mkfifo ./shared/${idx}`);
+})
+app.get("/sound/:streamid", (request, response) => {
+	createReadStream("./shared/" + request.params.streamid).pipe(response);
+	// request.pipe("./shared/1");
+});
 app.use(cookieParser());
+
 app.use("/yt", yt);
 app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
 app.use("/views", express.static("./views"));
 app.use("/download/:filename", (req, res) => {
-	if (resolve("shared", req.params.filename))
-	{
+	if (resolve("shared", req.params.filename)) {
 		res.download(resolve("shared", req.params.filename));
 	}
 });
@@ -51,8 +58,7 @@ export const httpsTLS = {
 	key: readFileSync(process.env.PRIV_KEYFILE),
 	cert: readFileSync(process.env.CERT_FILE),
 	SNICallback: function (domain, cb) {
-		if (!existsSync(`/etc/letsencrypt/live/${domain}`))
-		{
+		if (!existsSync(`/etc/letsencrypt/live/${domain}`)) {
 			cb();
 			return;
 		}
@@ -79,12 +85,15 @@ const signalServer = new (require("./src/signal").Server)();
 const rtcServer = new WebSocketServer({ noServer: true });
 const { rtcHandler } = require("./lib/rtcsignal");
 
+const stdinServer = new WebSocketServer({ noServer: true });
+stdinServer.on("connection", stdinHandler);
+
 rtcServer.on("connection", rtcHandler);
+app.use("/", express.static("../piano/build"));
 
 httpsServer.on("upgrade", function upgrade(request, socket, head) {
 	const pathname = require("url").parse(request.url).pathname;
-	if (pathname.match(/signal/))
-	{
+	if (pathname.match(/signal/)) {
 		signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
 			// // const dbuser = db.getOrCreateUser(request.headers["set-cookie"]);
 			// signalServer.requestContext[
@@ -92,10 +101,13 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 			// ] = dbuser;
 			signalServer.wss.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/rtc/))
-	{
+	} else if (pathname.match(/rtc/)) {
 		rtcServer.handleUpgrade(request, socket, head, function done(ws) {
 			rtcServer.emit("connection", ws, request);
+		});
+	} else if (pathname.match(/stdin/)) {
+		stdinServer.handleUpgrade(request, socket, head, function done(ws) {
+			ws._socket.pipe(require("fs").createWriteStream("./shared/1"));
 		});
 	}
 });
