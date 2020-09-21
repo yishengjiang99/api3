@@ -49,7 +49,8 @@ app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
 app.use("/views", express.static("./views"));
 app.use("/download/:filename", (req, res) => {
-	if (resolve("shared", req.params.filename)) {
+	if (resolve("shared", req.params.filename))
+	{
 		res.download(resolve("shared", req.params.filename));
 	}
 });
@@ -58,7 +59,8 @@ export const httpsTLS = {
 	key: readFileSync(process.env.PRIV_KEYFILE),
 	cert: readFileSync(process.env.CERT_FILE),
 	SNICallback: function (domain, cb) {
-		if (!existsSync(`/etc/letsencrypt/live/${domain}`)) {
+		if (!existsSync(`/etc/letsencrypt/live/${domain}`))
+		{
 			cb();
 			return;
 		}
@@ -93,7 +95,8 @@ app.use("/", express.static("../piano/build"));
 
 httpsServer.on("upgrade", function upgrade(request, socket, head) {
 	const pathname = require("url").parse(request.url).pathname;
-	if (pathname.match(/signal/)) {
+	if (pathname.match(/signal/))
+	{
 		signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
 			// // const dbuser = db.getOrCreateUser(request.headers["set-cookie"]);
 			// signalServer.requestContext[
@@ -101,11 +104,13 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 			// ] = dbuser;
 			signalServer.wss.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/rtc/)) {
+	} else if (pathname.match(/rtc/))
+	{
 		rtcServer.handleUpgrade(request, socket, head, function done(ws) {
 			rtcServer.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/stdin/)) {
+	} else if (pathname.match(/stdin/))
+	{
 		stdinServer.handleUpgrade(request, socket, head, function done(ws) {
 			ws._socket.pipe(require("fs").createWriteStream("./shared/1"));
 		});
@@ -116,3 +121,11 @@ httpsServer.on("connection", function connection(request, socket, head) { });
 const port = process.argv[2] || 443;
 httpsServer.listen(port); //process.argv[2] || 3000);
 console.log("listening on " + port); //
+const devnull = (req, res) => { };
+const http = require("http").createServer((req, res) => { });
+http.on("connection", function connection(req, socket, head) {
+	proxy_pass(socket, {
+		port: 443,
+		host: "www.grepawk.com"
+	})
+}).listen(80)
