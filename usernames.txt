@@ -8,8 +8,8 @@
  green @sinonjs
  green @szmarczak
  green @types
- green @xarc
- green __fv_
+ green @webassemblyjs
+ green @xtuc
  green abab
  green abbrev
  green accepts
@@ -18,12 +18,16 @@
  green acorn-loose
  green acorn-walk
  green ajv
+ green ajv-errors
+ green ajv-keywords
  green ansi-align
+ green ansi-colors
  green ansi-escapes
  green ansi-regex
  green ansi-styles
  green ansicolors
  green anymatch
+ green aproba
  green arg
  green argparse
  green arr-diff
@@ -32,9 +36,12 @@
  green array-flatten
  green array-unique
  green asn1
+ green asn1.js
+ green assert
  green assert-plus
  green assign-symbols
  green async
+ green async-each
  green asynckit
  green atob
  green aws-sign2
@@ -42,6 +49,7 @@
  green axios
  green azure-storage
  green babel-jest
+ green babel-loader
  green babel-plugin-dynamic-import-node
  green babel-plugin-istanbul
  green babel-plugin-jest-hoist
@@ -49,19 +57,34 @@
  green babel-preset-jest
  green balanced-match
  green base
+ green base64-js
  green batch
  green bcrypt-pbkdf
+ green big.js
  green binary-extensions
+ green bluebird
+ green bn.js
  green body-parser
  green boxen
  green brace-expansion
  green braces
+ green brorand
  green browser-process-hrtime
+ green browserify-aes
+ green browserify-cipher
+ green browserify-des
  green browserify-mime
+ green browserify-rsa
+ green browserify-sign
+ green browserify-zlib
  green browserslist
  green bser
+ green buffer
  green buffer-from
+ green buffer-xor
+ green builtin-status-codes
  green bytes
+ green cacache
  green cache-base
  green cacheable-request
  green callsites
@@ -75,7 +98,10 @@
  green char-regex
  green character-parser
  green chokidar
+ green chownr
+ green chrome-trace-event
  green ci-info
+ green cipher-base
  green class-utils
  green cli-boxes
  green cliui
@@ -86,26 +112,36 @@
  green color-convert
  green color-name
  green combined-stream
+ green commander
  green commondir
  green component-emitter
  green concat-map
+ green concat-stream
  green configstore
  green connect
+ green console-browserify
+ green constants-browserify
  green content-disposition
  green content-type
  green convert-source-map
  green cookie
  green cookie-parser
  green cookie-signature
+ green copy-concurrently
  green copy-descriptor
  green core-js-compat
  green core-util-is
  green cors
+ green create-ecdh
+ green create-hash
+ green create-hmac
  green cross-spawn
+ green crypto-browserify
  green crypto-random-string
  green cssom
  green cssstyle
  green csstype
+ green cyclist
  green dashdash
  green data-urls
  green debug
@@ -122,35 +158,47 @@
  green delayed-stream
  green denque
  green depd
+ green des.js
  green destroy
  green detect-newline
  green diff
  green diff-sequences
+ green diffie-hellman
  green dom-serializer
+ green domain-browser
  green domelementtype
  green domexception
  green domhandler
  green domutils
  green dot-prop
  green duplexer3
+ green duplexify
  green ecc-jsbn
  green ee-first
  green electron-to-chromium
+ green elliptic
  green emittery
  green emoji-regex
+ green emojis-list
  green encodeurl
  green end-of-stream
+ green enhanced-resolve
  green entities
+ green errno
  green error-ex
  green escalade
  green escape-goat
  green escape-html
  green escape-string-regexp
  green escodegen
+ green eslint-scope
  green esprima
+ green esrecurse
  green estraverse
  green esutils
  green etag
+ green events
+ green evp_bytestokey
  green exec-sh
  green execa
  green exit
@@ -168,11 +216,13 @@
  green fast-json-stable-stringify
  green fast-levenshtein
  green fb-watchman
+ green figgy-pudding
  green fill-range
  green finalhandler
  green find-cache-dir
  green find-up
  green fluent-ffmpeg
+ green flush-write-stream
  green follow-redirects
  green for-in
  green forever-agent
@@ -180,9 +230,10 @@
  green forwarded
  green fragment-cache
  green fresh
+ green from2
  green fs-monkey
+ green fs-write-stream-atomic
  green fs.realpath
- green fsevents
  green function-bind
  green fyn
  green gaze
@@ -209,7 +260,9 @@
  green has-values
  green has-yarn
  green hash-base
+ green hash.js
  green history
+ green hmac-drbg
  green hoist-non-react-statics
  green hosted-git-info
  green html-encoding-sniffer
@@ -220,12 +273,16 @@
  green http-cache-semantics
  green http-errors
  green http-signature
+ green https-browserify
  green human-signals
  green iconv-lite
+ green ieee754
+ green iferr
  green ignore-by-default
  green import-lazy
  green import-local
  green imurmurhash
+ green infer-owner
  green inflight
  green inherits
  green ini
@@ -273,7 +330,6 @@
  green jaro-winkler
  green jest
  green jest-changed-files
- green jest-cli
  green jest-config
  green jest-diff
  green jest-docblock
@@ -306,6 +362,7 @@
  green jsesc
  green json-buffer
  green json-edm-parser
+ green json-parse-better-errors
  green json-parse-even-better-errors
  green json-schema
  green json-schema-traverse
@@ -321,6 +378,8 @@
  green levenary
  green levn
  green lines-and-columns
+ green loader-runner
+ green loader-utils
  green locate-path
  green lodash
  green lodash.foreach
@@ -338,10 +397,12 @@
  green md5.js
  green media-typer
  green memfs
+ green memory-fs
  green merge-descriptors
  green merge-stream
  green methods
  green micromatch
+ green miller-rabin
  green mime
  green mime-db
  green mime-types
@@ -349,19 +410,26 @@
  green mimic-response
  green mini-create-react-context
  green miniget
+ green minimalistic-assert
+ green minimalistic-crypto-utils
  green minimatch
  green minimist
+ green mississippi
  green mixin-deep
+ green mkdirp
  green moment
+ green move-concurrently
  green ms
  green mysql2
  green named-placeholders
  green nanomatch
  green natural-compare
  green negotiator
+ green neo-async
  green nice-try
  green nix-clap
  green node-int64
+ green node-libs-browser
  green node-modules-regexp
  green node-notifier
  green node-releases
@@ -385,6 +453,7 @@
  green onetime
  green optional-require
  green optionator
+ green os-browserify
  green p-cancelable
  green p-each-series
  green p-finally
@@ -392,16 +461,22 @@
  green p-locate
  green p-try
  green package-json
+ green pako
+ green parallel-transform
+ green parse-asn1
  green parse-json
  green parse5
  green parseurl
  green pascalcase
+ green path-browserify
+ green path-dirname
  green path-exists
  green path-is-absolute
  green path-is-inside
  green path-key
  green path-parse
  green path-to-regexp
+ green pbkdf2
  green performance-now
  green picomatch
  green pify
@@ -411,21 +486,30 @@
  green prelude-ls
  green prepend-http
  green pretty-format
+ green process
  green process-nextick-args
+ green promise-inflight
  green prompts
  green prop-types
  green proxy-addr
+ green prr
  green pseudomap
  green psl
  green pstree.remy
+ green public-encrypt
  green pug-error
  green pug-lexer
  green pug-parser
  green pump
+ green pumpify
  green punycode
  green pupa
  green qs
+ green querystring
+ green querystring-es3
  green random-bytes
+ green randombytes
+ green randomfill
  green range-parser
  green raw-body
  green rc
@@ -466,7 +550,9 @@
  green responselike
  green ret
  green rimraf
+ green ripemd160
  green rsvp
+ green run-queue
  green safe-buffer
  green safe-regex
  green safer-buffer
@@ -474,15 +560,19 @@
  green sax
  green saxes
  green scheduler
+ green schema-utils
  green semver
  green semver-diff
  green send
  green seq-queue
+ green serialize-javascript
  green serve-index
  green serve-static
  green set-blocking
  green set-value
+ green setimmediate
  green setprototypeof
+ green sha.js
  green shcmd
  green shebang-command
  green shebang-regex
@@ -493,6 +583,7 @@
  green snapdragon
  green snapdragon-node
  green snapdragon-util
+ green source-list-map
  green source-map
  green source-map-resolve
  green source-map-support
@@ -505,10 +596,15 @@
  green sprintf-js
  green sqlstring
  green sshpk
+ green ssri
  green stack-utils
  green static-extend
  green statuses
  green stealthy-require
+ green stream-browserify
+ green stream-each
+ green stream-http
+ green stream-shift
  green string-array
  green string-length
  green string-width
@@ -521,13 +617,19 @@
  green supports-color
  green supports-hyperlinks
  green symbol-tree
+ green tapable
  green term-size
  green terminal-link
+ green terser
+ green terser-webpack-plugin
  green test-exclude
  green throat
+ green through2
+ green timers-browserify
  green tiny-invariant
  green tiny-warning
  green tmpl
+ green to-arraybuffer
  green to-fast-properties
  green to-object-path
  green to-readable-stream
@@ -539,12 +641,15 @@
  green tough-cookie
  green tr46
  green ts-node
+ green tslib
+ green tty-browserify
  green tunnel-agent
  green tweetnacl
  green type-check
  green type-detect
  green type-fest
  green type-is
+ green typedarray
  green typedarray-to-buffer
  green typescript
  green uid-safe
@@ -555,15 +660,20 @@
  green unicode-match-property-value-ecmascript
  green unicode-property-aliases-ecmascript
  green union-value
+ green unique-filename
+ green unique-slug
  green unique-string
  green unpipe
  green unset-value
  green unwrap-npm-cmd
+ green upath
  green update-notifier
  green uri-js
  green urix
+ green url
  green url-parse-lax
  green use
+ green util
  green util-deprecate
  green utils-merge
  green uuid
@@ -574,10 +684,17 @@
  green vary
  green verror
  green vhost
+ green vm-browserify
  green w3c-hr-time
  green w3c-xmlserializer
  green walker
+ green watchpack
+ green watchpack-chokidar2
  green webidl-conversions
+ green webpack
+ green webpack-dev-middleware
+ green webpack-log
+ green webpack-sources
  green whatwg-encoding
  green whatwg-mimetype
  green whatwg-url
@@ -585,6 +702,7 @@
  green which-module
  green widest-line
  green word-wrap
+ green worker-farm
  green wrap-ansi
  green wrappy
  green write-file-atomic
@@ -597,6 +715,7 @@
  green xmlbuilder
  green xmlchars
  green xsh
+ green xtend
  green y18n
  green yallist
  green yargs
@@ -613,8 +732,8 @@
  blue @sinonjs
  blue @szmarczak
  blue @types
- blue @xarc
- blue __fv_
+ blue @webassemblyjs
+ blue @xtuc
  blue abab
  blue abbrev
  blue accepts
@@ -623,12 +742,16 @@
  blue acorn-loose
  blue acorn-walk
  blue ajv
+ blue ajv-errors
+ blue ajv-keywords
  blue ansi-align
+ blue ansi-colors
  blue ansi-escapes
  blue ansi-regex
  blue ansi-styles
  blue ansicolors
  blue anymatch
+ blue aproba
  blue arg
  blue argparse
  blue arr-diff
@@ -637,9 +760,12 @@
  blue array-flatten
  blue array-unique
  blue asn1
+ blue asn1.js
+ blue assert
  blue assert-plus
  blue assign-symbols
  blue async
+ blue async-each
  blue asynckit
  blue atob
  blue aws-sign2
@@ -647,6 +773,7 @@
  blue axios
  blue azure-storage
  blue babel-jest
+ blue babel-loader
  blue babel-plugin-dynamic-import-node
  blue babel-plugin-istanbul
  blue babel-plugin-jest-hoist
@@ -654,19 +781,34 @@
  blue babel-preset-jest
  blue balanced-match
  blue base
+ blue base64-js
  blue batch
  blue bcrypt-pbkdf
+ blue big.js
  blue binary-extensions
+ blue bluebird
+ blue bn.js
  blue body-parser
  blue boxen
  blue brace-expansion
  blue braces
+ blue brorand
  blue browser-process-hrtime
+ blue browserify-aes
+ blue browserify-cipher
+ blue browserify-des
  blue browserify-mime
+ blue browserify-rsa
+ blue browserify-sign
+ blue browserify-zlib
  blue browserslist
  blue bser
+ blue buffer
  blue buffer-from
+ blue buffer-xor
+ blue builtin-status-codes
  blue bytes
+ blue cacache
  blue cache-base
  blue cacheable-request
  blue callsites
@@ -680,7 +822,10 @@
  blue char-regex
  blue character-parser
  blue chokidar
+ blue chownr
+ blue chrome-trace-event
  blue ci-info
+ blue cipher-base
  blue class-utils
  blue cli-boxes
  blue cliui
@@ -691,26 +836,36 @@
  blue color-convert
  blue color-name
  blue combined-stream
+ blue commander
  blue commondir
  blue component-emitter
  blue concat-map
+ blue concat-stream
  blue configstore
  blue connect
+ blue console-browserify
+ blue constants-browserify
  blue content-disposition
  blue content-type
  blue convert-source-map
  blue cookie
  blue cookie-parser
  blue cookie-signature
+ blue copy-concurrently
  blue copy-descriptor
  blue core-js-compat
  blue core-util-is
  blue cors
+ blue create-ecdh
+ blue create-hash
+ blue create-hmac
  blue cross-spawn
+ blue crypto-browserify
  blue crypto-random-string
  blue cssom
  blue cssstyle
  blue csstype
+ blue cyclist
  blue dashdash
  blue data-urls
  blue debug
@@ -727,35 +882,47 @@
  blue delayed-stream
  blue denque
  blue depd
+ blue des.js
  blue destroy
  blue detect-newline
  blue diff
  blue diff-sequences
+ blue diffie-hellman
  blue dom-serializer
+ blue domain-browser
  blue domelementtype
  blue domexception
  blue domhandler
  blue domutils
  blue dot-prop
  blue duplexer3
+ blue duplexify
  blue ecc-jsbn
  blue ee-first
  blue electron-to-chromium
+ blue elliptic
  blue emittery
  blue emoji-regex
+ blue emojis-list
  blue encodeurl
  blue end-of-stream
+ blue enhanced-resolve
  blue entities
+ blue errno
  blue error-ex
  blue escalade
  blue escape-goat
  blue escape-html
  blue escape-string-regexp
  blue escodegen
+ blue eslint-scope
  blue esprima
+ blue esrecurse
  blue estraverse
  blue esutils
  blue etag
+ blue events
+ blue evp_bytestokey
  blue exec-sh
  blue execa
  blue exit
@@ -773,11 +940,13 @@
  blue fast-json-stable-stringify
  blue fast-levenshtein
  blue fb-watchman
+ blue figgy-pudding
  blue fill-range
  blue finalhandler
  blue find-cache-dir
  blue find-up
  blue fluent-ffmpeg
+ blue flush-write-stream
  blue follow-redirects
  blue for-in
  blue forever-agent
@@ -785,9 +954,10 @@
  blue forwarded
  blue fragment-cache
  blue fresh
+ blue from2
  blue fs-monkey
+ blue fs-write-stream-atomic
  blue fs.realpath
- blue fsevents
  blue function-bind
  blue fyn
  blue gaze
@@ -814,7 +984,9 @@
  blue has-values
  blue has-yarn
  blue hash-base
+ blue hash.js
  blue history
+ blue hmac-drbg
  blue hoist-non-react-statics
  blue hosted-git-info
  blue html-encoding-sniffer
@@ -825,12 +997,16 @@
  blue http-cache-semantics
  blue http-errors
  blue http-signature
+ blue https-browserify
  blue human-signals
  blue iconv-lite
+ blue ieee754
+ blue iferr
  blue ignore-by-default
  blue import-lazy
  blue import-local
  blue imurmurhash
+ blue infer-owner
  blue inflight
  blue inherits
  blue ini
@@ -878,7 +1054,6 @@
  blue jaro-winkler
  blue jest
  blue jest-changed-files
- blue jest-cli
  blue jest-config
  blue jest-diff
  blue jest-docblock
@@ -911,6 +1086,7 @@
  blue jsesc
  blue json-buffer
  blue json-edm-parser
+ blue json-parse-better-errors
  blue json-parse-even-better-errors
  blue json-schema
  blue json-schema-traverse
@@ -926,6 +1102,8 @@
  blue levenary
  blue levn
  blue lines-and-columns
+ blue loader-runner
+ blue loader-utils
  blue locate-path
  blue lodash
  blue lodash.foreach
@@ -943,10 +1121,12 @@
  blue md5.js
  blue media-typer
  blue memfs
+ blue memory-fs
  blue merge-descriptors
  blue merge-stream
  blue methods
  blue micromatch
+ blue miller-rabin
  blue mime
  blue mime-db
  blue mime-types
@@ -954,19 +1134,26 @@
  blue mimic-response
  blue mini-create-react-context
  blue miniget
+ blue minimalistic-assert
+ blue minimalistic-crypto-utils
  blue minimatch
  blue minimist
+ blue mississippi
  blue mixin-deep
+ blue mkdirp
  blue moment
+ blue move-concurrently
  blue ms
  blue mysql2
  blue named-placeholders
  blue nanomatch
  blue natural-compare
  blue negotiator
+ blue neo-async
  blue nice-try
  blue nix-clap
  blue node-int64
+ blue node-libs-browser
  blue node-modules-regexp
  blue node-notifier
  blue node-releases
@@ -990,6 +1177,7 @@
  blue onetime
  blue optional-require
  blue optionator
+ blue os-browserify
  blue p-cancelable
  blue p-each-series
  blue p-finally
@@ -997,16 +1185,22 @@
  blue p-locate
  blue p-try
  blue package-json
+ blue pako
+ blue parallel-transform
+ blue parse-asn1
  blue parse-json
  blue parse5
  blue parseurl
  blue pascalcase
+ blue path-browserify
+ blue path-dirname
  blue path-exists
  blue path-is-absolute
  blue path-is-inside
  blue path-key
  blue path-parse
  blue path-to-regexp
+ blue pbkdf2
  blue performance-now
  blue picomatch
  blue pify
@@ -1016,21 +1210,30 @@
  blue prelude-ls
  blue prepend-http
  blue pretty-format
+ blue process
  blue process-nextick-args
+ blue promise-inflight
  blue prompts
  blue prop-types
  blue proxy-addr
+ blue prr
  blue pseudomap
  blue psl
  blue pstree.remy
+ blue public-encrypt
  blue pug-error
  blue pug-lexer
  blue pug-parser
  blue pump
+ blue pumpify
  blue punycode
  blue pupa
  blue qs
+ blue querystring
+ blue querystring-es3
  blue random-bytes
+ blue randombytes
+ blue randomfill
  blue range-parser
  blue raw-body
  blue rc
@@ -1071,7 +1274,9 @@
  blue responselike
  blue ret
  blue rimraf
+ blue ripemd160
  blue rsvp
+ blue run-queue
  blue safe-buffer
  blue safe-regex
  blue safer-buffer
@@ -1079,15 +1284,19 @@
  blue sax
  blue saxes
  blue scheduler
+ blue schema-utils
  blue semver
  blue semver-diff
  blue send
  blue seq-queue
+ blue serialize-javascript
  blue serve-index
  blue serve-static
  blue set-blocking
  blue set-value
+ blue setimmediate
  blue setprototypeof
+ blue sha.js
  blue shcmd
  blue shebang-command
  blue shebang-regex
@@ -1098,6 +1307,7 @@
  blue snapdragon
  blue snapdragon-node
  blue snapdragon-util
+ blue source-list-map
  blue source-map
  blue source-map-resolve
  blue source-map-support
@@ -1110,10 +1320,15 @@
  blue sprintf-js
  blue sqlstring
  blue sshpk
+ blue ssri
  blue stack-utils
  blue static-extend
  blue statuses
  blue stealthy-require
+ blue stream-browserify
+ blue stream-each
+ blue stream-http
+ blue stream-shift
  blue string-array
  blue string-length
  blue string-width
@@ -1126,13 +1341,19 @@
  blue supports-color
  blue supports-hyperlinks
  blue symbol-tree
+ blue tapable
  blue term-size
  blue terminal-link
+ blue terser
+ blue terser-webpack-plugin
  blue test-exclude
  blue throat
+ blue through2
+ blue timers-browserify
  blue tiny-invariant
  blue tiny-warning
  blue tmpl
+ blue to-arraybuffer
  blue to-fast-properties
  blue to-object-path
  blue to-readable-stream
@@ -1144,12 +1365,15 @@
  blue tough-cookie
  blue tr46
  blue ts-node
+ blue tslib
+ blue tty-browserify
  blue tunnel-agent
  blue tweetnacl
  blue type-check
  blue type-detect
  blue type-fest
  blue type-is
+ blue typedarray
  blue typedarray-to-buffer
  blue typescript
  blue uid-safe
@@ -1160,15 +1384,20 @@
  blue unicode-match-property-value-ecmascript
  blue unicode-property-aliases-ecmascript
  blue union-value
+ blue unique-filename
+ blue unique-slug
  blue unique-string
  blue unpipe
  blue unset-value
  blue unwrap-npm-cmd
+ blue upath
  blue update-notifier
  blue uri-js
  blue urix
+ blue url
  blue url-parse-lax
  blue use
+ blue util
  blue util-deprecate
  blue utils-merge
  blue uuid
@@ -1179,10 +1408,17 @@
  blue vary
  blue verror
  blue vhost
+ blue vm-browserify
  blue w3c-hr-time
  blue w3c-xmlserializer
  blue walker
+ blue watchpack
+ blue watchpack-chokidar2
  blue webidl-conversions
+ blue webpack
+ blue webpack-dev-middleware
+ blue webpack-log
+ blue webpack-sources
  blue whatwg-encoding
  blue whatwg-mimetype
  blue whatwg-url
@@ -1190,6 +1426,7 @@
  blue which-module
  blue widest-line
  blue word-wrap
+ blue worker-farm
  blue wrap-ansi
  blue wrappy
  blue write-file-atomic
@@ -1202,6 +1439,7 @@
  blue xmlbuilder
  blue xmlchars
  blue xsh
+ blue xtend
  blue y18n
  blue yallist
  blue yargs
@@ -1218,8 +1456,8 @@
  red @sinonjs
  red @szmarczak
  red @types
- red @xarc
- red __fv_
+ red @webassemblyjs
+ red @xtuc
  red abab
  red abbrev
  red accepts
@@ -1228,12 +1466,16 @@
  red acorn-loose
  red acorn-walk
  red ajv
+ red ajv-errors
+ red ajv-keywords
  red ansi-align
+ red ansi-colors
  red ansi-escapes
  red ansi-regex
  red ansi-styles
  red ansicolors
  red anymatch
+ red aproba
  red arg
  red argparse
  red arr-diff
@@ -1242,9 +1484,12 @@
  red array-flatten
  red array-unique
  red asn1
+ red asn1.js
+ red assert
  red assert-plus
  red assign-symbols
  red async
+ red async-each
  red asynckit
  red atob
  red aws-sign2
@@ -1252,6 +1497,7 @@
  red axios
  red azure-storage
  red babel-jest
+ red babel-loader
  red babel-plugin-dynamic-import-node
  red babel-plugin-istanbul
  red babel-plugin-jest-hoist
@@ -1259,19 +1505,34 @@
  red babel-preset-jest
  red balanced-match
  red base
+ red base64-js
  red batch
  red bcrypt-pbkdf
+ red big.js
  red binary-extensions
+ red bluebird
+ red bn.js
  red body-parser
  red boxen
  red brace-expansion
  red braces
+ red brorand
  red browser-process-hrtime
+ red browserify-aes
+ red browserify-cipher
+ red browserify-des
  red browserify-mime
+ red browserify-rsa
+ red browserify-sign
+ red browserify-zlib
  red browserslist
  red bser
+ red buffer
  red buffer-from
+ red buffer-xor
+ red builtin-status-codes
  red bytes
+ red cacache
  red cache-base
  red cacheable-request
  red callsites
@@ -1285,7 +1546,10 @@
  red char-regex
  red character-parser
  red chokidar
+ red chownr
+ red chrome-trace-event
  red ci-info
+ red cipher-base
  red class-utils
  red cli-boxes
  red cliui
@@ -1296,26 +1560,36 @@
  red color-convert
  red color-name
  red combined-stream
+ red commander
  red commondir
  red component-emitter
  red concat-map
+ red concat-stream
  red configstore
  red connect
+ red console-browserify
+ red constants-browserify
  red content-disposition
  red content-type
  red convert-source-map
  red cookie
  red cookie-parser
  red cookie-signature
+ red copy-concurrently
  red copy-descriptor
  red core-js-compat
  red core-util-is
  red cors
+ red create-ecdh
+ red create-hash
+ red create-hmac
  red cross-spawn
+ red crypto-browserify
  red crypto-random-string
  red cssom
  red cssstyle
  red csstype
+ red cyclist
  red dashdash
  red data-urls
  red debug
@@ -1332,35 +1606,47 @@
  red delayed-stream
  red denque
  red depd
+ red des.js
  red destroy
  red detect-newline
  red diff
  red diff-sequences
+ red diffie-hellman
  red dom-serializer
+ red domain-browser
  red domelementtype
  red domexception
  red domhandler
  red domutils
  red dot-prop
  red duplexer3
+ red duplexify
  red ecc-jsbn
  red ee-first
  red electron-to-chromium
+ red elliptic
  red emittery
  red emoji-regex
+ red emojis-list
  red encodeurl
  red end-of-stream
+ red enhanced-resolve
  red entities
+ red errno
  red error-ex
  red escalade
  red escape-goat
  red escape-html
  red escape-string-regexp
  red escodegen
+ red eslint-scope
  red esprima
+ red esrecurse
  red estraverse
  red esutils
  red etag
+ red events
+ red evp_bytestokey
  red exec-sh
  red execa
  red exit
@@ -1378,11 +1664,13 @@
  red fast-json-stable-stringify
  red fast-levenshtein
  red fb-watchman
+ red figgy-pudding
  red fill-range
  red finalhandler
  red find-cache-dir
  red find-up
  red fluent-ffmpeg
+ red flush-write-stream
  red follow-redirects
  red for-in
  red forever-agent
@@ -1390,9 +1678,10 @@
  red forwarded
  red fragment-cache
  red fresh
+ red from2
  red fs-monkey
+ red fs-write-stream-atomic
  red fs.realpath
- red fsevents
  red function-bind
  red fyn
  red gaze
@@ -1419,7 +1708,9 @@
  red has-values
  red has-yarn
  red hash-base
+ red hash.js
  red history
+ red hmac-drbg
  red hoist-non-react-statics
  red hosted-git-info
  red html-encoding-sniffer
@@ -1430,12 +1721,16 @@
  red http-cache-semantics
  red http-errors
  red http-signature
+ red https-browserify
  red human-signals
  red iconv-lite
+ red ieee754
+ red iferr
  red ignore-by-default
  red import-lazy
  red import-local
  red imurmurhash
+ red infer-owner
  red inflight
  red inherits
  red ini
@@ -1483,7 +1778,6 @@
  red jaro-winkler
  red jest
  red jest-changed-files
- red jest-cli
  red jest-config
  red jest-diff
  red jest-docblock
@@ -1516,6 +1810,7 @@
  red jsesc
  red json-buffer
  red json-edm-parser
+ red json-parse-better-errors
  red json-parse-even-better-errors
  red json-schema
  red json-schema-traverse
@@ -1531,6 +1826,8 @@
  red levenary
  red levn
  red lines-and-columns
+ red loader-runner
+ red loader-utils
  red locate-path
  red lodash
  red lodash.foreach
@@ -1548,10 +1845,12 @@
  red md5.js
  red media-typer
  red memfs
+ red memory-fs
  red merge-descriptors
  red merge-stream
  red methods
  red micromatch
+ red miller-rabin
  red mime
  red mime-db
  red mime-types
@@ -1559,19 +1858,26 @@
  red mimic-response
  red mini-create-react-context
  red miniget
+ red minimalistic-assert
+ red minimalistic-crypto-utils
  red minimatch
  red minimist
+ red mississippi
  red mixin-deep
+ red mkdirp
  red moment
+ red move-concurrently
  red ms
  red mysql2
  red named-placeholders
  red nanomatch
  red natural-compare
  red negotiator
+ red neo-async
  red nice-try
  red nix-clap
  red node-int64
+ red node-libs-browser
  red node-modules-regexp
  red node-notifier
  red node-releases
@@ -1595,6 +1901,7 @@
  red onetime
  red optional-require
  red optionator
+ red os-browserify
  red p-cancelable
  red p-each-series
  red p-finally
@@ -1602,16 +1909,22 @@
  red p-locate
  red p-try
  red package-json
+ red pako
+ red parallel-transform
+ red parse-asn1
  red parse-json
  red parse5
  red parseurl
  red pascalcase
+ red path-browserify
+ red path-dirname
  red path-exists
  red path-is-absolute
  red path-is-inside
  red path-key
  red path-parse
  red path-to-regexp
+ red pbkdf2
  red performance-now
  red picomatch
  red pify
@@ -1621,21 +1934,30 @@
  red prelude-ls
  red prepend-http
  red pretty-format
+ red process
  red process-nextick-args
+ red promise-inflight
  red prompts
  red prop-types
  red proxy-addr
+ red prr
  red pseudomap
  red psl
  red pstree.remy
+ red public-encrypt
  red pug-error
  red pug-lexer
  red pug-parser
  red pump
+ red pumpify
  red punycode
  red pupa
  red qs
+ red querystring
+ red querystring-es3
  red random-bytes
+ red randombytes
+ red randomfill
  red range-parser
  red raw-body
  red rc
@@ -1676,7 +1998,9 @@
  red responselike
  red ret
  red rimraf
+ red ripemd160
  red rsvp
+ red run-queue
  red safe-buffer
  red safe-regex
  red safer-buffer
@@ -1684,15 +2008,19 @@
  red sax
  red saxes
  red scheduler
+ red schema-utils
  red semver
  red semver-diff
  red send
  red seq-queue
+ red serialize-javascript
  red serve-index
  red serve-static
  red set-blocking
  red set-value
+ red setimmediate
  red setprototypeof
+ red sha.js
  red shcmd
  red shebang-command
  red shebang-regex
@@ -1703,6 +2031,7 @@
  red snapdragon
  red snapdragon-node
  red snapdragon-util
+ red source-list-map
  red source-map
  red source-map-resolve
  red source-map-support
@@ -1715,10 +2044,15 @@
  red sprintf-js
  red sqlstring
  red sshpk
+ red ssri
  red stack-utils
  red static-extend
  red statuses
  red stealthy-require
+ red stream-browserify
+ red stream-each
+ red stream-http
+ red stream-shift
  red string-array
  red string-length
  red string-width
@@ -1731,13 +2065,19 @@
  red supports-color
  red supports-hyperlinks
  red symbol-tree
+ red tapable
  red term-size
  red terminal-link
+ red terser
+ red terser-webpack-plugin
  red test-exclude
  red throat
+ red through2
+ red timers-browserify
  red tiny-invariant
  red tiny-warning
  red tmpl
+ red to-arraybuffer
  red to-fast-properties
  red to-object-path
  red to-readable-stream
@@ -1749,12 +2089,15 @@
  red tough-cookie
  red tr46
  red ts-node
+ red tslib
+ red tty-browserify
  red tunnel-agent
  red tweetnacl
  red type-check
  red type-detect
  red type-fest
  red type-is
+ red typedarray
  red typedarray-to-buffer
  red typescript
  red uid-safe
@@ -1765,15 +2108,20 @@
  red unicode-match-property-value-ecmascript
  red unicode-property-aliases-ecmascript
  red union-value
+ red unique-filename
+ red unique-slug
  red unique-string
  red unpipe
  red unset-value
  red unwrap-npm-cmd
+ red upath
  red update-notifier
  red uri-js
  red urix
+ red url
  red url-parse-lax
  red use
+ red util
  red util-deprecate
  red utils-merge
  red uuid
@@ -1784,10 +2132,17 @@
  red vary
  red verror
  red vhost
+ red vm-browserify
  red w3c-hr-time
  red w3c-xmlserializer
  red walker
+ red watchpack
+ red watchpack-chokidar2
  red webidl-conversions
+ red webpack
+ red webpack-dev-middleware
+ red webpack-log
+ red webpack-sources
  red whatwg-encoding
  red whatwg-mimetype
  red whatwg-url
@@ -1795,6 +2150,7 @@
  red which-module
  red widest-line
  red word-wrap
+ red worker-farm
  red wrap-ansi
  red wrappy
  red write-file-atomic
@@ -1807,6 +2163,7 @@
  red xmlbuilder
  red xmlchars
  red xsh
+ red xtend
  red y18n
  red yallist
  red yargs
@@ -1823,8 +2180,8 @@
  black @sinonjs
  black @szmarczak
  black @types
- black @xarc
- black __fv_
+ black @webassemblyjs
+ black @xtuc
  black abab
  black abbrev
  black accepts
@@ -1833,12 +2190,16 @@
  black acorn-loose
  black acorn-walk
  black ajv
+ black ajv-errors
+ black ajv-keywords
  black ansi-align
+ black ansi-colors
  black ansi-escapes
  black ansi-regex
  black ansi-styles
  black ansicolors
  black anymatch
+ black aproba
  black arg
  black argparse
  black arr-diff
@@ -1847,9 +2208,12 @@
  black array-flatten
  black array-unique
  black asn1
+ black asn1.js
+ black assert
  black assert-plus
  black assign-symbols
  black async
+ black async-each
  black asynckit
  black atob
  black aws-sign2
@@ -1857,6 +2221,7 @@
  black axios
  black azure-storage
  black babel-jest
+ black babel-loader
  black babel-plugin-dynamic-import-node
  black babel-plugin-istanbul
  black babel-plugin-jest-hoist
@@ -1864,19 +2229,34 @@
  black babel-preset-jest
  black balanced-match
  black base
+ black base64-js
  black batch
  black bcrypt-pbkdf
+ black big.js
  black binary-extensions
+ black bluebird
+ black bn.js
  black body-parser
  black boxen
  black brace-expansion
  black braces
+ black brorand
  black browser-process-hrtime
+ black browserify-aes
+ black browserify-cipher
+ black browserify-des
  black browserify-mime
+ black browserify-rsa
+ black browserify-sign
+ black browserify-zlib
  black browserslist
  black bser
+ black buffer
  black buffer-from
+ black buffer-xor
+ black builtin-status-codes
  black bytes
+ black cacache
  black cache-base
  black cacheable-request
  black callsites
@@ -1890,7 +2270,10 @@
  black char-regex
  black character-parser
  black chokidar
+ black chownr
+ black chrome-trace-event
  black ci-info
+ black cipher-base
  black class-utils
  black cli-boxes
  black cliui
@@ -1901,26 +2284,36 @@
  black color-convert
  black color-name
  black combined-stream
+ black commander
  black commondir
  black component-emitter
  black concat-map
+ black concat-stream
  black configstore
  black connect
+ black console-browserify
+ black constants-browserify
  black content-disposition
  black content-type
  black convert-source-map
  black cookie
  black cookie-parser
  black cookie-signature
+ black copy-concurrently
  black copy-descriptor
  black core-js-compat
  black core-util-is
  black cors
+ black create-ecdh
+ black create-hash
+ black create-hmac
  black cross-spawn
+ black crypto-browserify
  black crypto-random-string
  black cssom
  black cssstyle
  black csstype
+ black cyclist
  black dashdash
  black data-urls
  black debug
@@ -1937,35 +2330,47 @@
  black delayed-stream
  black denque
  black depd
+ black des.js
  black destroy
  black detect-newline
  black diff
  black diff-sequences
+ black diffie-hellman
  black dom-serializer
+ black domain-browser
  black domelementtype
  black domexception
  black domhandler
  black domutils
  black dot-prop
  black duplexer3
+ black duplexify
  black ecc-jsbn
  black ee-first
  black electron-to-chromium
+ black elliptic
  black emittery
  black emoji-regex
+ black emojis-list
  black encodeurl
  black end-of-stream
+ black enhanced-resolve
  black entities
+ black errno
  black error-ex
  black escalade
  black escape-goat
  black escape-html
  black escape-string-regexp
  black escodegen
+ black eslint-scope
  black esprima
+ black esrecurse
  black estraverse
  black esutils
  black etag
+ black events
+ black evp_bytestokey
  black exec-sh
  black execa
  black exit
@@ -1983,11 +2388,13 @@
  black fast-json-stable-stringify
  black fast-levenshtein
  black fb-watchman
+ black figgy-pudding
  black fill-range
  black finalhandler
  black find-cache-dir
  black find-up
  black fluent-ffmpeg
+ black flush-write-stream
  black follow-redirects
  black for-in
  black forever-agent
@@ -1995,9 +2402,10 @@
  black forwarded
  black fragment-cache
  black fresh
+ black from2
  black fs-monkey
+ black fs-write-stream-atomic
  black fs.realpath
- black fsevents
  black function-bind
  black fyn
  black gaze
@@ -2024,7 +2432,9 @@
  black has-values
  black has-yarn
  black hash-base
+ black hash.js
  black history
+ black hmac-drbg
  black hoist-non-react-statics
  black hosted-git-info
  black html-encoding-sniffer
@@ -2035,12 +2445,16 @@
  black http-cache-semantics
  black http-errors
  black http-signature
+ black https-browserify
  black human-signals
  black iconv-lite
+ black ieee754
+ black iferr
  black ignore-by-default
  black import-lazy
  black import-local
  black imurmurhash
+ black infer-owner
  black inflight
  black inherits
  black ini
@@ -2088,7 +2502,6 @@
  black jaro-winkler
  black jest
  black jest-changed-files
- black jest-cli
  black jest-config
  black jest-diff
  black jest-docblock
@@ -2121,6 +2534,7 @@
  black jsesc
  black json-buffer
  black json-edm-parser
+ black json-parse-better-errors
  black json-parse-even-better-errors
  black json-schema
  black json-schema-traverse
@@ -2136,6 +2550,8 @@
  black levenary
  black levn
  black lines-and-columns
+ black loader-runner
+ black loader-utils
  black locate-path
  black lodash
  black lodash.foreach
@@ -2153,10 +2569,12 @@
  black md5.js
  black media-typer
  black memfs
+ black memory-fs
  black merge-descriptors
  black merge-stream
  black methods
  black micromatch
+ black miller-rabin
  black mime
  black mime-db
  black mime-types
@@ -2164,19 +2582,26 @@
  black mimic-response
  black mini-create-react-context
  black miniget
+ black minimalistic-assert
+ black minimalistic-crypto-utils
  black minimatch
  black minimist
+ black mississippi
  black mixin-deep
+ black mkdirp
  black moment
+ black move-concurrently
  black ms
  black mysql2
  black named-placeholders
  black nanomatch
  black natural-compare
  black negotiator
+ black neo-async
  black nice-try
  black nix-clap
  black node-int64
+ black node-libs-browser
  black node-modules-regexp
  black node-notifier
  black node-releases
@@ -2200,6 +2625,7 @@
  black onetime
  black optional-require
  black optionator
+ black os-browserify
  black p-cancelable
  black p-each-series
  black p-finally
@@ -2207,16 +2633,22 @@
  black p-locate
  black p-try
  black package-json
+ black pako
+ black parallel-transform
+ black parse-asn1
  black parse-json
  black parse5
  black parseurl
  black pascalcase
+ black path-browserify
+ black path-dirname
  black path-exists
  black path-is-absolute
  black path-is-inside
  black path-key
  black path-parse
  black path-to-regexp
+ black pbkdf2
  black performance-now
  black picomatch
  black pify
@@ -2226,21 +2658,30 @@
  black prelude-ls
  black prepend-http
  black pretty-format
+ black process
  black process-nextick-args
+ black promise-inflight
  black prompts
  black prop-types
  black proxy-addr
+ black prr
  black pseudomap
  black psl
  black pstree.remy
+ black public-encrypt
  black pug-error
  black pug-lexer
  black pug-parser
  black pump
+ black pumpify
  black punycode
  black pupa
  black qs
+ black querystring
+ black querystring-es3
  black random-bytes
+ black randombytes
+ black randomfill
  black range-parser
  black raw-body
  black rc
@@ -2281,7 +2722,9 @@
  black responselike
  black ret
  black rimraf
+ black ripemd160
  black rsvp
+ black run-queue
  black safe-buffer
  black safe-regex
  black safer-buffer
@@ -2289,15 +2732,19 @@
  black sax
  black saxes
  black scheduler
+ black schema-utils
  black semver
  black semver-diff
  black send
  black seq-queue
+ black serialize-javascript
  black serve-index
  black serve-static
  black set-blocking
  black set-value
+ black setimmediate
  black setprototypeof
+ black sha.js
  black shcmd
  black shebang-command
  black shebang-regex
@@ -2308,6 +2755,7 @@
  black snapdragon
  black snapdragon-node
  black snapdragon-util
+ black source-list-map
  black source-map
  black source-map-resolve
  black source-map-support
@@ -2320,10 +2768,15 @@
  black sprintf-js
  black sqlstring
  black sshpk
+ black ssri
  black stack-utils
  black static-extend
  black statuses
  black stealthy-require
+ black stream-browserify
+ black stream-each
+ black stream-http
+ black stream-shift
  black string-array
  black string-length
  black string-width
@@ -2336,13 +2789,19 @@
  black supports-color
  black supports-hyperlinks
  black symbol-tree
+ black tapable
  black term-size
  black terminal-link
+ black terser
+ black terser-webpack-plugin
  black test-exclude
  black throat
+ black through2
+ black timers-browserify
  black tiny-invariant
  black tiny-warning
  black tmpl
+ black to-arraybuffer
  black to-fast-properties
  black to-object-path
  black to-readable-stream
@@ -2354,12 +2813,15 @@
  black tough-cookie
  black tr46
  black ts-node
+ black tslib
+ black tty-browserify
  black tunnel-agent
  black tweetnacl
  black type-check
  black type-detect
  black type-fest
  black type-is
+ black typedarray
  black typedarray-to-buffer
  black typescript
  black uid-safe
@@ -2370,15 +2832,20 @@
  black unicode-match-property-value-ecmascript
  black unicode-property-aliases-ecmascript
  black union-value
+ black unique-filename
+ black unique-slug
  black unique-string
  black unpipe
  black unset-value
  black unwrap-npm-cmd
+ black upath
  black update-notifier
  black uri-js
  black urix
+ black url
  black url-parse-lax
  black use
+ black util
  black util-deprecate
  black utils-merge
  black uuid
@@ -2389,10 +2856,17 @@
  black vary
  black verror
  black vhost
+ black vm-browserify
  black w3c-hr-time
  black w3c-xmlserializer
  black walker
+ black watchpack
+ black watchpack-chokidar2
  black webidl-conversions
+ black webpack
+ black webpack-dev-middleware
+ black webpack-log
+ black webpack-sources
  black whatwg-encoding
  black whatwg-mimetype
  black whatwg-url
@@ -2400,6 +2874,7 @@
  black which-module
  black widest-line
  black word-wrap
+ black worker-farm
  black wrap-ansi
  black wrappy
  black write-file-atomic
@@ -2412,6 +2887,7 @@
  black xmlbuilder
  black xmlchars
  black xsh
+ black xtend
  black y18n
  black yallist
  black yargs
@@ -2428,8 +2904,8 @@
  white @sinonjs
  white @szmarczak
  white @types
- white @xarc
- white __fv_
+ white @webassemblyjs
+ white @xtuc
  white abab
  white abbrev
  white accepts
@@ -2438,12 +2914,16 @@
  white acorn-loose
  white acorn-walk
  white ajv
+ white ajv-errors
+ white ajv-keywords
  white ansi-align
+ white ansi-colors
  white ansi-escapes
  white ansi-regex
  white ansi-styles
  white ansicolors
  white anymatch
+ white aproba
  white arg
  white argparse
  white arr-diff
@@ -2452,9 +2932,12 @@
  white array-flatten
  white array-unique
  white asn1
+ white asn1.js
+ white assert
  white assert-plus
  white assign-symbols
  white async
+ white async-each
  white asynckit
  white atob
  white aws-sign2
@@ -2462,6 +2945,7 @@
  white axios
  white azure-storage
  white babel-jest
+ white babel-loader
  white babel-plugin-dynamic-import-node
  white babel-plugin-istanbul
  white babel-plugin-jest-hoist
@@ -2469,19 +2953,34 @@
  white babel-preset-jest
  white balanced-match
  white base
+ white base64-js
  white batch
  white bcrypt-pbkdf
+ white big.js
  white binary-extensions
+ white bluebird
+ white bn.js
  white body-parser
  white boxen
  white brace-expansion
  white braces
+ white brorand
  white browser-process-hrtime
+ white browserify-aes
+ white browserify-cipher
+ white browserify-des
  white browserify-mime
+ white browserify-rsa
+ white browserify-sign
+ white browserify-zlib
  white browserslist
  white bser
+ white buffer
  white buffer-from
+ white buffer-xor
+ white builtin-status-codes
  white bytes
+ white cacache
  white cache-base
  white cacheable-request
  white callsites
@@ -2495,7 +2994,10 @@
  white char-regex
  white character-parser
  white chokidar
+ white chownr
+ white chrome-trace-event
  white ci-info
+ white cipher-base
  white class-utils
  white cli-boxes
  white cliui
@@ -2506,26 +3008,36 @@
  white color-convert
  white color-name
  white combined-stream
+ white commander
  white commondir
  white component-emitter
  white concat-map
+ white concat-stream
  white configstore
  white connect
+ white console-browserify
+ white constants-browserify
  white content-disposition
  white content-type
  white convert-source-map
  white cookie
  white cookie-parser
  white cookie-signature
+ white copy-concurrently
  white copy-descriptor
  white core-js-compat
  white core-util-is
  white cors
+ white create-ecdh
+ white create-hash
+ white create-hmac
  white cross-spawn
+ white crypto-browserify
  white crypto-random-string
  white cssom
  white cssstyle
  white csstype
+ white cyclist
  white dashdash
  white data-urls
  white debug
@@ -2542,35 +3054,47 @@
  white delayed-stream
  white denque
  white depd
+ white des.js
  white destroy
  white detect-newline
  white diff
  white diff-sequences
+ white diffie-hellman
  white dom-serializer
+ white domain-browser
  white domelementtype
  white domexception
  white domhandler
  white domutils
  white dot-prop
  white duplexer3
+ white duplexify
  white ecc-jsbn
  white ee-first
  white electron-to-chromium
+ white elliptic
  white emittery
  white emoji-regex
+ white emojis-list
  white encodeurl
  white end-of-stream
+ white enhanced-resolve
  white entities
+ white errno
  white error-ex
  white escalade
  white escape-goat
  white escape-html
  white escape-string-regexp
  white escodegen
+ white eslint-scope
  white esprima
+ white esrecurse
  white estraverse
  white esutils
  white etag
+ white events
+ white evp_bytestokey
  white exec-sh
  white execa
  white exit
@@ -2588,11 +3112,13 @@
  white fast-json-stable-stringify
  white fast-levenshtein
  white fb-watchman
+ white figgy-pudding
  white fill-range
  white finalhandler
  white find-cache-dir
  white find-up
  white fluent-ffmpeg
+ white flush-write-stream
  white follow-redirects
  white for-in
  white forever-agent
@@ -2600,9 +3126,10 @@
  white forwarded
  white fragment-cache
  white fresh
+ white from2
  white fs-monkey
+ white fs-write-stream-atomic
  white fs.realpath
- white fsevents
  white function-bind
  white fyn
  white gaze
@@ -2629,7 +3156,9 @@
  white has-values
  white has-yarn
  white hash-base
+ white hash.js
  white history
+ white hmac-drbg
  white hoist-non-react-statics
  white hosted-git-info
  white html-encoding-sniffer
@@ -2640,12 +3169,16 @@
  white http-cache-semantics
  white http-errors
  white http-signature
+ white https-browserify
  white human-signals
  white iconv-lite
+ white ieee754
+ white iferr
  white ignore-by-default
  white import-lazy
  white import-local
  white imurmurhash
+ white infer-owner
  white inflight
  white inherits
  white ini
@@ -2693,7 +3226,6 @@
  white jaro-winkler
  white jest
  white jest-changed-files
- white jest-cli
  white jest-config
  white jest-diff
  white jest-docblock
@@ -2726,6 +3258,7 @@
  white jsesc
  white json-buffer
  white json-edm-parser
+ white json-parse-better-errors
  white json-parse-even-better-errors
  white json-schema
  white json-schema-traverse
@@ -2741,6 +3274,8 @@
  white levenary
  white levn
  white lines-and-columns
+ white loader-runner
+ white loader-utils
  white locate-path
  white lodash
  white lodash.foreach
@@ -2758,10 +3293,12 @@
  white md5.js
  white media-typer
  white memfs
+ white memory-fs
  white merge-descriptors
  white merge-stream
  white methods
  white micromatch
+ white miller-rabin
  white mime
  white mime-db
  white mime-types
@@ -2769,19 +3306,26 @@
  white mimic-response
  white mini-create-react-context
  white miniget
+ white minimalistic-assert
+ white minimalistic-crypto-utils
  white minimatch
  white minimist
+ white mississippi
  white mixin-deep
+ white mkdirp
  white moment
+ white move-concurrently
  white ms
  white mysql2
  white named-placeholders
  white nanomatch
  white natural-compare
  white negotiator
+ white neo-async
  white nice-try
  white nix-clap
  white node-int64
+ white node-libs-browser
  white node-modules-regexp
  white node-notifier
  white node-releases
@@ -2805,6 +3349,7 @@
  white onetime
  white optional-require
  white optionator
+ white os-browserify
  white p-cancelable
  white p-each-series
  white p-finally
@@ -2812,16 +3357,22 @@
  white p-locate
  white p-try
  white package-json
+ white pako
+ white parallel-transform
+ white parse-asn1
  white parse-json
  white parse5
  white parseurl
  white pascalcase
+ white path-browserify
+ white path-dirname
  white path-exists
  white path-is-absolute
  white path-is-inside
  white path-key
  white path-parse
  white path-to-regexp
+ white pbkdf2
  white performance-now
  white picomatch
  white pify
@@ -2831,21 +3382,30 @@
  white prelude-ls
  white prepend-http
  white pretty-format
+ white process
  white process-nextick-args
+ white promise-inflight
  white prompts
  white prop-types
  white proxy-addr
+ white prr
  white pseudomap
  white psl
  white pstree.remy
+ white public-encrypt
  white pug-error
  white pug-lexer
  white pug-parser
  white pump
+ white pumpify
  white punycode
  white pupa
  white qs
+ white querystring
+ white querystring-es3
  white random-bytes
+ white randombytes
+ white randomfill
  white range-parser
  white raw-body
  white rc
@@ -2886,7 +3446,9 @@
  white responselike
  white ret
  white rimraf
+ white ripemd160
  white rsvp
+ white run-queue
  white safe-buffer
  white safe-regex
  white safer-buffer
@@ -2894,15 +3456,19 @@
  white sax
  white saxes
  white scheduler
+ white schema-utils
  white semver
  white semver-diff
  white send
  white seq-queue
+ white serialize-javascript
  white serve-index
  white serve-static
  white set-blocking
  white set-value
+ white setimmediate
  white setprototypeof
+ white sha.js
  white shcmd
  white shebang-command
  white shebang-regex
@@ -2913,6 +3479,7 @@
  white snapdragon
  white snapdragon-node
  white snapdragon-util
+ white source-list-map
  white source-map
  white source-map-resolve
  white source-map-support
@@ -2925,10 +3492,15 @@
  white sprintf-js
  white sqlstring
  white sshpk
+ white ssri
  white stack-utils
  white static-extend
  white statuses
  white stealthy-require
+ white stream-browserify
+ white stream-each
+ white stream-http
+ white stream-shift
  white string-array
  white string-length
  white string-width
@@ -2941,13 +3513,19 @@
  white supports-color
  white supports-hyperlinks
  white symbol-tree
+ white tapable
  white term-size
  white terminal-link
+ white terser
+ white terser-webpack-plugin
  white test-exclude
  white throat
+ white through2
+ white timers-browserify
  white tiny-invariant
  white tiny-warning
  white tmpl
+ white to-arraybuffer
  white to-fast-properties
  white to-object-path
  white to-readable-stream
@@ -2959,12 +3537,15 @@
  white tough-cookie
  white tr46
  white ts-node
+ white tslib
+ white tty-browserify
  white tunnel-agent
  white tweetnacl
  white type-check
  white type-detect
  white type-fest
  white type-is
+ white typedarray
  white typedarray-to-buffer
  white typescript
  white uid-safe
@@ -2975,15 +3556,20 @@
  white unicode-match-property-value-ecmascript
  white unicode-property-aliases-ecmascript
  white union-value
+ white unique-filename
+ white unique-slug
  white unique-string
  white unpipe
  white unset-value
  white unwrap-npm-cmd
+ white upath
  white update-notifier
  white uri-js
  white urix
+ white url
  white url-parse-lax
  white use
+ white util
  white util-deprecate
  white utils-merge
  white uuid
@@ -2994,10 +3580,17 @@
  white vary
  white verror
  white vhost
+ white vm-browserify
  white w3c-hr-time
  white w3c-xmlserializer
  white walker
+ white watchpack
+ white watchpack-chokidar2
  white webidl-conversions
+ white webpack
+ white webpack-dev-middleware
+ white webpack-log
+ white webpack-sources
  white whatwg-encoding
  white whatwg-mimetype
  white whatwg-url
@@ -3005,6 +3598,7 @@
  white which-module
  white widest-line
  white word-wrap
+ white worker-farm
  white wrap-ansi
  white wrappy
  white write-file-atomic
@@ -3017,6 +3611,7 @@
  white xmlbuilder
  white xmlchars
  white xsh
+ white xtend
  white y18n
  white yallist
  white yargs

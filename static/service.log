@@ -2512,3 +2512,90 @@ Aug 26 01:17:04 greepp ts-node[20226]:     at Function.Module._load (internal/mo
 Aug 26 01:17:04 greepp ts-node[20226]:     at Module.require (internal/modules/cjs/loader.js:1026:19)
 Aug 26 01:17:04 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
 Aug 26 01:17:04 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Sep 15 18:49:54 greepp ts-node[10562]:     at /home/AzureUser/api3/ssr/src/server.ts:46:9
+Sep 15 18:49:54 greepp ts-node[10562]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Sep 15 18:49:54 greepp ts-node[10562]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Sep 15 18:49:54 greepp ts-node[10562]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Sep 15 18:49:54 greepp ts-node[10562]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Sep 15 18:49:54 greepp ts-node[10562]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Sep 15 18:49:54 greepp ts-node[10562]: (node:10562) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 6)
+Sep 16 06:45:45 greepp systemd[1]: Stopping My httpd Service...
+Sep 16 06:45:45 greepp systemd[1]: Stopped My httpd Service.
+Sep 16 06:45:45 greepp systemd[1]: Started My httpd Service.
+Sep 16 06:45:48 greepp ts-node[29745]: /home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:187
+Sep 16 06:45:48 greepp ts-node[29745]:     throw new RangeError('The provided config value ' + settingValue + ' does not belong to the valid values subset:\n' + validValuesString);
+Sep 16 06:45:48 greepp ts-node[29745]:           ^
+Sep 16 06:45:48 greepp ts-node[29745]: RangeError: The provided config value httpsAccountName=grepaudioAccountKey=FBlsD/jj3kJT8TnpJfknf4MibbS+W1ri7r7UCSoUtcTAjrnBnLOAD8HxPawTN6tMSfgyKY601rIwlRL/gx0AOA==EndpointSuffix=core.windows.net does not belong to the valid values subset:
+Sep 16 06:45:48 greepp ts-node[29745]: ["http","https"]
+Sep 16 06:45:48 greepp ts-node[29745]:     at predicate (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:187:11)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Array.<anonymous> (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:138:25)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Object.exports.matchedSpecification (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:251:54)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Function.StorageServiceSettings.createFromSettings (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageservicesettings.js:209:34)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Function.StorageServiceSettings.createFromConnectionString (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageservicesettings.js:125:35)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Function.StorageServiceSettings.createFromEnvironment (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageservicesettings.js:173:35)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Function.StorageServiceClient.getStorageSettings (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageserviceclient.js:925:53)
+Sep 16 06:45:48 greepp ts-node[29745]:     at new BlobService (/home/AzureUser/api3/node_modules/azure-storage/lib/services/blob/blobservice.core.js:103:53)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Object.exports.createBlobService (/home/AzureUser/api3/node_modules/azure-storage/lib/azure-storage.js:98:10)
+Sep 16 06:45:48 greepp ts-node[29745]:     at Object.<anonymous> (/home/AzureUser/api3/src/azfs.ts:10:20)
+Sep 16 06:45:48 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Sep 16 06:45:48 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+Sep 16 06:46:04 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Sep 16 06:46:04 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 1.
+Sep 16 06:46:04 greepp systemd[1]: Stopped My httpd Service.
+Sep 16 06:46:04 greepp systemd[1]: Started My httpd Service.
+Sep 16 06:46:07 greepp ts-node[29813]: /home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:187
+Sep 16 06:46:07 greepp ts-node[29813]:     throw new RangeError('The provided config value ' + settingValue + ' does not belong to the valid values subset:\n' + validValuesString);
+Sep 16 06:46:07 greepp ts-node[29813]:           ^
+Sep 16 06:46:07 greepp ts-node[29813]: RangeError: The provided config value httpsAccountName=grepaudioAccountKey=FBlsD/jj3kJT8TnpJfknf4MibbS+W1ri7r7UCSoUtcTAjrnBnLOAD8HxPawTN6tMSfgyKY601rIwlRL/gx0AOA==EndpointSuffix=core.windows.net does not belong to the valid values subset:
+Sep 16 06:46:07 greepp ts-node[29813]: ["http","https"]
+Sep 16 06:46:07 greepp ts-node[29813]:     at predicate (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:187:11)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Array.<anonymous> (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:138:25)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Object.exports.matchedSpecification (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/servicesettings.js:251:54)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Function.StorageServiceSettings.createFromSettings (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageservicesettings.js:209:34)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Function.StorageServiceSettings.createFromConnectionString (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageservicesettings.js:125:35)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Function.StorageServiceSettings.createFromEnvironment (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageservicesettings.js:173:35)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Function.StorageServiceClient.getStorageSettings (/home/AzureUser/api3/node_modules/azure-storage/lib/common/services/storageserviceclient.js:925:53)
+Sep 16 06:46:07 greepp ts-node[29813]:     at new BlobService (/home/AzureUser/api3/node_modules/azure-storage/lib/services/blob/blobservice.core.js:103:53)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Object.exports.createBlobService (/home/AzureUser/api3/node_modules/azure-storage/lib/azure-storage.js:98:10)
+Sep 16 06:46:07 greepp ts-node[29813]:     at Object.<anonymous> (/home/AzureUser/api3/src/azfs.ts:10:20)
+Sep 16 06:46:07 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Sep 16 06:46:07 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Sep 21 04:53:45 greepp ts-node[2364]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Sep 21 04:53:45 greepp ts-node[2364]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Sep 21 04:53:45 greepp ts-node[2364]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Sep 21 04:53:45 greepp ts-node[2364]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Sep 21 04:53:45 greepp ts-node[2364]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Sep 21 04:53:45 greepp ts-node[2364]: (node:2364) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+Sep 21 04:53:45 greepp ts-node[2364]: (node:2364) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+Sep 21 05:18:52 greepp systemd[1]: Stopping My httpd Service...
+Sep 21 05:18:52 greepp systemd[1]: Stopped My httpd Service.
+Sep 22 17:38:40 greepp systemd[1]: Started My httpd Service.
+Sep 22 17:38:43 greepp ts-node[10942]: Tue, 22 Sep 2020 17:38:43 GMT express-session deprecated undefined resave option; provide resave option at https.ts:30:9
+Sep 22 17:38:43 greepp ts-node[10942]: Tue, 22 Sep 2020 17:38:43 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:30:9
+Sep 22 17:38:45 greepp ts-node[10942]: listening on 443
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Sep 22 22:03:45 greepp ts-node[11325]:     at TLSWrap.loadSNI [as oncertcb] (_tls_wrap.js:196:9)
+Sep 24 21:52:10 greepp systemd[1]: Stopping My httpd Service...
+Sep 24 21:52:10 greepp systemd[1]: Stopped My httpd Service.
+Sep 29 23:44:57 greepp systemd[1]: Started My httpd Service.
+Sep 29 23:45:01 greepp ts-node[7211]: Tue, 29 Sep 2020 23:45:01 GMT express-session deprecated undefined resave option; provide resave option at https.ts:29:9
+Sep 29 23:45:01 greepp ts-node[7211]: Tue, 29 Sep 2020 23:45:01 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:29:9
+Sep 29 23:45:02 greepp ts-node[7211]: listening on 443
+Sep 29 23:45:40 greepp systemd[1]: Stopping My httpd Service...
+Sep 29 23:45:40 greepp systemd[1]: Stopped My httpd Service.
+Sep 29 23:45:40 greepp systemd[1]: Started My httpd Service.
+Sep 29 23:45:43 greepp ts-node[7346]: Tue, 29 Sep 2020 23:45:43 GMT express-session deprecated undefined resave option; provide resave option at https.ts:29:9
+Sep 29 23:45:43 greepp ts-node[7346]: Tue, 29 Sep 2020 23:45:43 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:29:9
+Sep 29 23:45:45 greepp ts-node[7346]: listening on 443
+Sep 29 23:45:46 greepp ts-node[7346]: Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+Sep 29 23:45:46 greepp ts-node[7346]:     at write_ (_http_outgoing.js:629:17)
+Sep 29 23:45:46 greepp ts-node[7346]:     at ServerResponse.write (_http_outgoing.js:621:15)
+Sep 29 23:45:46 greepp ts-node[7346]:     at /home/AzureUser/api3/ssr/src/server.ts:21:12
+Sep 29 23:45:46 greepp ts-node[7346]:     at new Promise (<anonymous>)
+Sep 29 23:45:46 greepp ts-node[7346]:     at writeStreamSync (/home/AzureUser/api3/ssr/src/server.ts:20:46)
+Sep 29 23:45:46 greepp ts-node[7346]:     at /home/AzureUser/api3/ssr/src/server.ts:72:11
+Sep 29 23:45:46 greepp ts-node[7346]:     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Sep 29 23:45:46 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Sep 29 23:45:46 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.

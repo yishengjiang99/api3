@@ -58,7 +58,7 @@ router.get("/(:search)", (req, res) => {
     const url =
       `https://www.googleapis.com/youtube/v3/search?type=video` +
       `&part=snippet&maxResults=${10}&q=${
-        req.params.search
+      req.params.search
       }&key=${youtube_api_key}`;
     res.end(url + "\n\n");
     const format = req.params.format || ".mp3";

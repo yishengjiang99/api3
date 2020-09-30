@@ -1,11 +1,8 @@
+
 import { BlobService, createBlobService, ErrorOrResult } from "azure-storage";
 import { PassThrough, Readable, Writable } from "stream";
-import { basename, dirname, resolve } from "path"; //("path");
-import { getType } from "mime";
-import { createWriteStream } from "fs";
-import { stdout } from "process";
 import * as Stream from "stream";
-import { makeDefer } from "xaa";
+import { rejects } from "assert";
 
 const blobClient = createBlobService();
 
@@ -42,11 +39,9 @@ function listFiles(containerName, prefix = null) {
             created_at: entry.creationTime,
           });
         });
-        if (result.continuationToken)
-        {
+        if (result.continuationToken) {
           resolve(files);
-        } else
-        {
+        } else {
           resolve(files);
           return;
         }
@@ -69,19 +64,16 @@ function listContainers(prefix = "") {
 // r, w, getContent, upload, append, download
 
 async function fstat(xpath: string) {
-  var defer = makeDefer();
   const parts = xpath.split("/");
   const container = parts[0] ? parts[0] : "public_file";
   const blobname = parts[1] ? parts[1] : "new_file.txt";
 
-  try
-  {
+  try {
     blobClient.doesBlobExist(container, blobname, (err, result) => {
       if (err) defer.resolve(false);
       defer.resolve(result);
     });
-  } catch (e)
-  {
+  } catch (e) {
     defer.resolve(false)
   }
   return defer.promise;
@@ -115,8 +107,7 @@ async function fopen(xpath: string): Promise<AzureFileDriver | any> {
   let r: Stream.Readable;
   let w: Stream.Writable;
 
-  try
-  {
+  try {
     await fstat(xpath) || await touch(xpath);
     r = await fopenr(xpath);
     w = await fopenw(xpath);
@@ -148,14 +139,12 @@ async function fopen(xpath: string): Promise<AzureFileDriver | any> {
     return {
       r, w, getContent, upload, append, download
     }
-  } catch (e)
-  {
+  } catch (e) {
     console.error('fml, ' + e.message);
   }
 }
 
 function fopenr(xpath: string): Promise<Stream.Readable | any> {
-  var defer = makeDefer<Stream.Readable>();
   const parts = xpath.split("/");
   const container = parts[0] ? parts[0] : "public_file";
   const blobname = parts[1] ? parts[1] : "new_file.txt";
@@ -171,23 +160,22 @@ function fopenr(xpath: string): Promise<Stream.Readable | any> {
   return defer.promise;
 }
 
-function fopenw(xpath: string): Promise<Stream.Writable | any> {
-  var defer = makeDefer<Stream.Writable>();
-  const parts = xpath.split("/");
-  const container = parts[0] ? parts[0] : "public_file";
-  const blobname = parts[1] ? parts[1] : "new_file.txt";
-  const writeStream = blobClient.createWriteStreamToBlockBlob(container, blobname, (err, result, resp) => {
-    if (err) defer.reject(err);
-    else defer.resolve(writeStream);
+function fopenw(xpath: string): Promise<Stream.Writable> {
+  return new Promise((resolve, reject) => {
+    const parts = xpath.split("/");
+    const container = parts[0] ? parts[0] : "public_file";
+    const blobname = parts[1] ? parts[1] : "new_file.txt";
+    const writeStream = blobClient.createWriteStreamToBlockBlob(container, blobname, (err, result, resp) => {
+      if (err) reject(err);
+      else resolve(writeStream);
+    });
   });
-  return defer.promise;
 }
 
 const file_get_content = function (containerName, blobName, cb) {
   let fh;
   blobClient.createReadStream(containerName, blobName, (err, fileInfo) => {
-    if (err)
-    {
+    if (err) {
       cb('');
       console.error(err)
     }
@@ -200,11 +188,9 @@ const file_get_content = function (containerName, blobName, cb) {
     bufs.push(data);
   });
   fh.on("end", function () {
-    if (!cb)
-    {
+    if (!cb) {
       response = Buffer.concat(bufs);
-    } else
-    {
+    } else {
       cb(Buffer.concat(bufs));
     }
 
