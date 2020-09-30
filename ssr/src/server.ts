@@ -37,11 +37,9 @@ const renderElement = (response, element) =>
 	});
 router.use(cookieParser());
 
-router.get("/bundle.js", (req, res) => {
-	res.headersSent || res.writeHead(200, { "Content-Type": "application/json" });
-	Readable.from(critjs).pipe(res);
+router.get("/bundle.js", (req,res)=>{
+	res.sendFile(resolve(__dirname,"../dist/bundle.js"));
 });
-
 router.get("(/list/)?(:listId)?", async function (req, res) {
 	const API_DIR = "https://api.spotify.com/v1";
 	const access_token = checkAuth(req, res);
