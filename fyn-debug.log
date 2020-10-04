@@ -1,40 +1,1985 @@
-[36m> [39mFinal RC {"fynlocal":true,"alwaysFetchDist":false,"centralStore":false,"logLevel":"info","colors":true,"progress":"normal","lockfile":true,"refreshOptionals":false,"production":false,"rcfile":true,"flatMeta":false,"concurrency":15,"access":null,"allow-same-version":false,"always-auth":false,"also":null,"audit":true,"audit-level":"low","auth-type":"legacy","bin-links":true,"browser":null,"ca":null,"cafile":null,"cache":"/Users/vn08447/.npm","cache-lock-stale":60000,"cache-lock-retries":10,"cache-lock-wait":10000,"cache-max":null,"cache-min":10,"cert":null,"cidr":null,"color":true,"depth":null,"description":true,"dev":false,"dry-run":false,"editor":"vi","engine-strict":false,"force":false,"fetch-retries":2,"fetch-retry-factor":10,"fetch-retry-mintimeout":10000,"fetch-retry-maxtimeout":60000,"git":"git","git-tag-version":true,"commit-hooks":true,"global":false,"globalconfig":"/Users/vn08447/nvm/nodejs/v10.17.0/etc/npmrc","global-style":false,"group":20,"ham-it-up":false,"heading":"npm","if-present":false,"ignore-prepublish":false,"ignore-scripts":false,"init-module":"/Users/vn08447/.npm-init.js","init-author-name":"","init-author-email":"","init-author-url":"","init-version":"1.0.0","init-license":"ISC","json":false,"key":null,"legacy-bundling":false,"link":false,"loglevel":"notice","logs-max":10,"long":false,"maxsockets":50,"message":"%s","metrics-registry":null,"node-options":null,"node-version":"v10.17.0","offline":false,"onload-script":false,"only":null,"optional":true,"otp":null,"package-lock":true,"package-lock-only":false,"parseable":false,"prefer-offline":false,"prefer-online":false,"prefix":"/Users/vn08447/nvm/nodejs/v10.17.0","preid":"","proxy":null,"https-proxy":null,"noproxy":null,"user-agent":"npm/{npm-version} node/{node-version} {platform} {arch}","read-only":false,"rebuild-bundle":true,"registry":"https://registry.npmjs.org","rollback":true,"save":true,"save-bundle":false,"save-dev":false,"save-exact":false,"save-optional":false,"save-prefix":"^","save-prod":false,"scope":"","script-shell":null,"scripts-prepend-node-path":"warn-only","searchopts":"","searchexclude":null,"searchlimit":20,"searchstaleness":900,"send-metrics":false,"shell":"/bin/bash","shrinkwrap":true,"sign-git-commit":false,"sign-git-tag":false,"sso-poll-frequency":500,"sso-type":"oauth","strict-ssl":true,"tag":"latest","tag-version-prefix":"v","timing":false,"tmp":"/var/folders/38/4m3ftf6j1zxdbx3bfvn5h7fh0000gp/T","unicode":true,"unsafe-perm":true,"update-notifier":true,"usage":false,"user":"nobody","userconfig":"/Users/vn08447/.npmrc","umask":18,"version":false,"versions":false,"viewer":"man","_exit":true,"targetDir":"node_modules","cwd":"/Users/vn08447/Documents/api3"}
-[36m> [39m[32mfyn[39m version 0.2.41 at [35m/Users/vn08447/nvm/nodejs/v10.17.0/lib/node_modules/fyn[39m
-[36m> [39m[32mNodeJS[39m version v10.17.0 at [35m/Users/vn08447/nvm/nodejs/v10.17.0/bin/node[39m
+[36m> [39mFinal RC {"fynlocal":true,"alwaysFetchDist":false,"centralStore":false,"logLevel":"info","colors":true,"progress":"normal","lockfile":true,"refreshOptionals":false,"production":false,"rcfile":true,"flatMeta":false,"concurrency":15,"install":true,"access":null,"allow-same-version":false,"always-auth":false,"also":null,"audit":true,"audit-level":"low","auth-type":"legacy","bin-links":true,"browser":null,"ca":null,"cafile":null,"cache":"/Users/yisheng/.npm","cache-lock-stale":60000,"cache-lock-retries":10,"cache-lock-wait":10000,"cache-max":null,"cache-min":10,"cert":null,"cidr":null,"color":true,"depth":null,"description":true,"dev":false,"dry-run":false,"editor":"vi","engine-strict":false,"force":false,"fetch-retries":2,"fetch-retry-factor":10,"fetch-retry-mintimeout":10000,"fetch-retry-maxtimeout":60000,"git":"git","git-tag-version":true,"commit-hooks":true,"global":false,"globalconfig":"/usr/local/etc/npmrc","global-style":false,"group":20,"ham-it-up":false,"heading":"npm","if-present":false,"ignore-prepublish":false,"ignore-scripts":false,"init-module":"/Users/yisheng/.npm-init.js","init-author-name":"","init-author-email":"","init-author-url":"","init-version":"1.0.0","init-license":"ISC","json":false,"key":null,"legacy-bundling":false,"link":false,"loglevel":"notice","logs-max":10,"long":false,"maxsockets":50,"message":"%s","metrics-registry":null,"node-options":null,"node-version":"v12.18.4","offline":false,"onload-script":false,"only":null,"optional":true,"otp":null,"package-lock":true,"package-lock-only":false,"parseable":false,"prefer-offline":false,"prefer-online":false,"prefix":"/usr/local","preid":"","proxy":null,"https-proxy":null,"noproxy":null,"user-agent":"npm/{npm-version} node/{node-version} {platform} {arch}","read-only":false,"rebuild-bundle":true,"registry":"https://registry.npmjs.org","rollback":true,"save":true,"save-bundle":false,"save-dev":false,"save-exact":false,"save-optional":false,"save-prefix":"^","save-prod":false,"scope":"","script-shell":null,"scripts-prepend-node-path":"warn-only","searchopts":"","searchexclude":null,"searchlimit":20,"searchstaleness":900,"send-metrics":false,"shell":"/bin/bash","shrinkwrap":true,"sign-git-commit":false,"sign-git-tag":false,"sso-poll-frequency":500,"sso-type":"oauth","strict-ssl":true,"tag":"latest","tag-version-prefix":"v","timing":false,"tmp":"/var/folders/mt/vymvg22d1qb7nn69c5h4d49r0000gn/T","unicode":true,"unsafe-perm":true,"update-notifier":true,"usage":false,"user":"nobody","userconfig":"/Users/yisheng/.npmrc","umask":18,"version":false,"versions":false,"viewer":"man","_exit":true,"targetDir":"node_modules","cwd":"/Users/yisheng/grepawk3/api3"}
+[36m> [39m[32mfyn[39m version 0.2.29 at [35m/usr/local/lib/node_modules/fyn[39m
+[36m> [39m[32mNodeJS[39m version v12.18.4 at [35m/usr/local/bin/node[39m
 [36m> [39menv NODE_OPTIONS is [35mundefined[39m
-[36m> [39mworking dir is [35m/Users/vn08447/Documents/api3[39m
+[36m> [39mworking dir is [35m/Users/yisheng/grepawk3/api3[39m
 [36m> [39mMax network concurrency is 15
-[34m> [39mfyn options {"registry":"https://registry.npmjs.org","pkgFile":"package.json","targetDir":"node_modules","fynDir":"/Users/vn08447/.fyn","fynCacheDir":"/Users/vn08447/.fyn/_cacache","lockfile":true,"fynlocal":true,"alwaysFetchDist":false,"centralStore":false,"logLevel":"info","colors":true,"progress":"normal","refreshOptionals":false,"production":false,"rcfile":true,"flatMeta":false,"concurrency":15,"access":null,"allow-same-version":false,"always-auth":false,"also":null,"audit":true,"audit-level":"low","auth-type":"legacy","bin-links":true,"browser":null,"ca":null,"cafile":null,"cache":"/Users/vn08447/.npm","cache-lock-stale":60000,"cache-lock-retries":10,"cache-lock-wait":10000,"cache-max":null,"cache-min":10,"cert":null,"cidr":null,"color":true,"depth":null,"description":true,"dev":false,"dry-run":false,"editor":"vi","engine-strict":false,"force":false,"fetch-retries":2,"fetch-retry-factor":10,"fetch-retry-mintimeout":10000,"fetch-retry-maxtimeout":60000,"git":"git","git-tag-version":true,"commit-hooks":true,"global":false,"globalconfig":"/Users/vn08447/nvm/nodejs/v10.17.0/etc/npmrc","global-style":false,"group":20,"ham-it-up":false,"heading":"npm","if-present":false,"ignore-prepublish":false,"ignore-scripts":false,"init-module":"/Users/vn08447/.npm-init.js","init-author-name":"","init-author-email":"","init-author-url":"","init-version":"1.0.0","init-license":"ISC","json":false,"key":null,"legacy-bundling":false,"link":false,"loglevel":"notice","logs-max":10,"long":false,"maxsockets":50,"message":"%s","metrics-registry":null,"node-options":null,"node-version":"v10.17.0","offline":false,"onload-script":false,"only":null,"optional":true,"otp":null,"package-lock":true,"package-lock-only":false,"parseable":false,"prefer-offline":false,"prefer-online":false,"prefix":"/Users/vn08447/nvm/nodejs/v10.17.0","preid":"","proxy":null,"https-proxy":null,"noproxy":null,"user-agent":"npm/{npm-version} node/{node-version} {platform} {arch}","read-only":false,"rebuild-bundle":true,"rollback":true,"save":true,"save-bundle":false,"save-dev":false,"save-exact":false,"save-optional":false,"save-prefix":"^","save-prod":false,"scope":"","script-shell":null,"scripts-prepend-node-path":"warn-only","searchopts":"","searchexclude":null,"searchlimit":20,"searchstaleness":900,"send-metrics":false,"shell":"/bin/bash","shrinkwrap":true,"sign-git-commit":false,"sign-git-tag":false,"sso-poll-frequency":500,"sso-type":"oauth","strict-ssl":true,"tag":"latest","tag-version-prefix":"v","timing":false,"tmp":"/var/folders/38/4m3ftf6j1zxdbx3bfvn5h7fh0000gp/T","unicode":true,"unsafe-perm":true,"update-notifier":true,"usage":false,"user":"nobody","userconfig":"/Users/vn08447/.npmrc","umask":18,"version":false,"versions":false,"viewer":"man","_exit":true,"cwd":"/Users/vn08447/Documents/api3"}
-[34m> [39mpackage.json file /Users/vn08447/Documents/api3/package.json
+[34m> [39mfyn options {"registry":"https://registry.npmjs.org","pkgFile":"package.json","targetDir":"node_modules","fynDir":"/Users/yisheng/.fyn","fynCacheDir":"/Users/yisheng/.fyn/_cacache","lockfile":true,"fynlocal":true,"alwaysFetchDist":false,"centralStore":false,"logLevel":"info","colors":true,"progress":"normal","refreshOptionals":false,"production":false,"rcfile":true,"flatMeta":false,"concurrency":15,"install":true,"access":null,"allow-same-version":false,"always-auth":false,"also":null,"audit":true,"audit-level":"low","auth-type":"legacy","bin-links":true,"browser":null,"ca":null,"cafile":null,"cache":"/Users/yisheng/.npm","cache-lock-stale":60000,"cache-lock-retries":10,"cache-lock-wait":10000,"cache-max":null,"cache-min":10,"cert":null,"cidr":null,"color":true,"depth":null,"description":true,"dev":false,"dry-run":false,"editor":"vi","engine-strict":false,"force":false,"fetch-retries":2,"fetch-retry-factor":10,"fetch-retry-mintimeout":10000,"fetch-retry-maxtimeout":60000,"git":"git","git-tag-version":true,"commit-hooks":true,"global":false,"globalconfig":"/usr/local/etc/npmrc","global-style":false,"group":20,"ham-it-up":false,"heading":"npm","if-present":false,"ignore-prepublish":false,"ignore-scripts":false,"init-module":"/Users/yisheng/.npm-init.js","init-author-name":"","init-author-email":"","init-author-url":"","init-version":"1.0.0","init-license":"ISC","json":false,"key":null,"legacy-bundling":false,"link":false,"loglevel":"notice","logs-max":10,"long":false,"maxsockets":50,"message":"%s","metrics-registry":null,"node-options":null,"node-version":"v12.18.4","offline":false,"onload-script":false,"only":null,"optional":true,"otp":null,"package-lock":true,"package-lock-only":false,"parseable":false,"prefer-offline":false,"prefer-online":false,"prefix":"/usr/local","preid":"","proxy":null,"https-proxy":null,"noproxy":null,"user-agent":"npm/{npm-version} node/{node-version} {platform} {arch}","read-only":false,"rebuild-bundle":true,"rollback":true,"save":true,"save-bundle":false,"save-dev":false,"save-exact":false,"save-optional":false,"save-prefix":"^","save-prod":false,"scope":"","script-shell":null,"scripts-prepend-node-path":"warn-only","searchopts":"","searchexclude":null,"searchlimit":20,"searchstaleness":900,"send-metrics":false,"shell":"/bin/bash","shrinkwrap":true,"sign-git-commit":false,"sign-git-tag":false,"sso-poll-frequency":500,"sso-type":"oauth","strict-ssl":true,"tag":"latest","tag-version-prefix":"v","timing":false,"tmp":"/var/folders/mt/vymvg22d1qb7nn69c5h4d49r0000gn/T","unicode":true,"unsafe-perm":true,"update-notifier":true,"usage":false,"user":"nobody","userconfig":"/Users/yisheng/.npmrc","umask":18,"version":false,"versions":false,"viewer":"man","_exit":true,"cwd":"/Users/yisheng/grepawk3/api3"}
+[34m> [39mpackage.json file /Users/yisheng/grepawk3/api3/package.json
 [34m> [39mpkg src manager registry {"registry":"https://registry.npmjs.org"}
-> [32mloaded lockfile /Users/vn08447/Documents/api3[39m
+> [32mloaded lockfile /Users/yisheng/grepawk3/api3[39m
+> found semverPath false
+> Adding packages to dependencies: xaa
+[32mfetch meta[39m: loading meta...
+[34m> [39mfound xaa packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m0[39m) [36mcached[39m [35m0.365[39msecs [31m[42mxaa[49m[39m
+[34m> [39madding with dist tag for xaa latest 1.6.0
+> found ^1.6.0 for xaa
+> Packages added to dependencies: xaa
+> installing...
+[34m> [39mfyn options {"registry":"https://registry.npmjs.org","pkgFile":"package.json","targetDir":"node_modules","fynDir":"/Users/yisheng/.fyn","fynCacheDir":"/Users/yisheng/.fyn/_cacache","lockfile":true,"fynlocal":true,"alwaysFetchDist":false,"centralStore":false,"logLevel":"info","colors":true,"progress":"normal","refreshOptionals":false,"production":false,"rcfile":true,"flatMeta":false,"concurrency":15,"install":true,"access":null,"allow-same-version":false,"always-auth":false,"also":null,"audit":true,"audit-level":"low","auth-type":"legacy","bin-links":true,"browser":null,"ca":null,"cafile":null,"cache":"/Users/yisheng/.npm","cache-lock-stale":60000,"cache-lock-retries":10,"cache-lock-wait":10000,"cache-max":null,"cache-min":10,"cert":null,"cidr":null,"color":true,"depth":null,"description":true,"dev":false,"dry-run":false,"editor":"vi","engine-strict":false,"force":false,"fetch-retries":2,"fetch-retry-factor":10,"fetch-retry-mintimeout":10000,"fetch-retry-maxtimeout":60000,"git":"git","git-tag-version":true,"commit-hooks":true,"global":false,"globalconfig":"/usr/local/etc/npmrc","global-style":false,"group":20,"ham-it-up":false,"heading":"npm","if-present":false,"ignore-prepublish":false,"ignore-scripts":false,"init-module":"/Users/yisheng/.npm-init.js","init-author-name":"","init-author-email":"","init-author-url":"","init-version":"1.0.0","init-license":"ISC","json":false,"key":null,"legacy-bundling":false,"link":false,"loglevel":"notice","logs-max":10,"long":false,"maxsockets":50,"message":"%s","metrics-registry":null,"node-options":null,"node-version":"v12.18.4","offline":false,"onload-script":false,"only":null,"optional":true,"otp":null,"package-lock":true,"package-lock-only":false,"parseable":false,"prefer-offline":false,"prefer-online":false,"prefix":"/usr/local","preid":"","proxy":null,"https-proxy":null,"noproxy":null,"user-agent":"npm/{npm-version} node/{node-version} {platform} {arch}","read-only":false,"rebuild-bundle":true,"rollback":true,"save":true,"save-bundle":false,"save-dev":false,"save-exact":false,"save-optional":false,"save-prefix":"^","save-prod":false,"scope":"","script-shell":null,"scripts-prepend-node-path":"warn-only","searchopts":"","searchexclude":null,"searchlimit":20,"searchstaleness":900,"send-metrics":false,"shell":"/bin/bash","shrinkwrap":true,"sign-git-commit":false,"sign-git-tag":false,"sso-poll-frequency":500,"sso-type":"oauth","strict-ssl":true,"tag":"latest","tag-version-prefix":"v","timing":false,"tmp":"/var/folders/mt/vymvg22d1qb7nn69c5h4d49r0000gn/T","unicode":true,"unsafe-perm":true,"update-notifier":true,"usage":false,"user":"nobody","userconfig":"/Users/yisheng/.npmrc","umask":18,"version":false,"versions":false,"viewer":"man","_exit":true,"cwd":"/Users/yisheng/grepawk3/api3"}
+[34m> [39mpackage.json file /Users/yisheng/grepawk3/api3/package.json
+[34m> [39mpkg src manager registry {"registry":"https://registry.npmjs.org"}
+> [32mloaded lockfile /Users/yisheng/grepawk3/api3[39m
 [32mfetch meta[39m: resolving dependencies...
-[34m> [39mfound @ffmpeg-installer/linux-arm64 packument cache
-[34m> [39mfound @ffmpeg-installer/linux-arm packument cache
-[34m> [39mfound @ffmpeg-installer/linux-x64 packument cache
-[34m> [39mfound @ffmpeg-installer/linux-ia32 packument cache
-[34m> [39mfound @ffmpeg-installer/win32-ia32 packument cache
-[34m> [39mfound @ffmpeg-installer/win32-x64 packument cache
-[34m> [39mfound babel-cli packument cache
-[32mfetch meta[39m: ([31m0[39m⇨ [33m6[39m⇨ [32m0[39m) [36mcached[39m [35m6.348[39msecs [31m[42mbabel-cli[49m[39m
-[31m> [39m[31minstall failed:[39m CWD /Users/vn08447/Documents/api3
+[34m> [39mfound fluent-ffmpeg-multistream packument cache
+[34m> [39mfound wrtc packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m0[39m) [36mcached[39m [35m0.144[39msecs [31m[42mfluent-ffmpeg-multistream[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m1[39m) [36mcached[39m [35m0.172[39msecs [31m[42mwrtc[49m[39m
+[34m> [39mextracting wrtc 0.4.6 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/0.4.6/wrtc
+[34m> [39mdone dist extracting 0.028
+[34m> [39mfound node-pre-gyp packument cache
+[34m> [39mfound domexception packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m2[39m) [36mcached[39m [35m0.032[39msecs [31m[42mnode-pre-gyp[49m[39m
+[34m> [39mfound detect-libc packument cache
+[34m> [39mfound npm-packlist packument cache
+[34m> [39mfound needle packument cache
+[34m> [39mfound npmlog packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m4[39m⇨ [32m3[39m) [36mcached[39m [35m0.046[39msecs [31m[42mdomexception[49m[39m
+[36m> [39madding package domexception ^1.0.1 1.0.1 to opt check
+[36m> [39m[32moptional dep check passed[39m [35mdomexception[36m[2m@[22m[35m1.0.1[39m [32m- package domexception has no preinstall script[39m
+[34m> [39mfound known version 5.7.1 that satisfied semver ^5.3.0
+[32mfetch meta[39m: ([31m0[39m⇨ [33m3[39m⇨ [32m4[39m) [36mcached[39m [35m0.359[39msecs [31m[42mdetect-libc[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m2[39m⇨ [32m5[39m) [36mcached[39m [35m0.425[39msecs [31m[42mnpm-packlist[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m6[39m) [36mcached[39m [35m0.459[39msecs [31m[42mneedle[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m6[39m) [36mcached[39m [35m0.454[39msecs [31m[42mnpmlog[49m[39m
+[36m> [39madding package chokidar ^3.4.1 3.4.2 to opt check
+[36m> [39madding package watchpack-chokidar2 ^2.0.0 2.0.0 to opt check
+[34m> [39mfound nopt packument cache
+[34m> [39mfound rimraf packument cache
+[34m> [39mfound ignore-walk packument cache
+[34m> [39mfound rc packument cache
+[34m> [39mfound tar packument cache
+[34m> [39mfound webidl-conversions packument cache
+[34m> [39mfound npm-bundled packument cache
+[34m> [39mfound are-we-there-yet packument cache
+[34m> [39mfound console-control-strings packument cache
+[34m> [39mfound gauge packument cache
+[34m> [39mfound npm-normalize-package-bin packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m10[39m⇨ [32m8[39m) [36mcached[39m [35m0.070[39msecs [31m[42mrimraf[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m9[39m⇨ [32m8[39m) [36mcached[39m [35m0.073[39msecs [31m[42mignore-walk[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m8[39m⇨ [32m10[39m) [36mcached[39m [35m0.083[39msecs [31m[42mnopt[49m[39m
+[32mfetch meta[39m: ([31m1[39m⇨ [33m7[39m⇨ [32m11[39m) [36mcached[39m [35m0.082[39msecs [31m[42mrc[49m[39m
+[34m> [39mfound osenv packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m7[39m⇨ [32m12[39m) [36mcached[39m [35m0.096[39msecs [31m[42mconsole-control-strings[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m6[39m⇨ [32m13[39m) [36mcached[39m [35m0.108[39msecs [31m[42mwebidl-conversions[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m5[39m⇨ [32m14[39m) [36mcached[39m [35m0.104[39msecs [31m[42mnpm-normalize-package-bin[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m4[39m⇨ [32m15[39m) [36mcached[39m [35m0.114[39msecs [31m[42mtar[49m[39m
+[36m> [39m[32moptional dep check passed[39m [35mchokidar[36m[2m@[22m[35m3.4.2[39m [32m- package chokidar has no preinstall script[39m
+[36m> [39m[32moptional dep check passed[39m [35mwatchpack-chokidar2[36m[2m@[22m[35m2.0.0[39m [32m- package watchpack-chokidar2 has no preinstall script[39m
+[34m> [39mfound known version 0.4.24 that satisfied iconv-lite ^0.4.4
+[32mfetch meta[39m: ([31m0[39m⇨ [33m3[39m⇨ [32m16[39m) [36mcached[39m [35m0.052[39msecs [31m[42mosenv[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m2[39m⇨ [32m16[39m) [36mcached[39m [35m0.132[39msecs [31m[42mare-we-there-yet[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m18[39m) [36mcached[39m [35m0.148[39msecs [31m[42mnpm-bundled[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m18[39m) [36mcached[39m [35m0.142[39msecs [31m[42mgauge[49m[39m
+[34m> [39mfound known version 3.1.1 that satisfied yallist ^3.0.3
+[36m> [39madding package fsevents ~2.1.2 2.1.3 to opt check
+[34m> [39mfound os-tmpdir packument cache
+[34m> [39mfound wide-align packument cache
+[34m> [39mfound set-blocking packument cache
+[34m> [39mfound os-homedir packument cache
+[34m> [39mfound has-unicode packument cache
+[34m> [39mfound delegates packument cache
+[34m> [39mfound minipass packument cache
+[34m> [39mfound minizlib packument cache
+[34m> [39mfound fs-minipass packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m8[39m⇨ [32m20[39m) [36mcached[39m [35m0.035[39msecs [31m[42mos-tmpdir[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m7[39m⇨ [32m21[39m) [36mcached[39m [35m0.034[39msecs [31m[42mset-blocking[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m6[39m⇨ [32m22[39m) [36mcached[39m [35m0.051[39msecs [31m[42mos-homedir[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m5[39m⇨ [32m22[39m) [36mcached[39m [35m0.051[39msecs [31m[42mhas-unicode[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m4[39m⇨ [32m24[39m) [36mcached[39m [35m0.073[39msecs [31m[42mminizlib[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m3[39m⇨ [32m24[39m) [36mcached[39m [35m0.073[39msecs [31m[42mfs-minipass[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m2[39m⇨ [32m24[39m) [36mcached[39m [35m0.074[39msecs [31m[42mminipass[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m24[39m) [36mcached[39m [35m0.080[39msecs [31m[42mdelegates[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m28[39m) [36mcached[39m [35m0.104[39msecs [31m[42mwide-align[49m[39m
+[36m> [39m[32moptional dep check passed[39m [35mfsevents[36m[2m@[22m[35m2.1.3[39m [32m- package fsevents has no preinstall script[39m
+[34m> [39mfound known version 2.0.6 that satisfied readable-stream ^2.0.6
+[34m> [39mAuto deep resolving [35mnormalize-path[36m[2m@[22m[35m3.0.0[39m
+[34m> [39mAuto deep resolving [35mis-glob[36m[2m@[22m[35m4.0.1[39m
+[34m> [39mfound known version 1.2.0 that satisfied aproba ^1.0.3
+[34m> [39mAuto deep resolving [35mnormalize-path[36m[2m@[22m[35m3.0.0[39m
+[34m> [39mAuto deep resolving [35mpicomatch[36m[2m@[22m[35m2.2.2[39m
+[34m> [39mAuto deep resolving [35mis-glob[36m[2m@[22m[35m4.0.1[39m
+[34m> [39mfound known version 4.1.1 that satisfied object-assign ^4.1.0
+[36m> [39madding package fsevents ^1.2.7 1.2.13 to opt check
+[34m> [39mfound known version 1.1.0 that satisfied console-control-strings ^1.0.0
+[34m> [39mfound known version 2.9.0 that satisfied minipass ^2.6.0
+[34m> [39mfound known version 2.9.0 that satisfied minipass ^2.9.0
+[34m> [39mfound string-width packument cache
+[34m> [39mfound strip-ansi packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m29[39m) [36mcached[39m [35m0.032[39msecs [31m[42mstrip-ansi[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m30[39m) [36mcached[39m [35m0.038[39msecs [31m[42mstring-width[49m[39m
+[36m> [39m[32moptional dep check passed[39m [35mfsevents[36m[2m@[22m[35m1.2.13[39m [32m- package fsevents has no preinstall script[39m
+[34m> [39mfound known version 1.0.2 that satisfied string-width ^1.0.2 || 2
+[34m> [39mAuto deep resolving [35mis-extglob[36m[2m@[22m[35m2.1.1[39m
+[34m> [39mAuto deep resolving [35mis-extglob[36m[2m@[22m[35m2.1.1[39m
+[34m> [39mfound code-point-at packument cache
+[34m> [39mfound is-fullwidth-code-point packument cache
+[34m> [39mfound ansi-regex packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m2[39m⇨ [32m31[39m) [36mcached[39m [35m0.031[39msecs [31m[42mansi-regex[49m[39m
+[32mfetch meta[39m: ([31m0[39m⇨ [33m1[39m⇨ [32m32[39m) [36mcached[39m [35m0.034[39msecs [31m[42mis-fullwidth-code-point[49m[39m
+[32mfetch meta[39m: ([31m1[39m⇨ [33m0[39m⇨ [32m33[39m) [36mcached[39m [35m0.043[39msecs [31m[42mcode-point-at[49m[39m
+[34m> [39mAuto deep resolving [35mis-extglob[36m[2m@[22m[35m2.1.1[39m
+[34m> [39mfound number-is-nan packument cache
+[32mfetch meta[39m: ([31m0[39m⇨ [33m0[39m⇨ [32m34[39m) [36mcached[39m [35m0.029[39msecs [31m[42mnumber-is-nan[49m[39m
+> [32mdone resolving dependencies[39m [35m1.389[39msecs
+[32mfetch package[39m: fetching packages...
+[32mload package[39m: loading packages...
+[34m> [39mreadPkgJson - json._id @jest/types@26.3.0 not matched pkg @jest/types@25.5.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/@jest/types due to invalid existing package (id @jest/types@26.3.0)
+[34m> [39mreadPkgJson - json._id @types/istanbul-reports@3.0.0 not matched pkg @types/istanbul-reports@1.1.2
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/@types/istanbul-reports due to invalid existing package (id @types/istanbul-reports@3.0.0)
+[34m> [39mextracting @types/istanbul-reports 1.1.2 to /Users/yisheng/grepawk3/api3/node_modules/@types/istanbul-reports
+[34m> [39mextracting @jest/types 25.5.0 to /Users/yisheng/grepawk3/api3/node_modules/@jest/types
+[32mload package[39m: extracted [34mnode_modules/[39m[35m@types/istanbul-reports[39m
+[34m> [39mextracting ansi-regex 2.1.1 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.1.1/ansi-regex
+[34m> [39mextracting are-we-there-yet 1.1.5 to /Users/yisheng/grepawk3/api3/node_modules/are-we-there-yet
+[34m> [39mreadPkgJson - json._id array-flatten@2.1.2 not matched pkg array-flatten@1.1.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/array-flatten due to invalid existing package (id array-flatten@2.1.2)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mansi-regex[39m
+[34m> [39mreadPkgJson - json._id bluebird@3.5.1 not matched pkg bluebird@3.7.2
+[34m> [39mextracting array-flatten 1.1.1 to /Users/yisheng/grepawk3/api3/node_modules/array-flatten
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/bluebird due to invalid existing package (id bluebird@3.5.1)
+[34m> [39mreadPkgJson - json._id braces@3.0.2 not matched pkg braces@2.3.2
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/braces due to invalid existing package (id braces@3.0.2)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mare-we-there-yet[39m
+[34m> [39mextracting braces 3.0.2 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.0.2/braces
+[34m> [39mreadPkgJson - json._id cacache@15.0.5 not matched pkg cacache@12.0.4
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/cacache due to invalid existing package (id cacache@15.0.5)
+[32mload package[39m: extracted [34mnode_modules/[39m[35m@jest/types[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35marray-flatten[39m
+[34m> [39mreadPkgJson - json._id chownr@2.0.0 not matched pkg chownr@1.1.4
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/chownr due to invalid existing package (id chownr@2.0.0)
+[34m> [39mextracting braces 2.3.2 to /Users/yisheng/grepawk3/api3/node_modules/braces
+[34m> [39mextracting code-point-at 1.1.0 to /Users/yisheng/grepawk3/api3/node_modules/code-point-at
+[34m> [39mextracting bluebird 3.7.2 to /Users/yisheng/grepawk3/api3/node_modules/bluebird
+[32mload package[39m: extracted [34mnode_modules/[39m[35mbraces[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mcode-point-at[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mbraces[39m
+[34m> [39mextracting console-control-strings 1.1.0 to /Users/yisheng/grepawk3/api3/node_modules/console-control-strings
+[34m> [39mextracting chownr 1.1.4 to /Users/yisheng/grepawk3/api3/node_modules/chownr
+[34m> [39mextracting cacache 12.0.4 to /Users/yisheng/grepawk3/api3/node_modules/cacache
+[32mload package[39m: extracted [34mnode_modules/[39m[35mchownr[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mconsole-control-strings[39m
+[34m> [39mreadPkgJson - json._id escape-string-regexp@2.0.0 not matched pkg escape-string-regexp@1.0.5
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/escape-string-regexp due to invalid existing package (id escape-string-regexp@2.0.0)
+[34m> [39mextracting delegates 1.0.0 to /Users/yisheng/grepawk3/api3/node_modules/delegates
+[34m> [39mextracting detect-libc 1.0.3 to /Users/yisheng/grepawk3/api3/node_modules/detect-libc
+[34m> [39mreadPkgJson - json._id fill-range@7.0.1 not matched pkg fill-range@4.0.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/fill-range due to invalid existing package (id fill-range@7.0.1)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mdelegates[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mdetect-libc[39m
+[34m> [39mreadPkgJson - json._id fs-minipass@2.1.0 not matched pkg fs-minipass@1.2.7
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/fs-minipass due to invalid existing package (id fs-minipass@2.1.0)
+[34m> [39mextracting escape-string-regexp 1.0.5 to /Users/yisheng/grepawk3/api3/node_modules/escape-string-regexp
+[34m> [39mextracting fill-range 7.0.1 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/7.0.1/fill-range
+[34m> [39mreadPkgJson - json._id has-flag@3.0.0 not matched pkg has-flag@4.0.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/has-flag due to invalid existing package (id has-flag@3.0.0)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mescape-string-regexp[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mcacache[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mfill-range[39m
+[34m> [39mextracting fluent-ffmpeg-multistream 1.0.0 to /Users/yisheng/grepawk3/api3/node_modules/fluent-ffmpeg-multistream
+[34m> [39mextracting fill-range 4.0.0 to /Users/yisheng/grepawk3/api3/node_modules/fill-range
+[34m> [39mextracting gauge 2.7.4 to /Users/yisheng/grepawk3/api3/node_modules/gauge
+[34m> [39mreadPkgJson - json._id is-fullwidth-code-point@3.0.0 not matched pkg is-fullwidth-code-point@1.0.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/is-fullwidth-code-point due to invalid existing package (id is-fullwidth-code-point@3.0.0)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mfill-range[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mfluent-ffmpeg-multistream[39m
+[34m> [39mextracting has-flag 3.0.0 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.0.0/has-flag
+[34m> [39mextracting has-unicode 2.0.1 to /Users/yisheng/grepawk3/api3/node_modules/has-unicode
+[32mload package[39m: extracted [34mnode_modules/[39m[35mhas-flag[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mhas-unicode[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mbluebird[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mgauge[39m
+[34m> [39mreadPkgJson - json._id lru-cache@6.0.0 not matched pkg lru-cache@5.1.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/lru-cache due to invalid existing package (id lru-cache@6.0.0)
+[34m> [39mextracting ignore-walk 3.0.3 to /Users/yisheng/grepawk3/api3/node_modules/ignore-walk
+[34m> [39mextracting fs-minipass 1.2.7 to /Users/yisheng/grepawk3/api3/node_modules/fs-minipass
+[34m> [39mextracting has-flag 4.0.0 to /Users/yisheng/grepawk3/api3/node_modules/has-flag
+[34m> [39mextracting is-fullwidth-code-point 1.0.0 to /Users/yisheng/grepawk3/api3/node_modules/is-fullwidth-code-point
+[32mload package[39m: extracted [34mnode_modules/[39m[35mignore-walk[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mfs-minipass[39m
+[34m> [39mreadPkgJson - json._id minipass@3.1.3 not matched pkg minipass@2.9.0
+[34m> [39mreadPkgJson - json._id minizlib@2.1.2 not matched pkg minizlib@1.3.3
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/minipass due to invalid existing package (id minipass@3.1.3)
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/minizlib due to invalid existing package (id minizlib@2.1.2)
+[34m> [39mreadPkgJson - json._id ms@2.1.2 not matched pkg ms@2.0.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/ms due to invalid existing package (id ms@2.1.2)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mhas-flag[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mis-fullwidth-code-point[39m
+[34m> [39mextracting lru-cache 5.1.1 to /Users/yisheng/grepawk3/api3/node_modules/lru-cache
+[34m> [39mextracting ms 2.1.2 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.1.2/ms
+[34m> [39mreadPkgJson - json._id nopt@1.0.10 not matched pkg nopt@4.0.3
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/nopt due to invalid existing package (id nopt@1.0.10)
+[34m> [39mextracting needle 2.5.2 to /Users/yisheng/grepawk3/api3/node_modules/needle
+[34m> [39mextracting node-pre-gyp 0.13.0 to /Users/yisheng/grepawk3/api3/node_modules/node-pre-gyp
+[32mload package[39m: extracted [34mnode_modules/[39m[35mms[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mlru-cache[39m
+[34m> [39mextracting minizlib 1.3.3 to /Users/yisheng/grepawk3/api3/node_modules/minizlib
+[34m> [39mextracting minipass 2.9.0 to /Users/yisheng/grepawk3/api3/node_modules/minipass
+[32mload package[39m: extracted [34mnode_modules/[39m[35mminipass[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mminizlib[39m
+[34m> [39mextracting npm-normalize-package-bin 1.0.1 to /Users/yisheng/grepawk3/api3/node_modules/npm-normalize-package-bin
+[34m> [39mextracting ms 2.0.0 to /Users/yisheng/grepawk3/api3/node_modules/ms
+[34m> [39mreadPkgJson - json._id readdirp@3.3.0 not matched pkg readdirp@3.4.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/readdirp due to invalid existing package (id readdirp@3.3.0)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mms[39m
+[34m> [39mreadPkgJson - json._id rimraf@3.0.2 not matched pkg rimraf@2.7.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/rimraf due to invalid existing package (id rimraf@3.0.2)
+[34m> [39mextracting npm-packlist 1.4.8 to /Users/yisheng/grepawk3/api3/node_modules/npm-packlist
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnode-pre-gyp[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnpm-normalize-package-bin[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnpm-packlist[39m
+[34m> [39mextracting npm-bundled 1.1.1 to /Users/yisheng/grepawk3/api3/node_modules/npm-bundled
+[34m> [39mextracting number-is-nan 1.0.1 to /Users/yisheng/grepawk3/api3/node_modules/number-is-nan
+[34m> [39mextracting npmlog 4.1.2 to /Users/yisheng/grepawk3/api3/node_modules/npmlog
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnpm-bundled[39m
+[34m> [39mreadPkgJson - json._id ssri@8.0.0 not matched pkg ssri@6.0.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/ssri due to invalid existing package (id ssri@8.0.0)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mneedle[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnumber-is-nan[39m
+[34m> [39mreadPkgJson - json._id string-width@4.2.0 not matched pkg string-width@1.0.2
+[34m> [39mreadPkgJson - json._id strip-ansi@6.0.0 not matched pkg strip-ansi@4.0.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/string-width due to invalid existing package (id string-width@4.2.0)
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/strip-ansi due to invalid existing package (id strip-ansi@6.0.0)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnpmlog[39m
+[34m> [39mextracting os-tmpdir 1.0.2 to /Users/yisheng/grepawk3/api3/node_modules/os-tmpdir
+[34m> [39mextracting os-homedir 1.0.2 to /Users/yisheng/grepawk3/api3/node_modules/os-homedir
+[34m> [39mreadPkgJson - json._id supports-color@5.5.0 not matched pkg supports-color@7.1.0
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/supports-color due to invalid existing package (id supports-color@5.5.0)
+[34m> [39mreadPkgJson - json._id tar@6.0.5 not matched pkg tar@4.4.13
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/tar due to invalid existing package (id tar@6.0.5)
+[34m> [39mextracting osenv 0.1.5 to /Users/yisheng/grepawk3/api3/node_modules/osenv
+[34m> [39mextracting nopt 4.0.3 to /Users/yisheng/grepawk3/api3/node_modules/nopt
+[32mload package[39m: extracted [34mnode_modules/[39m[35mos-homedir[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mos-tmpdir[39m
+[34m> [39mreadPkgJson - json._id to-regex-range@5.0.1 not matched pkg to-regex-range@2.1.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/to-regex-range due to invalid existing package (id to-regex-range@5.0.1)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mosenv[39m
+[34m> [39mreadPkgJson - json._id type-fest@0.11.0 not matched pkg type-fest@0.8.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/type-fest due to invalid existing package (id type-fest@0.11.0)
+[34m> [39mextracting readdirp 3.4.0 to /Users/yisheng/grepawk3/api3/node_modules/readdirp
+[34m> [39mextracting rimraf 2.7.1 to /Users/yisheng/grepawk3/api3/node_modules/rimraf
+[34m> [39mextracting strip-ansi 3.0.1 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.0.1/strip-ansi
+[32mload package[39m: extracted [34mnode_modules/[39m[35mnopt[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mrimraf[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mreaddirp[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mstrip-ansi[39m
+[34m> [39mreadPkgJson - json._id webidl-conversions@6.1.0 not matched pkg webidl-conversions@4.0.2
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/webidl-conversions due to invalid existing package (id webidl-conversions@6.1.0)
+[34m> [39mextracting ssri 6.0.1 to /Users/yisheng/grepawk3/api3/node_modules/ssri
+[34m> [39mextracting strip-ansi 4.0.0 to /Users/yisheng/grepawk3/api3/node_modules/strip-ansi
+[34m> [39mreadPkgJson - json._id yallist@4.0.0 not matched pkg yallist@3.1.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/yallist due to invalid existing package (id yallist@4.0.0)
+[34m> [39mextracting supports-color 5.5.0 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/5.5.0/supports-color
+[34m> [39mextracting to-regex-range 5.0.1 to /Users/yisheng/grepawk3/api3/node_modules/__fv_/5.0.1/to-regex-range
+[34m> [39mreadPkgJson - json._id chokidar@3.3.1 not matched pkg chokidar@3.4.2
+[34m> [39mreadPkgJson - json._id domexception@2.0.1 not matched pkg domexception@1.0.1
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/chokidar due to invalid existing package (id chokidar@3.3.1)
+[33m> [39mRemoving /Users/yisheng/grepawk3/api3/node_modules/domexception due to invalid existing package (id domexception@2.0.1)
+[32mload package[39m: extracted [34mnode_modules/[39m[35mssri[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mstrip-ansi[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35msupports-color[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mto-regex-range[39m
+[34m> [39mextracting supports-color 7.1.0 to /Users/yisheng/grepawk3/api3/node_modules/supports-color
+[34m> [39mextracting string-width 1.0.2 to /Users/yisheng/grepawk3/api3/node_modules/string-width
+> [32mpackages fetched[39m (part of loading) [35m1.450[39msecs
+[34m> [39mextracting tar 4.4.13 to /Users/yisheng/grepawk3/api3/node_modules/tar
+[34m> [39mextracting to-regex-range 2.1.1 to /Users/yisheng/grepawk3/api3/node_modules/to-regex-range
+[32mload package[39m: extracted [34mnode_modules/[39m[35msupports-color[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mstring-width[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mto-regex-range[39m
+[34m> [39mextracting type-fest 0.8.1 to /Users/yisheng/grepawk3/api3/node_modules/type-fest
+[34m> [39mextracting wide-align 1.1.3 to /Users/yisheng/grepawk3/api3/node_modules/wide-align
+[34m> [39mextracting wrtc 0.4.6 to /Users/yisheng/grepawk3/api3/node_modules/wrtc
+[32mload package[39m: extracted [34mnode_modules/[39m[35mwide-align[39m
+[34m> [39mextracting webidl-conversions 4.0.2 to /Users/yisheng/grepawk3/api3/node_modules/webidl-conversions
+[32mload package[39m: extracted [34mnode_modules/[39m[35mwebidl-conversions[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mtar[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mtype-fest[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mwrtc[39m
+[34m> [39mextracting yallist 3.1.1 to /Users/yisheng/grepawk3/api3/node_modules/yallist
+[34m> [39mextracting chokidar 3.4.2 to /Users/yisheng/grepawk3/api3/node_modules/chokidar
+[34m> [39mextracting domexception 1.0.1 to /Users/yisheng/grepawk3/api3/node_modules/domexception
+[32mload package[39m: extracted [34mnode_modules/[39m[35myallist[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mdomexception[39m
+[32mload package[39m: extracted [34mnode_modules/[39m[35mchokidar[39m
+[34m> [39mdone dist extracting 2.682
+> [32mdone loading packages[39m [35m1.493[39msecs
+[32minstall package[39m: installing packages...
+[34m> [39mqueuing axios 0.19.2 for install
+[34m> [39mqueuing azure-storage 2.10.3 for install
+[34m> [39mqueuing babel-loader 8.1.0 for install
+[34m> [39mqueuing connect 3.7.0 for install
+[34m> [39mqueuing cookie-parser 1.4.5 for install
+[34m> [39mqueuing cors 2.8.5 for install
+[34m> [39mqueuing express 4.17.1 for install
+[34m> [39mqueuing express-react-forked 1.1.0 for install
+[34m> [39mqueuing express-session 1.17.1 for install
+[34m> [39mqueuing express-vhost 0.2.0 for install
+[34m> [39mqueuing fluent-ffmpeg 2.1.2 for install
+[34m> [39mqueuing fluent-ffmpeg-multistream 1.0.0 for install
+[34m> [39mqueuing html-typings 1.4.5 for install
+[34m> [39mqueuing memfs 3.2.0 for install
+[34m> [39mqueuing mime 2.4.6 for install
+[34m> [39mqueuing mysql2 2.1.0 for install
+[34m> [39mqueuing react 16.13.1 for install
+[34m> [39mqueuing react-dom 16.13.1 for install
+[34m> [39mqueuing react-router-dom 5.2.0 for install
+[34m> [39mqueuing serve-index 1.9.1 for install
+[34m> [39mqueuing ts-node 8.10.2 for install
+[34m> [39mqueuing typescript 3.9.7 for install
+[34m> [39mqueuing vhost 3.0.2 for install
+[34m> [39mqueuing webpack 4.44.1 for install
+[34m> [39mqueuing webpack-dev-middleware 3.7.2 for install
+[34m> [39mqueuing wrtc 0.4.6 for install
+[34m> [39madding install step for /Users/yisheng/grepawk3/api3/node_modules/wrtc [ 'install' ]
+[34m> [39mqueuing ws 7.3.1 for install
+[34m> [39mqueuing xaa 1.6.0 for install
+[34m> [39mqueuing xclap 0.2.53 for install
+[34m> [39mqueuing ytdl-core 3.2.2 for install
+[34m> [39mqueuing @babel/plugin-proposal-optional-chaining 7.11.0 for install
+[34m> [39mqueuing @babel/plugin-transform-flow-strip-types 7.10.4 for install
+[34m> [39mqueuing @types/express 4.17.8 for install
+[34m> [39mqueuing @types/express-session 1.17.0 for install
+[34m> [39mqueuing @types/react 16.9.46 for install
+[34m> [39mqueuing @types/react-dom 16.9.8 for install
+[34m> [39mqueuing @types/jest 26.0.10 for install
+[34m> [39mqueuing @types/node 14.6.4 for install
+[34m> [39mqueuing fyn 0.2.44 for install
+[34m> [39mqueuing follow-redirects 1.5.10 for install
+[34m> [39mqueuing browserify-mime 1.2.9 for install
+[34m> [39mqueuing extend 3.0.2 for install
+[34m> [39mqueuing json-edm-parser 0.1.2 for install
+[34m> [39mqueuing md5.js 1.3.4 for install
+[34m> [39mqueuing readable-stream 2.0.6 for install
+[34m> [39mqueuing request 2.88.2 for install
+[34m> [39mqueuing underscore 1.8.3 for install
+[34m> [39mqueuing uuid 3.4.0 for install
+[34m> [39mqueuing validator 9.4.1 for install
+[34m> [39mqueuing xml2js 0.2.8 for install
+[34m> [39mqueuing xmlbuilder 9.0.7 for install
+[34m> [39mqueuing find-cache-dir 2.1.0 for install
+[34m> [39mqueuing loader-utils 1.4.0 for install
+[34m> [39mqueuing mkdirp 0.5.5 for install
+[34m> [39mqueuing pify 4.0.1 for install
+[34m> [39mqueuing schema-utils 2.7.1 for install
+[34m> [39mqueuing schema-utils 1.0.0 for install
+[34m> [39mqueuing debug 2.6.9 for install
+[34m> [39mqueuing finalhandler 1.1.2 for install
+[34m> [39mqueuing parseurl 1.3.3 for install
+[34m> [39mqueuing utils-merge 1.0.1 for install
+[34m> [39mqueuing cookie 0.4.0 for install
+[34m> [39mqueuing cookie-signature 1.0.6 for install
+[34m> [39mqueuing object-assign 4.1.1 for install
+[34m> [39mqueuing vary 1.1.2 for install
+[34m> [39mqueuing accepts 1.3.7 for install
+[34m> [39mqueuing array-flatten 1.1.1 for install
+[34m> [39mqueuing body-parser 1.19.0 for install
+[34m> [39mqueuing content-disposition 0.5.3 for install
+[34m> [39mqueuing content-type 1.0.4 for install
+[34m> [39mqueuing depd 1.1.2 for install
+[34m> [39mqueuing depd 2.0.0 for install
+[34m> [39mqueuing encodeurl 1.0.2 for install
+[34m> [39mqueuing escape-html 1.0.3 for install
+[34m> [39mqueuing etag 1.8.1 for install
+[34m> [39mqueuing fresh 0.5.2 for install
+[34m> [39mqueuing merge-descriptors 1.0.1 for install
+[34m> [39mqueuing methods 1.1.2 for install
+[34m> [39mqueuing on-finished 2.3.0 for install
+[34m> [39mqueuing path-to-regexp 0.1.7 for install
+[34m> [39mqueuing proxy-addr 2.0.6 for install
+[34m> [39mqueuing qs 6.7.0 for install
+[34m> [39mqueuing range-parser 1.2.1 for install
+[34m> [39mqueuing safe-buffer 5.1.2 for install
+[34m> [39mqueuing safe-buffer 5.2.0 for install
+[34m> [39mqueuing send 0.17.1 for install
+[34m> [39mqueuing serve-static 1.14.1 for install
+[34m> [39mqueuing setprototypeof 1.1.1 for install
+[34m> [39mqueuing statuses 1.5.0 for install
+[34m> [39mqueuing type-is 1.6.18 for install
+[34m> [39mqueuing @babel/core 7.11.4 for install
+[34m> [39mqueuing @babel/preset-env 7.11.0 for install
+[34m> [39mqueuing @babel/preset-react 7.10.4 for install
+[34m> [39mqueuing @babel/register 7.10.5 for install
+[34m> [39mqueuing on-headers 1.0.2 for install
+[34m> [39mqueuing uid-safe 2.1.5 for install
+[34m> [39mqueuing async 3.2.0 for install
+[34m> [39mqueuing which 1.3.1 for install
+[34m> [39mqueuing acorn-loose 7.1.0 for install
+[34m> [39mqueuing acorn-walk 7.2.0 for install
+[34m> [39mqueuing argparse 1.0.10 for install
+[34m> [39mqueuing gaze 1.1.3 for install
+[34m> [39mqueuing glob 7.1.6 for install
+[34m> [39mqueuing htmlparser2 3.10.1 for install
+[34m> [39mqueuing pug-lexer 3.1.0 for install
+[34m> [39mqueuing pug-parser 4.0.2 for install
+[34m> [39mqueuing typescript 4.0.2 for install
+[34m> [39mqueuing fs-monkey 1.0.1 for install
+[34m> [39mqueuing cardinal 2.1.1 for install
+[34m> [39mqueuing denque 1.4.1 for install
+[34m> [39mqueuing generate-function 2.3.1 for install
+[34m> [39mqueuing iconv-lite 0.5.2 for install
+[34m> [39mqueuing long 4.0.0 for install
+[34m> [39mqueuing lru-cache 5.1.1 for install
+[34m> [39mqueuing named-placeholders 1.1.2 for install
+[34m> [39mqueuing seq-queue 0.0.5 for install
+[34m> [39mqueuing sqlstring 2.3.1 for install
+[34m> [39mqueuing loose-envify 1.4.0 for install
+[34m> [39mqueuing prop-types 15.7.2 for install
+[34m> [39mqueuing scheduler 0.19.1 for install
+[34m> [39mqueuing @babel/runtime 7.11.2 for install
+[34m> [39mqueuing history 4.10.1 for install
+[34m> [39mqueuing react-router 5.2.0 for install
+[34m> [39mqueuing tiny-invariant 1.1.0 for install
+[34m> [39mqueuing tiny-warning 1.0.3 for install
+[34m> [39mqueuing batch 0.6.1 for install
+[34m> [39mqueuing http-errors 1.6.3 for install
+[34m> [39mqueuing mime-types 2.1.27 for install
+[34m> [39mqueuing arg 4.1.3 for install
+[34m> [39mqueuing diff 4.0.2 for install
+[34m> [39mqueuing make-error 1.3.6 for install
+[34m> [39mqueuing source-map-support 0.5.19 for install
+[34m> [39mqueuing yn 3.1.1 for install
+[34m> [39mqueuing @webassemblyjs/ast 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/helper-module-context 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/wasm-edit 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/wasm-parser 1.9.0 for install
+[34m> [39mqueuing acorn 6.4.1 for install
+[34m> [39mqueuing ajv 6.12.4 for install
+[34m> [39mqueuing ajv-keywords 3.5.2 for install
+[34m> [39mqueuing chrome-trace-event 1.0.2 for install
+[34m> [39mqueuing enhanced-resolve 4.3.0 for install
+[34m> [39mqueuing eslint-scope 4.0.3 for install
+[34m> [39mqueuing json-parse-better-errors 1.0.2 for install
+[34m> [39mqueuing loader-runner 2.4.0 for install
+[34m> [39mqueuing memory-fs 0.4.1 for install
+[34m> [39mqueuing micromatch 3.1.10 for install
+[34m> [39mqueuing neo-async 2.6.2 for install
+[34m> [39mqueuing node-libs-browser 2.2.1 for install
+[34m> [39mqueuing tapable 1.1.3 for install
+[34m> [39mqueuing terser-webpack-plugin 1.4.5 for install
+[34m> [39mqueuing watchpack 1.7.4 for install
+[34m> [39mqueuing webpack-sources 1.4.3 for install
+[34m> [39mqueuing webpack-log 2.0.0 for install
+[34m> [39mqueuing node-pre-gyp 0.13.0 for install
+[34m> [39mqueuing domexception 1.0.1 for install
+[34m> [39mqueuing @xarc/run 1.0.2 for install
+[34m> [39mqueuing html-entities 1.3.1 for install
+[34m> [39mqueuing m3u8stream 0.7.1 for install
+[34m> [39mqueuing miniget 2.0.1 for install
+[34m> [39mqueuing sax 1.2.4 for install
+[34m> [39mqueuing @babel/helper-plugin-utils 7.10.4 for install
+[34m> [39mqueuing @babel/helper-skip-transparent-expression-wrappers 7.11.0 for install
+[34m> [39mqueuing @babel/plugin-syntax-optional-chaining 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-flow 7.10.4 for install
+[34m> [39mqueuing @types/body-parser 1.19.0 for install
+[34m> [39mqueuing @types/express-serve-static-core 4.17.9 for install
+[34m> [39mqueuing @types/qs 6.9.4 for install
+[34m> [39mqueuing @types/serve-static 1.13.5 for install
+[34m> [39mqueuing @types/node 14.6.0 for install
+[34m> [39mqueuing @types/prop-types 15.7.3 for install
+[34m> [39mqueuing csstype 3.0.2 for install
+[34m> [39mqueuing jest-diff 25.5.0 for install
+[34m> [39mqueuing pretty-format 25.5.0 for install
+[34m> [39mqueuing debug 3.1.0 for install
+[34m> [39mqueuing debug 4.1.1 for install
+[34m> [39mqueuing jsonparse 1.2.0 for install
+[34m> [39mqueuing hash-base 3.1.0 for install
+[34m> [39mqueuing inherits 2.0.4 for install
+[34m> [39mqueuing inherits 2.0.3 for install
+[34m> [39mqueuing core-util-is 1.0.2 for install
+[34m> [39mqueuing isarray 1.0.0 for install
+[34m> [39mqueuing process-nextick-args 1.0.7 for install
+[34m> [39mqueuing string_decoder 0.10.31 for install
+[34m> [39mqueuing string_decoder 1.3.0 for install
+[34m> [39mqueuing util-deprecate 1.0.2 for install
+[34m> [39mqueuing aws-sign2 0.7.0 for install
+[34m> [39mqueuing aws4 1.10.1 for install
+[34m> [39mqueuing caseless 0.12.0 for install
+[34m> [39mqueuing combined-stream 1.0.8 for install
+[34m> [39mqueuing forever-agent 0.6.1 for install
+[34m> [39mqueuing form-data 2.3.3 for install
+[34m> [39mqueuing har-validator 5.1.5 for install
+[34m> [39mqueuing http-signature 1.2.0 for install
+[34m> [39mqueuing is-typedarray 1.0.0 for install
+[34m> [39mqueuing isstream 0.1.2 for install
+[34m> [39mqueuing json-stringify-safe 5.0.1 for install
+[34m> [39mqueuing oauth-sign 0.9.0 for install
+[34m> [39mqueuing performance-now 2.1.0 for install
+[34m> [39mqueuing qs 6.5.2 for install
+[34m> [39mqueuing tough-cookie 2.5.0 for install
+[34m> [39mqueuing tunnel-agent 0.6.0 for install
+[34m> [39mqueuing sax 0.5.8 for install
+[34m> [39mqueuing commondir 1.0.1 for install
+[34m> [39mqueuing make-dir 2.1.0 for install
+[34m> [39mqueuing pkg-dir 3.0.0 for install
+[34m> [39mqueuing big.js 5.2.2 for install
+[34m> [39mqueuing emojis-list 3.0.0 for install
+[34m> [39mqueuing json5 1.0.1 for install
+[34m> [39mqueuing json5 2.1.3 for install
+[34m> [39mqueuing minimist 1.2.5 for install
+[34m> [39mqueuing @types/json-schema 7.0.6 for install
+[34m> [39mqueuing ajv-errors 1.0.1 for install
+[34m> [39mqueuing ms 2.0.0 for install
+[34m> [39mqueuing ms 2.1.1 for install
+[34m> [39mqueuing unpipe 1.0.0 for install
+[34m> [39mqueuing negotiator 0.6.2 for install
+[34m> [39mqueuing bytes 3.1.0 for install
+[34m> [39mqueuing http-errors 1.7.2 for install
+[34m> [39mqueuing iconv-lite 0.4.24 for install
+[34m> [39mqueuing raw-body 2.4.0 for install
+[34m> [39mqueuing ee-first 1.1.1 for install
+[34m> [39mqueuing forwarded 0.1.2 for install
+[34m> [39mqueuing ipaddr.js 1.9.1 for install
+[34m> [39mqueuing destroy 1.0.4 for install
+[34m> [39mqueuing mime 1.6.0 for install
+[34m> [39mqueuing media-typer 0.3.0 for install
+[34m> [39mqueuing @babel/code-frame 7.10.4 for install
+[34m> [39mqueuing @babel/generator 7.11.4 for install
+[34m> [39mqueuing @babel/helper-module-transforms 7.11.0 for install
+[34m> [39mqueuing @babel/helpers 7.10.4 for install
+[34m> [39mqueuing @babel/parser 7.11.4 for install
+[34m> [39mqueuing @babel/template 7.10.4 for install
+[34m> [39mqueuing @babel/traverse 7.11.0 for install
+[34m> [39mqueuing @babel/types 7.11.0 for install
+[34m> [39mqueuing convert-source-map 1.7.0 for install
+[34m> [39mqueuing gensync 1.0.0-beta.1 for install
+[34m> [39mqueuing lodash 4.17.20 for install
+[34m> [39mqueuing resolve 1.17.0 for install
+[34m> [39mqueuing semver 5.7.1 for install
+[34m> [39mqueuing source-map 0.5.7 for install
+[34m> [39mqueuing source-map 0.6.1 for install
+[34m> [39mqueuing @babel/compat-data 7.11.0 for install
+[34m> [39mqueuing @babel/helper-compilation-targets 7.10.4 for install
+[34m> [39mqueuing @babel/helper-module-imports 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-async-generator-functions 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-proposal-class-properties 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-dynamic-import 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-export-namespace-from 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-json-strings 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-logical-assignment-operators 7.11.0 for install
+[34m> [39mqueuing @babel/plugin-proposal-nullish-coalescing-operator 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-numeric-separator 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-object-rest-spread 7.11.0 for install
+[34m> [39mqueuing @babel/plugin-proposal-optional-catch-binding 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-private-methods 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-proposal-unicode-property-regex 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-syntax-async-generators 7.8.4 for install
+[34m> [39mqueuing @babel/plugin-syntax-class-properties 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-syntax-dynamic-import 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-export-namespace-from 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-json-strings 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-logical-assignment-operators 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-syntax-nullish-coalescing-operator 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-numeric-separator 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-syntax-object-rest-spread 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-optional-catch-binding 7.8.3 for install
+[34m> [39mqueuing @babel/plugin-syntax-top-level-await 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-arrow-functions 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-async-to-generator 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-block-scoped-functions 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-block-scoping 7.11.1 for install
+[34m> [39mqueuing @babel/plugin-transform-classes 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-computed-properties 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-destructuring 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-dotall-regex 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-duplicate-keys 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-exponentiation-operator 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-for-of 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-function-name 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-literals 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-member-expression-literals 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-modules-amd 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-transform-modules-commonjs 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-modules-systemjs 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-transform-modules-umd 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-named-capturing-groups-regex 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-new-target 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-object-super 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-parameters 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-transform-property-literals 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-regenerator 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-reserved-words 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-shorthand-properties 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-spread 7.11.0 for install
+[34m> [39mqueuing @babel/plugin-transform-sticky-regex 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-template-literals 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-transform-typeof-symbol 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-unicode-escapes 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-unicode-regex 7.10.4 for install
+[34m> [39mqueuing @babel/preset-modules 0.1.3 for install
+[34m> [39mqueuing browserslist 4.14.0 for install
+[34m> [39mqueuing core-js-compat 3.6.5 for install
+[34m> [39mqueuing invariant 2.2.4 for install
+[34m> [39mqueuing levenary 1.1.1 for install
+[34m> [39mqueuing @babel/plugin-transform-react-display-name 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-react-jsx 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-react-jsx-development 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-react-jsx-self 7.10.4 for install
+[34m> [39mqueuing @babel/plugin-transform-react-jsx-source 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-transform-react-pure-annotations 7.10.4 for install
+[34m> [39mqueuing pirates 4.0.1 for install
+[34m> [39mqueuing random-bytes 1.0.0 for install
+[34m> [39mqueuing isexe 2.0.0 for install
+[34m> [39mqueuing acorn 7.4.0 for install
+[34m> [39mqueuing sprintf-js 1.0.3 for install
+[34m> [39mqueuing globule 1.3.2 for install
+[34m> [39mqueuing fs.realpath 1.0.0 for install
+[34m> [39mqueuing inflight 1.0.6 for install
+[34m> [39mqueuing minimatch 3.0.4 for install
+[34m> [39mqueuing once 1.4.0 for install
+[34m> [39mqueuing path-is-absolute 1.0.1 for install
+[34m> [39mqueuing domelementtype 1.3.1 for install
+[34m> [39mqueuing domhandler 2.4.2 for install
+[34m> [39mqueuing domutils 1.7.0 for install
+[34m> [39mqueuing entities 1.1.2 for install
+[34m> [39mqueuing readable-stream 3.6.0 for install
+[34m> [39mqueuing readable-stream 2.3.7 for install
+[34m> [39mqueuing character-parser 2.2.0 for install
+[34m> [39mqueuing is-expression 3.0.0 for install
+[34m> [39mqueuing pug-error 1.3.3 for install
+[34m> [39mqueuing token-stream 0.0.1 for install
+[34m> [39mqueuing ansicolors 0.3.2 for install
+[34m> [39mqueuing redeyed 2.1.1 for install
+[34m> [39mqueuing is-property 1.0.2 for install
+[34m> [39mqueuing safer-buffer 2.1.2 for install
+[34m> [39mqueuing yallist 3.1.1 for install
+[34m> [39mqueuing lru-cache 4.1.5 for install
+[34m> [39mqueuing js-tokens 4.0.0 for install
+[34m> [39mqueuing react-is 16.13.1 for install
+[34m> [39mqueuing regenerator-runtime 0.13.7 for install
+[34m> [39mqueuing resolve-pathname 3.0.0 for install
+[34m> [39mqueuing value-equal 1.0.1 for install
+[34m> [39mqueuing hoist-non-react-statics 3.3.2 for install
+[34m> [39mqueuing mini-create-react-context 0.4.0 for install
+[34m> [39mqueuing path-to-regexp 1.8.0 for install
+[34m> [39mqueuing setprototypeof 1.1.0 for install
+[34m> [39mqueuing mime-db 1.44.0 for install
+[34m> [39mqueuing buffer-from 1.1.1 for install
+[34m> [39mqueuing @webassemblyjs/helper-wasm-bytecode 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/wast-parser 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/helper-buffer 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/helper-wasm-section 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/wasm-gen 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/wasm-opt 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/wast-printer 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/helper-api-error 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/ieee754 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/leb128 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/utf8 1.9.0 for install
+[34m> [39mqueuing fast-deep-equal 3.1.3 for install
+[34m> [39mqueuing fast-json-stable-stringify 2.1.0 for install
+[34m> [39mqueuing json-schema-traverse 0.4.1 for install
+[34m> [39mqueuing uri-js 4.2.2 for install
+[34m> [39mqueuing tslib 1.13.0 for install
+[34m> [39mqueuing graceful-fs 4.2.4 for install
+[34m> [39mqueuing memory-fs 0.5.0 for install
+[34m> [39mqueuing esrecurse 4.3.0 for install
+[34m> [39mqueuing estraverse 4.3.0 for install
+[34m> [39mqueuing errno 0.1.7 for install
+[34m> [39mqueuing arr-diff 4.0.0 for install
+[34m> [39mqueuing array-unique 0.3.2 for install
+[34m> [39mqueuing braces 2.3.2 for install
+[34m> [39mqueuing define-property 2.0.2 for install
+[34m> [39mqueuing extend-shallow 3.0.2 for install
+[34m> [39mqueuing extglob 2.0.4 for install
+[34m> [39mqueuing fragment-cache 0.2.1 for install
+[34m> [39mqueuing kind-of 6.0.3 for install
+[34m> [39mqueuing nanomatch 1.2.13 for install
+[34m> [39mqueuing object.pick 1.3.0 for install
+[34m> [39mqueuing regex-not 1.0.2 for install
+[34m> [39mqueuing snapdragon 0.8.2 for install
+[34m> [39mqueuing to-regex 3.0.2 for install
+[34m> [39mqueuing assert 1.5.0 for install
+[34m> [39mqueuing browserify-zlib 0.2.0 for install
+[34m> [39mqueuing buffer 4.9.2 for install
+[34m> [39mqueuing console-browserify 1.2.0 for install
+[34m> [39mqueuing constants-browserify 1.0.0 for install
+[34m> [39mqueuing crypto-browserify 3.12.0 for install
+[34m> [39mqueuing domain-browser 1.2.0 for install
+[34m> [39mqueuing events 3.2.0 for install
+[34m> [39mqueuing https-browserify 1.0.0 for install
+[34m> [39mqueuing os-browserify 0.3.0 for install
+[34m> [39mqueuing path-browserify 0.0.1 for install
+[34m> [39mqueuing process 0.11.10 for install
+[34m> [39mqueuing punycode 1.4.1 for install
+[34m> [39mqueuing querystring-es3 0.2.1 for install
+[34m> [39mqueuing stream-browserify 2.0.2 for install
+[34m> [39mqueuing stream-http 2.8.3 for install
+[34m> [39mqueuing timers-browserify 2.0.11 for install
+[34m> [39mqueuing tty-browserify 0.0.0 for install
+[34m> [39mqueuing url 0.11.0 for install
+[34m> [39mqueuing util 0.11.1 for install
+[34m> [39mqueuing vm-browserify 1.1.2 for install
+[34m> [39mqueuing cacache 12.0.4 for install
+[34m> [39mqueuing is-wsl 1.1.0 for install
+[34m> [39mqueuing serialize-javascript 4.0.0 for install
+[34m> [39mqueuing terser 4.8.0 for install
+[34m> [39mqueuing worker-farm 1.7.0 for install
+[34m> [39mqueuing chokidar 3.4.2 for install
+[34m> [39mqueuing watchpack-chokidar2 2.0.0 for install
+[34m> [39mqueuing source-list-map 2.0.1 for install
+[34m> [39mqueuing ansi-colors 3.2.4 for install
+[34m> [39mqueuing detect-libc 1.0.3 for install
+[34m> [39mqueuing needle 2.5.2 for install
+[34m> [39mqueuing nopt 4.0.3 for install
+[34m> [39mqueuing npm-packlist 1.4.8 for install
+[34m> [39mqueuing npmlog 4.1.2 for install
+[34m> [39mqueuing rc 1.2.8 for install
+[34m> [39mqueuing rimraf 2.7.1 for install
+[34m> [39mqueuing tar 4.4.13 for install
+[34m> [39mqueuing webidl-conversions 4.0.2 for install
+[34m> [39mqueuing chalk 4.1.0 for install
+[34m> [39mqueuing chalk 3.0.0 for install
+[34m> [39mqueuing chalker 1.2.0 for install
+[34m> [39mqueuing insync 2.1.1 for install
+[34m> [39mqueuing jaro-winkler 0.2.8 for install
+[34m> [39mqueuing lodash.foreach 4.5.0 for install
+[34m> [39mqueuing nix-clap 1.3.12 for install
+[34m> [39mqueuing optional-require 1.0.2 for install
+[34m> [39mqueuing path-is-inside 1.0.2 for install
+[34m> [39mqueuing read-pkg-up 7.0.1 for install
+[34m> [39mqueuing require-at 1.0.4 for install
+[34m> [39mqueuing string-array 1.0.1 for install
+[34m> [39mqueuing unwrap-npm-cmd 1.1.1 for install
+[34m> [39mqueuing xsh 0.4.5 for install
+[34m> [39mqueuing miniget 1.7.2 for install
+[34m> [39mqueuing @types/connect 3.4.33 for install
+[34m> [39mqueuing @types/range-parser 1.2.3 for install
+[34m> [39mqueuing @types/mime 2.0.3 for install
+[34m> [39mqueuing diff-sequences 25.2.6 for install
+[34m> [39mqueuing jest-get-type 25.2.6 for install
+[34m> [39mqueuing @jest/types 25.5.0 for install
+[34m> [39mqueuing ansi-regex 5.0.0 for install
+[34m> [39mqueuing ansi-styles 4.2.1 for install
+[34m> [39mqueuing ms 2.1.2 for install
+[34m> [39mqueuing safe-buffer 5.2.1 for install
+[34m> [39mqueuing delayed-stream 1.0.0 for install
+[34m> [39mqueuing asynckit 0.4.0 for install
+[34m> [39mqueuing har-schema 2.0.0 for install
+[34m> [39mqueuing assert-plus 1.0.0 for install
+[34m> [39mqueuing jsprim 1.4.1 for install
+[34m> [39mqueuing sshpk 1.16.1 for install
+[34m> [39mqueuing psl 1.8.0 for install
+[34m> [39mqueuing punycode 2.1.1 for install
+[34m> [39mqueuing punycode 1.3.2 for install
+[34m> [39mqueuing semver 7.0.0 for install
+[34m> [39mqueuing find-up 3.0.0 for install
+[34m> [39mqueuing find-up 4.1.0 for install
+[34m> [39mqueuing toidentifier 1.0.0 for install
+[34m> [39mqueuing @babel/highlight 7.10.4 for install
+[34m> [39mqueuing jsesc 2.5.2 for install
+[34m> [39mqueuing @babel/helper-replace-supers 7.10.4 for install
+[34m> [39mqueuing @babel/helper-simple-access 7.10.4 for install
+[34m> [39mqueuing @babel/helper-split-export-declaration 7.11.0 for install
+[34m> [39mqueuing @babel/helper-function-name 7.10.4 for install
+[34m> [39mqueuing debug 3.2.6 for install
+[34m> [39mqueuing globals 11.12.0 for install
+[34m> [39mqueuing @babel/helper-validator-identifier 7.10.4 for install
+[34m> [39mqueuing to-fast-properties 2.0.0 for install
+[34m> [39mqueuing path-parse 1.0.6 for install
+[34m> [39mqueuing @babel/helper-remap-async-to-generator 7.11.4 for install
+[34m> [39mqueuing @babel/helper-create-class-features-plugin 7.10.5 for install
+[34m> [39mqueuing @babel/helper-create-regexp-features-plugin 7.10.4 for install
+[34m> [39mqueuing @babel/helper-annotate-as-pure 7.10.4 for install
+[34m> [39mqueuing @babel/helper-define-map 7.10.5 for install
+[34m> [39mqueuing @babel/helper-optimise-call-expression 7.10.4 for install
+[34m> [39mqueuing @babel/helper-builder-binary-assignment-operator-visitor 7.10.4 for install
+[34m> [39mqueuing babel-plugin-dynamic-import-node 2.3.3 for install
+[34m> [39mqueuing @babel/helper-hoist-variables 7.10.4 for install
+[34m> [39mqueuing @babel/helper-get-function-arity 7.10.4 for install
+[34m> [39mqueuing regenerator-transform 0.14.5 for install
+[34m> [39mqueuing @babel/helper-regex 7.10.5 for install
+[34m> [39mqueuing esutils 2.0.3 for install
+[34m> [39mqueuing caniuse-lite 1.0.30001117 for install
+[34m> [39mqueuing electron-to-chromium 1.3.542 for install
+[34m> [39mqueuing escalade 3.0.2 for install
+[34m> [39mqueuing node-releases 1.1.60 for install
+[34m> [39mqueuing leven 3.1.0 for install
+[34m> [39mqueuing @babel/helper-builder-react-jsx 7.10.4 for install
+[34m> [39mqueuing @babel/helper-builder-react-jsx-experimental 7.10.5 for install
+[34m> [39mqueuing @babel/plugin-syntax-jsx 7.10.4 for install
+[34m> [39mqueuing node-modules-regexp 1.0.0 for install
+[34m> [39mqueuing wrappy 1.0.2 for install
+[34m> [39mqueuing brace-expansion 1.1.11 for install
+[34m> [39mqueuing dom-serializer 0.2.2 for install
+[34m> [39mqueuing string_decoder 1.1.1 for install
+[34m> [39mqueuing isarray 0.0.1 for install
+[34m> [39mqueuing process-nextick-args 2.0.1 for install
+[34m> [39mqueuing is-regex 1.1.1 for install
+[34m> [39mqueuing acorn 4.0.13 for install
+[34m> [39mqueuing esprima 4.0.1 for install
+[34m> [39mqueuing pseudomap 1.0.2 for install
+[34m> [39mqueuing yallist 2.1.2 for install
+[34m> [39mqueuing @webassemblyjs/floating-point-hex-parser 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/helper-code-frame 1.9.0 for install
+[34m> [39mqueuing @webassemblyjs/helper-fsm 1.9.0 for install
+[34m> [39mqueuing @xtuc/long 4.2.2 for install
+[34m> [39mqueuing @xtuc/ieee754 1.2.0 for install
+[34m> [39mqueuing estraverse 5.2.0 for install
+[34m> [39mqueuing prr 1.0.1 for install
+[34m> [39mqueuing arr-flatten 1.1.0 for install
+[34m> [39mqueuing extend-shallow 2.0.1 for install
+[34m> [39mqueuing fill-range 4.0.0 for install
+[34m> [39mqueuing isobject 3.0.1 for install
+[34m> [39mqueuing repeat-element 1.1.3 for install
+[34m> [39mqueuing snapdragon-node 2.1.1 for install
+[34m> [39mqueuing split-string 3.1.0 for install
+[34m> [39mqueuing is-descriptor 1.0.2 for install
+[34m> [39mqueuing assign-symbols 1.0.0 for install
+[34m> [39mqueuing is-extendable 1.0.1 for install
+[34m> [39mqueuing define-property 1.0.0 for install
+[34m> [39mqueuing define-property 0.2.5 for install
+[34m> [39mqueuing expand-brackets 2.1.4 for install
+[34m> [39mqueuing map-cache 0.2.2 for install
+[34m> [39mqueuing is-windows 1.0.2 for install
+[34m> [39mqueuing safe-regex 1.1.0 for install
+[34m> [39mqueuing base 0.11.2 for install
+[34m> [39mqueuing source-map-resolve 0.5.3 for install
+[34m> [39mqueuing use 3.1.1 for install
+[34m> [39mqueuing util 0.10.3 for install
+[34m> [39mqueuing pako 1.0.11 for install
+[34m> [39mqueuing base64-js 1.3.1 for install
+[34m> [39mqueuing ieee754 1.1.13 for install
+[34m> [39mqueuing browserify-cipher 1.0.1 for install
+[34m> [39mqueuing browserify-sign 4.2.1 for install
+[34m> [39mqueuing create-ecdh 4.0.4 for install
+[34m> [39mqueuing create-hash 1.2.0 for install
+[34m> [39mqueuing create-hmac 1.1.7 for install
+[34m> [39mqueuing diffie-hellman 5.0.3 for install
+[34m> [39mqueuing pbkdf2 3.1.1 for install
+[34m> [39mqueuing public-encrypt 4.0.3 for install
+[34m> [39mqueuing randombytes 2.1.0 for install
+[34m> [39mqueuing randomfill 1.0.4 for install
+[34m> [39mqueuing builtin-status-codes 3.0.0 for install
+[34m> [39mqueuing to-arraybuffer 1.0.1 for install
+[34m> [39mqueuing xtend 4.0.2 for install
+[34m> [39mqueuing setimmediate 1.0.5 for install
+[34m> [39mqueuing querystring 0.2.0 for install
+[34m> [39mqueuing bluebird 3.7.2 for install
+[34m> [39mqueuing chownr 1.1.4 for install
+[34m> [39mqueuing figgy-pudding 3.5.2 for install
+[34m> [39mqueuing infer-owner 1.0.4 for install
+[34m> [39mqueuing mississippi 3.0.0 for install
+[34m> [39mqueuing move-concurrently 1.0.1 for install
+[34m> [39mqueuing promise-inflight 1.0.1 for install
+[34m> [39mqueuing ssri 6.0.1 for install
+[34m> [39mqueuing unique-filename 1.1.1 for install
+[34m> [39mqueuing y18n 4.0.0 for install
+[34m> [39mqueuing commander 2.20.3 for install
+[34m> [39mqueuing anymatch 3.1.1 for install
+[34m> [39mqueuing braces 3.0.2 for install
+[34m> [39mqueuing glob-parent 5.1.1 for install
+[34m> [39mqueuing is-binary-path 2.1.0 for install
+[34m> [39mqueuing is-glob 4.0.1 for install
+[34m> [39mqueuing normalize-path 3.0.0 for install
+[34m> [39mqueuing readdirp 3.4.0 for install
+[34m> [39mqueuing fsevents 2.1.3 for install
+[34m> [39mqueuing chokidar 2.1.8 for install
+[34m> [39mqueuing abbrev 1.1.1 for install
+[34m> [39mqueuing osenv 0.1.5 for install
+[34m> [39mqueuing ignore-walk 3.0.3 for install
+[34m> [39mqueuing npm-bundled 1.1.1 for install
+[34m> [39mqueuing npm-normalize-package-bin 1.0.1 for install
+[34m> [39mqueuing are-we-there-yet 1.1.5 for install
+[34m> [39mqueuing console-control-strings 1.1.0 for install
+[34m> [39mqueuing gauge 2.7.4 for install
+[34m> [39mqueuing set-blocking 2.0.0 for install
+[34m> [39mqueuing deep-extend 0.6.0 for install
+[34m> [39mqueuing ini 1.3.5 for install
+[34m> [39mqueuing strip-json-comments 2.0.1 for install
+[34m> [39mqueuing fs-minipass 1.2.7 for install
+[34m> [39mqueuing minipass 2.9.0 for install
+[34m> [39mqueuing minizlib 1.3.3 for install
+[34m> [39mqueuing supports-color 7.1.0 for install
+[34m> [39mqueuing strip-ansi 4.0.0 for install
+[34m> [39mqueuing read-pkg 5.2.0 for install
+[34m> [39mqueuing type-fest 0.8.1 for install
+[34m> [39mqueuing shcmd 0.8.4 for install
+[34m> [39mqueuing @types/istanbul-lib-coverage 2.0.3 for install
+[34m> [39mqueuing @types/istanbul-reports 1.1.2 for install
+[34m> [39mqueuing @types/yargs 15.0.5 for install
+[34m> [39mqueuing @types/color-name 1.1.1 for install
+[34m> [39mqueuing color-convert 2.0.1 for install
+[34m> [39mqueuing extsprintf 1.3.0 for install
+[34m> [39mqueuing json-schema 0.2.3 for install
+[34m> [39mqueuing verror 1.10.0 for install
+[34m> [39mqueuing asn1 0.2.4 for install
+[34m> [39mqueuing dashdash 1.14.1 for install
+[34m> [39mqueuing getpass 0.1.7 for install
+[34m> [39mqueuing jsbn 0.1.1 for install
+[34m> [39mqueuing tweetnacl 0.14.5 for install
+[34m> [39mqueuing ecc-jsbn 0.1.2 for install
+[34m> [39mqueuing bcrypt-pbkdf 1.0.2 for install
+[34m> [39mqueuing locate-path 3.0.0 for install
+[34m> [39mqueuing locate-path 5.0.0 for install
+[34m> [39mqueuing path-exists 4.0.0 for install
+[34m> [39mqueuing chalk 2.4.2 for install
+[34m> [39mqueuing @babel/helper-member-expression-to-functions 7.11.0 for install
+[34m> [39mqueuing @babel/helper-wrap-function 7.10.4 for install
+[34m> [39mqueuing regexpu-core 4.7.0 for install
+[34m> [39mqueuing @babel/helper-explode-assignable-expression 7.11.4 for install
+[34m> [39mqueuing object.assign 4.1.0 for install
+[34m> [39mqueuing balanced-match 1.0.0 for install
+[34m> [39mqueuing concat-map 0.0.1 for install
+[34m> [39mqueuing domelementtype 2.0.1 for install
+[34m> [39mqueuing entities 2.0.3 for install
+[34m> [39mqueuing has-symbols 1.0.1 for install
+[34m> [39mqueuing is-extendable 0.1.1 for install
+[34m> [39mqueuing is-number 3.0.0 for install
+[34m> [39mqueuing repeat-string 1.6.1 for install
+[34m> [39mqueuing to-regex-range 2.1.1 for install
+[34m> [39mqueuing snapdragon-util 3.0.1 for install
+[34m> [39mqueuing is-accessor-descriptor 1.0.0 for install
+[34m> [39mqueuing is-data-descriptor 1.0.0 for install
+[34m> [39mqueuing is-plain-object 2.0.4 for install
+[34m> [39mqueuing is-descriptor 0.1.6 for install
+[34m> [39mqueuing posix-character-classes 0.1.1 for install
+[34m> [39mqueuing ret 0.1.15 for install
+[34m> [39mqueuing cache-base 1.0.1 for install
+[34m> [39mqueuing class-utils 0.3.6 for install
+[34m> [39mqueuing component-emitter 1.3.0 for install
+[34m> [39mqueuing mixin-deep 1.3.2 for install
+[34m> [39mqueuing pascalcase 0.1.1 for install
+[34m> [39mqueuing atob 2.1.2 for install
+[34m> [39mqueuing decode-uri-component 0.2.0 for install
+[34m> [39mqueuing resolve-url 0.2.1 for install
+[34m> [39mqueuing source-map-url 0.4.0 for install
+[34m> [39mqueuing urix 0.1.0 for install
+[34m> [39mqueuing inherits 2.0.1 for install
+[34m> [39mqueuing browserify-aes 1.2.0 for install
+[34m> [39mqueuing browserify-des 1.0.2 for install
+[34m> [39mqueuing evp_bytestokey 1.0.3 for install
+[34m> [39mqueuing bn.js 5.1.3 for install
+[34m> [39mqueuing bn.js 4.11.9 for install
+[34m> [39mqueuing browserify-rsa 4.0.1 for install
+[34m> [39mqueuing elliptic 6.5.3 for install
+[34m> [39mqueuing parse-asn1 5.1.6 for install
+[34m> [39mqueuing cipher-base 1.0.4 for install
+[34m> [39mqueuing ripemd160 2.0.2 for install
+[34m> [39mqueuing sha.js 2.4.11 for install
+[34m> [39mqueuing miller-rabin 4.0.1 for install
+[34m> [39mqueuing concat-stream 1.6.2 for install
+[34m> [39mqueuing duplexify 3.7.1 for install
+[34m> [39mqueuing end-of-stream 1.4.4 for install
+[34m> [39mqueuing flush-write-stream 1.1.1 for install
+[34m> [39mqueuing from2 2.3.0 for install
+[34m> [39mqueuing parallel-transform 1.2.0 for install
+[34m> [39mqueuing pump 3.0.0 for install
+[34m> [39mqueuing pumpify 1.5.1 for install
+[34m> [39mqueuing stream-each 1.2.3 for install
+[34m> [39mqueuing through2 2.0.5 for install
+[34m> [39mqueuing copy-concurrently 1.0.5 for install
+[34m> [39mqueuing aproba 1.2.0 for install
+[34m> [39mqueuing fs-write-stream-atomic 1.0.10 for install
+[34m> [39mqueuing run-queue 1.0.3 for install
+[34m> [39mqueuing unique-slug 2.0.2 for install
+[34m> [39mqueuing picomatch 2.2.2 for install
+[34m> [39mqueuing fill-range 7.0.1 for install
+[34m> [39mqueuing binary-extensions 2.1.0 for install
+[34m> [39mqueuing is-extglob 2.1.1 for install
+[34m> [39mqueuing anymatch 2.0.0 for install
+[34m> [39mqueuing async-each 1.0.3 for install
+[34m> [39mqueuing glob-parent 3.1.0 for install
+[34m> [39mqueuing is-binary-path 1.0.1 for install
+[34m> [39mqueuing readdirp 2.2.1 for install
+[34m> [39mqueuing upath 1.2.0 for install
+[34m> [39mqueuing fsevents 1.2.13 for install
+[34m> [39mqueuing os-homedir 1.0.2 for install
+[34m> [39mqueuing os-tmpdir 1.0.2 for install
+[34m> [39mqueuing delegates 1.0.0 for install
+[34m> [39mqueuing has-unicode 2.0.1 for install
+[34m> [39mqueuing signal-exit 3.0.3 for install
+[34m> [39mqueuing string-width 1.0.2 for install
+[34m> [39mqueuing strip-ansi 3.0.1 for install
+[34m> [39mqueuing wide-align 1.1.3 for install
+[34m> [39mqueuing has-flag 4.0.0 for install
+[34m> [39mqueuing ansi-regex 3.0.0 for install
+[34m> [39mqueuing @types/normalize-package-data 2.4.0 for install
+[34m> [39mqueuing normalize-package-data 2.5.0 for install
+[34m> [39mqueuing parse-json 5.0.1 for install
+[34m> [39mqueuing type-fest 0.6.0 for install
+[34m> [39mqueuing @types/istanbul-lib-report 3.0.0 for install
+[34m> [39mqueuing @types/yargs-parser 15.0.0 for install
+[34m> [39mqueuing color-name 1.1.4 for install
+[34m> [39mqueuing p-locate 3.0.0 for install
+[34m> [39mqueuing p-locate 4.1.0 for install
+[34m> [39mqueuing path-exists 3.0.0 for install
+[34m> [39mqueuing ansi-styles 3.2.1 for install
+[34m> [39mqueuing escape-string-regexp 1.0.5 for install
+[34m> [39mqueuing supports-color 5.5.0 for install
+[34m> [39mqueuing regenerate 1.4.1 for install
+[34m> [39mqueuing regenerate-unicode-properties 8.2.0 for install
+[34m> [39mqueuing regjsgen 0.5.2 for install
+[34m> [39mqueuing regjsparser 0.6.4 for install
+[34m> [39mqueuing unicode-match-property-ecmascript 1.0.4 for install
+[34m> [39mqueuing unicode-match-property-value-ecmascript 1.2.0 for install
+[34m> [39mqueuing define-properties 1.1.3 for install
+[34m> [39mqueuing function-bind 1.1.1 for install
+[34m> [39mqueuing object-keys 1.1.1 for install
+[34m> [39mqueuing kind-of 3.2.2 for install
+[34m> [39mqueuing kind-of 5.1.0 for install
+[34m> [39mqueuing is-accessor-descriptor 0.1.6 for install
+[34m> [39mqueuing is-data-descriptor 0.1.4 for install
+[34m> [39mqueuing collection-visit 1.0.0 for install
+[34m> [39mqueuing get-value 2.0.6 for install
+[34m> [39mqueuing has-value 1.0.0 for install
+[34m> [39mqueuing set-value 2.0.1 for install
+[34m> [39mqueuing to-object-path 0.3.0 for install
+[34m> [39mqueuing union-value 1.0.1 for install
+[34m> [39mqueuing unset-value 1.0.0 for install
+[34m> [39mqueuing arr-union 3.1.0 for install
+[34m> [39mqueuing static-extend 0.1.2 for install
+[34m> [39mqueuing for-in 1.0.2 for install
+[34m> [39mqueuing buffer-xor 1.0.3 for install
+[34m> [39mqueuing des.js 1.0.1 for install
+[34m> [39mqueuing brorand 1.1.0 for install
+[34m> [39mqueuing hash.js 1.1.7 for install
+[34m> [39mqueuing hmac-drbg 1.0.1 for install
+[34m> [39mqueuing minimalistic-assert 1.0.1 for install
+[34m> [39mqueuing minimalistic-crypto-utils 1.0.1 for install
+[34m> [39mqueuing asn1.js 5.4.1 for install
+[34m> [39mqueuing typedarray 0.0.6 for install
+[34m> [39mqueuing stream-shift 1.0.1 for install
+[34m> [39mqueuing cyclist 1.0.1 for install
+[34m> [39mqueuing pump 2.0.1 for install
+[34m> [39mqueuing iferr 0.1.5 for install
+[34m> [39mqueuing imurmurhash 0.1.4 for install
+[34m> [39mqueuing to-regex-range 5.0.1 for install
+[34m> [39mqueuing normalize-path 2.1.1 for install
+[34m> [39mqueuing is-glob 3.1.0 for install
+[34m> [39mqueuing path-dirname 1.0.2 for install
+[34m> [39mqueuing binary-extensions 1.13.1 for install
+[34m> [39mqueuing bindings 1.5.0 for install
+[34m> [39mqueuing nan 2.14.1 for install
+[34m> [39mqueuing code-point-at 1.1.0 for install
+[34m> [39mqueuing is-fullwidth-code-point 1.0.0 for install
+[34m> [39mqueuing ansi-regex 2.1.1 for install
+[34m> [39mqueuing hosted-git-info 2.8.8 for install
+[34m> [39mqueuing validate-npm-package-license 3.0.4 for install
+[34m> [39mqueuing error-ex 1.3.2 for install
+[34m> [39mqueuing lines-and-columns 1.1.6 for install
+[34m> [39mqueuing p-limit 2.3.0 for install
+[34m> [39mqueuing color-convert 1.9.3 for install
+[34m> [39mqueuing has-flag 3.0.0 for install
+[34m> [39mqueuing jsesc 0.5.0 for install
+[34m> [39mqueuing unicode-canonical-property-names-ecmascript 1.0.4 for install
+[34m> [39mqueuing unicode-property-aliases-ecmascript 1.1.0 for install
+[34m> [39mqueuing is-buffer 1.1.6 for install
+[34m> [39mqueuing map-visit 1.0.0 for install
+[34m> [39mqueuing object-visit 1.0.1 for install
+[34m> [39mqueuing has-values 1.0.0 for install
+[34m> [39mqueuing has-value 0.3.1 for install
+[34m> [39mqueuing object-copy 0.1.0 for install
+[34m> [39mqueuing is-number 7.0.0 for install
+[34m> [39mqueuing remove-trailing-separator 1.1.0 for install
+[34m> [39mqueuing file-uri-to-path 1.0.0 for install
+[34m> [39mqueuing number-is-nan 1.0.1 for install
+[34m> [39mqueuing spdx-correct 3.1.1 for install
+[34m> [39mqueuing spdx-expression-parse 3.0.1 for install
+[34m> [39mqueuing is-arrayish 0.2.1 for install
+[34m> [39mqueuing p-try 2.2.0 for install
+[34m> [39mqueuing color-name 1.1.3 for install
+[34m> [39mqueuing isobject 2.1.0 for install
+[34m> [39mqueuing kind-of 4.0.0 for install
+[34m> [39mqueuing has-values 0.1.4 for install
+[34m> [39mqueuing copy-descriptor 0.1.1 for install
+[34m> [39mqueuing spdx-license-ids 3.0.5 for install
+[34m> [39mqueuing spdx-exceptions 2.3.0 for install
+[34m> [39m[32minstall time check preInstall[39m [35m0.000[39msecs
+[32minstall package[39m: linking packages...
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0[39m of [35mbabel-loader[36m[2m@[22m[35m8.1.0[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 4.44.1 that satisfied webpack >=2
+[34m> [39mpeer dependencies [36mwebpack@>=2[39m of [35mbabel-loader[36m[2m@[22m[35m8.1.0[39m [32mresolved to[39m 4.44.1
+[34m> [39mpkg [35mexpress-session[36m[2m@[22m[35m1.17.1[39m need sub node_modules for [35mdepd[36m[2m@[22m[35m2.0.0[39m to ../../__fv_/2.0.0/depd
+[34m> [39mlocal link existTarget ../../__fv_/2.0.0/depd match new target ../../__fv_/2.0.0/depd
+[34m> [39mpkg [35mexpress-session[36m[2m@[22m[35m1.17.1[39m need sub node_modules for [35msafe-buffer[36m[2m@[22m[35m5.2.0[39m to ../../__fv_/5.2.0/safe-buffer
+[34m> [39mlocal link existTarget ../../__fv_/5.2.0/safe-buffer match new target ../../__fv_/5.2.0/safe-buffer
+[34m> [39mpkg [35mhtml-typings[36m[2m@[22m[35m1.4.5[39m need sub node_modules for [35mtypescript[36m[2m@[22m[35m4.0.2[39m to ../../__fv_/4.0.2/typescript
+[34m> [39mlocal link existTarget ../../__fv_/4.0.2/typescript match new target ../../__fv_/4.0.2/typescript
+[34m> [39mbin-linker: setting linked for html-typings => ../html-typings/app/index.js
+[34m> [39mbin-linker: setting linked for mime => ../mime/cli.js
+[34m> [39mpeer dependencies [36mreact@^16.13.1[39m of [35mreact-dom[36m[2m@[22m[35m16.13.1[39m [32mresolved to[39m 16.13.1
+[34m> [39mfound known version 16.13.1 that satisfied react >=15
+[34m> [39mpeer dependencies [36mreact@>=15[39m of [35mreact-router-dom[36m[2m@[22m[35m5.2.0[39m [32mresolved to[39m 16.13.1
+[34m> [39mfound known version 3.9.7 that satisfied typescript >=2.7
+[34m> [39mpeer dependencies [36mtypescript@>=2.7[39m of [35mts-node[36m[2m@[22m[35m8.10.2[39m [32mresolved to[39m 3.9.7
+[34m> [39mbin-linker: setting linked for ts-node => ../ts-node/dist/bin.js
+[34m> [39mbin-linker: setting linked for ts-script => ../ts-node/dist/bin-script-deprecated.js
+[34m> [39mbin-linker: setting linked for ts-node-script => ../ts-node/dist/bin-script.js
+[34m> [39mbin-linker: setting linked for ts-node-transpile-only => ../ts-node/dist/bin-transpile.js
+[34m> [39mbin-linker: setting linked for tsc => ../typescript/bin/tsc
+[34m> [39mbin-linker: setting linked for tsserver => ../typescript/bin/tsserver
+[34m> [39mpkg [35mwebpack[36m[2m@[22m[35m4.44.1[39m need sub node_modules for [35mschema-utils[36m[2m@[22m[35m1.0.0[39m to ../../__fv_/1.0.0/schema-utils
+[34m> [39mlocal link existTarget ../../__fv_/1.0.0/schema-utils match new target ../../__fv_/1.0.0/schema-utils
+[34m> [39mbin-linker: setting linked for webpack => ../webpack/bin/webpack.js
+[34m> [39mfound known version 4.44.1 that satisfied webpack ^4.0.0
+[34m> [39mpeer dependencies [36mwebpack@^4.0.0[39m of [35mwebpack-dev-middleware[36m[2m@[22m[35m3.7.2[39m [32mresolved to[39m 4.44.1
+[33m> [39m[33mWarning:[39m peer dependencies [36mbufferutil@^4.0.1[39m of [35mws[36m[2m@[22m[35m7.3.1[39m [31mis missing[39m
+[33m> [39m[33mWarning:[39m peer dependencies [36mutf-8-validate@^5.0.2[39m of [35mws[36m[2m@[22m[35m7.3.1[39m [31mis missing[39m
+[34m> [39mbin-linker: setting linked for clap => ../xclap/bin/clap.js
+[34m> [39mbin-linker: setting linked for xclap => ../xclap/bin/clap.js
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-optional-chaining[36m[2m@[22m[35m7.11.0[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-flow-strip-types[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mpkg [35m@types/express-session[36m[2m@[22m[35m1.17.0[39m need sub node_modules for [35m@types/node[36m[2m@[22m[35m14.6.0[39m to ../../../../__fv_/14.6.0/@types/node
+[34m> [39mlocal link existTarget ../../../../__fv_/14.6.0/@types/node match new target ../../../../__fv_/14.6.0/@types/node
+[34m> [39mbin-linker: setting linked for fyn => ../fyn/bin/fyn.js
+[34m> [39mbin-linker: setting linked for fun => ../fyn/bin/fun.js
+[34m> [39mpkg [35mfollow-redirects[36m[2m@[22m[35m1.5.10[39m need sub node_modules for [35mdebug[36m[2m@[22m[35m3.1.0[39m to ../../__fv_/3.1.0/debug
+[34m> [39mlocal link existTarget ../../__fv_/3.1.0/debug match new target ../../__fv_/3.1.0/debug
+[34m> [39mpkg [35mrequest[36m[2m@[22m[35m2.88.2[39m need sub node_modules for [35mqs[36m[2m@[22m[35m6.5.2[39m to ../../__fv_/6.5.2/qs
+[34m> [39mlocal link existTarget ../../__fv_/6.5.2/qs match new target ../../__fv_/6.5.2/qs
+[34m> [39mpkg [35mxml2js[36m[2m@[22m[35m0.2.8[39m need sub node_modules for [35msax[36m[2m@[22m[35m0.5.8[39m to ../../__fv_/0.5.8/sax
+[34m> [39mlocal link existTarget ../../__fv_/0.5.8/sax match new target ../../__fv_/0.5.8/sax
+[34m> [39mpkg [35mbody-parser[36m[2m@[22m[35m1.19.0[39m need sub node_modules for [35mhttp-errors[36m[2m@[22m[35m1.7.2[39m to ../../__fv_/1.7.2/http-errors
+[34m> [39mlocal link existTarget ../../__fv_/1.7.2/http-errors match new target ../../__fv_/1.7.2/http-errors
+[34m> [39mpkg [35mbody-parser[36m[2m@[22m[35m1.19.0[39m need sub node_modules for [35miconv-lite[36m[2m@[22m[35m0.4.24[39m to ../../__fv_/0.4.24/iconv-lite
+[34m> [39mlocal link existTarget ../../__fv_/0.4.24/iconv-lite match new target ../../__fv_/0.4.24/iconv-lite
+[34m> [39mpkg [35msend[36m[2m@[22m[35m0.17.1[39m need sub node_modules for [35mhttp-errors[36m[2m@[22m[35m1.7.2[39m to ../../__fv_/1.7.2/http-errors
+[34m> [39mlocal link existTarget ../../__fv_/1.7.2/http-errors match new target ../../__fv_/1.7.2/http-errors
+[34m> [39mpkg [35msend[36m[2m@[22m[35m0.17.1[39m need sub node_modules for [35mmime[36m[2m@[22m[35m1.6.0[39m to ../../__fv_/1.6.0/mime
+[34m> [39mlocal link existTarget ../../__fv_/1.6.0/mime match new target ../../__fv_/1.6.0/mime
+[34m> [39mpkg [35msend[36m[2m@[22m[35m0.17.1[39m need sub node_modules for [35mms[36m[2m@[22m[35m2.1.1[39m to ../../__fv_/2.1.1/ms
+[34m> [39mlocal link existTarget ../../__fv_/2.1.1/ms match new target ../../__fv_/2.1.1/ms
+[34m> [39mpkg [35m@babel/core[36m[2m@[22m[35m7.11.4[39m need sub node_modules for [35mdebug[36m[2m@[22m[35m4.1.1[39m to ../../../__fv_/4.1.1/debug
+[34m> [39mlocal link existTarget ../../../__fv_/4.1.1/debug match new target ../../../__fv_/4.1.1/debug
+[34m> [39mpkg [35m@babel/core[36m[2m@[22m[35m7.11.4[39m need sub node_modules for [35mjson5[36m[2m@[22m[35m2.1.3[39m to ../../../__fv_/2.1.3/json5
+[34m> [39mlocal link existTarget ../../../__fv_/2.1.3/json5 match new target ../../../__fv_/2.1.3/json5
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/preset-env[36m[2m@[22m[35m7.11.0[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/preset-react[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/register[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mpkg [35macorn-loose[36m[2m@[22m[35m7.1.0[39m need sub node_modules for [35macorn[36m[2m@[22m[35m7.4.0[39m to ../../__fv_/7.4.0/acorn
+[34m> [39mlocal link existTarget ../../__fv_/7.4.0/acorn match new target ../../__fv_/7.4.0/acorn
+[34m> [39mpkg [35mhtmlparser2[36m[2m@[22m[35m3.10.1[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m3.6.0[39m to ../../__fv_/3.6.0/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/3.6.0/readable-stream match new target ../../__fv_/3.6.0/readable-stream
+[34m> [39mpkg [35mnamed-placeholders[36m[2m@[22m[35m1.1.2[39m need sub node_modules for [35mlru-cache[36m[2m@[22m[35m4.1.5[39m to ../../__fv_/4.1.5/lru-cache
+[34m> [39mlocal link existTarget ../../__fv_/4.1.5/lru-cache match new target ../../__fv_/4.1.5/lru-cache
+[34m> [39mfound known version 16.13.1 that satisfied react >=15
+[34m> [39mpeer dependencies [36mreact@>=15[39m of [35mreact-router[36m[2m@[22m[35m5.2.0[39m [32mresolved to[39m 16.13.1
+[34m> [39mpkg [35mreact-router[36m[2m@[22m[35m5.2.0[39m need sub node_modules for [35mpath-to-regexp[36m[2m@[22m[35m1.8.0[39m to ../../__fv_/1.8.0/path-to-regexp
+[34m> [39mlocal link existTarget ../../__fv_/1.8.0/path-to-regexp match new target ../../__fv_/1.8.0/path-to-regexp
+[34m> [39mpkg [35mhttp-errors[36m[2m@[22m[35m1.6.3[39m need sub node_modules for [35minherits[36m[2m@[22m[35m2.0.3[39m to ../../__fv_/2.0.3/inherits
+[34m> [39mlocal link existTarget ../../__fv_/2.0.3/inherits match new target ../../__fv_/2.0.3/inherits
+[34m> [39mpkg [35mhttp-errors[36m[2m@[22m[35m1.6.3[39m need sub node_modules for [35msetprototypeof[36m[2m@[22m[35m1.1.0[39m to ../../__fv_/1.1.0/setprototypeof
+[34m> [39mlocal link existTarget ../../__fv_/1.1.0/setprototypeof match new target ../../__fv_/1.1.0/setprototypeof
+[34m> [39mpkg [35msource-map-support[36m[2m@[22m[35m0.5.19[39m need sub node_modules for [35msource-map[36m[2m@[22m[35m0.6.1[39m to ../../__fv_/0.6.1/source-map
+[34m> [39mlocal link existTarget ../../__fv_/0.6.1/source-map match new target ../../__fv_/0.6.1/source-map
+[34m> [39mfound known version 6.12.4 that satisfied ajv ^6.9.1
+[34m> [39mpeer dependencies [36majv@^6.9.1[39m of [35majv-keywords[36m[2m@[22m[35m3.5.2[39m [32mresolved to[39m 6.12.4
+[34m> [39mpkg [35menhanced-resolve[36m[2m@[22m[35m4.3.0[39m need sub node_modules for [35mmemory-fs[36m[2m@[22m[35m0.5.0[39m to ../../__fv_/0.5.0/memory-fs
+[34m> [39mlocal link existTarget ../../__fv_/0.5.0/memory-fs match new target ../../__fv_/0.5.0/memory-fs
+[34m> [39mpkg [35mnode-libs-browser[36m[2m@[22m[35m2.2.1[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35mnode-libs-browser[36m[2m@[22m[35m2.2.1[39m need sub node_modules for [35mstring_decoder[36m[2m@[22m[35m1.3.0[39m to ../../__fv_/1.3.0/string_decoder
+[34m> [39mlocal link existTarget ../../__fv_/1.3.0/string_decoder match new target ../../__fv_/1.3.0/string_decoder
+[34m> [39mfound known version 4.44.1 that satisfied webpack ^4.0.0
+[34m> [39mpeer dependencies [36mwebpack@^4.0.0[39m of [35mterser-webpack-plugin[36m[2m@[22m[35m1.4.5[39m [32mresolved to[39m 4.44.1
+[34m> [39mpkg [35mterser-webpack-plugin[36m[2m@[22m[35m1.4.5[39m need sub node_modules for [35mschema-utils[36m[2m@[22m[35m1.0.0[39m to ../../__fv_/1.0.0/schema-utils
+[34m> [39mlocal link existTarget ../../__fv_/1.0.0/schema-utils match new target ../../__fv_/1.0.0/schema-utils
+[34m> [39mpkg [35mterser-webpack-plugin[36m[2m@[22m[35m1.4.5[39m need sub node_modules for [35msource-map[36m[2m@[22m[35m0.6.1[39m to ../../__fv_/0.6.1/source-map
+[34m> [39mlocal link existTarget ../../__fv_/0.6.1/source-map match new target ../../__fv_/0.6.1/source-map
+[34m> [39mpkg [35mwebpack-sources[36m[2m@[22m[35m1.4.3[39m need sub node_modules for [35msource-map[36m[2m@[22m[35m0.6.1[39m to ../../__fv_/0.6.1/source-map
+[34m> [39mlocal link existTarget ../../__fv_/0.6.1/source-map match new target ../../__fv_/0.6.1/source-map
+[34m> [39mpkg [35mm3u8stream[36m[2m@[22m[35m0.7.1[39m need sub node_modules for [35mminiget[36m[2m@[22m[35m1.7.2[39m to ../../__fv_/1.7.2/miniget
+[34m> [39mlocal link existTarget ../../__fv_/1.7.2/miniget match new target ../../__fv_/1.7.2/miniget
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-optional-chaining[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-flow[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mpkg [35m@types/body-parser[36m[2m@[22m[35m1.19.0[39m need sub node_modules for [35m@types/node[36m[2m@[22m[35m14.6.0[39m to ../../../../__fv_/14.6.0/@types/node
+[34m> [39mlocal link existTarget ../../../../__fv_/14.6.0/@types/node match new target ../../../../__fv_/14.6.0/@types/node
+[34m> [39mpkg [35m@types/express-serve-static-core[36m[2m@[22m[35m4.17.9[39m need sub node_modules for [35m@types/node[36m[2m@[22m[35m14.6.0[39m to ../../../../__fv_/14.6.0/@types/node
+[34m> [39mlocal link existTarget ../../../../__fv_/14.6.0/@types/node match new target ../../../../__fv_/14.6.0/@types/node
+[34m> [39mpkg [35mjest-diff[36m[2m@[22m[35m25.5.0[39m need sub node_modules for [35mchalk[36m[2m@[22m[35m3.0.0[39m to ../../__fv_/3.0.0/chalk
+[34m> [39mlocal link existTarget ../../__fv_/3.0.0/chalk match new target ../../__fv_/3.0.0/chalk
+[34m> [39mpkg [35mdebug[36m[2m@[22m[35m4.1.1[39m need sub node_modules for [35mms[36m[2m@[22m[35m2.1.2[39m to ../../../2.1.2/ms
+[34m> [39mlocal link existTarget ../../../2.1.2/ms match new target ../../../2.1.2/ms
+[34m> [39mpkg [35mhash-base[36m[2m@[22m[35m3.1.0[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m3.6.0[39m to ../../__fv_/3.6.0/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/3.6.0/readable-stream match new target ../../__fv_/3.6.0/readable-stream
+[34m> [39mpkg [35mhash-base[36m[2m@[22m[35m3.1.0[39m need sub node_modules for [35msafe-buffer[36m[2m@[22m[35m5.2.1[39m to ../../__fv_/5.2.1/safe-buffer
+[34m> [39mlocal link existTarget ../../__fv_/5.2.1/safe-buffer match new target ../../__fv_/5.2.1/safe-buffer
+[34m> [39mpkg [35mstring_decoder[36m[2m@[22m[35m1.3.0[39m need sub node_modules for [35msafe-buffer[36m[2m@[22m[35m5.2.1[39m to ../../../5.2.1/safe-buffer
+[34m> [39mlocal link existTarget ../../../5.2.1/safe-buffer match new target ../../../5.2.1/safe-buffer
+[34m> [39mpkg [35mtough-cookie[36m[2m@[22m[35m2.5.0[39m need sub node_modules for [35mpunycode[36m[2m@[22m[35m2.1.1[39m to ../../__fv_/2.1.1/punycode
+[34m> [39mlocal link existTarget ../../__fv_/2.1.1/punycode match new target ../../__fv_/2.1.1/punycode
+[34m> [39mfound known version 6.12.4 that satisfied ajv >=5.0.0
+[34m> [39mpeer dependencies [36majv@>=5.0.0[39m of [35majv-errors[36m[2m@[22m[35m1.0.1[39m [32mresolved to[39m 6.12.4
+[34m> [39mpkg [35mhttp-errors[36m[2m@[22m[35m1.7.2[39m need sub node_modules for [35minherits[36m[2m@[22m[35m2.0.3[39m to ../../../2.0.3/inherits
+[34m> [39mlocal link existTarget ../../../2.0.3/inherits match new target ../../../2.0.3/inherits
+[34m> [39mpkg [35mraw-body[36m[2m@[22m[35m2.4.0[39m need sub node_modules for [35mhttp-errors[36m[2m@[22m[35m1.7.2[39m to ../../__fv_/1.7.2/http-errors
+[34m> [39mlocal link existTarget ../../__fv_/1.7.2/http-errors match new target ../../__fv_/1.7.2/http-errors
+[34m> [39mpkg [35mraw-body[36m[2m@[22m[35m2.4.0[39m need sub node_modules for [35miconv-lite[36m[2m@[22m[35m0.4.24[39m to ../../__fv_/0.4.24/iconv-lite
+[34m> [39mlocal link existTarget ../../__fv_/0.4.24/iconv-lite match new target ../../__fv_/0.4.24/iconv-lite
+[34m> [39mpkg [35m@babel/traverse[36m[2m@[22m[35m7.11.0[39m need sub node_modules for [35mdebug[36m[2m@[22m[35m4.1.1[39m to ../../../__fv_/4.1.1/debug
+[34m> [39mlocal link existTarget ../../../__fv_/4.1.1/debug match new target ../../../__fv_/4.1.1/debug
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0[39m of [35m@babel/helper-compilation-targets[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-async-generator-functions[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-class-properties[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-dynamic-import[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-export-namespace-from[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-json-strings[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-logical-assignment-operators[36m[2m@[22m[35m7.11.0[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-nullish-coalescing-operator[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-numeric-separator[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-object-rest-spread[36m[2m@[22m[35m7.11.0[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-optional-catch-binding[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-private-methods[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-proposal-unicode-property-regex[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-async-generators[36m[2m@[22m[35m7.8.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-class-properties[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-dynamic-import[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-export-namespace-from[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-json-strings[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-logical-assignment-operators[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-nullish-coalescing-operator[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-numeric-separator[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-object-rest-spread[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-optional-catch-binding[36m[2m@[22m[35m7.8.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-top-level-await[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-arrow-functions[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-async-to-generator[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-block-scoped-functions[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-block-scoping[36m[2m@[22m[35m7.11.1[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-classes[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-computed-properties[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-destructuring[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-dotall-regex[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-duplicate-keys[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-exponentiation-operator[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-for-of[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-function-name[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-literals[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-member-expression-literals[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-modules-amd[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-modules-commonjs[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-modules-systemjs[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-modules-umd[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0[39m of [35m@babel/plugin-transform-named-capturing-groups-regex[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-new-target[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-object-super[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-parameters[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-property-literals[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-regenerator[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-reserved-words[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-shorthand-properties[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-spread[36m[2m@[22m[35m7.11.0[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-sticky-regex[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-template-literals[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-typeof-symbol[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-unicode-escapes[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-unicode-regex[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/preset-modules[36m[2m@[22m[35m0.1.3[39m [32mresolved to[39m 7.11.4
+[34m> [39mpkg [35mcore-js-compat[36m[2m@[22m[35m3.6.5[39m need sub node_modules for [35msemver[36m[2m@[22m[35m7.0.0[39m to ../../__fv_/7.0.0/semver
+[34m> [39mlocal link existTarget ../../__fv_/7.0.0/semver match new target ../../__fv_/7.0.0/semver
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-react-display-name[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-react-jsx[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-react-jsx-development[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-react-jsx-self[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-react-jsx-source[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-transform-react-pure-annotations[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mpkg [35mreadable-stream[36m[2m@[22m[35m3.6.0[39m need sub node_modules for [35mstring_decoder[36m[2m@[22m[35m1.3.0[39m to ../../../1.3.0/string_decoder
+[34m> [39mlocal link existTarget ../../../1.3.0/string_decoder match new target ../../../1.3.0/string_decoder
+[34m> [39mpkg [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m need sub node_modules for [35mprocess-nextick-args[36m[2m@[22m[35m2.0.1[39m to ../../../2.0.1/process-nextick-args
+[34m> [39mlocal link existTarget ../../../2.0.1/process-nextick-args match new target ../../../2.0.1/process-nextick-args
+[34m> [39mpkg [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m need sub node_modules for [35mstring_decoder[36m[2m@[22m[35m1.1.1[39m to ../../../1.1.1/string_decoder
+[34m> [39mlocal link existTarget ../../../1.1.1/string_decoder match new target ../../../1.1.1/string_decoder
+[34m> [39mpkg [35mis-expression[36m[2m@[22m[35m3.0.0[39m need sub node_modules for [35macorn[36m[2m@[22m[35m4.0.13[39m to ../../__fv_/4.0.13/acorn
+[34m> [39mlocal link existTarget ../../__fv_/4.0.13/acorn match new target ../../__fv_/4.0.13/acorn
+[34m> [39mpkg [35mlru-cache[36m[2m@[22m[35m4.1.5[39m need sub node_modules for [35myallist[36m[2m@[22m[35m2.1.2[39m to ../../../2.1.2/yallist
+[34m> [39mlocal link existTarget ../../../2.1.2/yallist match new target ../../../2.1.2/yallist
+[34m> [39mfound known version 15.7.2 that satisfied prop-types ^15.0.0
+[34m> [39mpeer dependencies [36mprop-types@^15.0.0[39m of [35mmini-create-react-context[36m[2m@[22m[35m0.4.0[39m [32mresolved to[39m 15.7.2
+[34m> [39mfound known version 16.13.1 that satisfied react ^0.14.0 || ^15.0.0 || ^16.0.0
+[34m> [39mpeer dependencies [36mreact@^0.14.0 || ^15.0.0 || ^16.0.0[39m of [35mmini-create-react-context[36m[2m@[22m[35m0.4.0[39m [32mresolved to[39m 16.13.1
+[34m> [39mpkg [35mpath-to-regexp[36m[2m@[22m[35m1.8.0[39m need sub node_modules for [35misarray[36m[2m@[22m[35m0.0.1[39m to ../../../0.0.1/isarray
+[34m> [39mlocal link existTarget ../../../0.0.1/isarray match new target ../../../0.0.1/isarray
+[34m> [39mpkg [35muri-js[36m[2m@[22m[35m4.2.2[39m need sub node_modules for [35mpunycode[36m[2m@[22m[35m2.1.1[39m to ../../__fv_/2.1.1/punycode
+[34m> [39mlocal link existTarget ../../__fv_/2.1.1/punycode match new target ../../__fv_/2.1.1/punycode
+[34m> [39mpkg [35mesrecurse[36m[2m@[22m[35m4.3.0[39m need sub node_modules for [35mestraverse[36m[2m@[22m[35m5.2.0[39m to ../../__fv_/5.2.0/estraverse
+[34m> [39mlocal link existTarget ../../__fv_/5.2.0/estraverse match new target ../../__fv_/5.2.0/estraverse
+[34m> [39mpkg [35mbraces[36m[2m@[22m[35m2.3.2[39m need sub node_modules for [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/extend-shallow
+[34m> [39mlocal link existTarget false match new target ../../__fv_/2.0.1/extend-shallow
+[34m> [39mpkg [35mextglob[36m[2m@[22m[35m2.0.4[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m1.0.0[39m to ../../__fv_/1.0.0/define-property
+[34m> [39mlocal link existTarget ../../__fv_/1.0.0/define-property match new target ../../__fv_/1.0.0/define-property
+[34m> [39mpkg [35mextglob[36m[2m@[22m[35m2.0.4[39m need sub node_modules for [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/extend-shallow
+[34m> [39mlocal link existTarget ../../__fv_/2.0.1/extend-shallow match new target ../../__fv_/2.0.1/extend-shallow
+[34m> [39mpkg [35msnapdragon[36m[2m@[22m[35m0.8.2[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m0.2.5[39m to ../../__fv_/0.2.5/define-property
+[34m> [39mlocal link existTarget ../../__fv_/0.2.5/define-property match new target ../../__fv_/0.2.5/define-property
+[34m> [39mpkg [35msnapdragon[36m[2m@[22m[35m0.8.2[39m need sub node_modules for [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/extend-shallow
+[34m> [39mlocal link existTarget ../../__fv_/2.0.1/extend-shallow match new target ../../__fv_/2.0.1/extend-shallow
+[34m> [39mpkg [35massert[36m[2m@[22m[35m1.5.0[39m need sub node_modules for [35mutil[36m[2m@[22m[35m0.10.3[39m to ../../__fv_/0.10.3/util
+[34m> [39mlocal link existTarget ../../__fv_/0.10.3/util match new target ../../__fv_/0.10.3/util
+[34m> [39mpkg [35mstream-browserify[36m[2m@[22m[35m2.0.2[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35mstream-http[36m[2m@[22m[35m2.8.3[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35murl[36m[2m@[22m[35m0.11.0[39m need sub node_modules for [35mpunycode[36m[2m@[22m[35m1.3.2[39m to ../../__fv_/1.3.2/punycode
+[34m> [39mlocal link existTarget ../../__fv_/1.3.2/punycode match new target ../../__fv_/1.3.2/punycode
+[34m> [39mpkg [35mutil[36m[2m@[22m[35m0.11.1[39m need sub node_modules for [35minherits[36m[2m@[22m[35m2.0.3[39m to ../../__fv_/2.0.3/inherits
+[34m> [39mlocal link existTarget ../../__fv_/2.0.3/inherits match new target ../../__fv_/2.0.3/inherits
+[34m> [39mpkg [35mterser[36m[2m@[22m[35m4.8.0[39m need sub node_modules for [35msource-map[36m[2m@[22m[35m0.6.1[39m to ../../__fv_/0.6.1/source-map
+[34m> [39mlocal link existTarget ../../__fv_/0.6.1/source-map match new target ../../__fv_/0.6.1/source-map
+[34m> [39mpkg [35mchokidar[36m[2m@[22m[35m3.4.2[39m need sub node_modules for [35mbraces[36m[2m@[22m[35m3.0.2[39m to ../../__fv_/3.0.2/braces
+[34m> [39mlocal link existTarget false match new target ../../__fv_/3.0.2/braces
+[34m> [39mpkg [35mwatchpack-chokidar2[36m[2m@[22m[35m2.0.0[39m need sub node_modules for [35mchokidar[36m[2m@[22m[35m2.1.8[39m to ../../__fv_/2.1.8/chokidar
+[34m> [39mlocal link existTarget ../../__fv_/2.1.8/chokidar match new target ../../__fv_/2.1.8/chokidar
+[34m> [39mpkg [35mneedle[36m[2m@[22m[35m2.5.2[39m need sub node_modules for [35mdebug[36m[2m@[22m[35m3.2.6[39m to ../../__fv_/3.2.6/debug
+[34m> [39mlocal link existTarget false match new target ../../__fv_/3.2.6/debug
+[34m> [39mpkg [35mneedle[36m[2m@[22m[35m2.5.2[39m need sub node_modules for [35miconv-lite[36m[2m@[22m[35m0.4.24[39m to ../../__fv_/0.4.24/iconv-lite
+[34m> [39mlocal link existTarget false match new target ../../__fv_/0.4.24/iconv-lite
+[34m> [39mpkg [35mread-pkg-up[36m[2m@[22m[35m7.0.1[39m need sub node_modules for [35mfind-up[36m[2m@[22m[35m4.1.0[39m to ../../__fv_/4.1.0/find-up
+[34m> [39mlocal link existTarget ../../__fv_/4.1.0/find-up match new target ../../__fv_/4.1.0/find-up
+[34m> [39mpkg [35m@types/connect[36m[2m@[22m[35m3.4.33[39m need sub node_modules for [35m@types/node[36m[2m@[22m[35m14.6.0[39m to ../../../../__fv_/14.6.0/@types/node
+[34m> [39mlocal link existTarget ../../../../__fv_/14.6.0/@types/node match new target ../../../../__fv_/14.6.0/@types/node
+[34m> [39mpkg [35m@jest/types[36m[2m@[22m[35m25.5.0[39m need sub node_modules for [35mchalk[36m[2m@[22m[35m3.0.0[39m to ../../../__fv_/3.0.0/chalk
+[34m> [39mlocal link existTarget false match new target ../../../__fv_/3.0.0/chalk
+[34m> [39mpkg [35mfind-up[36m[2m@[22m[35m4.1.0[39m need sub node_modules for [35mlocate-path[36m[2m@[22m[35m5.0.0[39m to ../../../5.0.0/locate-path
+[34m> [39mlocal link existTarget ../../../5.0.0/locate-path match new target ../../../5.0.0/locate-path
+[34m> [39mpkg [35m@babel/highlight[36m[2m@[22m[35m7.10.4[39m need sub node_modules for [35mchalk[36m[2m@[22m[35m2.4.2[39m to ../../../__fv_/2.4.2/chalk
+[34m> [39mlocal link existTarget ../../../__fv_/2.4.2/chalk match new target ../../../__fv_/2.4.2/chalk
+[34m> [39mpkg [35mdebug[36m[2m@[22m[35m3.2.6[39m need sub node_modules for [35mms[36m[2m@[22m[35m2.1.2[39m to ../../../2.1.2/ms
+[34m> [39mlocal link existTarget ../../../2.1.2/ms match new target ../../../2.1.2/ms
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0[39m of [35m@babel/helper-create-class-features-plugin[36m[2m@[22m[35m7.10.5[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0[39m of [35m@babel/helper-create-regexp-features-plugin[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mfound known version 7.11.4 that satisfied @babel/core ^7.0.0-0
+[34m> [39mpeer dependencies [36m@babel/core@^7.0.0-0[39m of [35m@babel/plugin-syntax-jsx[36m[2m@[22m[35m7.10.4[39m [32mresolved to[39m 7.11.4
+[34m> [39mpkg [35mdom-serializer[36m[2m@[22m[35m0.2.2[39m need sub node_modules for [35mdomelementtype[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/domelementtype
+[34m> [39mlocal link existTarget ../../__fv_/2.0.1/domelementtype match new target ../../__fv_/2.0.1/domelementtype
+[34m> [39mpkg [35mdom-serializer[36m[2m@[22m[35m0.2.2[39m need sub node_modules for [35mentities[36m[2m@[22m[35m2.0.3[39m to ../../__fv_/2.0.3/entities
+[34m> [39mlocal link existTarget ../../__fv_/2.0.3/entities match new target ../../__fv_/2.0.3/entities
+[34m> [39mpkg [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m need sub node_modules for [35mis-extendable[36m[2m@[22m[35m0.1.1[39m to ../../../0.1.1/is-extendable
+[34m> [39mlocal link existTarget ../../../0.1.1/is-extendable match new target ../../../0.1.1/is-extendable
+[34m> [39mpkg [35mfill-range[36m[2m@[22m[35m4.0.0[39m need sub node_modules for [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/extend-shallow
+[34m> [39mlocal link existTarget false match new target ../../__fv_/2.0.1/extend-shallow
+[34m> [39mpkg [35msnapdragon-node[36m[2m@[22m[35m2.1.1[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m1.0.0[39m to ../../__fv_/1.0.0/define-property
+[34m> [39mlocal link existTarget ../../__fv_/1.0.0/define-property match new target ../../__fv_/1.0.0/define-property
+[34m> [39mpkg [35mdefine-property[36m[2m@[22m[35m0.2.5[39m need sub node_modules for [35mis-descriptor[36m[2m@[22m[35m0.1.6[39m to ../../../0.1.6/is-descriptor
+[34m> [39mlocal link existTarget ../../../0.1.6/is-descriptor match new target ../../../0.1.6/is-descriptor
+[34m> [39mpkg [35mexpand-brackets[36m[2m@[22m[35m2.1.4[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m0.2.5[39m to ../../__fv_/0.2.5/define-property
+[34m> [39mlocal link existTarget ../../__fv_/0.2.5/define-property match new target ../../__fv_/0.2.5/define-property
+[34m> [39mpkg [35mexpand-brackets[36m[2m@[22m[35m2.1.4[39m need sub node_modules for [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/extend-shallow
+[34m> [39mlocal link existTarget ../../__fv_/2.0.1/extend-shallow match new target ../../__fv_/2.0.1/extend-shallow
+[34m> [39mpkg [35mbase[36m[2m@[22m[35m0.11.2[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m1.0.0[39m to ../../__fv_/1.0.0/define-property
+[34m> [39mlocal link existTarget ../../__fv_/1.0.0/define-property match new target ../../__fv_/1.0.0/define-property
+[34m> [39mpkg [35mutil[36m[2m@[22m[35m0.10.3[39m need sub node_modules for [35minherits[36m[2m@[22m[35m2.0.1[39m to ../../../2.0.1/inherits
+[34m> [39mlocal link existTarget ../../../2.0.1/inherits match new target ../../../2.0.1/inherits
+[34m> [39mpkg [35mbrowserify-sign[36m[2m@[22m[35m4.2.1[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m3.6.0[39m to ../../__fv_/3.6.0/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/3.6.0/readable-stream match new target ../../__fv_/3.6.0/readable-stream
+[34m> [39mpkg [35mbrowserify-sign[36m[2m@[22m[35m4.2.1[39m need sub node_modules for [35msafe-buffer[36m[2m@[22m[35m5.2.1[39m to ../../__fv_/5.2.1/safe-buffer
+[34m> [39mlocal link existTarget ../../__fv_/5.2.1/safe-buffer match new target ../../__fv_/5.2.1/safe-buffer
+[34m> [39mpkg [35mcreate-ecdh[36m[2m@[22m[35m4.0.4[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35mdiffie-hellman[36m[2m@[22m[35m5.0.3[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35mpublic-encrypt[36m[2m@[22m[35m4.0.3[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35mbraces[36m[2m@[22m[35m3.0.2[39m need sub node_modules for [35mfill-range[36m[2m@[22m[35m7.0.1[39m to ../../../7.0.1/fill-range
+[34m> [39mlocal link existTarget false match new target ../../../7.0.1/fill-range
+[34m> [39mpkg [35mchokidar[36m[2m@[22m[35m2.1.8[39m need sub node_modules for [35manymatch[36m[2m@[22m[35m2.0.0[39m to ../../../2.0.0/anymatch
+[34m> [39mlocal link existTarget ../../../2.0.0/anymatch match new target ../../../2.0.0/anymatch
+[34m> [39mpkg [35mchokidar[36m[2m@[22m[35m2.1.8[39m need sub node_modules for [35mglob-parent[36m[2m@[22m[35m3.1.0[39m to ../../../3.1.0/glob-parent
+[34m> [39mlocal link existTarget ../../../3.1.0/glob-parent match new target ../../../3.1.0/glob-parent
+[34m> [39mpkg [35mchokidar[36m[2m@[22m[35m2.1.8[39m need sub node_modules for [35mis-binary-path[36m[2m@[22m[35m1.0.1[39m to ../../../1.0.1/is-binary-path
+[34m> [39mlocal link existTarget ../../../1.0.1/is-binary-path match new target ../../../1.0.1/is-binary-path
+[34m> [39mpkg [35mchokidar[36m[2m@[22m[35m2.1.8[39m need sub node_modules for [35mreaddirp[36m[2m@[22m[35m2.2.1[39m to ../../../2.2.1/readdirp
+[34m> [39mlocal link existTarget ../../../2.2.1/readdirp match new target ../../../2.2.1/readdirp
+[34m> [39mpkg [35mchokidar[36m[2m@[22m[35m2.1.8[39m need sub node_modules for [35mfsevents[36m[2m@[22m[35m1.2.13[39m to ../../../1.2.13/fsevents
+[34m> [39mlocal link existTarget ../../../1.2.13/fsevents match new target ../../../1.2.13/fsevents
+[34m> [39mpkg [35mgauge[36m[2m@[22m[35m2.7.4[39m need sub node_modules for [35mstrip-ansi[36m[2m@[22m[35m3.0.1[39m to ../../__fv_/3.0.1/strip-ansi
+[34m> [39mlocal link existTarget false match new target ../../__fv_/3.0.1/strip-ansi
+[34m> [39mpkg [35mstrip-ansi[36m[2m@[22m[35m4.0.0[39m need sub node_modules for [35mansi-regex[36m[2m@[22m[35m3.0.0[39m to ../../__fv_/3.0.0/ansi-regex
+[34m> [39mlocal link existTarget false match new target ../../__fv_/3.0.0/ansi-regex
+[34m> [39mpkg [35mread-pkg[36m[2m@[22m[35m5.2.0[39m need sub node_modules for [35mtype-fest[36m[2m@[22m[35m0.6.0[39m to ../../__fv_/0.6.0/type-fest
+[34m> [39mlocal link existTarget ../../__fv_/0.6.0/type-fest match new target ../../__fv_/0.6.0/type-fest
+[34m> [39mpkg [35mlocate-path[36m[2m@[22m[35m3.0.0[39m need sub node_modules for [35mpath-exists[36m[2m@[22m[35m3.0.0[39m to ../../__fv_/3.0.0/path-exists
+[34m> [39mlocal link existTarget ../../__fv_/3.0.0/path-exists match new target ../../__fv_/3.0.0/path-exists
+[34m> [39mpkg [35mlocate-path[36m[2m@[22m[35m5.0.0[39m need sub node_modules for [35mp-locate[36m[2m@[22m[35m4.1.0[39m to ../../../4.1.0/p-locate
+[34m> [39mlocal link existTarget ../../../4.1.0/p-locate match new target ../../../4.1.0/p-locate
+[34m> [39mpkg [35mchalk[36m[2m@[22m[35m2.4.2[39m need sub node_modules for [35mansi-styles[36m[2m@[22m[35m3.2.1[39m to ../../../3.2.1/ansi-styles
+[34m> [39mlocal link existTarget ../../../3.2.1/ansi-styles match new target ../../../3.2.1/ansi-styles
+[34m> [39mpkg [35mchalk[36m[2m@[22m[35m2.4.2[39m need sub node_modules for [35msupports-color[36m[2m@[22m[35m5.5.0[39m to ../../../5.5.0/supports-color
+[34m> [39mlocal link existTarget false match new target ../../../5.5.0/supports-color
+[34m> [39mpkg [35mis-number[36m[2m@[22m[35m3.0.0[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m3.2.2[39m to ../../__fv_/3.2.2/kind-of
+[34m> [39mlocal link existTarget ../../__fv_/3.2.2/kind-of match new target ../../__fv_/3.2.2/kind-of
+[34m> [39mpkg [35msnapdragon-util[36m[2m@[22m[35m3.0.1[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m3.2.2[39m to ../../__fv_/3.2.2/kind-of
+[34m> [39mlocal link existTarget ../../__fv_/3.2.2/kind-of match new target ../../__fv_/3.2.2/kind-of
+[34m> [39mpkg [35mis-descriptor[36m[2m@[22m[35m0.1.6[39m need sub node_modules for [35mis-accessor-descriptor[36m[2m@[22m[35m0.1.6[39m to ../../is-accessor-descriptor
+[34m> [39mlocal link existTarget ../../is-accessor-descriptor match new target ../../is-accessor-descriptor
+[34m> [39mpkg [35mis-descriptor[36m[2m@[22m[35m0.1.6[39m need sub node_modules for [35mis-data-descriptor[36m[2m@[22m[35m0.1.4[39m to ../../../0.1.4/is-data-descriptor
+[34m> [39mlocal link existTarget ../../../0.1.4/is-data-descriptor match new target ../../../0.1.4/is-data-descriptor
+[34m> [39mpkg [35mis-descriptor[36m[2m@[22m[35m0.1.6[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m5.1.0[39m to ../../../5.1.0/kind-of
+[34m> [39mlocal link existTarget ../../../5.1.0/kind-of match new target ../../../5.1.0/kind-of
+[34m> [39mpkg [35mclass-utils[36m[2m@[22m[35m0.3.6[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m0.2.5[39m to ../../__fv_/0.2.5/define-property
+[34m> [39mlocal link existTarget ../../__fv_/0.2.5/define-property match new target ../../__fv_/0.2.5/define-property
+[34m> [39mpkg [35mevp_bytestokey[36m[2m@[22m[35m1.0.3[39m need sub node_modules for [35msafe-buffer[36m[2m@[22m[35m5.2.1[39m to ../../__fv_/5.2.1/safe-buffer
+[34m> [39mlocal link existTarget ../../__fv_/5.2.1/safe-buffer match new target ../../__fv_/5.2.1/safe-buffer
+[34m> [39mpkg [35mbrowserify-rsa[36m[2m@[22m[35m4.0.1[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35melliptic[36m[2m@[22m[35m6.5.3[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35mparse-asn1[36m[2m@[22m[35m5.1.6[39m need sub node_modules for [35msafe-buffer[36m[2m@[22m[35m5.2.1[39m to ../../__fv_/5.2.1/safe-buffer
+[34m> [39mlocal link existTarget ../../__fv_/5.2.1/safe-buffer match new target ../../__fv_/5.2.1/safe-buffer
+[34m> [39mpkg [35mmiller-rabin[36m[2m@[22m[35m4.0.1[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35mconcat-stream[36m[2m@[22m[35m1.6.2[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35mflush-write-stream[36m[2m@[22m[35m1.1.1[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35mparallel-transform[36m[2m@[22m[35m1.2.0[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35mpumpify[36m[2m@[22m[35m1.5.1[39m need sub node_modules for [35mpump[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/pump
+[34m> [39mlocal link existTarget ../../__fv_/2.0.1/pump match new target ../../__fv_/2.0.1/pump
+[34m> [39mpkg [35mthrough2[36m[2m@[22m[35m2.0.5[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../__fv_/2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../__fv_/2.3.7/readable-stream match new target ../../__fv_/2.3.7/readable-stream
+[34m> [39mpkg [35mfill-range[36m[2m@[22m[35m7.0.1[39m need sub node_modules for [35mto-regex-range[36m[2m@[22m[35m5.0.1[39m to ../../../5.0.1/to-regex-range
+[34m> [39mlocal link existTarget false match new target ../../../5.0.1/to-regex-range
+[34m> [39mpkg [35manymatch[36m[2m@[22m[35m2.0.0[39m need sub node_modules for [35mnormalize-path[36m[2m@[22m[35m2.1.1[39m to ../../../2.1.1/normalize-path
+[34m> [39mlocal link existTarget ../../../2.1.1/normalize-path match new target ../../../2.1.1/normalize-path
+[34m> [39mpkg [35mglob-parent[36m[2m@[22m[35m3.1.0[39m need sub node_modules for [35mis-glob[36m[2m@[22m[35m3.1.0[39m to ../../is-glob
+[34m> [39mlocal link existTarget ../../is-glob match new target ../../is-glob
+[34m> [39mpkg [35mis-binary-path[36m[2m@[22m[35m1.0.1[39m need sub node_modules for [35mbinary-extensions[36m[2m@[22m[35m1.13.1[39m to ../../../1.13.1/binary-extensions
+[34m> [39mlocal link existTarget ../../../1.13.1/binary-extensions match new target ../../../1.13.1/binary-extensions
+[34m> [39mpkg [35mreaddirp[36m[2m@[22m[35m2.2.1[39m need sub node_modules for [35mreadable-stream[36m[2m@[22m[35m2.3.7[39m to ../../../2.3.7/readable-stream
+[34m> [39mlocal link existTarget ../../../2.3.7/readable-stream match new target ../../../2.3.7/readable-stream
+[34m> [39mpkg [35mstring-width[36m[2m@[22m[35m1.0.2[39m need sub node_modules for [35mstrip-ansi[36m[2m@[22m[35m3.0.1[39m to ../../__fv_/3.0.1/strip-ansi
+[34m> [39mlocal link existTarget false match new target ../../__fv_/3.0.1/strip-ansi
+[34m> [39mpkg [35mstrip-ansi[36m[2m@[22m[35m3.0.1[39m need sub node_modules for [35mansi-regex[36m[2m@[22m[35m2.1.1[39m to ../../../2.1.1/ansi-regex
+[34m> [39mlocal link existTarget false match new target ../../../2.1.1/ansi-regex
+[34m> [39mpkg [35mansi-styles[36m[2m@[22m[35m3.2.1[39m need sub node_modules for [35mcolor-convert[36m[2m@[22m[35m1.9.3[39m to ../../../1.9.3/color-convert
+[34m> [39mlocal link existTarget ../../../1.9.3/color-convert match new target ../../../1.9.3/color-convert
+[34m> [39mpkg [35msupports-color[36m[2m@[22m[35m5.5.0[39m need sub node_modules for [35mhas-flag[36m[2m@[22m[35m3.0.0[39m to ../../../3.0.0/has-flag
+[34m> [39mlocal link existTarget false match new target ../../../3.0.0/has-flag
+[34m> [39mpkg [35mregjsparser[36m[2m@[22m[35m0.6.4[39m need sub node_modules for [35mjsesc[36m[2m@[22m[35m0.5.0[39m to ../../__fv_/0.5.0/jsesc
+[34m> [39mlocal link existTarget ../../__fv_/0.5.0/jsesc match new target ../../__fv_/0.5.0/jsesc
+[34m> [39mpkg [35mis-accessor-descriptor[36m[2m@[22m[35m0.1.6[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m3.2.2[39m to ../../../3.2.2/kind-of
+[34m> [39mlocal link existTarget ../../../3.2.2/kind-of match new target ../../../3.2.2/kind-of
+[34m> [39mpkg [35mis-data-descriptor[36m[2m@[22m[35m0.1.4[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m3.2.2[39m to ../../../3.2.2/kind-of
+[34m> [39mlocal link existTarget ../../../3.2.2/kind-of match new target ../../../3.2.2/kind-of
+[34m> [39mpkg [35mset-value[36m[2m@[22m[35m2.0.1[39m need sub node_modules for [35mextend-shallow[36m[2m@[22m[35m2.0.1[39m to ../../__fv_/2.0.1/extend-shallow
+[34m> [39mlocal link existTarget ../../__fv_/2.0.1/extend-shallow match new target ../../__fv_/2.0.1/extend-shallow
+[34m> [39mpkg [35mset-value[36m[2m@[22m[35m2.0.1[39m need sub node_modules for [35mis-extendable[36m[2m@[22m[35m0.1.1[39m to ../../__fv_/0.1.1/is-extendable
+[34m> [39mlocal link existTarget ../../__fv_/0.1.1/is-extendable match new target ../../__fv_/0.1.1/is-extendable
+[34m> [39mpkg [35mto-object-path[36m[2m@[22m[35m0.3.0[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m3.2.2[39m to ../../__fv_/3.2.2/kind-of
+[34m> [39mlocal link existTarget ../../__fv_/3.2.2/kind-of match new target ../../__fv_/3.2.2/kind-of
+[34m> [39mpkg [35munion-value[36m[2m@[22m[35m1.0.1[39m need sub node_modules for [35mis-extendable[36m[2m@[22m[35m0.1.1[39m to ../../__fv_/0.1.1/is-extendable
+[34m> [39mlocal link existTarget ../../__fv_/0.1.1/is-extendable match new target ../../__fv_/0.1.1/is-extendable
+[34m> [39mpkg [35munset-value[36m[2m@[22m[35m1.0.0[39m need sub node_modules for [35mhas-value[36m[2m@[22m[35m0.3.1[39m to ../../__fv_/0.3.1/has-value
+[34m> [39mlocal link existTarget ../../__fv_/0.3.1/has-value match new target ../../__fv_/0.3.1/has-value
+[34m> [39mpkg [35mstatic-extend[36m[2m@[22m[35m0.1.2[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m0.2.5[39m to ../../__fv_/0.2.5/define-property
+[34m> [39mlocal link existTarget ../../__fv_/0.2.5/define-property match new target ../../__fv_/0.2.5/define-property
+[34m> [39mpkg [35masn1.js[36m[2m@[22m[35m5.4.1[39m need sub node_modules for [35mbn.js[36m[2m@[22m[35m4.11.9[39m to ../../__fv_/4.11.9/bn.js
+[34m> [39mlocal link existTarget ../../__fv_/4.11.9/bn.js match new target ../../__fv_/4.11.9/bn.js
+[34m> [39mpkg [35mto-regex-range[36m[2m@[22m[35m5.0.1[39m need sub node_modules for [35mis-number[36m[2m@[22m[35m7.0.0[39m to ../../../7.0.0/is-number
+[34m> [39mlocal link existTarget false match new target ../../../7.0.0/is-number
+[34m> [39mpkg [35mcolor-convert[36m[2m@[22m[35m1.9.3[39m need sub node_modules for [35mcolor-name[36m[2m@[22m[35m1.1.3[39m to ../../../1.1.3/color-name
+[34m> [39mlocal link existTarget ../../../1.1.3/color-name match new target ../../../1.1.3/color-name
+[34m> [39mpkg [35mhas-values[36m[2m@[22m[35m1.0.0[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m4.0.0[39m to ../../__fv_/4.0.0/kind-of
+[34m> [39mlocal link existTarget ../../__fv_/4.0.0/kind-of match new target ../../__fv_/4.0.0/kind-of
+[34m> [39mpkg [35mhas-value[36m[2m@[22m[35m0.3.1[39m need sub node_modules for [35mhas-values[36m[2m@[22m[35m0.1.4[39m to ../../../0.1.4/has-values
+[34m> [39mlocal link existTarget ../../../0.1.4/has-values match new target ../../../0.1.4/has-values
+[34m> [39mpkg [35mhas-value[36m[2m@[22m[35m0.3.1[39m need sub node_modules for [35misobject[36m[2m@[22m[35m2.1.0[39m to ../../../2.1.0/isobject
+[34m> [39mlocal link existTarget ../../../2.1.0/isobject match new target ../../../2.1.0/isobject
+[34m> [39mpkg [35mobject-copy[36m[2m@[22m[35m0.1.0[39m need sub node_modules for [35mdefine-property[36m[2m@[22m[35m0.2.5[39m to ../../__fv_/0.2.5/define-property
+[34m> [39mlocal link existTarget ../../__fv_/0.2.5/define-property match new target ../../__fv_/0.2.5/define-property
+[34m> [39mpkg [35mobject-copy[36m[2m@[22m[35m0.1.0[39m need sub node_modules for [35mkind-of[36m[2m@[22m[35m3.2.2[39m to ../../__fv_/3.2.2/kind-of
+[34m> [39mlocal link existTarget ../../__fv_/3.2.2/kind-of match new target ../../__fv_/3.2.2/kind-of
+[34m> [39m[32minstall time check linking packages[39m [35m0.518[39msecs
+[34m> [39mlinking bin for non-top but promoted packages
+[34m> [39mbin-linker: setting linked for uuid => ../uuid/bin/uuid
+[34m> [39mbin-linker: setting linked for mkdirp => ../mkdirp/bin/cmd.js
+[34m> [39mbin-linker: setting linked for which => ../which/bin/which
+[34m> [39mbin-linker: setting linked for cdl => ../cardinal/bin/cdl.js
+[34m> [39mbin-linker: setting linked for loose-envify => ../loose-envify/cli.js
+[34m> [39mbin-linker: setting linked for acorn => ../acorn/bin/acorn
+[34m> [39mbin-linker: symlinking /Users/yisheng/grepawk3/api3/node_modules/.bin/node-pre-gyp => ../node-pre-gyp/bin/node-pre-gyp for /Users/yisheng/grepawk3/api3/node_modules/node-pre-gyp
+[34m> [39mbin-linker: setting linked for node-pre-gyp => ../node-pre-gyp/bin/node-pre-gyp
+[34m> [39mbin-linker: setting linked for xrun => ../@xarc/run/bin/xrun.js
+[34m> [39mbin-linker: bin already linked clap => ../xclap/bin/clap.js (__fv) (diff ../@xarc/run/bin/clap.js)
+[34m> [39mbin-linker: bin already linked xclap => ../xclap/bin/clap.js (__fv) (diff ../@xarc/run/bin/clap.js)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/@xarc/run
+[34m> [39mbin-linker: setting linked for clap => ../../bin/clap.js
+[34m> [39mbin-linker: setting linked for xclap => ../../bin/clap.js
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: setting linked for json5 => ../json5/lib/cli.js
+[34m> [39mbin-linker: setting linked for parser => ../@babel/parser/bin/babel-parser.js
+[34m> [39mbin-linker: setting linked for semver => ../semver/bin/semver
+[34m> [39mbin-linker: setting linked for browserslist => ../browserslist/cli.js
+[34m> [39mbin-linker: setting linked for errno => ../errno/cli.js
+[34m> [39mbin-linker: setting linked for terser => ../terser/bin/terser
+[34m> [39mbin-linker: symlinking /Users/yisheng/grepawk3/api3/node_modules/.bin/detect-libc => ../detect-libc/bin/detect-libc.js for /Users/yisheng/grepawk3/api3/node_modules/detect-libc
+[34m> [39mbin-linker: setting linked for detect-libc => ../detect-libc/bin/detect-libc.js
+[34m> [39mbin-linker: symlinking /Users/yisheng/grepawk3/api3/node_modules/.bin/needle => ../needle/bin/needle for /Users/yisheng/grepawk3/api3/node_modules/needle
+[34m> [39mbin-linker: setting linked for needle => ../needle/bin/needle
+[34m> [39mbin-linker: setting linked for nopt => ../nopt/bin/nopt.js
+[34m> [39mbin-linker: setting linked for rc => ../rc/cli.js
+[34m> [39mbin-linker: setting linked for rimraf => ../rimraf/bin.js
+[34m> [39mbin-linker: setting linked for jsesc => ../jsesc/bin/jsesc
+[34m> [39mbin-linker: setting linked for esparse => ../esprima/bin/esparse.js
+[34m> [39mbin-linker: setting linked for esvalidate => ../esprima/bin/esvalidate.js
+[34m> [39mbin-linker: setting linked for atob => ../atob/bin/atob.js
+[34m> [39mbin-linker: setting linked for sha.js => ../sha.js/bin.js
+[34m> [39mbin-linker: setting linked for miller-rabin => ../miller-rabin/bin/miller-rabin
+[34m> [39mbin-linker: setting linked for regjsparser => ../regjsparser/bin/parser
+[34m> [39m[32minstall time check linking bin promoted non-top[39m [35m0.475[39msecs
+[34m> [39mlinking bin for __fv_ packages
+[34m> [39mbin-linker: bin already linked tsc => ../typescript/bin/tsc (__fv) (diff ../__fv_/4.0.2/typescript/bin/tsc)
+[34m> [39mbin-linker: bin already linked tsserver => ../typescript/bin/tsserver (__fv) (diff ../__fv_/4.0.2/typescript/bin/tsserver)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.0.2/typescript
+[34m> [39mbin-linker: setting linked for tsc => ../../bin/tsc
+[34m> [39mbin-linker: setting linked for tsserver => ../../bin/tsserver
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: bin already linked json5 => ../json5/lib/cli.js (__fv) (diff ../__fv_/2.1.3/json5/lib/cli.js)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.1.3/json5
+[34m> [39mbin-linker: setting linked for json5 => ../../lib/cli.js
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: bin already linked mime => ../mime/cli.js (__fv) (diff ../__fv_/1.6.0/mime/cli.js)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.6.0/mime
+[34m> [39mbin-linker: setting linked for mime => ../../cli.js
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: bin already linked acorn => ../acorn/bin/acorn (__fv) (diff ../__fv_/7.4.0/acorn/bin/acorn)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/7.4.0/acorn
+[34m> [39mbin-linker: setting linked for acorn => ../../bin/acorn
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: bin already linked semver => ../semver/bin/semver (__fv) (diff ../__fv_/7.0.0/semver/bin/semver.js)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/7.0.0/semver
+[34m> [39mbin-linker: setting linked for semver => ../../bin/semver.js
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: bin already linked acorn => ../acorn/bin/acorn (__fv) (diff ../__fv_/4.0.13/acorn/bin/acorn)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.0.13/acorn
+[34m> [39mbin-linker: setting linked for acorn => ../../bin/acorn
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39mbin-linker: bin already linked jsesc => ../jsesc/bin/jsesc (__fv) (diff ../__fv_/0.5.0/jsesc/bin/jsesc)
+[34m> [39mbin-linker: symlinking private bin for /Users/yisheng/grepawk3/api3/node_modules/__fv_/0.5.0/jsesc
+[34m> [39mbin-linker: setting linked for jsesc => ../../bin/jsesc
+[34m> [39mbin-linker: done symlinking private bin
+[34m> [39m[32minstall time check linking bin __fv_[39m [35m0.030[39msecs
+[34m> [39m[32minstall time check linking dep bin[39m [35m0.255[39msecs
+[34m> [39m[32minstall time check first _savePkgJson[39m [35m0.045[39msecs
+[34m> [39m[32minstall time check _initFvVersions[39m [35m0.014[39msecs
+[32minstall package[39m: cleaning extraneous packages... 
+[32minstall package[39m: cleaning extraneous packages... @babel
+[36m> [39mremoving extraneous top level package @babel/plugin-syntax-bigint
+[36m> [39mremoving extraneous top level package @babel/plugin-syntax-import-meta
+[32minstall package[39m: cleaning extraneous packages... @bcoe
+[36m> [39mremoving extraneous top level package @bcoe/v8-coverage
+[32minstall package[39m: cleaning extraneous packages... @cnakazawa
+[36m> [39mremoving extraneous top level package @cnakazawa/watch
+[32minstall package[39m: cleaning extraneous packages... @istanbuljs
+[36m> [39mremoving extraneous top level package @istanbuljs/load-nyc-config
+[36m> [39mremoving extraneous top level package @istanbuljs/schema
+[32minstall package[39m: cleaning extraneous packages... @jest
+[36m> [39mremoving extraneous top level package @jest/console
+[36m> [39mremoving extraneous top level package @jest/core
+[36m> [39mremoving extraneous top level package @jest/environment
+[36m> [39mremoving extraneous top level package @jest/fake-timers
+[36m> [39mremoving extraneous top level package @jest/globals
+[36m> [39mremoving extraneous top level package @jest/reporters
+[36m> [39mremoving extraneous top level package @jest/source-map
+[36m> [39mremoving extraneous top level package @jest/test-result
+[36m> [39mremoving extraneous top level package @jest/test-sequencer
+[36m> [39mremoving extraneous top level package @jest/transform
+[36m> [39mremoving extraneous version 25.5.0 of @jest/types /Users/yisheng/grepawk3/api3/node_modules/__fv_/25.5.0/@jest/types
+[32minstall package[39m: cleaning extraneous packages... @npmcli
+[36m> [39mremoving extraneous top level package @npmcli/move-file
+[32minstall package[39m: cleaning extraneous packages... @sindresorhus
+[36m> [39mremoving extraneous top level package @sindresorhus/is
+[32minstall package[39m: cleaning extraneous packages... @sinonjs
+[36m> [39mremoving extraneous top level package @sinonjs/commons
+[36m> [39mremoving extraneous top level package @sinonjs/fake-timers
+[32minstall package[39m: cleaning extraneous packages... @szmarczak
+[36m> [39mremoving extraneous top level package @szmarczak/http-timer
+[32minstall package[39m: cleaning extraneous packages... @tonejs
+[36m> [39mremoving extraneous top level package @tonejs/midi
+[32minstall package[39m: cleaning extraneous packages... @types
+[36m> [39mremoving extraneous top level package @types/babel__core
+[36m> [39mremoving extraneous top level package @types/babel__generator
+[36m> [39mremoving extraneous top level package @types/babel__template
+[36m> [39mremoving extraneous top level package @types/babel__traverse
+[36m> [39mremoving extraneous top level package @types/graceful-fs
+[36m> [39mremoving extraneous version 1.1.2 of @types/istanbul-reports /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.1.2/@types/istanbul-reports
+[36m> [39mremoving extraneous top level package @types/prettier
+[36m> [39mremoving extraneous top level package @types/stack-utils
+[32minstall package[39m: cleaning extraneous packages... @webassemblyjs
+[32minstall package[39m: cleaning extraneous packages... @xarc
+[32minstall package[39m: cleaning extraneous packages... @xtuc
+[36m> [39mremoving extraneous top level package abab
+[36m> [39mremoving extraneous top level package acorn-globals
+[36m> [39mremoving extraneous top level package aggregate-error
+[36m> [39mremoving extraneous top level package ansi-align
+[36m> [39mremoving extraneous top level package ansi-escapes
+[36m> [39mremoving extraneous version 4.1.0 of ansi-regex /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.1.0/ansi-regex
+[36m> [39mremoving extraneous version 1.1.1 of array-flatten /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.1.1/array-flatten
+[36m> [39mremoving extraneous top level package babel-jest
+[36m> [39mremoving extraneous top level package babel-plugin-istanbul
+[36m> [39mremoving extraneous top level package babel-plugin-jest-hoist
+[36m> [39mremoving extraneous top level package babel-preset-current-node-syntax
+[36m> [39mremoving extraneous top level package babel-preset-jest
+[36m> [39mremoving extraneous top level package bl
+[36m> [39mremoving extraneous version 3.7.2 of bluebird /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.7.2/bluebird
+[36m> [39mremoving extraneous top level package boxen
+[36m> [39mremoving extraneous version 2.3.2 of braces /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.3.2/braces
+[36m> [39mremoving extraneous top level package browser-process-hrtime
+[36m> [39mremoving extraneous top level package bser
+[36m> [39mremoving extraneous top level package bson
+[36m> [39mremoving extraneous version 12.0.4 of cacache /Users/yisheng/grepawk3/api3/node_modules/__fv_/12.0.4/cacache
+[36m> [39mremoving extraneous top level package cacheable-request
+[36m> [39mremoving extraneous top level package callsites
+[36m> [39mremoving extraneous top level package camelcase
+[36m> [39mremoving extraneous version 5.3.1 of camelcase /Users/yisheng/grepawk3/api3/node_modules/__fv_/5.3.1/camelcase
+[36m> [39mremoving extraneous top level package capture-exit
+[36m> [39mremoving extraneous top level package char-regex
+[36m> [39mremoving extraneous version 3.4.2 of chokidar /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.4.2/chokidar
+[36m> [39mremoving extraneous version 1.1.4 of chownr /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.1.4/chownr
+[36m> [39mremoving extraneous top level package ci-info
+[36m> [39mremoving extraneous top level package clean-stack
+[36m> [39mremoving extraneous top level package cli-boxes
+[36m> [39mremoving extraneous top level package cliui
+[36m> [39mremoving extraneous top level package clone-response
+[36m> [39mremoving extraneous top level package co
+[36m> [39mremoving extraneous top level package collect-v8-coverage
+[36m> [39mremoving extraneous top level package configstore
+[36m> [39mremoving extraneous top level package cross-spawn
+[36m> [39mremoving extraneous version 6.0.5 of cross-spawn /Users/yisheng/grepawk3/api3/node_modules/__fv_/6.0.5/cross-spawn
+[36m> [39mremoving extraneous top level package crypto-random-string
+[36m> [39mremoving extraneous top level package cssom
+[36m> [39mremoving extraneous version 0.3.8 of cssom /Users/yisheng/grepawk3/api3/node_modules/__fv_/0.3.8/cssom
+[36m> [39mremoving extraneous top level package cssstyle
+[36m> [39mremoving extraneous top level package data-urls
+[36m> [39mremoving extraneous top level package decamelize
+[36m> [39mremoving extraneous top level package decimal.js
+[36m> [39mremoving extraneous top level package decompress-response
+[36m> [39mremoving extraneous top level package deep-is
+[36m> [39mremoving extraneous top level package deepmerge
+[36m> [39mremoving extraneous top level package defer-to-connect
+[36m> [39mremoving extraneous top level package detect-newline
+[36m> [39mremoving extraneous version 26.3.0 of diff-sequences /Users/yisheng/grepawk3/api3/node_modules/__fv_/26.3.0/diff-sequences
+[36m> [39mremoving extraneous top level package dot-prop
+[36m> [39mremoving extraneous top level package duplexer3
+[36m> [39mremoving extraneous top level package emittery
+[36m> [39mremoving extraneous top level package emoji-regex
+[36m> [39mremoving extraneous version 7.0.3 of emoji-regex /Users/yisheng/grepawk3/api3/node_modules/__fv_/7.0.3/emoji-regex
+[36m> [39mremoving extraneous top level package escape-goat
+[36m> [39mremoving extraneous version 1.0.5 of escape-string-regexp /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.0.5/escape-string-regexp
+[36m> [39mremoving extraneous top level package escodegen
+[36m> [39mremoving extraneous top level package exec-sh
+[36m> [39mremoving extraneous top level package execa
+[36m> [39mremoving extraneous version 1.0.0 of execa /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.0.0/execa
+[36m> [39mremoving extraneous top level package exit
+[36m> [39mremoving extraneous top level package expect
+[36m> [39mremoving extraneous top level package fast-levenshtein
+[36m> [39mremoving extraneous top level package fb-watchman
+[36m> [39mremoving extraneous version 4.0.0 of fill-range /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.0.0/fill-range
+[36m> [39mremoving extraneous top level package get-caller-file
+[36m> [39mremoving extraneous top level package get-package-type
+[36m> [39mremoving extraneous top level package get-stream
+[36m> [39mremoving extraneous version 4.1.0 of get-stream /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.1.0/get-stream
+[36m> [39mremoving extraneous top level package global-dirs
+[36m> [39mremoving extraneous top level package got
+[36m> [39mremoving extraneous top level package growly
+[36m> [39mremoving extraneous version 4.0.0 of has-flag /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.0.0/has-flag
+[36m> [39mremoving extraneous top level package has-yarn
+[36m> [39mremoving extraneous top level package html-encoding-sniffer
+[36m> [39mremoving extraneous top level package html-escaper
+[36m> [39mremoving extraneous top level package http-cache-semantics
+[36m> [39mremoving extraneous top level package human-signals
+[36m> [39mremoving extraneous top level package ignore-by-default
+[36m> [39mremoving extraneous top level package import-lazy
+[36m> [39mremoving extraneous top level package import-local
+[36m> [39mremoving extraneous top level package indent-string
+[36m> [39mremoving extraneous top level package ip-regex
+[36m> [39mremoving extraneous top level package is-ci
+[36m> [39mremoving extraneous top level package is-docker
+[36m> [39mremoving extraneous version 2.0.0 of is-fullwidth-code-point /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.0/is-fullwidth-code-point
+[36m> [39mremoving extraneous top level package is-generator-fn
+[36m> [39mremoving extraneous top level package is-installed-globally
+[36m> [39mremoving extraneous top level package is-npm
+[36m> [39mremoving extraneous top level package is-obj
+[36m> [39mremoving extraneous top level package is-path-inside
+[36m> [39mremoving extraneous top level package is-potential-custom-element-name
+[36m> [39mremoving extraneous top level package is-stream
+[36m> [39mremoving extraneous version 1.1.0 of is-stream /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.1.0/is-stream
+[36m> [39mremoving extraneous version 2.2.0 of is-wsl /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.2.0/is-wsl
+[36m> [39mremoving extraneous top level package is-yarn-global
+[36m> [39mremoving extraneous top level package istanbul-lib-coverage
+[36m> [39mremoving extraneous top level package istanbul-lib-instrument
+[36m> [39mremoving extraneous top level package istanbul-lib-report
+[36m> [39mremoving extraneous top level package istanbul-lib-source-maps
+[36m> [39mremoving extraneous top level package istanbul-reports
+[36m> [39mremoving extraneous top level package jest
+[36m> [39mremoving extraneous top level package jest-changed-files
+[36m> [39mremoving extraneous top level package jest-cli
+[36m> [39mremoving extraneous top level package jest-config
+[36m> [39mremoving extraneous version 26.4.2 of jest-diff /Users/yisheng/grepawk3/api3/node_modules/__fv_/26.4.2/jest-diff
+[36m> [39mremoving extraneous top level package jest-docblock
+[36m> [39mremoving extraneous top level package jest-each
+[36m> [39mremoving extraneous top level package jest-environment-jsdom
+[36m> [39mremoving extraneous top level package jest-environment-node
+[36m> [39mremoving extraneous version 26.3.0 of jest-get-type /Users/yisheng/grepawk3/api3/node_modules/__fv_/26.3.0/jest-get-type
+[36m> [39mremoving extraneous top level package jest-haste-map
+[36m> [39mremoving extraneous top level package jest-jasmine2
+[36m> [39mremoving extraneous top level package jest-leak-detector
+[36m> [39mremoving extraneous top level package jest-matcher-utils
+[36m> [39mremoving extraneous top level package jest-message-util
+[36m> [39mremoving extraneous top level package jest-mock
+[36m> [39mremoving extraneous top level package jest-pnp-resolver
+[36m> [39mremoving extraneous top level package jest-regex-util
+[36m> [39mremoving extraneous top level package jest-resolve
+[36m> [39mremoving extraneous top level package jest-resolve-dependencies
+[36m> [39mremoving extraneous top level package jest-runner
+[36m> [39mremoving extraneous top level package jest-runtime
+[36m> [39mremoving extraneous top level package jest-serializer
+[36m> [39mremoving extraneous top level package jest-snapshot
+[36m> [39mremoving extraneous top level package jest-util
+[36m> [39mremoving extraneous top level package jest-validate
+[36m> [39mremoving extraneous top level package jest-watcher
+[36m> [39mremoving extraneous top level package jest-worker
+[36m> [39mremoving extraneous top level package js-yaml
+[36m> [39mremoving extraneous top level package jsdom
+[36m> [39mremoving extraneous top level package json-buffer
+[36m> [39mremoving extraneous top level package kareem
+[36m> [39mremoving extraneous top level package keyv
+[36m> [39mremoving extraneous top level package kleur
+[36m> [39mremoving extraneous top level package latest-version
+[36m> [39mremoving extraneous top level package levn
+[36m> [39mremoving extraneous top level package lodash.sortby
+[36m> [39mremoving extraneous top level package lowercase-keys
+[36m> [39mremoving extraneous version 2.0.0 of lowercase-keys /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.0/lowercase-keys
+[36m> [39mremoving extraneous version 5.1.1 of lru-cache /Users/yisheng/grepawk3/api3/node_modules/__fv_/5.1.1/lru-cache
+[36m> [39mremoving extraneous version 3.1.0 of make-dir /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.1.0/make-dir
+[36m> [39mremoving extraneous top level package makeerror
+[36m> [39mremoving extraneous top level package memory-pager
+[36m> [39mremoving extraneous top level package merge-stream
+[36m> [39mremoving extraneous version 4.0.2 of micromatch /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.0.2/micromatch
+[36m> [39mremoving extraneous top level package midi-file
+[36m> [39mremoving extraneous top level package mimic-fn
+[36m> [39mremoving extraneous top level package mimic-response
+[36m> [39mremoving extraneous top level package minipass-collect
+[36m> [39mremoving extraneous top level package minipass-flush
+[36m> [39mremoving extraneous top level package minipass-pipeline
+[36m> [39mremoving extraneous version 1.0.4 of mkdirp /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.0.4/mkdirp
+[36m> [39mremoving extraneous top level package moment
+[36m> [39mremoving extraneous top level package mongodb
+[36m> [39mremoving extraneous top level package mongoose
+[36m> [39mremoving extraneous top level package mongoose-legacy-pluralize
+[36m> [39mremoving extraneous top level package mpath
+[36m> [39mremoving extraneous top level package mquery
+[36m> [39mremoving extraneous version 2.0.0 of ms /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.0/ms
+[36m> [39mremoving extraneous top level package natural-compare
+[36m> [39mremoving extraneous top level package nice-try
+[36m> [39mremoving extraneous top level package node-int64
+[36m> [39mremoving extraneous top level package node-notifier
+[36m> [39mremoving extraneous top level package nodemon
+[36m> [39mremoving extraneous top level package normalize-url
+[36m> [39mremoving extraneous top level package npm-run-path
+[36m> [39mremoving extraneous version 2.0.2 of npm-run-path /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.2/npm-run-path
+[36m> [39mremoving extraneous top level package nwsapi
+[36m> [39mremoving extraneous top level package onetime
+[36m> [39mremoving extraneous top level package optionator
+[36m> [39mremoving extraneous top level package p-cancelable
+[36m> [39mremoving extraneous top level package p-each-series
+[36m> [39mremoving extraneous top level package p-finally
+[36m> [39mremoving extraneous top level package p-map
+[36m> [39mremoving extraneous top level package package-json
+[36m> [39mremoving extraneous top level package parse5
+[36m> [39mremoving extraneous top level package path-key
+[36m> [39mremoving extraneous version 2.0.1 of path-key /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.1/path-key
+[36m> [39mremoving extraneous version 4.2.0 of pkg-dir /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.2.0/pkg-dir
+[36m> [39mremoving extraneous top level package prelude-ls
+[36m> [39mremoving extraneous top level package prepend-http
+[36m> [39mremoving extraneous version 26.4.2 of pretty-format /Users/yisheng/grepawk3/api3/node_modules/__fv_/26.4.2/pretty-format
+[36m> [39mremoving extraneous top level package prompts
+[36m> [39mremoving extraneous top level package pstree.remy
+[36m> [39mremoving extraneous top level package pupa
+[36m> [39mremoving extraneous version 3.4.0 of readdirp /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.4.0/readdirp
+[36m> [39mremoving extraneous top level package regexp-clone
+[36m> [39mremoving extraneous top level package registry-auth-token
+[36m> [39mremoving extraneous top level package registry-url
+[36m> [39mremoving extraneous top level package request-promise-core
+[36m> [39mremoving extraneous top level package request-promise-native
+[36m> [39mremoving extraneous top level package require-directory
+[36m> [39mremoving extraneous top level package require-main-filename
+[36m> [39mremoving extraneous top level package require_optional
+[36m> [39mremoving extraneous top level package resolve-cwd
+[36m> [39mremoving extraneous top level package resolve-from
+[36m> [39mremoving extraneous version 2.0.0 of resolve-from /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.0/resolve-from
+[36m> [39mremoving extraneous top level package responselike
+[36m> [39mremoving extraneous version 2.7.1 of rimraf /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.7.1/rimraf
+[36m> [39mremoving extraneous top level package rsvp
+[36m> [39mremoving extraneous top level package sane
+[36m> [39mremoving extraneous top level package saslprep
+[36m> [39mremoving extraneous top level package saxes
+[36m> [39mremoving extraneous version 6.3.0 of semver /Users/yisheng/grepawk3/api3/node_modules/__fv_/6.3.0/semver
+[36m> [39mremoving extraneous version 7.3.2 of semver /Users/yisheng/grepawk3/api3/node_modules/__fv_/7.3.2/semver
+[36m> [39mremoving extraneous top level package semver-diff
+[36m> [39mremoving extraneous top level package shebang-command
+[36m> [39mremoving extraneous version 1.2.0 of shebang-command /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.2.0/shebang-command
+[36m> [39mremoving extraneous top level package shebang-regex
+[36m> [39mremoving extraneous version 1.0.0 of shebang-regex /Users/yisheng/grepawk3/api3/node_modules/__fv_/1.0.0/shebang-regex
+[36m> [39mremoving extraneous top level package shellwords
+[36m> [39mremoving extraneous top level package sift
+[36m> [39mremoving extraneous top level package sisteransi
+[36m> [39mremoving extraneous top level package slash
+[36m> [39mremoving extraneous top level package sliced
+[36m> [39mremoving extraneous version 0.7.3 of source-map /Users/yisheng/grepawk3/api3/node_modules/__fv_/0.7.3/source-map
+[36m> [39mremoving extraneous top level package sparse-bitfield
+[36m> [39mremoving extraneous version 6.0.1 of ssri /Users/yisheng/grepawk3/api3/node_modules/__fv_/6.0.1/ssri
+[36m> [39mremoving extraneous top level package stack-utils
+[36m> [39mremoving extraneous top level package stealthy-require
+[36m> [39mremoving extraneous top level package string-length
+[36m> [39mremoving extraneous version 3.1.0 of string-width /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.1.0/string-width
+[36m> [39mremoving extraneous version 4.0.0 of strip-ansi /Users/yisheng/grepawk3/api3/node_modules/__fv_/4.0.0/strip-ansi
+[36m> [39mremoving extraneous version 5.2.0 of strip-ansi /Users/yisheng/grepawk3/api3/node_modules/__fv_/5.2.0/strip-ansi
+[36m> [39mremoving extraneous top level package strip-bom
+[36m> [39mremoving extraneous top level package strip-eof
+[36m> [39mremoving extraneous top level package strip-final-newline
+[36m> [39mremoving extraneous version 7.1.0 of supports-color /Users/yisheng/grepawk3/api3/node_modules/__fv_/7.1.0/supports-color
+[36m> [39mremoving extraneous top level package supports-hyperlinks
+[36m> [39mremoving extraneous top level package symbol-tree
+[36m> [39mremoving extraneous top level package term-size
+[36m> [39mremoving extraneous top level package terminal-link
+[36m> [39mremoving extraneous top level package test-exclude
+[36m> [39mremoving extraneous top level package throat
+[36m> [39mremoving extraneous top level package tmpl
+[36m> [39mremoving extraneous top level package to-readable-stream
+[36m> [39mremoving extraneous version 2.1.1 of to-regex-range /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.1.1/to-regex-range
+[36m> [39mremoving extraneous top level package touch
+[36m> [39mremoving extraneous version 3.0.1 of tough-cookie /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.0.1/tough-cookie
+[36m> [39mremoving extraneous top level package tr46
+[36m> [39mremoving extraneous top level package type-check
+[36m> [39mremoving extraneous top level package type-detect
+[36m> [39mremoving extraneous version 0.8.1 of type-fest /Users/yisheng/grepawk3/api3/node_modules/__fv_/0.8.1/type-fest
+[36m> [39mremoving extraneous top level package typedarray-to-buffer
+[36m> [39mremoving extraneous top level package undefsafe
+[36m> [39mremoving extraneous top level package unique-string
+[36m> [39mremoving extraneous top level package update-notifier
+[36m> [39mremoving extraneous top level package url-parse-lax
+[36m> [39mremoving extraneous version 8.3.0 of uuid /Users/yisheng/grepawk3/api3/node_modules/__fv_/8.3.0/uuid
+[36m> [39mremoving extraneous top level package v8-to-istanbul
+[36m> [39mremoving extraneous top level package w3c-hr-time
+[36m> [39mremoving extraneous top level package w3c-xmlserializer
+[36m> [39mremoving extraneous top level package walker
+[36m> [39mremoving extraneous version 5.0.0 of webidl-conversions /Users/yisheng/grepawk3/api3/node_modules/__fv_/5.0.0/webidl-conversions
+[36m> [39mremoving extraneous top level package whatwg-encoding
+[36m> [39mremoving extraneous top level package whatwg-mimetype
+[36m> [39mremoving extraneous top level package whatwg-url
+[36m> [39mremoving extraneous version 2.0.2 of which /Users/yisheng/grepawk3/api3/node_modules/__fv_/2.0.2/which
+[36m> [39mremoving extraneous top level package which-module
+[36m> [39mremoving extraneous top level package widest-line
+[36m> [39mremoving extraneous top level package word-wrap
+[36m> [39mremoving extraneous top level package wrap-ansi
+[36m> [39mremoving extraneous top level package write-file-atomic
+[36m> [39mremoving extraneous version 0.4.6 of wrtc /Users/yisheng/grepawk3/api3/node_modules/__fv_/0.4.6/wrtc
+[36m> [39mremoving extraneous top level package xdg-basedir
+[36m> [39mremoving extraneous top level package xml-name-validator
+[36m> [39mremoving extraneous top level package xmlchars
+[36m> [39mremoving extraneous version 3.1.1 of yallist /Users/yisheng/grepawk3/api3/node_modules/__fv_/3.1.1/yallist
+[36m> [39mremoving extraneous top level package yargs
+[36m> [39mremoving extraneous top level package yargs-parser
+[34m> [39m[32minstall time check _cleanUp[39m [35m1.259[39msecs
+[34m> [39m[32minstall time check _cleanOrphanedFv[39m [35m0.002[39msecs
+[32minstall package[39m: cleaning node_modules/.bin
+[34m> [39m[32minstall time check _cleanBin[39m [35m0.005[39msecs
+[32minstall package[39m: running install: [35mwrtc[36m[2m@[22m[35m0.4.6[39m
+[36m> [39mexecuting [2m[35mwrtc[36m[2m@[2m[35m0.4.6[39m[22m npm script [35minstall[39m "[36mnode scripts/download-prebuilt.js[39m" [34mnode_modules/[39m[35mwrtc[39m
+[31m> [39mDone [35mwrtc[36m[2m@[22m[35m0.4.6[39m npm script [35minstall[39m failed [31mshell cmd 'node scripts/download-prebuilt.js' exit code 1[39m
+[32m>>>[39m Start of output from [2m[35mwrtc[36m[2m@[2m[35m0.4.6[39m[22m npm script [35minstall[39m === 
+getaddrinfo ENOTFOUND node-webrtc.s3.amazonaws.com
+ [31m[39m
+[31m=== stderr ===[39m
+[31m[39mnode-pre-gyp WARN Using request for node-pre-gyp https download 
+node-pre-gyp [31mERR![39m install error 
+node-pre-gyp [31mERR![39m stack Error: getaddrinfo ENOTFOUND node-webrtc.s3.amazonaws.com
+node-pre-gyp [31mERR![39m stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:66:26)
+node-pre-gyp [31mERR![39m System Darwin 19.4.0
+node-pre-gyp [31mERR![39m command "/usr/local/bin/node" "/Users/yisheng/grepawk3/api3/node_modules/.bin/node-pre-gyp" "install"
+node-pre-gyp [31mERR![39m cwd /Users/yisheng/grepawk3/api3/node_modules/wrtc
+node-pre-gyp [31mERR![39m node -v v12.18.4
+node-pre-gyp [31mERR![39m node-pre-gyp -v v0.13.0
+node-pre-gyp [31mERR![39m not ok 
+ [34m[39m
+[34m<<<[39m End of output from [2m[35mwrtc[36m[2m@[2m[35m0.4.6[39m[22m npm script [35minstall[39m ---
+[32minstall package[39m: running install: 
+[31m> [39m[31minstall failed:[39m CWD /Users/yisheng/grepawk3/api3
 [31m> [39m[31minstall failed:[39m Please check for any errors that occur above.
 [31m> [39m[31minstall failed:[39m Also check [35mfyn-debug.log[39m for more details. [35mless -R fyn-debug.log[39m if you are on Un*x.
-[31m> [39m[31minstall failed:[39m No version of babel-cli satisfied semver ^7.0
-~package.json@~ > babel-cli@^7.0
-[34m> [39mSTACK: Error: No version of babel-cli satisfied semver ^7.0
-~package.json@~ > babel-cli@^7.0
-    at PkgDepResolver._resolveWithMeta (webpack:///./lib/pkg-dep-resolver.js?:875:13)
-    at _pkgSrcMgr.fetchMeta.then.meta (webpack:///./lib/pkg-dep-resolver.js?:1028:21)
-    at tryCatcher (webpack:///./node_modules/bluebird/js/release/util.js?:16:23)
-    at Promise._settlePromiseFromHandler (webpack:///./node_modules/bluebird/js/release/promise.js?:512:31)
-    at Promise._settlePromise (webpack:///./node_modules/bluebird/js/release/promise.js?:569:18)
-    at Promise._settlePromise0 (webpack:///./node_modules/bluebird/js/release/promise.js?:614:10)
-    at Promise._settlePromises (webpack:///./node_modules/bluebird/js/release/promise.js?:694:18)
-    at _drainQueueStep (webpack:///./node_modules/bluebird/js/release/async.js?:138:12)
-    at _drainQueue (webpack:///./node_modules/bluebird/js/release/async.js?:131:9)
-    at Async._drainQueues (webpack:///./node_modules/bluebird/js/release/async.js?:147:5)
-    at Immediate.Async.drainQueues [as _onImmediate] (webpack:///./node_modules/bluebird/js/release/async.js?:17:14)
-    at runCallback (timers.js:705:18)
-    at tryOnImmediate (timers.js:676:5)
-    at processImmediate (timers.js:658:5)
+[31m> [39m[31minstall failed:[39m shell cmd 'node scripts/download-prebuilt.js' exit code 1
+[34m> [39mSTACK: Error: shell cmd 'node scripts/download-prebuilt.js' exit code 1
+    at error (webpack:///./node_modules/xsh/lib/exec.js?:9:17)
+    at eval (webpack:///./node_modules/xsh/lib/exec.js?:63:39)
+    at eval (webpack:///./node_modules/shcmd/src/exec.js?:204:9)
+    at ChildProcess.exithandler (child_process.js:310:5)
+    at ChildProcess.emit (events.js:315:20)
+    at maybeClose (internal/child_process.js:1021:16)
+    at Process.ChildProcess._handle.onexit (internal/child_process.js:286:5)

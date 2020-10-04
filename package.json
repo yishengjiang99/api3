@@ -8,13 +8,13 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.11.0",
     "@babel/plugin-transform-flow-strip-types": "^7.10.4",
-    "@ffmpeg-installer/ffmpeg": "^1.0.20",
     "@types/express": "^4.17.8",
     "@types/express-session": "^1.17.0",
     "@types/react": "^16.9.44",
     "@types/react-dom": "^16.9.8",
     "@types/jest": "^26.0.4",
-    "@types/node": "^14.6.4"
+    "@types/node": "^14.6.4",
+    "fyn": "^0.2.43"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -29,16 +29,10 @@
     "express-vhost": "^0.2.0",
     "fluent-ffmpeg": "^2.1.2",
     "fluent-ffmpeg-multistream": "^1.0.0",
-    "fyn": "^0.2.43",
     "html-typings": "^1.4.4",
-    "jest": "^26.4.2",
     "memfs": "^3.2.0",
     "mime": "^2.4.6",
-    "moment": "^2.27.0",
     "mysql2": "^2.1.0",
-    "nodemon": "^2.0.4",
-    "nopt": "^5.0.0",
-    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
