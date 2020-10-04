@@ -17,6 +17,7 @@
     "fyn": "^0.2.43"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "axios": "^0.19.2",
     "azure-storage": "^2.10.3",
     "babel-loader": "^8.1.0",

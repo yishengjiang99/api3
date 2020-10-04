@@ -19,7 +19,7 @@ import { stdinHandler } from "./src/stdin";
 import { wavHeader } from "./src/wavheader";
 import * as vhost from "vhost";
 
-const rtc = require("./routes/rtc");
+// const rtc = require("./routes/rtc");
 //const session = require("express-session");
 const connect = require("connect");
 const app = express();
@@ -32,8 +32,8 @@ const apiServer = connect();
 app.use(vhost("api.grepawk.com", apiServer));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
-apiServer.use("/", rtc);
-apiServer.use("/(s+)", rtc);
+// apiServer.use("/", rtc);
+// apiServer.use("/(s+)", rtc);
 
 var cookieParser = require("cookie-parser");
 
@@ -91,7 +91,8 @@ export const httpsTLS = {
 	key: readFileSync(process.env.PRIV_KEYFILE),
 	cert: readFileSync(process.env.CERT_FILE),
 	SNICallback: function (domain, cb) {
-		if (!existsSync(`/etc/letsencrypt/live/${domain}`)) {
+		if (!existsSync(`/etc/letsencrypt/live/${domain}`))
+		{
 			cb();
 			return;
 		}
@@ -133,7 +134,8 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 	);
 
 	const pathname = require("url").parse(request.url).pathname;
-	if (pathname.match(/signal/)) {
+	if (pathname.match(/signal/))
+	{
 		signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
 			// // const dbuser = db.getOrCreateUser(request.headers["set-cookie"]);
 			// signalServer.requestContext[
@@ -141,11 +143,13 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 			// ] = dbuser;
 			signalServer.wss.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/rtc1/)) {
+	} else if (pathname.match(/rtc1/))
+	{
 		rtcServer.handleUpgrade(request, socket, head, function done(ws) {
 			rtcServer.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/stdin/)) {
+	} else if (pathname.match(/stdin/))
+	{
 		stdinServer.handleUpgrade(request, socket, head, function done(ws) {
 			ws._socket.pipe(require("fs").createWriteStream("./shared/1"));
 		});
@@ -155,8 +159,8 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 const port = process.argv[2] || 443;
 httpsServer.listen(port); //process.argv[2] || 3000);
 console.log("listening on " + port); //
-const devnull = (req, res) => {};
-const http = require("http").createServer((req, res) => {});
+const devnull = (req, res) => { };
+const http = require("http").createServer((req, res) => { });
 http
 	.on("connection", function connection(req, socket, head) {
 		// proxy_pass(socket, {

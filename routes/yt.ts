@@ -2,7 +2,6 @@ import { render } from "react-dom";
 import Axios, { AxiosResponse } from "axios";
 import * as express from "express";
 import { createEngine } from "../src/express-react-forked";
-import { fs } from "memfs";
 import { spawn } from "child_process";
 //const db = require("../src/db");
 const app = express();
@@ -12,7 +11,7 @@ const ytdl = require("ytdl-core");
 // const ffmpeg = require("fluent-ffmpeg");
 
 const PassThrough = require("stream").PassThrough;
-const vds = JSON.parse(fs.readFileSync("./roues").toString());
+const vds = JSON.parse(require('fs').readFileSync("./roues").toString());
 
 router.get("/", (req, res) => {
 	res.render("video.jsx", { videos: vds }, (err, html) => {
@@ -22,7 +21,8 @@ router.get("/", (req, res) => {
 	});
 });
 router.get("/vid/(:vid).mp3", (req, res) => {
-	try {
+	try
+	{
 		const shx = (str: TemplateStringsArray) => spawn(str[0], str.slice(0));
 		const stream = spawn(
 			"youtube-dl",
@@ -36,7 +36,8 @@ router.get("/vid/(:vid).mp3", (req, res) => {
 		const ffmpeg = shx`ffmpeg -i pipe:0 -f mp3 -`;
 		stream.stdout.pipe(ffmpeg.stdin);
 		ffmpeg.stdout.pipe(new PassThrough()).pipe(res);
-	} catch (e) {
+	} catch (e)
+	{
 		console.log(e);
 	}
 });
