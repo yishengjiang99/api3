@@ -15,10 +15,10 @@
       "node",
       "jest"
     ],
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "alwaysStrict": true,
-    "strictFunctionTypes": true
+    "forceConsistentCasingInFileNames": false,
+    "noImplicitReturns": false,
+    "alwaysStrict": false,
+    "strictFunctionTypes": false
   },
   "include": [
     "src",

@@ -5,7 +5,6 @@ var __makeTemplateObject = (this && this.__makeTemplateObject) || function (cook
 };
 exports.__esModule = true;
 var express = require("express");
-var memfs_1 = require("memfs");
 var child_process_1 = require("child_process");
 //const db = require("../src/db");
 var app = express();
@@ -13,7 +12,7 @@ var router = express.Router();
 var ytdl = require("ytdl-core");
 // const ffmpeg = require("fluent-ffmpeg");
 var PassThrough = require("stream").PassThrough;
-var vds = JSON.parse(memfs_1.fs.readFileSync("../roues").toString());
+var vds = JSON.parse(require('fs').readFileSync("./roues").toString());
 router.get("/", function (req, res) {
     res.render("video.jsx", { videos: vds }, function (err, html) {
         if (err)
