@@ -37,8 +37,8 @@ const renderElement = (response, element) =>
 	});
 router.use(cookieParser());
 
-router.get("/bundle.js", (req,res)=>{
-	res.sendFile(resolve(__dirname,"../dist/bundle.js"));
+router.get("/bundle.js", (req, res) => {
+	res.sendFile(resolve(__dirname, "../dist/bundle.js"));
 });
 router.get("(/list/)?(:listId)?", async function (req, res) {
 	const API_DIR = "https://api.spotify.com/v1";
@@ -116,10 +116,12 @@ function checkAuth(req, res) {
 		res.cookie("access_token", null);
 		res.cookie("expiry", null);
 		res.redirect("/auth");
+		return;
 	}
 	if (!access_token)
 	{
 		res.redirect("/auth");
+		return;
 	}
 	return access_token;
 

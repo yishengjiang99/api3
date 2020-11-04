@@ -7,6 +7,7 @@ import { getType } from "mime";
 import { execSync } from "child_process";
 import { basename, dirname } from "path";
 import { AbortController } from "@azure/abort-controller";
+import { readdir } from "fs";
 
 const SigTrap = new AbortController();
 
@@ -14,11 +15,24 @@ process.on("SIGINT", function () {
   SigTrap.abort();
 });
 
+export async function listFiless(asset) {
+  const wsclient= BlobServiceClient.fromConnectionString(
+    process.env.AZURE_STORAGE_CONNECTION_STRING
+  ).getContainerClient(asset);
+  let marker=null;
+  const iterator = wsclient.listBlobsFlat().byPage({ continuationToken: marker, maxPageSize: 10 });
+  let i =0;
+  for (const blob of wsclient.listBlobsFlat()) {
+    console.log(`Blob ${i++}: ${blob.name}`);
+  }
+}
+listFiless('cdn')
 function getContainerClient() {
   return BlobServiceClient.fromConnectionString(
     process.env.AZURE_STORAGE_CONNECTION_STRING
   ).getContainerClient("cdn");
 }
+
 
 export async function uploadFile(path: string) {
   const client = getContainerClient();
@@ -63,16 +77,11 @@ export async function uploadCLI(argv2: any) {
     return;
   }
   const client = getContainerClient();
-  execSync("ls src/*")
-    .toString()
-    .split("\n")
-    //ls(filepath, ["-R"]);
-    .map((file: any) => {
-      console.log(file);
-      return file;
-    })
-    .reduce(async (uploaded: any[], previousPromise: any, file: any) => {
-      uploaded.push(await previousPromise);
-      return uploadFile(file);
-    }, Promise.resolve(null));
+  readdir(filepath,(err,files)=>{
+    if(err) console.error(err);
+    if(files)  files.every(f=>{
+      console.log(f);
+      uploadFile(f);
+    });
+  })
 }

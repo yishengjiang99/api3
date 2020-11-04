@@ -1,15 +1,12 @@
 import { render } from "react-dom";
 import Axios, { AxiosResponse } from "axios";
 import * as express from "express";
-import { createEngine } from "../src/express-react-forked";
-import { spawn } from "child_process";
-//const db = require("../src/db");
+import { spawn, execSync } from "child_process";
 const app = express();
 const router: express.Router = express.Router();
 
-const ytdl = require("ytdl-core");
-// const ffmpeg = require("fluent-ffmpeg");
 
+const ffpath = execSync("which ffmpeg").toString();
 const PassThrough = require("stream").PassThrough;
 const vds = JSON.parse(require('fs').readFileSync("./roues").toString());
 
@@ -23,7 +20,6 @@ router.get("/", (req, res) => {
 router.get("/vid/(:vid).mp3", (req, res) => {
 	try
 	{
-		const shx = (str: TemplateStringsArray) => spawn(str[0], str.slice(0));
 		const stream = spawn(
 			"youtube-dl",
 			`--extracyoutube-dl -f 251 https://www.youtube.com/watch?v=${req.params.vid} -o -`.split(
@@ -33,7 +29,7 @@ router.get("/vid/(:vid).mp3", (req, res) => {
 		res.writeHead(200, {
 			"Content-Type": "audio/mp3",
 		});
-		const ffmpeg = shx`ffmpeg -i pipe:0 -f mp3 -`;
+		const ffmpeg = spawn(`${ffpath}`, `-i pipe:0 -f mp3 -`.split(" "));
 		stream.stdout.pipe(ffmpeg.stdin);
 		ffmpeg.stdout.pipe(new PassThrough()).pipe(res);
 	} catch (e)

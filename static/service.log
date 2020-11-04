@@ -2599,3 +2599,310 @@ Sep 29 23:45:46 greepp ts-node[7346]:     at /home/AzureUser/api3/ssr/src/server
 Sep 29 23:45:46 greepp ts-node[7346]:     at processTicksAndRejections (internal/process/task_queues.js:97:5)
 Sep 29 23:45:46 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
 Sep 29 23:45:46 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Oct 05 04:29:45 greepp systemd[1]: Failed to start My httpd Service.
+Oct 05 04:30:01 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Oct 05 04:30:01 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 10660.
+Oct 05 04:30:01 greepp systemd[1]: Stopped My httpd Service.
+Oct 05 04:30:01 greepp systemd[1]: httpd.service: Failed to load environment files: No such file or directory
+Oct 05 04:30:01 greepp systemd[1]: httpd.service: Failed to run 'start' task: No such file or directory
+Oct 05 04:30:01 greepp systemd[1]: httpd.service: Failed with result 'resources'.
+Oct 05 04:30:01 greepp systemd[1]: Failed to start My httpd Service.
+Oct 05 04:30:16 greepp systemd[1]: Stopped My httpd Service.
+Oct 05 04:30:16 greepp systemd[1]: Started My httpd Service.
+Oct 05 04:30:19 greepp ts-node[29823]: Mon, 05 Oct 2020 04:30:19 GMT express-session deprecated undefined resave option; provide resave option at https.ts:29:9
+Oct 05 04:30:19 greepp ts-node[29823]: Mon, 05 Oct 2020 04:30:19 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:29:9
+Oct 05 04:30:21 greepp ts-node[29823]: listening on 443
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Oct 18 07:29:47 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Oct 18 07:29:47 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 2.
+Oct 18 07:29:47 greepp systemd[1]: Stopped My httpd Service.
+Oct 18 07:29:47 greepp systemd[1]: Started My httpd Service.
+Oct 18 07:29:50 greepp ts-node[1981]: Sun, 18 Oct 2020 07:29:50 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 18 07:29:50 greepp ts-node[1981]: Sun, 18 Oct 2020 07:29:50 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 18 07:29:52 greepp ts-node[1981]: listening on 443
+Oct 18 07:29:54 greepp systemd[1]: Stopping My httpd Service...
+Oct 18 07:29:54 greepp systemd[1]: Stopped My httpd Service.
+Oct 18 07:29:54 greepp systemd[1]: Started My httpd Service.
+Oct 18 07:29:57 greepp ts-node[2085]: Sun, 18 Oct 2020 07:29:57 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 18 07:29:57 greepp ts-node[2085]: Sun, 18 Oct 2020 07:29:57 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 18 07:29:58 greepp ts-node[2085]: listening on 443
+Oct 18 07:30:10 greepp ts-node[2085]: string
+Oct 18 07:30:10 greepp ts-node[2085]: list
+Oct 18 07:30:14 greepp ts-node[2085]: string
+Oct 18 07:30:14 greepp ts-node[2085]: csv:compose,0,130.81,0,4745.869999984279,4870.869999984279,,soundFont
+Oct 18 07:30:14 greepp ts-node[2085]: before comp
+Oct 18 07:30:16 greepp ts-node[2085]: string
+Oct 18 07:30:16 greepp ts-node[2085]: csv:compose,1,146.83,2,6482.049999991432,6607.049999991432,,soundFont
+Oct 18 07:30:16 greepp ts-node[2085]: before comp
+Oct 18 07:30:16 greepp ts-node[2085]: string
+Oct 18 07:30:16 greepp ts-node[2085]: csv:compose,2,146.83,2,6969.91500002332,7094.91500002332,,soundFont
+Oct 18 07:30:16 greepp ts-node[2085]: before comp
+Oct 18 07:30:17 greepp ts-node[2085]: string
+Oct 18 07:30:17 greepp ts-node[2085]: csv:compose,3,164.81,4,7474.045000039041,7599.045000039041,,soundFont
+Oct 18 07:30:17 greepp ts-node[2085]: before comp
+Oct 18 07:30:17 greepp ts-node[2085]: string
+Oct 18 07:30:17 greepp ts-node[2085]: csv:compose,0,146.83,2,8306.01000005845,8431.01000005845,,osc3
+Oct 18 07:30:17 greepp ts-node[2085]: before comp
+Oct 18 07:30:18 greepp ts-node[2085]: string
+Oct 18 07:30:18 greepp ts-node[2085]: csv:compose,0,146.83,2,8641.900000046007,8766.900000046007,,osc3
+Oct 18 07:30:18 greepp ts-node[2085]: before comp
+Oct 18 07:30:22 greepp ts-node[2085]: string
+Oct 18 07:30:22 greepp ts-node[2085]: csv:compose,0,65.41,0,12385.890000034124,12510.890000034124,,getLPSaw
+Oct 18 07:30:22 greepp ts-node[2085]: before comp
+Oct 18 07:30:22 greepp ts-node[2085]: string
+Oct 18 07:30:22 greepp ts-node[2085]: csv:compose,1,65.41,0,12882.010000059381,13007.010000059381,,getLPSaw
+Oct 18 07:30:22 greepp ts-node[2085]: before comp
+Oct 18 07:30:23 greepp ts-node[2085]: string
+Oct 18 07:30:23 greepp ts-node[2085]: csv:compose,2,73.42,2,13474.010000005364,13599.010000005364,,getLPSaw
+Oct 18 07:30:23 greepp ts-node[2085]: before comp
+Oct 18 07:30:23 greepp ts-node[2085]: string
+Oct 18 07:30:23 greepp ts-node[2085]: csv:compose,3,82.41,4,14026.01999999024,14151.01999999024,,getLPSaw
+Oct 18 07:30:23 greepp ts-node[2085]: before comp
+Oct 18 07:30:24 greepp ts-node[2085]: string
+Oct 18 07:30:24 greepp ts-node[2085]: csv:compose,4,98,7,14578.05999997072,14703.05999997072,,getLPSaw
+Oct 18 07:30:24 greepp ts-node[2085]: before comp
+Oct 18 07:30:24 greepp ts-node[2085]: string
+Oct 18 07:30:24 greepp ts-node[2085]: csv:compose,5,82.41,4,15138.049999950454,15263.049999950454,,getLPSaw
+Oct 18 07:30:24 greepp ts-node[2085]: before comp
+Oct 18 07:30:27 greepp ts-node[2085]: string
+Oct 18 07:30:27 greepp ts-node[2085]: csv:compose,2,73.42,2,18162.03999996651,18287.03999996651,,osc3
+Oct 18 07:30:27 greepp ts-node[2085]: before comp
+Oct 18 07:30:28 greepp ts-node[2085]: string
+Oct 18 07:30:28 greepp ts-node[2085]: csv:compose,3,73.42,2,18665.900000021793,18790.900000021793,,osc3
+Oct 18 07:30:28 greepp ts-node[2085]: before comp
+Oct 18 07:30:28 greepp ts-node[2085]: string
+Oct 18 07:30:28 greepp ts-node[2085]: csv:compose,4,82.41,4,19218.04000006523,19343.04000006523,,osc3
+Oct 18 07:30:28 greepp ts-node[2085]: before comp
+Oct 18 07:30:29 greepp ts-node[2085]: string
+Oct 18 07:30:29 greepp ts-node[2085]: csv:compose,0,65.41,0,20378.000000026077,20503.000000026077,,getDrums
+Oct 18 07:30:29 greepp ts-node[2085]: before comp
+Oct 18 07:43:42 greepp ts-node[2085]: string
+Oct 18 07:43:42 greepp ts-node[2085]: list
+Oct 18 07:43:44 greepp ts-node[2085]: string
+Oct 18 07:43:44 greepp ts-node[2085]: csv:compose,0,130.81,0,2948.4050000319257,3073.4050000319257,,osc3
+Oct 18 07:43:44 greepp ts-node[2085]: before comp
+Oct 18 07:46:36 greepp ts-node[2085]: string
+Oct 18 07:46:36 greepp ts-node[2085]: list
+Oct 18 07:46:40 greepp ts-node[2085]: string
+Oct 18 07:46:40 greepp ts-node[2085]: list
+Oct 18 07:46:43 greepp ts-node[2085]: string
+Oct 18 07:46:43 greepp ts-node[2085]: list
+Oct 18 07:46:47 greepp ts-node[2085]: string
+Oct 18 07:46:47 greepp ts-node[2085]: csv:compose,0,130.81,0,4278.51999993436,4403.51999993436,,soundFont
+Oct 18 07:46:47 greepp ts-node[2085]: before comp
+Oct 18 07:46:48 greepp ts-node[2085]: string
+Oct 18 07:46:48 greepp ts-node[2085]: csv:compose,1,146.83,2,5910.5299999937415,6035.5299999937415,,soundFont
+Oct 18 07:46:48 greepp ts-node[2085]: before comp
+Oct 18 07:46:49 greepp ts-node[2085]: string
+Oct 18 07:46:49 greepp ts-node[2085]: csv:compose,2,164.81,4,6382.649999926798,6507.649999926798,,soundFont
+Oct 18 07:46:49 greepp ts-node[2085]: before comp
+Oct 18 07:47:05 greepp ts-node[2085]: string
+Oct 18 07:47:05 greepp ts-node[2085]: list
+Oct 18 07:47:07 greepp ts-node[2085]: string
+Oct 18 07:47:07 greepp ts-node[2085]: list
+Oct 18 07:47:09 greepp ts-node[2085]: string
+Oct 18 07:47:09 greepp ts-node[2085]: csv:compose,0,130.81,0,1877.0500000100583,2002.0500000100583,,getLPSaw
+Oct 18 07:47:09 greepp ts-node[2085]: before comp
+Oct 18 07:47:10 greepp ts-node[2085]: string
+Oct 18 07:47:10 greepp ts-node[2085]: csv:compose,1,146.83,2,3245.1250000158325,3370.1250000158325,,getLPSaw
+Oct 18 07:47:10 greepp ts-node[2085]: before comp
+Oct 18 07:47:13 greepp ts-node[2085]: string
+Oct 18 07:47:13 greepp ts-node[2085]: csv:compose,0,130.81,0,5629.0850000223145,5754.0850000223145,,soundFont
+Oct 18 07:47:13 greepp ts-node[2085]: before comp
+Oct 18 07:47:13 greepp ts-node[2085]: string
+Oct 18 07:47:13 greepp ts-node[2085]: csv:compose,1,130.81,0,6149.134999956004,6274.134999956004,,soundFont
+Oct 18 07:47:13 greepp ts-node[2085]: before comp
+Oct 18 07:47:14 greepp ts-node[2085]: string
+Oct 18 07:47:14 greepp ts-node[2085]: csv:compose,2,164.81,4,6541.184999980032,6666.184999980032,,soundFont
+Oct 18 07:47:14 greepp ts-node[2085]: before comp
+Oct 18 07:47:26 greepp ts-node[2085]: string
+Oct 18 07:47:26 greepp ts-node[2085]: list
+Oct 18 07:47:32 greepp ts-node[2085]: string
+Oct 18 07:47:32 greepp ts-node[2085]: list
+Oct 18 07:47:33 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Oct 18 07:47:33 greepp ts-node[2085]:     at ServerResponse.setHeader (_http_outgoing.js:518:11)
+Oct 18 07:47:33 greepp ts-node[2085]:     at setHeadersFromObject (/home/AzureUser/api3/node_modules/on-headers/index.js:94:16)
+Oct 18 07:47:33 greepp ts-node[2085]:     at ServerResponse.setWriteHeadHeaders (/home/AzureUser/api3/node_modules/on-headers/index.js:122:5)
+Oct 18 07:47:33 greepp ts-node[2085]:     at ServerResponse.writeHead (/home/AzureUser/api3/node_modules/on-headers/index.js:30:36)
+Oct 18 07:47:33 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/src/server.ts:45:9
+Oct 18 07:47:33 greepp ts-node[2085]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:47:33 greepp ts-node[2085]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Oct 18 07:47:33 greepp ts-node[2085]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Oct 18 07:47:33 greepp ts-node[2085]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:47:33 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Oct 18 07:47:33 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+Oct 18 07:47:33 greepp ts-node[2085]: (node:2085) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+Oct 18 07:47:38 greepp ts-node[2085]: string
+Oct 18 07:47:38 greepp ts-node[2085]: list
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Oct 18 07:47:43 greepp ts-node[2085]:     at ServerResponse.setHeader (_http_outgoing.js:518:11)
+Oct 18 07:47:43 greepp ts-node[2085]:     at setHeadersFromObject (/home/AzureUser/api3/node_modules/on-headers/index.js:94:16)
+Oct 18 07:47:43 greepp ts-node[2085]:     at ServerResponse.setWriteHeadHeaders (/home/AzureUser/api3/node_modules/on-headers/index.js:122:5)
+Oct 18 07:47:43 greepp ts-node[2085]:     at ServerResponse.writeHead (/home/AzureUser/api3/node_modules/on-headers/index.js:30:36)
+Oct 18 07:47:43 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/src/server.ts:45:9
+Oct 18 07:47:43 greepp ts-node[2085]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:47:43 greepp ts-node[2085]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Oct 18 07:47:43 greepp ts-node[2085]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Oct 18 07:47:43 greepp ts-node[2085]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:47:43 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 2)
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error: Request failed with status code 404
+Oct 18 07:47:43 greepp ts-node[2085]:     at createError (/home/AzureUser/api3/node_modules/axios/lib/core/createError.js:16:15)
+Oct 18 07:47:43 greepp ts-node[2085]:     at settle (/home/AzureUser/api3/node_modules/axios/lib/core/settle.js:17:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.handleStreamEnd (/home/AzureUser/api3/node_modules/axios/lib/adapters/http.js:236:11)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.emit (events.js:327:22)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at endReadableNT (_stream_readable.js:1221:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 4)
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error: Request failed with status code 404
+Oct 18 07:47:43 greepp ts-node[2085]:     at createError (/home/AzureUser/api3/node_modules/axios/lib/core/createError.js:16:15)
+Oct 18 07:47:43 greepp ts-node[2085]:     at settle (/home/AzureUser/api3/node_modules/axios/lib/core/settle.js:17:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.handleStreamEnd (/home/AzureUser/api3/node_modules/axios/lib/adapters/http.js:236:11)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.emit (events.js:327:22)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at endReadableNT (_stream_readable.js:1221:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 6)
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error: Request failed with status code 404
+Oct 18 07:47:43 greepp ts-node[2085]:     at createError (/home/AzureUser/api3/node_modules/axios/lib/core/createError.js:16:15)
+Oct 18 07:47:43 greepp ts-node[2085]:     at settle (/home/AzureUser/api3/node_modules/axios/lib/core/settle.js:17:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.handleStreamEnd (/home/AzureUser/api3/node_modules/axios/lib/adapters/http.js:236:11)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.emit (events.js:327:22)
+Oct 18 07:47:43 greepp ts-node[2085]:     at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at endReadableNT (_stream_readable.js:1221:12)
+Oct 18 07:47:43 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Oct 18 07:47:43 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 8)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Oct 18 07:47:46 greepp ts-node[2085]:     at ServerResponse.setHeader (_http_outgoing.js:518:11)
+Oct 18 07:47:46 greepp ts-node[2085]:     at setHeadersFromObject (/home/AzureUser/api3/node_modules/on-headers/index.js:94:16)
+Oct 18 07:47:46 greepp ts-node[2085]:     at ServerResponse.setWriteHeadHeaders (/home/AzureUser/api3/node_modules/on-headers/index.js:122:5)
+Oct 18 07:47:46 greepp ts-node[2085]:     at ServerResponse.writeHead (/home/AzureUser/api3/node_modules/on-headers/index.js:30:36)
+Oct 18 07:47:46 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/src/server.ts:45:9
+Oct 18 07:47:46 greepp ts-node[2085]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:47:46 greepp ts-node[2085]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Oct 18 07:47:46 greepp ts-node[2085]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Oct 18 07:47:46 greepp ts-node[2085]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:47:46 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 9)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error: Request failed with status code 404
+Oct 18 07:47:46 greepp ts-node[2085]:     at createError (/home/AzureUser/api3/node_modules/axios/lib/core/createError.js:16:15)
+Oct 18 07:47:46 greepp ts-node[2085]:     at settle (/home/AzureUser/api3/node_modules/axios/lib/core/settle.js:17:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.handleStreamEnd (/home/AzureUser/api3/node_modules/axios/lib/adapters/http.js:236:11)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.emit (events.js:327:22)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at endReadableNT (_stream_readable.js:1221:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 11)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error: Request failed with status code 404
+Oct 18 07:47:46 greepp ts-node[2085]:     at createError (/home/AzureUser/api3/node_modules/axios/lib/core/createError.js:16:15)
+Oct 18 07:47:46 greepp ts-node[2085]:     at settle (/home/AzureUser/api3/node_modules/axios/lib/core/settle.js:17:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.handleStreamEnd (/home/AzureUser/api3/node_modules/axios/lib/adapters/http.js:236:11)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.emit (events.js:327:22)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at endReadableNT (_stream_readable.js:1221:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 13)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Error: Request failed with status code 404
+Oct 18 07:47:46 greepp ts-node[2085]:     at createError (/home/AzureUser/api3/node_modules/axios/lib/core/createError.js:16:15)
+Oct 18 07:47:46 greepp ts-node[2085]:     at settle (/home/AzureUser/api3/node_modules/axios/lib/core/settle.js:17:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.handleStreamEnd (/home/AzureUser/api3/node_modules/axios/lib/adapters/http.js:236:11)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.emit (events.js:327:22)
+Oct 18 07:47:46 greepp ts-node[2085]:     at IncomingMessage.EventEmitter.emit (domain.js:482:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at endReadableNT (_stream_readable.js:1221:12)
+Oct 18 07:47:46 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:84:21)
+Oct 18 07:47:46 greepp ts-node[2085]: (node:2085) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 15)
+Oct 18 07:47:47 greepp ts-node[2085]: Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+Oct 18 07:47:47 greepp ts-node[2085]:     at write_ (_http_outgoing.js:629:17)
+Oct 18 07:47:47 greepp ts-node[2085]:     at ServerResponse.write (_http_outgoing.js:621:15)
+Oct 18 07:47:47 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/src/server.ts:21:12
+Oct 18 07:47:47 greepp ts-node[2085]:     at new Promise (<anonymous>)
+Oct 18 07:47:47 greepp ts-node[2085]:     at writeStreamSync (/home/AzureUser/api3/ssr/src/server.ts:20:46)
+Oct 18 07:47:47 greepp ts-node[2085]:     at /home/AzureUser/api3/ssr/src/server.ts:71:11
+Oct 18 07:47:47 greepp ts-node[2085]:     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Oct 18 07:47:47 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 18 07:47:47 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+Oct 18 07:48:03 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Oct 18 07:48:03 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 1.
+Oct 18 07:48:03 greepp systemd[1]: Stopped My httpd Service.
+Oct 18 07:48:03 greepp systemd[1]: Started My httpd Service.
+Oct 18 07:48:06 greepp ts-node[3918]: Sun, 18 Oct 2020 07:48:06 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 18 07:48:06 greepp ts-node[3918]: Sun, 18 Oct 2020 07:48:06 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 18 07:48:08 greepp ts-node[3918]: listening on 443
+Oct 18 07:48:38 greepp ts-node[3918]: (node:3918) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Oct 18 07:48:38 greepp ts-node[3918]:     at ServerResponse.setHeader (_http_outgoing.js:518:11)
+Oct 18 07:48:38 greepp ts-node[3918]:     at setHeadersFromObject (/home/AzureUser/api3/node_modules/on-headers/index.js:94:16)
+Oct 18 07:48:38 greepp ts-node[3918]:     at ServerResponse.setWriteHeadHeaders (/home/AzureUser/api3/node_modules/on-headers/index.js:122:5)
+Oct 18 07:48:38 greepp ts-node[3918]:     at ServerResponse.writeHead (/home/AzureUser/api3/node_modules/on-headers/index.js:30:36)
+Oct 18 07:48:38 greepp ts-node[3918]:     at /home/AzureUser/api3/ssr/src/server.ts:45:9
+Oct 18 07:48:38 greepp ts-node[3918]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:48:38 greepp ts-node[3918]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Oct 18 07:48:38 greepp ts-node[3918]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Oct 18 07:48:38 greepp ts-node[3918]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 18 07:48:38 greepp ts-node[3918]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Oct 18 07:48:38 greepp ts-node[3918]: (node:3918) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+Oct 18 07:48:38 greepp ts-node[3918]: (node:3918) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+Oct 18 07:48:42 greepp ts-node[3918]: Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+Oct 18 07:48:42 greepp ts-node[3918]:     at write_ (_http_outgoing.js:629:17)
+Oct 18 07:48:42 greepp ts-node[3918]:     at ServerResponse.write (_http_outgoing.js:621:15)
+Oct 18 07:48:42 greepp ts-node[3918]:     at /home/AzureUser/api3/ssr/src/server.ts:21:12
+Oct 18 07:48:42 greepp ts-node[3918]:     at new Promise (<anonymous>)
+Oct 18 07:48:42 greepp ts-node[3918]:     at writeStreamSync (/home/AzureUser/api3/ssr/src/server.ts:20:46)
+Oct 18 07:48:42 greepp ts-node[3918]:     at /home/AzureUser/api3/ssr/src/server.ts:71:11
+Oct 18 07:48:42 greepp ts-node[3918]:     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Oct 18 07:48:42 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 18 07:48:42 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+Oct 18 07:48:58 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Oct 18 07:48:58 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 2.
+Oct 18 07:48:58 greepp systemd[1]: Stopped My httpd Service.
+Oct 18 07:48:58 greepp systemd[1]: Started My httpd Service.
+Oct 18 07:49:01 greepp ts-node[3997]: Sun, 18 Oct 2020 07:49:01 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 18 07:49:01 greepp ts-node[3997]: Sun, 18 Oct 2020 07:49:01 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 18 07:49:02 greepp ts-node[3997]: listening on 443
+Oct 18 07:55:44 greepp systemd[1]: Stopping My httpd Service...
+Oct 18 07:55:44 greepp systemd[1]: Stopped My httpd Service.
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Oct 18 07:48:58 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Oct 18 07:48:58 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 2.
+Oct 18 07:48:58 greepp systemd[1]: Stopped My httpd Service.
+Oct 18 07:48:58 greepp systemd[1]: Started My httpd Service.
+Oct 18 07:49:01 greepp ts-node[3997]: Sun, 18 Oct 2020 07:49:01 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 18 07:49:01 greepp ts-node[3997]: Sun, 18 Oct 2020 07:49:01 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 18 07:49:02 greepp ts-node[3997]: listening on 443
+Oct 18 07:55:44 greepp systemd[1]: Stopping My httpd Service...
+Oct 18 07:55:44 greepp systemd[1]: Stopped My httpd Service.
+Oct 20 02:27:36 greepp systemd[1]: Started My httpd Service.
+Oct 20 02:27:39 greepp ts-node[24939]: Tue, 20 Oct 2020 02:27:39 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 20 02:27:39 greepp ts-node[24939]: Tue, 20 Oct 2020 02:27:39 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 20 02:27:40 greepp ts-node[24939]: listening on 443
+Oct 20 02:27:42 greepp ts-node[24939]: (node:24939) UnhandledPromiseRejectionWarning: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+Oct 20 02:27:42 greepp ts-node[24939]:     at ServerResponse.setHeader (_http_outgoing.js:518:11)
+Oct 20 02:27:42 greepp ts-node[24939]:     at setHeadersFromObject (/home/AzureUser/api3/node_modules/on-headers/index.js:94:16)
+Oct 20 02:27:42 greepp ts-node[24939]:     at ServerResponse.setWriteHeadHeaders (/home/AzureUser/api3/node_modules/on-headers/index.js:122:5)
+Oct 20 02:27:42 greepp ts-node[24939]:     at ServerResponse.writeHead (/home/AzureUser/api3/node_modules/on-headers/index.js:30:36)
+Oct 20 02:27:42 greepp ts-node[24939]:     at /home/AzureUser/api3/ssr/src/server.ts:45:9
+Oct 20 02:27:42 greepp ts-node[24939]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 20 02:27:42 greepp ts-node[24939]:     at next (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:137:13)
+Oct 20 02:27:42 greepp ts-node[24939]:     at Route.dispatch (/home/AzureUser/api3/ssr/node_modules/express/lib/router/route.js:112:3)
+Oct 20 02:27:42 greepp ts-node[24939]:     at Layer.handle [as handle_request] (/home/AzureUser/api3/ssr/node_modules/express/lib/router/layer.js:95:5)
+Oct 20 02:27:42 greepp ts-node[24939]:     at /home/AzureUser/api3/ssr/node_modules/express/lib/router/index.js:281:22
+Oct 20 02:27:42 greepp ts-node[24939]: (node:24939) UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error originated either by throwing inside of an async function without a catch block, or by rejecting a promise which was not handled with .catch(). To terminate the node process on unhandled promise rejection, use the CLI flag `--unhandled-rejections=strict` (see https://nodejs.org/api/cli.html#cli_unhandled_rejections_mode). (rejection id: 1)
+Oct 20 02:27:42 greepp ts-node[24939]: (node:24939) [DEP0018] DeprecationWarning: Unhandled promise rejections are deprecated. In the future, promise rejections that are not handled will terminate the Node.js process with a non-zero exit code.
+Oct 20 02:27:57 greepp ts-node[24939]: Error [ERR_STREAM_WRITE_AFTER_END]: write after end
+Oct 20 02:27:57 greepp ts-node[24939]:     at write_ (_http_outgoing.js:629:17)
+Oct 20 02:27:57 greepp ts-node[24939]:     at ServerResponse.write (_http_outgoing.js:621:15)
+Oct 20 02:27:57 greepp ts-node[24939]:     at /home/AzureUser/api3/ssr/src/server.ts:21:12
+Oct 20 02:27:57 greepp ts-node[24939]:     at new Promise (<anonymous>)
+Oct 20 02:27:57 greepp ts-node[24939]:     at writeStreamSync (/home/AzureUser/api3/ssr/src/server.ts:20:46)
+Oct 20 02:27:57 greepp ts-node[24939]:     at /home/AzureUser/api3/ssr/src/server.ts:71:11
+Oct 20 02:27:57 greepp ts-node[24939]:     at processTicksAndRejections (internal/process/task_queues.js:97:5)
+Oct 20 02:27:57 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Oct 20 02:27:57 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+Oct 20 02:28:13 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Oct 20 02:28:13 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 1.
+Oct 20 02:28:13 greepp systemd[1]: Stopped My httpd Service.
+Oct 20 02:28:13 greepp systemd[1]: Started My httpd Service.
+Oct 20 02:28:16 greepp ts-node[25010]: Tue, 20 Oct 2020 02:28:16 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
+Oct 20 02:28:16 greepp ts-node[25010]: Tue, 20 Oct 2020 02:28:16 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
+Oct 20 02:28:18 greepp ts-node[25010]: listening on 443

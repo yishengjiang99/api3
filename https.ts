@@ -18,6 +18,12 @@ import * as session from "express-session";
 import { stdinHandler } from "./src/stdin";
 import { wavHeader } from "./src/wavheader";
 import * as vhost from "vhost";
+import * as net from 'net';
+
+
+import { IncomingMessage } from "http";
+var serveStatic = require('serve-static')
+var serveIndex = require('serve-index')
 
 // const rtc = require("./routes/rtc");
 //const session = require("express-session");
@@ -26,14 +32,16 @@ const app = express();
 
 const dspServer = connect();
 dspServer.use("/api/spotify", auth);
-dspServer.use("/", express.static("../grepaudio"));
+dspServer.use("/", express.static("../hearing-radar/public"));
 
 const apiServer = connect();
+apiServer.use("/",(req,res)=>res.end("api"));
 app.use(vhost("api.grepawk.com", apiServer));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
-// apiServer.use("/", rtc);
-// apiServer.use("/(s+)", rtc);
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('./src/express-react-forked').createEngine());
 
 var cookieParser = require("cookie-parser");
 
@@ -44,34 +52,8 @@ app.use(
 	})
 );
 
-[1, 2, 3, 4, 5, 12, 33, 25, 55].forEach((idx) => {
-	if (!existsSync(`./shared/${idx}`)) execSync(`mkfifo ./shared/${idx}`);
-});
-
-app.get("/sound/:streamid/page", (request, response) => {
-	response.end(`<html><body></body><script>
-	fetch('https://www.grepawk.com/sound/${request.params.streamid}').then(resp=>resp.arrayBuffer())
-	.then(sb=>{
-		const ctx = new AudioContext();
-		ctx.decodeAudioData(sb, (rendered)=>{
-			const node = new AudioBufferSource(ctx,{buffer:rendered});
-			node.connect(ctx.destination);
-			node.start(0);
-		})
-	}).catch(e=>alert(e.message));
-	</script></html>`);
-});
-app.get("/sound/:streamid", (request, response) => {
-	response.writeHead(200, {
-		"Content-Type": "audio/wav",
-		"Content-Disposition": "inline",
-	});
-	response.write(Buffer.from(wavHeader(30)));
-	createReadStream("./shared/" + request.params.streamid).pipe(response);
-	// request.pipe("./shared/1");
-});
 app.use(cookieParser());
-
+app.use("/",  express.static("./views"));
 app.use("/yt", yt);
 app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
@@ -91,11 +73,11 @@ export const httpsTLS = {
 	key: readFileSync(process.env.PRIV_KEYFILE),
 	cert: readFileSync(process.env.CERT_FILE),
 	SNICallback: function (domain, cb) {
-		if (!existsSync(`/etc/letsencrypt/live/${domain}`))
-		{
+		if (!existsSync(`/etc/letsencrypt/live/${domain}`)) {
 			cb();
 			return;
 		}
+		console.log('..',domain,'sni')
 		cb(
 			null,
 			require("tls").createSecureContext({
@@ -123,33 +105,56 @@ const stdinServer = new WebSocketServer({ noServer: true });
 stdinServer.on("connection", stdinHandler);
 
 rtcServer.on("connection", rtcHandler);
-app.use("/", express.static("../grepaudio/v3/public"));
+app.use("/piano", express.static("../piano/build"));
+
+const forward ={
+	'radar':{
+		port: 4000,
+		path:"/"
+	},
+	'quick':3333,
+	'proxy':5150,
+	'v2': 8080
+}
+import {proxy_pass} from'./vpn';
+
+Object.keys(forward).map(key=>{
+	app.use("/"+key,(req,res)=>{
+		proxy_pass(req.socket,forward[key])
+	})
+})
+httpsServer.on("request", function connection(request:IncomingMessage,res) {
+	console.log(request.url)	;
+	Object.keys(forward).map(key=>{
+		if(request.url==="/"+key){
+			proxy_pass(request.socket,forward[key])
+		}
+	})
+
+	// if (request.url === '/quick') {
+	// 	require("./vpn").proxy_pass(request.socket, {
+	// 		port: 3333
+	// 	})
+	// }
+	// if (request.url === '/proxy') {
+	// 	require("./vpn").proxy_pass(request.socket, {
+	// 		port: 5150
+	// 	})
+	// }
+});
 
 httpsServer.on("upgrade", function upgrade(request, socket, head) {
-	socket.write(
-		`HTTP/1.1 101 Switching Protocols\r\n\
-		HTTP/1.1 101 Switching Protocols\r\n\
-		Connection: Upgrade\r\n\
-		Sec-WebSocket-Accept:42\r\n\r\n`
-	);
 
 	const pathname = require("url").parse(request.url).pathname;
-	if (pathname.match(/signal/))
-	{
+	if (pathname.match(/signal/)) {
 		signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
-			// // const dbuser = db.getOrCreateUser(request.headers["set-cookie"]);
-			// signalServer.requestContext[
-			//   request.headers["sec-websocket-key"]
-			// ] = dbuser;
 			signalServer.wss.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/rtc1/))
-	{
+	} else if (pathname.match(/rtc1/)) {
 		rtcServer.handleUpgrade(request, socket, head, function done(ws) {
 			rtcServer.emit("connection", ws, request);
 		});
-	} else if (pathname.match(/stdin/))
-	{
+	} else if (pathname.match(/stdin/)) {
 		stdinServer.handleUpgrade(request, socket, head, function done(ws) {
 			ws._socket.pipe(require("fs").createWriteStream("./shared/1"));
 		});
@@ -157,15 +162,7 @@ httpsServer.on("upgrade", function upgrade(request, socket, head) {
 });
 
 const port = process.argv[2] || 443;
-httpsServer.listen(port); //process.argv[2] || 3000);
+
+httpsServer.listen(443);//"../sound.sock"); //process.argv[2] || 3000);
 console.log("listening on " + port); //
 const devnull = (req, res) => { };
-const http = require("http").createServer((req, res) => { });
-http
-	.on("connection", function connection(req, socket, head) {
-		// proxy_pass(socket, {
-		// 	port: 443,
-		// 	host: "www.grepawk.com"
-		// })
-	})
-	.listen(80);
