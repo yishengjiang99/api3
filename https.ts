@@ -11,29 +11,19 @@ import {
 } from "fs";
 import * as db from "./src/db";
 import * as https from "https";
-import * as express from "express";
 import * as auth from "./routes/auth";
 import yt from "./routes/yt";
-import * as session from "express-session";
 import { stdinHandler } from "./src/stdin";
-import { wavHeader } from "./src/wavheader";
-import * as vhost from "vhost";
-import * as net from 'net';
-
-
-import { IncomingMessage } from "http";
-var serveStatic = require('serve-static')
-var serveIndex = require('serve-index')
-
-// const rtc = require("./routes/rtc");
-//const session = require("express-session");
+import {handleWsRequest}from'grep-wss';
+import {Server as SignalServer}from'./src/signal';
+const vhost=require("vhost");
 const connect = require("connect");
+const express = require("express");
 const app = express();
 
 const dspServer = connect();
 dspServer.use("/api/spotify", auth);
 dspServer.use("/", express.static("../hearing-radar/public"));
-
 const apiServer = connect();
 apiServer.use("/",(req,res)=>res.end("api"));
 app.use(vhost("api.grepawk.com", apiServer));
@@ -46,7 +36,7 @@ app.engine('jsx', require('./src/express-react-forked').createEngine());
 var cookieParser = require("cookie-parser");
 
 app.use(
-	session({
+	require("express-session")({
 		genid: () => Math.random() * 42 + "",
 		secret: "keyboard cat",
 	})
@@ -92,77 +82,23 @@ app.get("/favicon.ico", require("./routes/favicon").favicon);
 app.use("/app", express.static(__dirname + "/static"));
 
 app.use("/spotify", require("./ssr/src/server"));
-
-const WebSocketServer = require("ws").Server;
-
-const httpsServer = https.createServer(httpsTLS, app);
-
-const signalServer = new (require("./src/signal").Server)();
-const rtcServer = new WebSocketServer({ noServer: true });
-const { rtcHandler } = require("./lib/rtcsignal");
-
-const stdinServer = new WebSocketServer({ noServer: true });
-stdinServer.on("connection", stdinHandler);
-
-rtcServer.on("connection", rtcHandler);
 app.use("/piano", express.static("../piano/build"));
+const httpsServer = https.createServer(httpsTLS, app);
+const devnull = (a, b,c) => { };
 
-const forward ={
-	'radar':{
-		port: 4000,
-		path:"/"
-	},
-	'quick':3333,
-	'proxy':5150,
-	'v2': 8080
-}
-import {proxy_pass} from'./vpn';
-
-Object.keys(forward).map(key=>{
-	app.use("/"+key,(req,res)=>{
-		proxy_pass(req.socket,forward[key])
-	})
-})
-httpsServer.on("request", function connection(request:IncomingMessage,res) {
-	console.log(request.url)	;
-	Object.keys(forward).map(key=>{
-		if(request.url==="/"+key){
-			proxy_pass(request.socket,forward[key])
-		}
-	})
-
-	// if (request.url === '/quick') {
-	// 	require("./vpn").proxy_pass(request.socket, {
-	// 		port: 3333
-	// 	})
-	// }
-	// if (request.url === '/proxy') {
-	// 	require("./vpn").proxy_pass(request.socket, {
-	// 		port: 5150
-	// 	})
-	// }
-});
-
-httpsServer.on("upgrade", function upgrade(request, socket, head) {
-
-	const pathname = require("url").parse(request.url).pathname;
-	if (pathname.match(/signal/)) {
-		signalServer.wss.handleUpgrade(request, socket, head, function done(ws) {
-			signalServer.wss.emit("connection", ws, request);
-		});
-	} else if (pathname.match(/rtc1/)) {
-		rtcServer.handleUpgrade(request, socket, head, function done(ws) {
-			rtcServer.emit("connection", ws, request);
-		});
-	} else if (pathname.match(/stdin/)) {
-		stdinServer.handleUpgrade(request, socket, head, function done(ws) {
-			ws._socket.pipe(require("fs").createWriteStream("./shared/1"));
-		});
+handleWsRequest(httpsServer,(uri:string)=>{
+	if(uri.match(/rtc/)){
+		return  require("./lib/rtcsignal").rtcHandler;
+	}else if(uri.match(/signal/)){
+		const sigServer =  new SignalServer({}); 
+		return sigServer.handleConnection;
+	}else if(uri.match(/stdin/)){
+		return stdinHandler;
+	}else{
+		return devnull;
 	}
-});
-
+})
 const port = process.argv[2] || 443;
 
 httpsServer.listen(443);//"../sound.sock"); //process.argv[2] || 3000);
 console.log("listening on " + port); //
-const devnull = (req, res) => { };

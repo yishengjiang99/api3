@@ -127,11 +127,11 @@ function checkAuth(req, res) {
 
 }
 
-router.get("/event/:event", (req, res) => {
-	//res.end("ok");
-	console.log(req.session.id, req.params.event);
-	res.end("ok");
-});
+// router.get("/event/:event", (req, res) => {
+// 	//res.end("ok");
+// 	console.log(req.session.id, req.params.event);
+// 	res.end("ok");
+// });
 
 
 if (require.main === module)

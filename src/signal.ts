@@ -26,18 +26,8 @@ export class Server extends EventEmitter {
     this.requestContext = {};
     this.participants = {};
     this.channels = [new Channel("lobby")];
-    this.config = config;
-    this.wss = new WebSocket.Server({ noServer: true });
-    this.wss.on("connection", this.handleConnection);
   }
 
-  async start() {
-    this.wss.on("upgrade", (connection) => {
-      console.log("u[g");
-    });
-
-    this.wss.on("connection", this.handleConnection).bind(this);
-  }
 
   handleConnection = (connection, request) => {
     const socketId = request.headers["sec-websocket-key"];
@@ -89,7 +79,7 @@ export class Server extends EventEmitter {
         arg1: msg_str.split(" ")[1] || "",
       };
     }
-    const cmd = data.cmd;
+    const cmd = data.cmd || data.type;
 
     if (cmd === "read") {
       const content = linfs.fopen("drafts/" + data.arg1).getContent();
@@ -113,7 +103,7 @@ export class Server extends EventEmitter {
         }
       }
     } else {
-      fromSocket.send("unknown cmd");
+      fromSocket.send("unknown cmd"+cmd);
     }
   }
   static send(to: Participant, message) {
