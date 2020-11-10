@@ -1,0 +1,60 @@
+or don't. idc
+version 1.2: preload template file, preload css/js
+
+# express-react-forked
+version 1.0.x was forked from express-react-views 
+version 1.1 contains less chitchat
+
+# the code
+```js
+const React = require('react');
+const ReactDOMServer = require("react-dom/server");
+const register = require("@babel/register");
+const path = require("path");
+
+const compiler = function () {
+  let registered = false;
+  return function render(filename, props = {}, callback) {
+    !registered && register({ presets: ["@babel/preset-react", "@babel/preset-env"] });
+    registered = true;
+    try {
+      const jsx = require(path.resolve("views", filename)).default;
+      const reactComponent = React.createElement(jsx, props);
+      const html = ReactDOMServer.renderToString(reactComponent);
+      callback(null, html);
+    } catch (e) {
+      console.log(e);
+      callback(e, "");
+    }
+  };
+}
+
+module.exports = compiler;
+```
+
+# express-react-views
+
+This is an [Express][express] view engine which renders [React][react] components on server. It renders static markup and *does not* support mounting those views on the client.
+
+This is intended to be used as a replacement for existing server-side view solutions, like [jade][jade], [ejs][ejs], or [handlebars][hbs].
+
+
+## Usage
+
+```sh
+npm install express-react-forked react react-dom
+```
+
+**Note:** You must explicitly install `react` as a dependency. Starting in v0.5, `react` is a peer dependency here. This is to avoid issues that may come when using incompatible versions.
+
+### Add it to your app.
+
+```js
+// app.js
+
+var app = express();
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine());
+

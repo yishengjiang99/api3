@@ -1,0 +1,26 @@
+{
+  "name": "express-react-forked",
+  "version": "1.2.0",
+  "description": "great package for ssr react",
+  "keywords": [
+    "express",
+    "view engine",
+    "react"
+  ],
+  "main": "index.js",
+  "author": "Paul O’Shannessy <paul@oshannessy.com>, modifications from Yisheng Jiang",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yishengjiang99/api3.git"
+  },
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
