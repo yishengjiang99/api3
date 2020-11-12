@@ -11,7 +11,7 @@ const container = "sounds";
 export const logKeyboardInputs = () => {
     window.onkeydown( (e, connection)=>{
         
-        const socket = socket || initiatmg ===false && new WebSocket("ws://dps.grepawk.com=/stdin/sounds/yishengtyping.txt");
+        const socket = socket || initiatmg ===false && new WebSocket("ws://dps.grepawk.com/stdin/sounds/yishengtyping.txt");
         buffer.push({e.keyCode, type:type, e.time, });
         
     })

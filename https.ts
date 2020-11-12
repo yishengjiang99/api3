@@ -16,6 +16,7 @@ import { createEngine } from "./src/express-react-forked";
 const vhost = require("vhost");
 const connect = require("connect");
 const express = require("express");
+const fss = require("./routes/fs");
 const app = express();
 const dspServer = connect();
 const apiServer = connect();
@@ -33,14 +34,14 @@ app.engine(
 		layout: "layout.html",
 	})
 );
-app.use("/", (req, res) => {
-	res.render("welcome.jsx", {
-		layout: "layout.html",
-		links: ["piano", "dsp", "db", "yt", "fs", "spotify"],
-	});
+
+app.get("/js/:file", (req, res) => {
+	res.end(req.params.file);
 });
 app.use("/chat", express.static("./views/chat"));
 app.use("/yt", yt);
+app.use("/db", require("./routes/db"));
+
 app.use("/auth", auth);
 app.use("/fs", require("./routes/fs"));
 app.use("/views", express.static("./views"));
@@ -48,7 +49,16 @@ app.use("/dl", express.static("./music"));
 app.get("/favicon.ico", require("./routes/favicon").favicon);
 app.use("/app", express.static(__dirname + "/static"));
 app.use("/spotify", require("./ssr/src/server"));
+
+//app.use("/:dir/:file", fss);
+
 app.use("/piano", express.static("../piano/build"));
+app.use("/", (req, res) => {
+	res.render("welcome.jsx", {
+		layout: "layout.html",
+		links: ["piano", "dsp", "db", "yt", "fs", "spotify"],
+	});
+});
 const httpsServer = https.createServer(require("./tls"), app);
 const devnull = (a, b, c) => {};
 

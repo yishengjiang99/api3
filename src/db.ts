@@ -1,33 +1,70 @@
 import Axios, { AxiosResponse } from "axios";
+import { spawn } from "child_process";
+import { Readable } from "stream";
+import { Transform } from "stream";
+let conn;
 
-export async function dbQuery(sql: string, args = []) {
-	while (args) sql = sql.replace(" ? ", args[0]) && args.shift();
-	const html = require("child_process")
-		.execSync(
-			`mysql -u ${process.env.db_user} -p${process.env.db_password} -e '${sql}' grepawk --html`
-		)
-		.toString();
-	let idx = 0;
+export async function db_connect() {
+	conn =
+		conn ||
+		(await new Promise((resolve, reject) => {
+			const { stdout, stdin, stderr } = spawn("mysql", [
+				"-u",
+				process.env.db_user,
+				`-p`,
+				"-h",
+				process.env.db_host || "127.0.0.1",
+				"grepawk",
+				"--batch",
+			]);
+			stderr.on("data", (d) => reject(new Error(d.toString())));
 
-	const strmatchall = (str: any, regex: RegExp) => {
-		const matches = [];
-		idx = 0;
-		while (idx < html.length) {
-			var m = html.substring(idx).match(/<TH\>(.*?)\<\/TH>/);
-			if (!m) break;
-			matches.push(m);
-			idx = m["index"];
-		}
-		return matches;
-	};
-
-	const cols = strmatchall(html, /<TH\>(.*?)\<\/TH>/);
-	const rows = strmatchall(html, /<TD\>(.*?)\<\/TD>/);
-	return rows.reduce((jsonlist, idx, val) => {
-		if (idx % cols.length === 0) jsonlist.push({});
-		jsonlist[idx / cols.length][cols[idx % cols.length]] = val;
-	}, []);
+			stdout.once("data", (d) => {
+				if (d.toString().trim() === "Enter password:") {
+					stdin.write(process.env.db_password);
+				}
+				stdout.on("data", (d) => {
+					resolve({
+						stdout,
+						stderr,
+						stdin,
+					});
+				});
+			});
+		}));
+	return conn;
 }
+export function dbQuery(sql: string = "", args = []): Promise<Readable> {
+	while (args && sql.includes("?")) {
+		sql = sql.replace(" ? ", args[0]) && args.shift();
+	}
+	return db_connect().then(({ stdin, stdout, stderr }) => {
+		let cols = null,
+			rows = [];
+		const tab = Buffer.from("\t");
+		const rt = new Transform({
+			objectMode: true,
+			transform: (chunk, _, cb) => {
+				if (!cols) {
+					cols = chunk.split(tab);
+					cb(null, null);
+					return;
+				}
+				const row = chunk.split(tab);
+				cb(
+					null,
+					cols.reduce((obj, c, i) => {
+						obj[c] = rows[i];
+					}, {})
+				);
+			},
+		});
+		stdout.pipe(rt);
+		stdin.write(sql);
+		return rt;
+	});
+}
+
 export async function dbRow(sql: string, args = []) {
 	return dbQuery(sql, args);
 }

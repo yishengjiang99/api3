@@ -1,10 +1,10 @@
 const db = require("../src/db");
-const fs = require("fs");
+const { readFileSync } = require("fs");
 const resolve = require("path").resolve;
-const faviconfile = fs.readFileSync(resolve(__dirname, "favicon.jpg"));
+const faviconfile = readFileSync(resolve(__dirname, "favicon.jpg"));
 
 export function favicon(req, res) {
-	const username = req.cookies["username"] || uuidv4();
+	const username = (req.cookies && req.cookies["username"]) || uuidv4();
 	res.writeHead(200, "one moemnt", {
 		"Content-Type": "image/jpeg",
 		"set-cookie": "username=" + username,

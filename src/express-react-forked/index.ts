@@ -4,30 +4,7 @@ import { execSync } from "child_process";
 import { resolve } from "path";
 import { readFileSync } from "fs";
 
-const DEFAULT_OPTIONS = {
-	doctype: "<!DOCTYPE html>",
-	beautify: false,
-	transformViews: true,
-	babel: {
-		presets: [
-			"@babel/preset-react",
-			[
-				"@babel/preset-env",
-				{
-					targets: {
-						node: "current",
-					},
-				},
-			],
-		],
-		plugins: ["@babel/transform-flow-strip-types"],
-	},
-	preloadJS: [],
-	templateFiles: [],
-};
-
 const fscache = {};
-const templateCache = {};
 function httpsGetSync(url) {
 	const content = execSync(`curl '${url}'`);
 	return content;
@@ -51,17 +28,18 @@ export const createEngine = (
 	const defaults = { layout: null, preloadCss: [], preloadJS: [] };
 	const { layout, preloadCss, preloadJS } = { ...defaults, ...props };
 	var registered = false;
-
-	var engineOptions = DEFAULT_OPTIONS; // assign({}, DEFAULT_OPTIONS, engineOptions || {});
-
 	if (layout) file_get_contents(layout);
 	for (const filename of preloadCss) file_get_contents(filename);
 	for (const filename of preloadJS) file_get_contents(filename);
-
-	function renderFile(filename, options, cb) {
+	return function renderFile(filename, options, cb) {
+		!registered &&
+			require("@babel/register")({
+				presets: ["@babel/preset-react", "@babel/preset-env"],
+			});
+		registered = true;
 		try {
 			const layouts = file_get_contents(layout).split("__MAIN__");
-			var markup = engineOptions.doctype + layouts[0];
+			var markup = layouts[0];
 			for (const filename of preloadCss)
 				markup += "<style>" + file_get_contents(filename) + "</style>";
 			for (const filename of preloadJS)
@@ -71,7 +49,7 @@ export const createEngine = (
 			var component = require(filename);
 			// Transpiled ES6 may export components as { default: Component }
 			component = component.default || component;
-			markup += ReactDOMServer.renderToStaticMarkup(
+			markup += ReactDOMServer.renderToString(
 				React.createElement(component, options, [])
 			);
 			markup += layouts[1] || "";
@@ -79,12 +57,5 @@ export const createEngine = (
 			return cb(e);
 		}
 		cb(null, markup);
-	}
-
-	return renderFile;
+	};
 };
-
-export const renderInline = function (
-	markup: string,
-	output: WritableStream
-) {};
