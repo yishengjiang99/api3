@@ -23,8 +23,16 @@ const apiServer = connect();
 app.use(vhost("api.grepawk.com", apiServer));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
+
+
+app.use((req,res,next)=>{
+ res.header("Access-Control-Allow-Origin","*");
+ next()
+});
+
 dspServer.use("/api/spotify", auth);
-dspServer.use("/", express.static("../hearing-radar/public"));
+dspServer.use("/v3", require('serve-index')("../grepaudio/"));
+dspServer.use("/", express.static("../grepaudio/v1"));
 apiServer.use("/", (req, res) => res.end("api"));
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
@@ -56,10 +64,16 @@ app.use("/piano", express.static("../piano/build"));
 app.use("/", (req, res) => {
 	res.render("welcome.jsx", {
 		layout: "layout.html",
-		links: ["piano", "dsp", "db", "yt", "fs", "spotify"],
+		files: [
+			{display:"piano",file:"https://www.grepawk.com"}, 
+			{display:"dsp",	file:"dsp.piano.com"},
+			{display:"db",files:"/db"}, 
+			{display:"fs",url:"files"}, 
+			{display:"spotify",file:"spotify"}
+		],
 	});
 });
-const httpsServer = https.createServer(require("./tls"), app);
+const httpsServer = https.createServer(require("./tls").httpsTLS, app);
 const devnull = (a, b, c) => {};
 
 handleWsRequest(httpsServer, (uri: string) => {
@@ -70,18 +84,14 @@ handleWsRequest(httpsServer, (uri: string) => {
 		return sigServer.handleConnection;
 	} else if (uri.match(/stdin/)) {
 		return stdinHandler;
-	} else {
+	}  else if (uri.match(/rtmp/)) {
+		return stdinHandler;
+	} else if (uri.match(/proxy/)) {
+		return stdinHandler;
+	}else {
 		return devnull;
 	}
 });
-const port = process.argv[2] || 443;
 
-// httpsServer.listen(443); //"../sound.sock"); //process.argv[2] || 3000);
-console.log("listening on " + port); //
-// httpsServer.listen("/tmp/socket"); //"../sound.sock"); //process.argv[2] || 3000);
-const http = require("http").createServer(app);
-if (existsSync("/tmp/node.socket")) fs.unlinkSync("/tmp/node.socket");
-http.listen("/tmp/node.socket");
-process.on("beforeExit", () => {
-	fs.unlinkSync("/tmp/node.socket");
-});
+ 
+httpsServer.listen(443); 

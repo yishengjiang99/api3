@@ -9,8 +9,7 @@ import { getContainer, fopen } from "./linfs";
 import { EventEmitter } from "events";
 import { readFile } from "./signaling/readFile";
 const url = require("url");
-const formatDate = (now: Date) =>
-  `${now.getMonth()}_${now.getDate()}_${now.getHours()}`;
+const formatDate = (now: Date) =>(new Date()).toDateString();
 
 export class Server extends EventEmitter {
   channels: any;
@@ -29,7 +28,8 @@ export class Server extends EventEmitter {
   }
 
 
-  handleConnection = (connection, request) => {
+  handleConnection = ( request, connection) => {
+console.log(request,connection);
     const socketId = request.headers["sec-websocket-key"];
     const participant = new Participant(connection, socketId);
     participant.udid = socketId;

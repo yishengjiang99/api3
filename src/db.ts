@@ -85,8 +85,7 @@ export async function dbUpsert(
 		})
 		.join(",")}`;
 	try {
-		const { insertId } = await dbQuery(sql);
-		return insertId;
+await dbQuery(sql);
 	} catch (e) {
 		console.error(e);
 	}

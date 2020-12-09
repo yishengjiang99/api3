@@ -2906,3 +2906,14 @@ Oct 20 02:28:13 greepp systemd[1]: Started My httpd Service.
 Oct 20 02:28:16 greepp ts-node[25010]: Tue, 20 Oct 2020 02:28:16 GMT express-session deprecated undefined resave option; provide resave option at https.ts:32:9
 Oct 20 02:28:16 greepp ts-node[25010]: Tue, 20 Oct 2020 02:28:16 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at https.ts:32:9
 Oct 20 02:28:18 greepp ts-node[25010]: listening on 443
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Nov 12 21:18:21 greepp systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Nov 12 21:18:21 greepp systemd[1]: httpd.service: Failed with result 'exit-code'.
+Nov 12 21:18:38 greepp systemd[1]: httpd.service: Service hold-off time over, scheduling restart.
+Nov 12 21:18:38 greepp systemd[1]: httpd.service: Scheduled restart job, restart counter is at 4.
+Nov 12 21:18:38 greepp systemd[1]: Stopped My httpd Service.
+Nov 12 21:18:38 greepp systemd[1]: Started My httpd Service.
+Nov 12 21:18:45 greepp ts-node[20890]: listening on 443
+Nov 12 21:26:25 greepp systemd[1]: Stopping My httpd Service...
+Nov 12 21:26:25 greepp systemd[1]: Stopped My httpd Service.
+Nov 12 21:26:25 greepp systemd[1]: Started My httpd Service.
