@@ -2917,3 +2917,27 @@ Nov 12 21:18:45 greepp ts-node[20890]: listening on 443
 Nov 12 21:26:25 greepp systemd[1]: Stopping My httpd Service...
 Nov 12 21:26:25 greepp systemd[1]: Stopped My httpd Service.
 Nov 12 21:26:25 greepp systemd[1]: Started My httpd Service.
+-- Logs begin at Mon 2020-07-06 23:32:14 UTC. --
+Dec 09 06:03:53 grepawk.com ts-node[1621]:     at Module._compile (internal/modules/cjs/loader.js:1138:30)
+Dec 09 06:03:53 grepawk.com ts-node[1621]:     at Module.m._compile (/usr/lib/node_modules/ts-node/src/index.ts:858:23)
+Dec 09 06:03:53 grepawk.com ts-node[1621]:     at Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+Dec 09 06:03:53 grepawk.com ts-node[1621]:     at Object.require.extensions.<computed> [as .ts] (/usr/lib/node_modules/ts-node/src/index.ts:861:12)
+Dec 09 06:03:53 grepawk.com ts-node[1621]:     at Module.load (internal/modules/cjs/loader.js:986:32)
+Dec 09 06:03:53 grepawk.com ts-node[1621]:     at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+Dec 09 06:03:53 grepawk.com systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Dec 09 06:03:53 grepawk.com systemd[1]: httpd.service: Failed with result 'exit-code'.
+Dec 09 06:03:54 grepawk.com systemd[1]: Stopped My httpd Service.
+Dec 09 06:03:54 grepawk.com systemd[1]: Started My httpd Service.
+Dec 09 06:04:00 grepawk.com ts-node[1807]: Error: listen EADDRINUSE: address already in use :::443
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Server.setupListenHandle [as _listen2] (net.js:1313:16)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at listenInCluster (net.js:1361:12)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Server.listen (net.js:1447:7)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Object.<anonymous> (/home/AzureUser/api3/https.ts:82:13)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Module._compile (internal/modules/cjs/loader.js:1138:30)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Module.m._compile (/usr/lib/node_modules/ts-node/src/index.ts:858:23)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Module._extensions..js (internal/modules/cjs/loader.js:1158:10)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Object.require.extensions.<computed> [as .ts] (/usr/lib/node_modules/ts-node/src/index.ts:861:12)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Module.load (internal/modules/cjs/loader.js:986:32)
+Dec 09 06:04:00 grepawk.com ts-node[1807]:     at Function.Module._load (internal/modules/cjs/loader.js:879:14)
+Dec 09 06:04:00 grepawk.com systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Dec 09 06:04:00 grepawk.com systemd[1]: httpd.service: Failed with result 'exit-code'.
