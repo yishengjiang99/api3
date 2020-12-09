@@ -1,41 +1,36 @@
 import * as linfs from "./linfs";
-import * as WebSocket from "ws";
 import * as fs from "fs";
 import { IncomingHttpHeaders, IncomingMessage } from "http";
 import { Data } from "ws";
 import * as db from "./db";
-import { getContainer, fopen } from "./linfs";
 
 import { EventEmitter } from "events";
-import { readFile } from "./signaling/readFile";
+import { WsServer, WsSocket } from "grep-wss";
 const url = require("url");
 const formatDate = (now: Date) =>(new Date()).toDateString();
 
 export class Server extends EventEmitter {
   channels: any;
-  wss: WebSocket.Server;
-  participants: any;
+  wss: WsServer; //.Server;
+  participants: {[key:string]:Participant};
   config: any;
-  port: any;
+
   requestContext: {};
   static k;
-
-  constructor(config: WebSocket.ServerOptions) {
+  constructor(config ?:{}){
     super();
-    this.requestContext = {};
-    this.participants = {};
     this.channels = [new Channel("lobby")];
+    this.config=config;
+    this.participants={};
   }
 
-
-  handleConnection = ( request, connection) => {
-console.log(request,connection);
-    const socketId = request.headers["sec-websocket-key"];
-    const participant = new Participant(connection, socketId);
+  handleConnection = ( ws:WsSocket) => {
+    const socketId = ws.headers["sec-websocket-key"];
+    const participant = new Participant(ws, socketId);
     participant.udid = socketId;
     this.participants[participant.udid] = participant;
     participant.joinChannel(this.channels[0]);
-    connection.send(
+    ws.write(
       JSON.stringify({
         udid: participant.udid,
         channel: participant.currentChannel,
@@ -43,24 +38,23 @@ console.log(request,connection);
         channels: this.channels,
       })
     );
-    connection.onmessage = (message) => {
+    ws.on('data',  (message) => {
       try {
-        this.handleMessage(message, participant);
+        this.handleMessage(message.toString(), participant);
       } catch (e) {
         //don't crash
         console.error(e);
-        connection.send(e.message);
+        ws.write(e.message);
       }
-    };
+    });
   };
 
-  handleMessage(message, participant) {
-    const fromSocket: WebSocket = message.target;
+  handleMessage(msg_str, participant) {
+    const fromSocket: WsSocket = participant.connection;
     const type = "mesage";
-    let msg_str: string = message.data;
-    console.log(typeof msg_str);
-    console.log(msg_str);
-    if (msg_str === "ping") fromSocket.send("pong");
+    
+    if (msg_str === "ping") fromSocket.write("pong");
+    
     let data;
     if (msg_str.startsWith("csv:")) {
       msg_str = msg_str.substr(4);
@@ -84,7 +78,7 @@ console.log(request,connection);
     if (cmd === "read") {
       const content = linfs.fopen("drafts/" + data.arg1).getContent();
 
-      fromSocket.send("filecontent\n"+content);
+      fromSocket.write("filecontent\n"+content);
     } else if (cmd === "list") {
       Server.send(participant, {
         type: "fileList",
@@ -94,27 +88,27 @@ console.log(request,connection);
       console.log("before comp");
       const now = new Date();
       const filename = `drafts/${formatDate(now)}.csv`;
-      fromSocket.send(filename);
+      fromSocket.write(filename);
       linfs.fopen(filename).append(data.data + "\n");
 
-      for (const ws of this.wss.clients) {
-        if (ws.id !== fromSocket.id) {
-          ws.send("remote " + data.csv);
+      for (const ws of Object.values(this.participants)){ //}.map(c=>c.connection)) {
+        if (ws.udid !== participant.id) {
+          ws.connection.write("remote " + data.csv);
         }
       }
     } else {
-      fromSocket.send("unknown cmd"+cmd);
+      fromSocket.write("unknown cmd"+cmd);
     }
   }
   static send(to: Participant, message) {
     if (message instanceof Object) {
       message = JSON.stringify(message);
     }
-    to.connection.send(message);
+    to.connection.write(message);
   }
   sendTo(udid, jsonObj) {
     let ws = this.participants[udid];
-    ws.send(JSON.stringify(jsonObj));
+    ws.connection.write(JSON.stringify(jsonObj));
   }
 }
 
@@ -189,13 +183,13 @@ export class Channel {
 export class Participant {
   udid: string;
   info: Record<string, any>;
-  connection: WebSocket;
+  connection: WsSocket;
   currentChannel: Channel;
   sdp: string;
   requestHeaders: IncomingHttpHeaders;
   userName: string | string[];
   openFd: Number;
-  constructor(connection: WebSocket, udid) {
+  constructor(connection: WsSocket, udid) {
     this.udid = udid;
     this.connection = connection;
   }

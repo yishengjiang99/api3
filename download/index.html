@@ -1,0 +1,133 @@
+<html>
+
+<head>
+	<title>website</title>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+	<div id="container">
+		<div id="rx1">
+			<button id='record'>Record</button>
+			<button id='stop'>stop</button>
+
+		</div>
+		<div id="output">
+
+		</div>
+	</div>
+	<script type="module">
+		//const t0 = performance.now();
+		const now = () => performance.now() - t0;
+		const appevents = [];
+		function onEvent(event) {
+			appevents.push(now() + ":" + event);
+			document.querySelector("#output").innerHTML = appevents.slice(-20).map(e => {
+				return `<li>${e}</li>`;
+			}).join("")
+		}
+		//onEvent("document rady;")
+		document.body.addEventListener('click', main, { once: true });
+
+		function main() {
+			try {
+				run().then(console.log);
+			} catch (e) {
+				onEvent("ERRROR:", e.message);
+			}
+		}
+		let t0;
+		async function run() {
+			t0 = performance.now();
+
+			onEvent("document rady;")
+
+			const ctx = new AudioContext();
+			await ctx.suspend();
+			const template = `
+const noise = new Float32Array(Array(512).fill(1).map(d => Math.random() * 0.2 - 0.1))
+class DownloadStream extends AudioWorkletProcessor {
+	constructor(options) {
+		super(options);
+		this.buffers = [];
+		this.bufferLengths = [];
+		this.offset = 0; //index of cu
+		this.port.onmessage = ({ data: { readable } }) => {
+			const reader = readable.getReader();
+			const download = ({ done, value }) => {
+				if (done) {
+					return;
+				}
+				this.buffers.append(value);
+				this.bufferLengths.push(value.length);
+				reader.read().then(download);
+			}
+			reader.read().then(download);
+		}
+	}
+	process(inputs, outputs) {
+		const channels = outputs.flat();
+		if(!this.buffers[0]){
+			outputs[0][0].set(noise,0,512) ;
+		}
+		const head = this.buffers[0];
+		const uint8 = this.buffers[0].slice(0, Math.max(512 * 4, this.buffers[0].length));
+		if (uint8.length < 4 * 512) {
+			this.buffers.shift();
+			uint8 = uint8.concat(this.buffers[0].slice(0, 512 * 4 - uint8.lenght));
+		}
+		for (let i = 0; i < 512; i++) {
+			if (uint8[4 * i] & 0x80) {
+				channels[i] = -1 + (uint8[4 * i] | uint8[4 * i + 1] << 8 | uint8[4 * i + 2] << 16 | uint8[4 * i + 2] << 24) / 0x80000000;
+
+			} else {
+				channels[i] = (uint8[4 * i] | uint8[4 * i + 1] << 8 | uint8[4 * i + 2] << 16 | uint8[4 * i + 2] << 24) / 0x7fffffff;
+			}
+		}
+		return true;
+	}
+};
+registerProcessor("download-stream", DownloadStream);`;
+			const blobUrl = URL.createObjectURL(new Blob([template], { type: "text/javascript" }));
+			await ctx.audioWorklet.addModule(blobUrl);
+			onEvent("audioworklet added rady;")
+
+			const proc = new AudioWorkletNode(ctx, "download-stream", {
+				numberOfInputs: 1,
+				numberOfOutputs: 2
+			});
+			onEvent("proc added rady;")
+
+			proc.connect(ctx.destination);
+
+			const worker = new Worker(
+				URL.createObjectURL(
+					new Blob([/* javascript */`
+onmessage = async (event){
+	const port = event.data.port;
+	postMessage({msg: "worker init"});
+	const resp = await fetch('/',{method:POST});
+	const reader=await resp.body.getReader();
+	postMessage({msg: "worker init"});
+	port.postMessage({reader});
+});
+			
+					`], { type: "text/javascrit" })
+				)
+			);
+			worker.postMessage({
+				"port": proc.port
+			});
+			worker.onmessage = (e) => {
+				if (e.msg) {
+					onEvent(e.msg);
+				}
+			}
+
+		}
+
+	</script>
+</body>
+
+</html>

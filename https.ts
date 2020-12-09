@@ -65,11 +65,10 @@ app.use("/", (req, res) => {
 	res.render("welcome.jsx", {
 		layout: "layout.html",
 		files: [
-			{display:"piano",file:"https://www.grepawk.com"}, 
-			{display:"dsp",	file:"dsp.piano.com"},
-			{display:"db",files:"/db"}, 
-			{display:"fs",url:"files"}, 
-			{display:"spotify",file:"spotify"}
+			{display:"piano",file:"https://www.grepawk.com/piano"}, 
+			{display:"dsp",file:"https://dsp.grepawk.com"},
+		
+			{display:"spotify",file:"https://www.grepawk.com/spotify"},
 		],
 	});
 });

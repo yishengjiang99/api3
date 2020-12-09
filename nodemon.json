@@ -1,9 +1,11 @@
 {
   "watch": [
     "src",
+	"views",
     "https.ts",
     "ssr/src/server.ts",
     "routes"
-  ],"includs":["*.ts", "*.js", "*html"],
+  ],
+ "includes":["*.ts", "*.js", "*html"],
   "exec": "ts-node https.ts"
 }

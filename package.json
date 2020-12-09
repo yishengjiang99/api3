@@ -30,7 +30,7 @@
 		"express-vhost": "^0.2.0",
 		"fluent-ffmpeg": "^2.1.2",
 		"fluent-ffmpeg-multistream": "^1.0.0",
-		"grep-wss": "^1.0.4",
+		"grep-wss": "^1.0.8",
 		"html-typings": "^1.4.4",
 		"memfs": "^3.2.0",
 		"mime": "^2.4.6",
