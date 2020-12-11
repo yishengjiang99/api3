@@ -1,12 +1,10 @@
 import * as linfs from "./linfs";
-import * as fs from "fs";
 import { IncomingHttpHeaders, IncomingMessage } from "http";
 import { Data } from "ws";
 import * as db from "./db";
 
 import { EventEmitter } from "events";
 import { WsServer, WsSocket } from "grep-wss";
-const url = require("url");
 const formatDate = (now: Date) =>(new Date()).toDateString();
 
 export class Server extends EventEmitter {
@@ -54,7 +52,7 @@ export class Server extends EventEmitter {
     const type = "mesage";
     
     if (msg_str === "ping") fromSocket.write("pong");
-    
+
     let data;
     if (msg_str.startsWith("csv:")) {
       msg_str = msg_str.substr(4);
@@ -134,16 +132,9 @@ export class Channel {
   async load() {
     this.members = [];
     this.folder = "ch_" + this.name;
-    this.dbrow =
-      (await db.dbRow("select * from room where name = ?", [this.name])) ||
-      (await db.dbInsert("room", {
-        name: this.name,
-      }));
+    this.dbrow ={}
 
-    const members = await db.dbQuery(
-      "select * from room_participants where roomname = ?",
-      [this.name]
-    );
+    const members = []
     return members;
 
     //this.members = linfs.fopen(this.name + "/info").getContent();

@@ -2,8 +2,8 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 export default function ({ cwd, tracks, onClick }) {
 	return (
-		<div style={{ display: "grid", gridTemplateColumns: "1fr 4fr" }}>
-			<div style={{ height: "90vh", overflowY: "scroll" }}>
+		<div>
+			<div class="fileList" style={{ overflowY: "scroll" }}>
 				<span>{cwd}</span>
 				<ul>
 					{tracks.map((track, idx) => (
@@ -15,9 +15,9 @@ export default function ({ cwd, tracks, onClick }) {
 					))}
 				</ul>
 			</div>
-			<div style={{ height: "90vh", overflowY: "scroll" }}>
+			<main style={{  overflowY: "scroll" }}>
 				<iframe name="right"></iframe>
-			</div>
+			</main>
 		</div>
 	);
 }

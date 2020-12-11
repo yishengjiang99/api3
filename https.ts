@@ -5,13 +5,11 @@ import { execSync } from "child_process";
 import * as db from "./src/db";
 import * as https from "https";
 import * as auth from "./routes/auth";
-import yt from "./routes/yt";
 import { stdinHandler } from "./src/stdin";
 import { handleWsRequest } from "grep-wss";
 import { Server as SignalServer } from "./src/signal";
-import * as session from "express-session";
-import { existsSync } from "fs";
-import * as fs from "fs";
+import { httpsTLS } from "./tls";
+import { linkMain } from "./reverseProxy";
 import { createEngine } from "./src/express-react-forked";
 const vhost = require("vhost");
 const connect = require("connect");
@@ -20,77 +18,78 @@ const fss = require("./routes/fs");
 const app = express();
 const dspServer = connect();
 const apiServer = connect();
+
+linkMain(app);
 app.use(vhost("api.grepawk.com", apiServer));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
 app.use(vhost("dsp.grepawk.com", dspServer));
 
-
-app.use((req,res,next)=>{
- res.header("Access-Control-Allow-Origin","*");
- next()
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
 
 dspServer.use("/api/spotify", auth);
-dspServer.use("/v3", require('serve-index')("../grepaudio/"));
+dspServer.use("/v3", require("serve-index")("../grepaudio/"));
 dspServer.use("/", express.static("../grepaudio/v1"));
 apiServer.use("/", (req, res) => res.end("api"));
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
 app.engine(
-	"jsx",
-	createEngine({
-		layout: "layout.html",
-	})
+  "jsx",
+  createEngine({
+    layout: "layout.html",
+  })
 );
 
 app.get("/js/:file", (req, res) => {
-	res.end(req.params.file);
+  res.end(req.params.file);
 });
-app.use("/chat", express.static("./views/chat"));
-app.use("/yt", yt);
+app.use("/chat", (req, res) => {
+  return res.render("chat.jsx", {
+    layout: "layout.html",
+  });
+});
 app.use("/db", require("./routes/db"));
 
 app.use("/auth", auth);
-app.use("/fs", require("./routes/fs"));
+app.use("/fs", fss);
 app.use("/views", express.static("./views"));
-app.use("/dl", express.static("./music"));
 app.get("/favicon.ico", require("./routes/favicon").favicon);
-app.use("/app", express.static(__dirname + "/static"));
 app.use("/spotify", require("./ssr/src/server"));
-
-//app.use("/:dir/:file", fss);
-
+app.use("/static/", require("serve-index")("./static"));
+app.use("/static", express.static("./static"));
 app.use("/piano", express.static("../piano/build"));
 app.use("/", (req, res) => {
-	res.render("welcome.jsx", {
-		layout: "layout.html",
-		files: [
-			{display:"piano",file:"https://www.grepawk.com/piano"}, 
-			{display:"dsp",file:"https://dsp.grepawk.com"},
-		
-			{display:"spotify",file:"https://www.grepawk.com/spotify"},
-		],
-	});
+  res.render("welcome.jsx", {
+    layout: "layout.html",
+    files: [
+      { display: "piano", file: "https://www.grepawk.com/piano" },
+      { display: "dsp", file: "https://dsp.grepawk.com" },
+
+      { display: "spotify", file: "https://www.grepawk.com/spotify" },
+    ],
+  });
 });
-const httpsServer = https.createServer(require("./tls").httpsTLS, app);
+const httpsServer = https.createServer(httpsTLS, app);
+
 const devnull = (a, b, c) => {};
 
 handleWsRequest(httpsServer, (uri: string) => {
-	if (uri.match(/rtc/)) {
-		return require("./lib/rtcsignal").rtcHandler;
-	} else if (uri.match(/signal/)) {
-		const sigServer = new SignalServer({});
-		return sigServer.handleConnection;
-	} else if (uri.match(/stdin/)) {
-		return stdinHandler;
-	}  else if (uri.match(/rtmp/)) {
-		return stdinHandler;
-	} else if (uri.match(/proxy/)) {
-		return stdinHandler;
-	}else {
-		return devnull;
-	}
+  if (uri.match(/rtc/)) {
+    return require("./lib/rtcsignal").rtcHandler;
+  } else if (uri.match(/signal/)) {
+    const sigServer = new SignalServer({});
+    return sigServer.handleConnection;
+  } else if (uri.match(/stdin/)) {
+    return stdinHandler;
+  } else if (uri.match(/rtmp/)) {
+    return stdinHandler;
+  } else if (uri.match(/proxy/)) {
+    return stdinHandler;
+  } else {
+    return devnull;
+  }
 });
 
- 
-httpsServer.listen(443); 
+httpsServer.listen(443);

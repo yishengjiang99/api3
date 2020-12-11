@@ -1,41 +1,54 @@
 <html>
 	<head>
 		<style>
-			body {
-				background-color: black;
-				color: white;
-				display: grid;
-				grid-template-rows: auto 1fr auto;
-				place-items: center;
-			}
+	
 			a {
 				color: white;
 			}
 
-			main {
-				grid-row: 2/5;
-			}
+	
+			.vscode {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 9;
+  grid-gap: 10px;
+  color: white;
+  background-color: #010101;
+}
+.leftNavBar {
+  grid-row: 1;
+  grid-column: 1/1;
+}
+.fileList {
+  grid-row: 2/10;
+  grid-column: 2/15;
+  align-self:stretch;
+}
+.cmdPalletTabs {
+  grid-row: 1;
+  grid-column: 5/40;
+}
 
-			header {
-				background-color: light-gray;
-				color: white;
-			}
+main {
+  grid-row: 2/6;
+  grid-column: 16/40;
+}
 
-			footer {
-				place-items: center;
-				/* grid-row: 6; */
-				background-color: black;
-				overflow-y: scroll;
-			}
+footer {
+  grid-column: 15/40;
+  grid-row: 7/10;
+}
 		</style>
 		<style tag="style" src="/static/tty.css"></style>
 		<script tag="script" src="/static/simple-console.js"></script>
 	</head>
 
-	<body>
-		<header></header>
-		<main>__MAIN__</main>
-		<div id="console"></div>
+	<body class='vscode'>
+		<header class='cmdPalletTabs'></header>
+__MAIN__
+		<footer id='console'></footer>
 		<script type="module">
 			var con = new SimpleConsole({
 				placeholder: "Enter JavaScript",

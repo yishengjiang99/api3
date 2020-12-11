@@ -1,87 +1,66 @@
 import {
+  BlobItem,
   BlobServiceClient,
   BlockBlobClient,
   ContainerClient,
-} from "@azure/storage-blob";
-import { getType } from "mime";
-import { execSync } from "child_process";
-import { basename, dirname } from "path";
-import { AbortController } from "@azure/abort-controller";
-import { readdir } from "fs";
+} from "@azure/storage-blob"
+import { getType } from "mime-type"
+import { execSync } from "child_process"
+import { basename, dirname } from "path"
+import { readdir } from "fs"
+import { Readable } from "stream"
 
-const SigTrap = new AbortController();
+const SigTrap = new AbortController()
 
 process.on("SIGINT", function () {
-  SigTrap.abort();
-});
-
-export async function listFiless(asset) {
-  const wsclient= BlobServiceClient.fromConnectionString(
+  SigTrap.abort()
+})
+export const wsclient = (azconn_str = ""): BlobServiceClient =>
+  BlobServiceClient.fromConnectionString(
+    azconn_str ||
+      process.env.AZ_CONN_STR ||
+      process.env.AZURE_STORAGE_CONNECTION_STRING
+  )
+export async function listFiles(asset): Promise<BlobItem[]> {
+  const wsclient = BlobServiceClient.fromConnectionString(
     process.env.AZURE_STORAGE_CONNECTION_STRING
-  ).getContainerClient(asset);
-  let marker=null;
-  const iterator = wsclient.listBlobsFlat().byPage({ continuationToken: marker, maxPageSize: 10 });
-  let i =0;
-  for (const blob of wsclient.listBlobsFlat()) {
-    console.log(`Blob ${i++}: ${blob.name}`);
+  ).getContainerClient(asset)
+  let marker = null
+  const iterator = wsclient
+    .listBlobsFlat()
+    .byPage({ continuationToken: marker, maxPageSize: 10 })
+  const list = []
+  for await (const item of iterator) {
+    list.push(item)
   }
+  return list
 }
-listFiless('cdn')
-function getContainerClient() {
+
+export const getContainerClient = () => {
   return BlobServiceClient.fromConnectionString(
     process.env.AZURE_STORAGE_CONNECTION_STRING
-  ).getContainerClient("cdn");
+  ).getContainerClient("cdn")
 }
 
-
-export async function uploadFile(path: string) {
-  const client = getContainerClient();
-  if (!client) throw Error("no ContainerClient");
-  console.log(blobName + "..........");
-  var blobName = path.split("/").join("-");
-
-  var blockBlobClient: BlockBlobClient = client.getBlockBlobClient(blobName);
-  while (await blockBlobClient.exists()) {
-    let dot = blobName.lastIndexOf(".");
-    blobName =
-      dot > 0
-        ? blobName.substring(0, dot) +
-          Math.random() * 100 +
-          blobName.substring(dot)
-        : blobName.concat(Math.random() * 100 + "");
-    blockBlobClient = client.getBlockBlobClient(blobName);
-  }
-
-  console.log("starting upload of " + path);
+export function listContainerFiles(container): Readable {
+  return Readable.from(wsclient().getContainerClient(container).listBlobsFlat())
+}
+export function listFilesSync(container = "pcm") {
   try {
-    const resp = await blockBlobClient.uploadFile(path, {
-      onProgress: (event) => console.log(event),
-      abortSignal: SigTrap.signal,
-      concurrency: 5,
-      blobHTTPHeaders: {
-        blobContentType: getType(basename(path)),
-        blobCacheControl: "public, max-age=7776000",
-      },
-    });
-    return resp;
-  } catch (e) {
-    throw e;
+    const urls = []
+    let str = execSync(
+      `curl -s 'https://grep32bit.blob.core.windows.net/${container}?resttype=container&comp=list'`
+    ).toString()
+    while (str.length) {
+      let m = str.match(/<Url>(.*?)<\/Url>/)
+      if (!m) break
+      urls.push(m[1])
+      str = str.slice(m[0].length)
+    }
+    return urls
+  } catch (error) {
+    console.log(error.message);
+    return [];
   }
-  return null;
 }
 
-export async function uploadCLI(argv2: any) {
-  const filepath = process.argv[2] || argv2;
-  if (!filepath) {
-    console.info("Usage: upload [filepath]");
-    return;
-  }
-  const client = getContainerClient();
-  readdir(filepath,(err,files)=>{
-    if(err) console.error(err);
-    if(files)  files.every(f=>{
-      console.log(f);
-      uploadFile(f);
-    });
-  })
-}
