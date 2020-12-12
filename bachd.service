@@ -1,0 +1,15 @@
+[Unit]
+Description=My httpd Service
+After=network.target
+
+[Service]
+Type=simple
+EnvironmentFile=/home/AzureUser/ssr-bach
+User=AzureUser
+WorkingDirectory=/home/AzureUser/ssr-bach
+ExecStart=/usr/bin/ts-node /home/AzureUser/ssr-bach/src/index.ts
+Restart=always
+RestartSec=16
+
+[Install]
+WantedBy=multi-user.target

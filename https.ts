@@ -18,7 +18,33 @@ const fss = require("./routes/fs");
 const app = express();
 const dspServer = connect();
 const apiServer = connect();
+app.use("/", (req, res) => {
+  const pathu = req.url.split("/");
+  // res.end();
+  // switch (pathu[0]) {
+  //   case "note":
+  //     switch (pathu[1]) {
+  //       case "":
+  //         res.end("show index");
+  //         break;
+  //       default:
+  //         res.end(pathu[1]);
+  //         break;
+  //     }
+  //     break;
+  // }
 
+  res.render("welcome.jsx", {
+    layout: "layout.html",
+    files: [
+      { display: req.url, file: "req.url" },
+      { display: "piano", file: "https://www.grepawk.com/piano" },
+      { display: "dsp", file: "https://dsp.grepawk.com" },
+
+      { display: "spotify", file: "https://www.grepawk.com/spotify" },
+    ],
+  });
+});
 linkMain(app);
 app.use(vhost("api.grepawk.com", apiServer));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
@@ -30,8 +56,10 @@ app.use((req, res, next) => {
 });
 
 dspServer.use("/api/spotify", auth);
-dspServer.use("/v3", require("serve-index")("../grepaudio/"));
+dspServer.use("/v3", require("serve-index")("../grepaudio/v3"));
+
 dspServer.use("/", express.static("../grepaudio/v1"));
+
 apiServer.use("/", (req, res) => res.end("api"));
 app.set("views", __dirname + "/views");
 app.set("view engine", "jsx");
@@ -45,6 +73,10 @@ app.engine(
 app.get("/js/:file", (req, res) => {
   res.end(req.params.file);
 });
+app.get("/sf/:note/(:instr)", (req, res) => {
+  res.end(req.params.note);
+});
+
 app.use("/chat", (req, res) => {
   return res.render("chat.jsx", {
     layout: "layout.html",
@@ -60,17 +92,7 @@ app.use("/spotify", require("./ssr/src/server"));
 app.use("/static/", require("serve-index")("./static"));
 app.use("/static", express.static("./static"));
 app.use("/piano", express.static("../piano/build"));
-app.use("/", (req, res) => {
-  res.render("welcome.jsx", {
-    layout: "layout.html",
-    files: [
-      { display: "piano", file: "https://www.grepawk.com/piano" },
-      { display: "dsp", file: "https://dsp.grepawk.com" },
 
-      { display: "spotify", file: "https://www.grepawk.com/spotify" },
-    ],
-  });
-});
 const httpsServer = https.createServer(httpsTLS, app);
 
 const devnull = (a, b, c) => {};
@@ -91,5 +113,4 @@ handleWsRequest(httpsServer, (uri: string) => {
     return devnull;
   }
 });
-
 httpsServer.listen(443);
