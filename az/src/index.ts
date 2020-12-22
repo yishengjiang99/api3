@@ -1,66 +1,60 @@
 import {
-  BlobItem,
-  BlobServiceClient,
-  BlockBlobClient,
-  ContainerClient,
-} from "@azure/storage-blob"
-import { getType } from "mime-type"
-import { execSync } from "child_process"
-import { basename, dirname } from "path"
-import { readdir } from "fs"
-import { Readable } from "stream"
+	StorageSharedKeyCredential,
+	BlockBlobClient,
+	BlobServiceClient,
+	ContainerClient,
+} from "@azure/storage-blob";
 
-const SigTrap = new AbortController()
+import { spawn } from "child_process";
+import { readFileSync, statSync } from "fs";
 
-process.on("SIGINT", function () {
-  SigTrap.abort()
-})
-export const wsclient = (azconn_str = ""): BlobServiceClient =>
-  BlobServiceClient.fromConnectionString(
-    azconn_str ||
-      process.env.AZ_CONN_STR ||
-      process.env.AZURE_STORAGE_CONNECTION_STRING
-  )
-export async function listFiles(asset): Promise<BlobItem[]> {
-  const wsclient = BlobServiceClient.fromConnectionString(
-    process.env.AZURE_STORAGE_CONNECTION_STRING
-  ).getContainerClient(asset)
-  let marker = null
-  const iterator = wsclient
-    .listBlobsFlat()
-    .byPage({ continuationToken: marker, maxPageSize: 10 })
-  const list = []
-  for await (const item of iterator) {
-    list.push(item)
-  }
-  return list
+import { basename, resolve } from "path";
+export { listContainerFiles } from "./list-blobs";
+export * from "./page-blobs";
+const account = process.env.azaccountname;
+const sharedKeyCredential = new StorageSharedKeyCredential(
+	account,
+	process.env.azkey
+);
+export const wsclient = (): BlobServiceClient => {
+	return new BlobServiceClient(
+		`https://${account}.blob.core.windows.net`,
+		sharedKeyCredential
+	);
+};
+
+export function uploadSync(
+	filepath: string,
+	container: string
+): Promise<BlockBlobClient | void> {
+	const file = resolve(filepath);
+	return wsclient()
+		.getContainerClient(container)
+		.uploadBlockBlob(basename(file), readFileSync(file), statSync(file).size, {
+			blobHTTPHeaders: {
+				blobContentType: require("mime-types").lookup(file),
+			},
+		})
+		.then(({ blockBlobClient, response }) => {
+			if (response.errorCode && !blockBlobClient)
+				throw new Error(response.errorCode);
+			return blockBlobClient;
+		})
+		.catch((e) => {
+			Promise.reject(e);
+		});
 }
+export const cspawn = (cmd, str) => {
+	const proc = spawn(cmd, str.split(" "));
+	proc.stderr.pipe(process.stderr);
+	// console.log(cmd + " " + str);
+	return proc;
+};
 
-export const getContainerClient = () => {
-  return BlobServiceClient.fromConnectionString(
-    process.env.AZURE_STORAGE_CONNECTION_STRING
-  ).getContainerClient("cdn")
+if (process.argv[2] || process.argv[3]) {
+	uploadSync(process.argv[2] || process.argv[3], "pcm")
+		.then((res) => {
+			process.stdout.write(res && res.url);
+		})
+		.catch(console.log);
 }
-
-export function listContainerFiles(container): Readable {
-  return Readable.from(wsclient().getContainerClient(container).listBlobsFlat())
-}
-export function listFilesSync(container = "pcm") {
-  try {
-    const urls = []
-    let str = execSync(
-      `curl -s 'https://grep32bit.blob.core.windows.net/${container}?resttype=container&comp=list'`
-    ).toString()
-    while (str.length) {
-      let m = str.match(/<Url>(.*?)<\/Url>/)
-      if (!m) break
-      urls.push(m[1])
-      str = str.slice(m[0].length)
-    }
-    return urls
-  } catch (error) {
-    console.log(error.message);
-    return [];
-  }
-}
-
