@@ -18,33 +18,6 @@ const fss = require("./routes/fs");
 const app = express();
 const dspServer = connect();
 const apiServer = connect();
-app.use("/", (req, res) => {
-  const pathu = req.url.split("/");
-  // res.end();
-  // switch (pathu[0]) {
-  //   case "note":
-  //     switch (pathu[1]) {
-  //       case "":
-  //         res.end("show index");
-  //         break;
-  //       default:
-  //         res.end(pathu[1]);
-  //         break;
-  //     }
-  //     break;
-  // }
-
-  res.render("welcome.jsx", {
-    layout: "layout.html",
-    files: [
-      { display: req.url, file: "req.url" },
-      { display: "piano", file: "https://www.grepawk.com/piano" },
-      { display: "dsp", file: "https://dsp.grepawk.com" },
-
-      { display: "spotify", file: "https://www.grepawk.com/spotify" },
-    ],
-  });
-});
 linkMain(app);
 app.use(vhost("api.grepawk.com", apiServer));
 app.use(vhost("piano.grepawk.com", express.static("../piano/build")));
@@ -114,3 +87,31 @@ handleWsRequest(httpsServer, (uri: string) => {
   }
 });
 httpsServer.listen(443);
+
+
+
+
+
+
+
+
+
+app.use("/",(req,res)=>{
+    res.render("welcome.jsx", {
+        layout: "layout.html",
+        files: [
+            {
+                display: "fast audio play",
+                file: "https://grep32bit.z22.web.core.windows.net/",
+            },
+            { display: "bach SSE", file: "https://www.grepawk.com/bach/rt" },
+            {
+                display: "wave form of instruments",
+                file: "https://www.grepawk.com/bach/samples",
+            },
+            { display: "piano", file: "https://www.grepawk.com/piano" },
+            { display: "dsp", file: "https://dsp.grepawk.com" },
+            { display: "spotify", file: "https://www.grepawk.com/spotify" },
+        ],
+    });
+});
